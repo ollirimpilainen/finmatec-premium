@@ -1,0 +1,45 @@
+<svg xmlns="http://www.w3.org/2000/svg" style="background:#0A0B0D" viewBox="0 0 200 200" fill="none" aria-hidden="true">
+          <text x="20" y="34" font-family="JetBrains Mono, monospace" font-size="6.5" letter-spacing="1" fill="#7A7F88">PRODUCTION FLOW</text>
+          <circle cx="174" cy="32" r="3" fill="#0027FF"><animate attributeName="opacity" values="1;.3;1" dur="1.6s" repeatCount="indefinite"/></circle>
+          <text x="166" y="34.5" font-family="JetBrains Mono, monospace" font-size="6" fill="#FBFAF7" text-anchor="end">RUNNING</text>
+          <path d="M20 42h160" stroke="#2E3239" stroke-width=".75"/>
+          <rect x="20" y="66" width="40" height="44" stroke="#FBFAF7" stroke-width="1.25" fill="none" fill-opacity=".18"/>
+          <text x="20" y="60" font-family="JetBrains Mono, monospace" font-size="5.5" fill="#7A7F88">01</text>
+          <text x="20" y="122" font-family="JetBrains Mono, monospace" font-size="6.5" fill="#FBFAF7">RAW</text>
+          <text x="20" y="131" font-family="JetBrains Mono, monospace" font-size="5" fill="#7A7F88">FROZEN BLOCKS</text>
+          <rect x="80" y="66" width="40" height="44" stroke="#7B95FF" stroke-width="1.25" fill="#0027FF" fill-opacity=".18"/>
+          <text x="80" y="60" font-family="JetBrains Mono, monospace" font-size="5.5" fill="#7A7F88">02</text>
+          <text x="80" y="122" font-family="JetBrains Mono, monospace" font-size="6.5" fill="#FBFAF7">BREAK</text>
+          <text x="80" y="131" font-family="JetBrains Mono, monospace" font-size="5" fill="#7B95FF">15 T/H</text>
+          <rect x="140" y="66" width="40" height="44" stroke="#FBFAF7" stroke-width="1.25" fill="none" fill-opacity=".18"/>
+          <text x="140" y="60" font-family="JetBrains Mono, monospace" font-size="5.5" fill="#7A7F88">03</text>
+          <text x="140" y="122" font-family="JetBrains Mono, monospace" font-size="6.5" fill="#FBFAF7">EXTRUDE</text>
+          <text x="140" y="131" font-family="JetBrains Mono, monospace" font-size="5" fill="#7A7F88">EXISTING LINE</text>
+          <g stroke="#FBFAF7" stroke-width="1" fill="none"><rect x="27" y="90" width="12" height="9"/><rect x="41" y="90" width="12" height="9"/><rect x="34" y="80" width="12" height="9"/><path d="M29 94.5h8M43 94.5h8M36 84.5h8" stroke-width=".6"/></g>
+          <g stroke="#7B95FF" stroke-width="1.1" fill="none"><circle cx="93" cy="88" r="6"/><circle cx="107" cy="88" r="6"/><path d="M99.0 88.0L101.5 88.0"/><path d="M96.0 93.2L97.2 95.4"/><path d="M90.0 93.2L88.8 95.4"/><path d="M87.0 88.0L84.5 88.0"/><path d="M90.0 82.8L88.8 80.6"/><path d="M96.0 82.8L97.2 80.6"/><path d="M112.2 91.0L114.4 92.2"/><path d="M107.0 94.0L107.0 96.5"/><path d="M101.8 91.0L99.6 92.2"/><path d="M101.8 85.0L99.6 83.8"/><path d="M107.0 82.0L107.0 79.5"/><path d="M112.2 85.0L114.4 83.8"/><circle cx="93" cy="88" r="1.2" fill="#7B95FF"/><circle cx="107" cy="88" r="1.2" fill="#7B95FF"/></g>
+          <g stroke="#FBFAF7" stroke-width="1" fill="none"><rect x="146" y="82" width="28" height="12"/><path d="M150 82l3 12M155 82l3 12M160 82l3 12M165 82l3 12" stroke-width=".7"/><path d="M174 88h4"/></g>
+          <path d="M60 88H80" stroke="#0027FF" stroke-width="1.25" stroke-dasharray="3 2"><animate attributeName="stroke-dashoffset" from="10" to="0" dur=".8s" repeatCount="indefinite"/></path>
+          <polygon points="76,85 80,88 76,91" fill="#0027FF"/>
+          <path d="M120 88H140" stroke="#0027FF" stroke-width="1.25" stroke-dasharray="3 2"><animate attributeName="stroke-dashoffset" from="10" to="0" dur=".8s" repeatCount="indefinite"/></path>
+          <polygon points="136,85 140,88 136,91" fill="#0027FF"/>
+          <text x="20" y="156" font-family="JetBrains Mono, monospace" font-size="5.5" fill="#7A7F88">DESIGN → BUILD → INSTALL → COMMISSION</text>
+          <path d="M20 166H180" stroke="#2E3239" stroke-width="1"/>
+          <path d="M20 166H180" stroke="#0027FF" stroke-width="1.5" stroke-dasharray="160" stroke-dashoffset="160"><animate attributeName="stroke-dashoffset" from="160" to="0" dur="2.4s" fill="freeze" begin="0s"/></path>
+          <path d="M20.0 163V169" stroke="#7A7F88" stroke-width=".75"/>
+          <path d="M31.4 164.5V167.5" stroke="#7A7F88" stroke-width=".75"/>
+          <path d="M42.9 164.5V167.5" stroke="#7A7F88" stroke-width=".75"/>
+          <path d="M54.3 164.5V167.5" stroke="#7A7F88" stroke-width=".75"/>
+          <path d="M65.7 164.5V167.5" stroke="#7A7F88" stroke-width=".75"/>
+          <path d="M77.1 164.5V167.5" stroke="#7A7F88" stroke-width=".75"/>
+          <path d="M88.6 164.5V167.5" stroke="#7A7F88" stroke-width=".75"/>
+          <path d="M100.0 164.5V167.5" stroke="#7A7F88" stroke-width=".75"/>
+          <path d="M111.4 164.5V167.5" stroke="#7A7F88" stroke-width=".75"/>
+          <path d="M122.9 164.5V167.5" stroke="#7A7F88" stroke-width=".75"/>
+          <path d="M134.3 164.5V167.5" stroke="#7A7F88" stroke-width=".75"/>
+          <path d="M145.7 164.5V167.5" stroke="#7A7F88" stroke-width=".75"/>
+          <path d="M157.1 164.5V167.5" stroke="#7A7F88" stroke-width=".75"/>
+          <path d="M168.6 164.5V167.5" stroke="#7A7F88" stroke-width=".75"/>
+          <path d="M180.0 163V169" stroke="#7A7F88" stroke-width=".75"/>
+          <text x="20" y="178" font-family="JetBrains Mono, monospace" font-size="5.5" fill="#FBFAF7">WK 01</text>
+          <text x="180" y="178" font-family="JetBrains Mono, monospace" font-size="5.5" fill="#7B95FF" text-anchor="end">WK 14 · LIVE</text>
+        </svg>
