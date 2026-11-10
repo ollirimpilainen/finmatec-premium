@@ -227,6 +227,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
 .plan text{font-family:var(--font-data);font-size:13px;fill:currentColor;letter-spacing:.04em}
 .plan .lbl{font-size:11px;opacity:.75}
 .js .plan .draw{stroke-dasharray:1;stroke-dashoffset:1}
+.cta::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
+  background:radial-gradient(120% 95% at 0% 100%, rgba(234,242,251,.96) 0%, rgba(234,242,251,.88) 34%, rgba(234,242,251,.5) 58%, rgba(234,242,251,0) 82%)}
 @media (max-width: 760px){.plan{opacity:.35;right:-30vw;width:180vw}}
 .cta h2{font-size:clamp(64px,11vw,200px);line-height:.84;letter-spacing:-0.055em;max-width:12ch}
 .cta h2 em{font-style:normal;color:var(--ultra)}
