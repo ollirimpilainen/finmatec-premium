@@ -280,10 +280,6 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
         <a class="pill ghost" href="#chain">See the line <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 3v10M4 9l4 4 4-4"/></svg></span></a>
       </div>
     </div>
-    <div class="readout data">
-      <span>Snellman Petfood</span>
-      <span>Frozen raw material into the crusher</span>
-    </div>
   </div>
 </header>
 
@@ -585,7 +581,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
 
   // Hero video drifts slower than the page
   gsap.to('.hero video, .hero .poster', {yPercent:12, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
-  gsap.from('.hero h1, .hero .lede, .hero .ctas, .readout', {y:36, duration:1.2, ease:'expo.out', stagger:0.1});
+  gsap.from('.hero h1, .hero .lede, .hero .ctas', {y:36, duration:1.2, ease:'expo.out', stagger:0.1});
 
   // 40 KG: the type pulls back as you pass, revealing more of the footage
   gsap.fromTo('#kg', {scale:1.5}, {scale:0.92, ease:'none', scrollTrigger:{trigger:'.mask', start:'top bottom', end:'bottom top', scrub:true}});
