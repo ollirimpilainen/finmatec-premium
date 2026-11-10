@@ -1,0 +1,617 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
+<meta name="robots" content="noindex, nofollow">
+<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
+<title>Finmatec Every Kilo</title>
+<meta name="claude:viewport-fit-sides" content="cover">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:wght@300..800&family=Geist+Mono:wght@400;500&display=swap">
+<style>
+/* Layout: one cinematic scroll. Video thesis, then the raw material's journey from frozen block to pallet, told in chapters. */
+:root{
+  --ink:#0b0a26;        /* deep ultramarine black, the night of the cold store */
+  --ultra:#2415BA;      /* Finmatec Mörkblå, carried as a full surface */
+  --ultra-deep:#170d86;
+  --ice:#eaf2fb;        /* frost white, hygiene */
+  --frost:#99C5ED;      /* Finmatec Ljusblå */
+  --signal:#03FF6B;     /* Finmatec Grön, signal only */
+  --steel:#8f9bb8;
+  --on-ultra:#eef3ff;
+  --font-display:'Funnel Display','Funnel Sans',ui-sans-serif,system-ui,sans-serif;
+  --font-body:'Funnel Sans',ui-sans-serif,system-ui,sans-serif;
+  --font-data:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
+  --ease:cubic-bezier(0.32,0.72,0,1);
+  --ease-out:cubic-bezier(0.16,1,0.3,1);
+  --gutter-l:max(16px, env(safe-area-inset-left, 0px));
+  --gutter-r:max(16px, env(safe-area-inset-right, 0px));
+  color-scheme:dark;
+}
+*{box-sizing:border-box}
+html{scroll-behavior:auto}
+body{background:var(--ink);color:var(--on-ultra);font-family:var(--font-body);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
+main{overflow-x:hidden;width:100%;max-width:100%}
+img,video{max-width:100%;display:block}
+a{color:inherit}
+h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-0.035em;text-wrap:balance;margin:0}
+p{margin:0}
+.wrap{padding-left:max(var(--gutter-l), 4vw);padding-right:max(var(--gutter-r), 4vw)}
+.data{font-family:var(--font-data);font-size:12.5px;letter-spacing:0.02em;text-transform:uppercase}
+:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:999px}
+
+/* Grain, fixed and inert */
+body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mix-blend-mode:overlay;z-index:30;
+  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+
+/* ---------- Island nav ---------- */
+.nav{position:fixed;z-index:20;top:calc(env(safe-area-inset-top, 0px) + 18px);left:50%;transform:translateX(-50%);
+  width:min(1180px, calc(100% - 32px));display:flex;align-items:center;gap:8px;padding:8px 8px 8px 22px;border-radius:999px;
+  background:rgba(11,10,38,.42);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);
+  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 0 0 1px rgba(255,255,255,.08);transition:background .6s var(--ease)}
+.nav.solid{background:rgba(11,10,38,.82)}
+.nav img{height:22px;width:auto;margin-right:auto}
+.nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
+.nav ul a{display:block;padding:10px 14px;border-radius:999px;text-decoration:none;font-size:14.5px;font-weight:500;color:#dfe6ff;transition:background .4s var(--ease),color .4s var(--ease)}
+.nav ul a:hover{background:rgba(255,255,255,.08);color:#fff}
+.lang{display:inline-flex;margin:0 8px;padding:3px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.lang a{font-family:var(--font-data);font-size:12px;padding:7px 11px;border-radius:999px;text-decoration:none;color:#c9d2fa;transition:background .4s var(--ease),color .4s var(--ease)}
+.lang a[aria-current="true"]{background:rgba(255,255,255,.16);color:#fff}
+.lang a:hover{color:#fff}
+.pill{display:inline-flex;align-items:center;gap:12px;padding:6px 6px 6px 20px;border-radius:999px;background:var(--on-ultra);color:var(--ink);
+  font-weight:650;font-size:15px;text-decoration:none;white-space:nowrap;transition:transform .5s var(--ease),background .5s var(--ease)}
+.pill .knob{width:36px;height:36px;border-radius:999px;background:var(--ultra);color:#fff;display:grid;place-items:center;transition:transform .6s var(--ease)}
+.pill:hover .knob{transform:translate(3px,-2px) scale(1.06)}
+.pill:active{transform:scale(.98)}
+.pill.on-light{background:var(--ultra);color:#fff}
+.pill.on-light .knob{background:var(--signal);color:var(--ink)}
+.pill.ghost{background:transparent;color:var(--on-ultra);box-shadow:inset 0 0 0 1px rgba(255,255,255,.28)}
+.pill.ghost .knob{background:rgba(255,255,255,.12)}
+.knob svg{width:16px;height:16px}
+@media (max-width: 900px){.nav ul{display:none}}
+
+/* ---------- Hero ---------- */
+.hero{position:relative;min-height:min(900px, 96svh);display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
+.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transform:scale(1.06)}
+.hero::before{content:"";position:absolute;inset:0;z-index:-1;
+  background:linear-gradient(90deg,rgba(11,10,38,.88) 0%,rgba(11,10,38,.55) 42%,rgba(11,10,38,.05) 75%),linear-gradient(0deg,rgba(11,10,38,.9) 0%,rgba(11,10,38,0) 45%)}
+.hero-in{width:100%;padding-block:180px 64px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end}
+.hero h1{font-size:clamp(56px, 9.2vw, 152px);line-height:.88;font-weight:760;max-width:11ch}
+.hero h1 em{font-style:normal;color:var(--frost)}
+.hero .lede{max-width:46ch;font-size:clamp(17px,1.4vw,20px);color:#cdd6f6;margin-top:28px}
+.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
+.readout{display:grid;gap:10px;justify-items:end;text-align:right;color:#b9c4ea}
+.readout .rec{display:inline-flex;align-items:center;gap:8px}
+.readout .rec i{width:8px;height:8px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 0 rgba(3,255,107,.6);animation:pulse 2.4s var(--ease) infinite}
+@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(3,255,107,.55)}70%{box-shadow:0 0 0 10px rgba(3,255,107,0)}100%{box-shadow:0 0 0 0 rgba(3,255,107,0)}}
+@media (max-width: 760px){.hero-in{grid-template-columns:1fr;padding-block:140px 40px}.readout{justify-items:start;text-align:left}}
+
+/* ---------- Statement with inline video pill ---------- */
+.statement{background:var(--ultra);color:var(--on-ultra);padding-block:clamp(110px,14vw,200px)}
+.statement p.big{font-family:var(--font-display);font-weight:600;letter-spacing:-0.03em;font-size:clamp(34px,5.2vw,84px);line-height:1.04;max-width:20ch}
+.statement .w{opacity:1;transition:opacity .2s linear}
+.js .statement .w{opacity:.22}
+.vpill{display:inline-block;vertical-align:middle;width:1.9em;height:.92em;border-radius:999px;overflow:hidden;margin:0 .12em;transform:translateY(-.06em);box-shadow:0 0 0 2px rgba(255,255,255,.18)}
+.vpill video{width:100%;height:100%;object-fit:cover}
+.facts{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;margin-top:96px}
+.usp{position:relative;border-radius:30px;padding:6px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
+.usp>.core{position:relative;height:100%;min-height:440px;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:14px;padding:36px;isolation:isolate}
+.usp .bg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.usp:hover .bg{transform:scale(1.05)}
+.usp .core::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(11,10,38,.92) 0%,rgba(11,10,38,.35) 55%,rgba(11,10,38,.1) 100%)}
+.usp .data{color:var(--frost)}
+.usp h3{font-size:clamp(36px,3.6vw,60px);line-height:.92;letter-spacing:-0.04em;max-width:11ch}
+.usp p{color:#cdd6f6;max-width:36ch}
+.usp.safety{grid-column:span 6;grid-row:span 2}
+.usp.safety>.core{min-height:620px}
+.usp.capacity{grid-column:span 6}
+.usp.capacity>.core{min-height:300px}
+.usp.payback{grid-column:span 6}
+.usp.payback>.core{min-height:300px;background:var(--ice);color:var(--ink);justify-content:space-between}
+.usp.payback .core::before{display:none}
+.usp.payback .data{color:var(--ultra)}
+.usp.payback .fig{font-family:var(--font-display);font-weight:780;letter-spacing:-0.06em;line-height:.8;font-size:clamp(96px,11vw,184px);color:var(--ultra)}
+.usp.payback .fig small{font-size:.28em;letter-spacing:-0.02em;margin-left:.15em}
+.usp.payback p{color:#3b456b}
+.usp.payback .row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px}
+.usp .tick{position:absolute;top:28px;right:28px;width:44px;height:44px;border-radius:999px;display:grid;place-items:center;background:var(--signal);color:var(--ink)}
+.usp .tick svg{width:18px;height:18px}
+@media (max-width: 900px){.usp{grid-column:span 12!important;grid-row:auto!important}.usp.safety>.core{min-height:460px}}
+
+/* ---------- 40 KG text mask ---------- */
+.mask{position:relative;height:clamp(420px,62vw,860px);overflow:hidden;background:var(--ink);isolation:isolate}
+.mask video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.mask .knock{position:absolute;inset:0;background:var(--ink);mix-blend-mode:multiply;display:grid;place-items:center}
+.mask .knock span{font-family:var(--font-display);font-weight:800;color:#fff;letter-spacing:-0.06em;line-height:.8;font-size:clamp(150px,34vw,560px);white-space:nowrap;will-change:transform}
+.mask .cap{position:absolute;left:50%;bottom:32px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border-radius:999px;background:rgba(11,10,38,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);color:#cdd6f6;white-space:nowrap;max-width:calc(100% - 32px)}
+.mask .cap i{width:6px;height:6px;border-radius:50%;background:var(--signal);flex:none}
+
+/* ---------- The chain: horizontal ---------- */
+.chain{background:var(--ice);color:var(--ink);padding-block:120px 0}
+.chain-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px 64px;padding-bottom:56px}
+.chain-head h2{font-size:clamp(40px,5.4vw,88px);line-height:.94;max-width:14ch}
+.chain-head p{max-width:40ch;color:#3b456b}
+.rail-wrap{overflow:hidden}
+.rail{display:flex;gap:20px;padding-bottom:120px;width:max-content}
+.station{position:relative;width:min(78vw, 560px);flex:none;border-radius:28px;padding:6px;background:rgba(36,21,186,.06);box-shadow:inset 0 0 0 1px rgba(36,21,186,.10)}
+.station .core{border-radius:22px;overflow:hidden;background:#fff;box-shadow:inset 0 1px 1px rgba(255,255,255,.8)}
+.station .media{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--ink)}
+.station .media img,.station .media video{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
+.station:hover .media img,.station:hover .media video{transform:scale(1.04)}
+.station .n{position:absolute;top:16px;left:16px;font-family:var(--font-data);font-size:12px;color:#fff;background:rgba(11,10,38,.55);backdrop-filter:blur(6px);padding:6px 10px;border-radius:999px}
+.station .body{padding:26px 28px 30px;display:grid;gap:12px}
+.station h3{font-size:30px;line-height:1;letter-spacing:-0.03em}
+.station p{color:#3b456b;font-size:16px;max-width:44ch}
+.spec{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
+.spec span{font-family:var(--font-data);font-size:12px;padding:7px 11px;border-radius:999px;background:var(--ice);color:var(--ultra)}
+.station.bin .media{background:linear-gradient(180deg,#f7f9fc 0%,#e9eef5 100%)}
+.station.bin .media img{object-fit:cover;object-position:34% 42%;transform:scale(1.55);transform-origin:34% 42%}
+.station.bin:hover .media img{transform:scale(1.62)}
+.stack{display:grid;grid-template-columns:repeat(6, 34px);gap:6px;transform:perspective(600px) rotateX(48deg) rotateZ(-32deg)}
+.stack i{height:34px;border-radius:6px;background:rgba(255,255,255,.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
+.stack i.on{background:var(--frost)}
+.stack i.go{background:var(--signal)}
+@media (max-width: 760px){.rail{flex-direction:column;width:auto}.station{width:100%}}
+
+/* ---------- Industries accordion ---------- */
+.ind{background:var(--ink);padding-block:clamp(110px,12vw,180px)}
+.ind h2{font-size:clamp(40px,5.4vw,88px);line-height:.94;max-width:16ch;margin-bottom:56px}
+.slices{display:flex;gap:12px;height:clamp(460px,46vw,640px)}
+.slice{position:relative;flex:1;min-width:0;border-radius:28px;overflow:hidden;text-decoration:none;color:#fff;transition:flex 1s var(--ease)}
+.slices:hover .slice{flex:.7}
+.slices .slice:hover{flex:2.4}
+.slice img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
+.slice:hover img{transform:scale(1.05)}
+.slice::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,10,38,.92) 0%,rgba(11,10,38,.1) 60%)}
+.slice .t{position:absolute;left:28px;right:28px;bottom:28px;z-index:1;display:grid;gap:10px}
+.slice h3{font-size:clamp(34px,3.4vw,56px);line-height:.9}
+.slice p{max-width:34ch;color:#d4dbf7;font-size:16px}
+.slice .data{color:var(--frost)}
+.slice.typo{background:var(--ultra)}
+.slice.typo::after{background:none}
+.slice.typo .big{position:absolute;top:22px;left:24px;font-family:var(--font-display);font-weight:800;font-size:clamp(90px,10vw,170px);line-height:.8;letter-spacing:-0.06em;color:rgba(255,255,255,.1)}
+@media (max-width: 760px){.slices{flex-direction:column;height:auto}.slice{height:380px;flex:none!important}}
+
+/* ---------- Proof bento ---------- */
+.proof{background:var(--ice);color:var(--ink);padding-block:clamp(110px,12vw,180px)}
+.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-flow:dense;gap:16px}
+.cell{border-radius:28px;padding:6px;background:rgba(36,21,186,.06);box-shadow:inset 0 0 0 1px rgba(36,21,186,.10)}
+.cell>.core{height:100%;border-radius:22px;overflow:hidden;position:relative}
+.c-quote{grid-column:span 7;grid-row:span 2}
+.c-quote .core{background:var(--ultra);color:var(--on-ultra);padding:48px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-height:520px}
+.c-quote blockquote{margin:0;font-family:var(--font-display);font-weight:600;letter-spacing:-0.025em;font-size:clamp(28px,2.8vw,44px);line-height:1.1}
+.c-quote .mark{font-family:var(--font-display);font-size:120px;line-height:.5;color:var(--signal)}
+.c-num .core{background:#fff;padding:36px;display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:252px}
+.c-num{grid-column:span 4}
+.c-num.dark .core{background:var(--ink)}
+.c-num.dark .num{color:var(--frost)}
+.num{font-family:var(--font-display);font-weight:760;letter-spacing:-0.05em;font-size:clamp(72px,7.4vw,124px);line-height:.85;color:var(--ultra)}
+.num small{font-family:var(--font-data);font-size:13px;letter-spacing:0;color:#3b456b;margin-left:6px;text-transform:uppercase}
+.c-img{grid-column:span 5;grid-row:span 2}
+.c-img .core{min-height:520px}
+.c-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
+.c-wide{grid-column:span 12}
+.c-wide .core{background:var(--ink);color:var(--on-ultra);padding:36px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:end;min-height:252px}
+.c-wide .num{color:var(--frost)}
+.c-wide p{color:#c4cdf0;max-width:38ch}
+@media (max-width: 900px){.bento>*{grid-column:span 12!important;grid-row:auto!important}.c-wide .core{grid-template-columns:1fr}}
+
+/* ---------- Process ---------- */
+.proc{background:var(--ultra);color:var(--on-ultra);padding-block:clamp(110px,12vw,180px)}
+.proc-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px}
+.proc h2{font-size:clamp(40px,4.8vw,80px);line-height:.95;position:sticky;top:120px}
+.proc .sub{margin-top:28px;color:#c9d2fa;max-width:38ch;position:sticky;top:420px}
+.steps{position:relative;list-style:none;margin:0;padding:0 0 0 56px}
+.steps .line{position:absolute;left:15px;top:8px;bottom:8px;width:2px;background:rgba(255,255,255,.16)}
+.steps .line i{position:absolute;inset:0;background:var(--signal);transform-origin:top;transform:scaleY(1)}
+.js .steps .line i{transform:scaleY(0)}
+.steps li{position:relative;padding:0 0 64px}
+.steps li:last-child{padding-bottom:0}
+.steps .dot{position:absolute;left:-56px;top:2px;width:32px;height:32px;border-radius:50%;background:var(--ultra-deep);box-shadow:inset 0 0 0 1px rgba(255,255,255,.3);display:grid;place-items:center;font-family:var(--font-data);font-size:12px}
+.steps h3{font-size:clamp(26px,2.4vw,38px);line-height:1}
+.steps p{margin-top:12px;color:#c9d2fa;max-width:46ch}
+@media (max-width: 900px){.proc-grid{grid-template-columns:1fr}.proc h2,.proc .sub{position:static}}
+
+/* ---------- CTA + footer ---------- */
+.cta{position:relative;overflow:hidden;isolation:isolate;background:var(--ice);color:var(--ink);padding-block:clamp(120px,14vw,220px) 80px}
+.plan{position:absolute;z-index:-1;top:50%;right:-4vw;transform:translateY(-50%);width:min(1500px,96vw);height:auto;color:var(--ultra);opacity:.62;
+  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 38%,#000 100%);mask-image:linear-gradient(90deg,transparent 0%,#000 38%,#000 100%)}
+.plan *{vector-effect:non-scaling-stroke}
+.plan .ln{fill:none;stroke:currentColor;stroke-width:1}
+.plan .thin{stroke-width:.6;opacity:.55}
+.plan .wall{fill:none;stroke:currentColor;stroke-width:2.2}
+.plan .eq{fill:rgba(36,21,186,.05);stroke:currentColor;stroke-width:1.2}
+.plan .flow{fill:none;stroke:#0aa04d;stroke-width:2;stroke-dasharray:6 6}
+.plan text{font-family:var(--font-data);font-size:13px;fill:currentColor;letter-spacing:.04em}
+.plan .lbl{font-size:11px;opacity:.75}
+.js .plan .draw{stroke-dasharray:1;stroke-dashoffset:1}
+@media (max-width: 760px){.plan{opacity:.35;right:-30vw;width:180vw}}
+.cta h2{font-size:clamp(64px,11vw,200px);line-height:.84;letter-spacing:-0.055em;max-width:12ch}
+.cta h2 em{font-style:normal;color:var(--ultra)}
+.cta-row{display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;justify-content:space-between;margin-top:56px}
+.cta-row p{max-width:44ch;color:#3b456b}
+.foot{background:var(--ink);color:#c4cdf0;padding-block:72px 40px}
+.foot-grid{display:grid;grid-template-columns:1.2fr 1.4fr 1fr 1fr;gap:40px}
+.foot h4{margin:0 0 16px;font-family:var(--font-data);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--frost)}
+.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
+.foot a{text-decoration:none}
+.foot a:hover{color:#fff}
+.foot .fi a{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.2);color:#fff}
+.foot .base{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;margin-top:64px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);font-size:13px;color:#7f8ab5}
+@media (max-width: 900px){.foot-grid{grid-template-columns:1fr 1fr}}
+@media (max-width: 520px){.foot-grid{grid-template-columns:1fr}}
+
+@media (prefers-reduced-motion: reduce){
+  *{transition:none!important;animation:none!important}
+  .js .statement .w{opacity:1}
+  .js .steps .line i{transform:none}
+}
+</style>
+</head>
+<body>
+
+<main>
+<nav class="nav" id="nav" aria-label="Main">
+  <img src="media/logo-white.png" alt="Finmatec">
+  <ul>
+    <li><a href="#chain">Food Processing</a></li>
+    <li><a href="#footer">Parts, Products &amp; Support</a></li>
+    <li><a href="#proof">References</a></li>
+    <li><a href="#process">Finmatec</a></li>
+  </ul>
+  <div class="lang" role="group" aria-label="Language"><a href="#" aria-current="true" lang="en">EN</a><a href="#footer" lang="fi" hreflang="fi" title="Suomeksi: varaosat, tuotteet ja tuki">FI</a></div>
+  <a class="pill" href="#cta">Talk to an engineer <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
+</nav>
+
+<header class="hero">
+  <img class="poster" src="media/v-cut1.jpg" alt="">
+  <video autoplay muted loop playsinline preload="auto" poster="media/v-cut1.jpg" aria-hidden="true"><source src="media/hero.mp4" type="video/mp4"></video>
+  <div class="hero-in wrap">
+    <div>
+      <h1>More from every <em>kilo.</em></h1>
+      <p class="lede">Automated raw material handling for meat, poultry and pet food. We raise your capacity and safety with fewer hands on the factory floor.</p>
+      <div class="ctas">
+        <a class="pill" href="#cta">Talk to an engineer <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
+        <a class="pill ghost" href="#chain">See the line <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 3v10M4 9l4 4 4-4"/></svg></span></a>
+      </div>
+    </div>
+    <div class="readout data">
+      <span class="rec"><i></i>Footage from a running line</span>
+      <span>Snellman Petfood</span>
+      <span>Frozen raw material into the crusher</span>
+    </div>
+  </div>
+</header>
+
+<section class="statement" aria-label="Why automate">
+  <div class="wrap">
+    <p class="big" id="words">Emptying a plate freezer by hand means lifting slippery, frozen blocks of up to 40 kilos, all shift long. We take those lifts off the floor.</p>
+    <div class="facts">
+      <article class="usp safety"><div class="core">
+        <video class="bg" autoplay muted loop playsinline preload="none" data-lazy poster="media/v5302.jpg" aria-hidden="true"><source data-src="media/c5302.mp4" type="video/mp4"></video>
+        <span class="tick" aria-hidden="true"><svg viewBox="0 0 18 18" fill="none" stroke="currentColor" stroke-width="2"><path d="M4 9.5 7.5 13 14 5"/></svg></span>
+        <span class="data">Safety</span>
+        <h3>No more 40-kilo lifts.</h3>
+        <p>Crushed fingers, slips on wet floors and worn-out backs come from handling frozen blocks by hand. Automation takes those stations off your people.</p>
+      </div></article>
+      <article class="usp capacity"><div class="core">
+        <img class="bg" src="media/p12.jpg" alt="" loading="lazy" style="object-position:55% 45%">
+        <span class="data">Capacity</span>
+        <h3>Fewer boots on the floor.</h3>
+        <p>More throughput from the same line, without hiring more operators to keep up with volume.</p>
+      </div></article>
+      <article class="usp payback"><div class="core">
+        <span class="data">Payback</span>
+        <div class="row">
+          <p class="fig">2-5<small>yrs</small></p>
+          <p>Typical payback for a new automated plate freezing line, from lower staffing costs, fewer sick days and higher capacity.</p>
+        </div>
+      </div></article>
+    </div>
+  </div>
+</section>
+
+<section class="mask" aria-label="Blocks up to 40 kilograms">
+  <video autoplay muted loop playsinline preload="none" data-lazy aria-hidden="true"><source data-src="media/c5363.mp4" type="video/mp4"></video>
+  <div class="knock" aria-hidden="true"><span id="kg">40 KG</span></div>
+  <div class="cap data"><i aria-hidden="true"></i><span>One frozen block, lifted by hand, many times a shift</span></div>
+</section>
+
+<section class="chain" id="chain">
+  <div class="chain-head wrap">
+    <h2>From frozen block to pallet. One team.</h2>
+    <p>We design, build and automate the whole chain around your raw material, in your existing factory or in a new one. The same people from the first 2D drawing to the first shift.</p>
+  </div>
+  <div class="rail-wrap">
+    <div class="rail wrap" id="rail">
+      <article class="station">
+        <div class="core">
+          <div class="media"><video autoplay muted loop playsinline preload="none" data-lazy poster="media/v5381.jpg" aria-hidden="true"><source data-src="media/c5381.mp4" type="video/mp4"></video><span class="n">01 · Intake</span></div>
+          <div class="body"><h3>Crush</h3><p>CombiBreaker Mini Titan breaks massive frozen blocks into fist-sized pieces that feed safely into the grinders.</p><div class="spec"><span>Titan series</span><span>Standstill monitors</span><span>Stainless steel</span></div></div>
+        </div>
+      </article>
+      <article class="station">
+        <div class="core">
+          <div class="media"><img src="media/p07.jpg" alt="Large mixer with service platform and conveyor" loading="lazy"><span class="n">02 · Mixing</span></div>
+          <div class="body"><h3>Mix</h3><p>Mixers sized to your recipes and volumes, with injected CO2 cooling or steam heating where the process needs it.</p><div class="spec"><span>Up to 3 000 kg</span><span>CO2 or steam</span><span>Cleanability</span></div></div>
+        </div>
+      </article>
+      <article class="station">
+        <div class="core">
+          <div class="media"><video autoplay muted loop playsinline preload="none" data-lazy poster="media/p13.jpg" aria-hidden="true"><source data-src="media/c5294.mp4" type="video/mp4"></video><span class="n">03 · Transport</span></div>
+          <div class="body"><h3>Move</h3><p>Screw and belt conveyors that keep MDM and raw material in a closed, hygienic flow with no spillage on the floor.</p><div class="spec"><span>Screw conveyors</span><span>Belt conveyors</span><span>MDM</span></div></div>
+        </div>
+      </article>
+      <article class="station">
+        <div class="core">
+          <div class="media"><img src="media/v5302.jpg" alt="Frozen blocks leaving a plate freezer" loading="lazy" style="object-position:50% 0%"><span class="n">04 · Freezing</span></div>
+          <div class="body"><h3>Freeze</h3><p>Automated filling, emptying and palletising around Jackstone plate freezers. 50+ turnkey installations worldwide.</p><div class="spec"><span>Blocks to 40 kg</span><span>Jackstone</span><span>Payback 2 to 5 yrs</span></div></div>
+        </div>
+      </article>
+      <article class="station bin">
+        <div class="core">
+          <div class="media">
+            <img src="media/binstacker.png" alt="BinStacker high-bay storage with bins stacked on several levels" loading="lazy">
+            <span class="n">05 · Storage</span>
+          </div>
+          <div class="body"><h3>Stack</h3><p>BinStacker, our patented high-bay system, builds on ceiling height instead of floor space. Online weighing and RFID on every bin.</p><div class="spec"><span>Up to 5 000 bins</span><span>Bins to 200 kg</span><span>RFID</span><span>AISI 304</span></div></div>
+        </div>
+      </article>
+    </div>
+  </div>
+</section>
+
+<section class="ind" aria-labelledby="ind-h">
+  <div class="wrap">
+    <h2 id="ind-h">Built for the protein you process.</h2>
+    <div class="slices">
+      <a class="slice" href="#cta"><img src="media/v5381.jpg" alt="Frozen meat breaking up in a crusher" loading="lazy"><div class="t"><span class="data">Beef · pork · lamb</span><h3>Meat</h3><p>Heavy, frozen blocks out of human hands. Crushers, grinders and mixers that get the most out of every kilo.</p></div></a>
+      <a class="slice typo" href="#cta"><span class="big" aria-hidden="true">MDM</span><div class="t"><span class="data">Fastest growing protein</span><h3>Poultry</h3><p>High volumes and mechanically deboned meat in a closed flow, straight on to plate freezing.</p></div></a>
+      <a class="slice" href="#cta"><img src="media/p12.jpg" alt="Operators at a pet food line" loading="lazy" style="object-position:55% 50%"><div class="t"><span class="data">Food-grade standard</span><h3>Pet food</h3><p>The same hygiene as a food line. Cleanability first and no raw material lost on the floor.</p></div></a>
+    </div>
+  </div>
+</section>
+
+<section class="proof" id="proof" aria-label="Proof">
+  <div class="wrap">
+    <div class="bento">
+      <div class="cell c-quote"><div class="core">
+        <div class="mark" aria-hidden="true">“</div>
+        <blockquote>Five operators used to be needed on the line. Now we work faster and safer, with fewer boots on the factory floor.</blockquote>
+        <p class="data" style="color:var(--frost)">Magnus Petterson · CEO · Snellman Petfood</p>
+      </div></div>
+      <div class="cell c-img"><div class="core"><img src="media/p02.jpg" alt="Operator at the line control panel" loading="lazy" style="object-position:50% 30%"></div></div>
+      <div class="cell c-num"><div class="core">
+        <p class="num">2 500<span style="color:var(--frost)">+</span></p>
+        <p class="data" style="color:#3b456b">Deliveries to food and pet food producers since 1989</p>
+      </div></div>
+      <div class="cell c-num"><div class="core">
+        <p class="num">50<span style="color:var(--frost)">+</span></p>
+        <p class="data" style="color:#3b456b">Turnkey plate freezing installations worldwide</p>
+      </div></div>
+      <div class="cell c-num"><div class="core">
+        <p class="num">80<span style="color:var(--frost)"> %</span></p>
+        <p class="data" style="color:#3b456b">Of our projects are built into existing factories</p>
+      </div></div>
+    </div>
+  </div>
+</section>
+
+<section class="proc" id="process" aria-labelledby="proc-h">
+  <div class="wrap proc-grid">
+    <div>
+      <h2 id="proc-h">The people who draw your line also start it up.</h2>
+      <p class="sub">Short decision paths, one team and total responsibility for the investment. Plate freezers come from Jackstone, crushers from Wel-Mach. Everything around them is ours.</p>
+    </div>
+    <div class="steps" id="steps">
+      <span class="line" aria-hidden="true"><i id="line"></i></span>
+      <ol style="list-style:none;margin:0;padding:0">
+      <li><span class="dot">01</span><h3>2D drawing and 3D layout</h3><p>We start from your drawings and model the whole process to fit your ceiling height, pillars and floor drains.</p></li>
+      <li><span class="dot">02</span><h3>Risk assessment</h3><p>Every rotating part is assessed before it is built. Washing and maintenance are designed in, not added later.</p></li>
+      <li><span class="dot">03</span><h3>Manufacturing</h3><p>Process lines, plate freezing automation and BinStacker, built in our own hands.</p></li>
+      <li><span class="dot">04</span><h3>Factory acceptance test</h3><p>Tested before it leaves us, so commissioning is not where problems are found.</p></li>
+      <li><span class="dot">05</span><h3>Installation and commissioning</h3><p>Built in, started up and handed over to your operators.</p></li>
+      <li><span class="dot">06</span><h3>Service and parts</h3><p>The same team stays with you. Wear and spare parts for every machine we deliver.</p></li>
+      </ol>
+    </div>
+  </div>
+</section>
+
+<section class="cta" id="cta" aria-labelledby="cta-h">
+  <svg class="plan" id="plan" viewBox="0 0 1600 900" aria-hidden="true" focusable="false">
+    <defs>
+      <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="currentColor" stroke-width=".8" opacity=".5"/></pattern>
+      <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#0aa04d"/></marker>
+      <marker id="tick" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M2 8 8 2" stroke="currentColor" stroke-width="1.2"/></marker>
+    </defs>
+
+    <!-- Structural grid: axes A to F, 1 to 4 -->
+    <g class="ln thin">
+      <line x1="160" y1="110" x2="160" y2="770" class="draw" pathLength="1"/><line x1="400" y1="110" x2="400" y2="770" class="draw" pathLength="1"/><line x1="640" y1="110" x2="640" y2="770" class="draw" pathLength="1"/><line x1="880" y1="110" x2="880" y2="770" class="draw" pathLength="1"/><line x1="1120" y1="110" x2="1120" y2="770" class="draw" pathLength="1"/><line x1="1360" y1="110" x2="1360" y2="770" class="draw" pathLength="1"/>
+      <line x1="120" y1="160" x2="1400" y2="160" class="draw" pathLength="1"/><line x1="120" y1="360" x2="1400" y2="360" class="draw" pathLength="1"/><line x1="120" y1="560" x2="1400" y2="560" class="draw" pathLength="1"/><line x1="120" y1="740" x2="1400" y2="740" class="draw" pathLength="1"/>
+    </g>
+    <g>
+      <circle cx="160" cy="80" r="15" class="ln"/><text x="160" y="85" text-anchor="middle">A</text>
+      <circle cx="400" cy="80" r="15" class="ln"/><text x="400" y="85" text-anchor="middle">B</text>
+      <circle cx="640" cy="80" r="15" class="ln"/><text x="640" y="85" text-anchor="middle">C</text>
+      <circle cx="880" cy="80" r="15" class="ln"/><text x="880" y="85" text-anchor="middle">D</text>
+      <circle cx="1120" cy="80" r="15" class="ln"/><text x="1120" y="85" text-anchor="middle">E</text>
+      <circle cx="1360" cy="80" r="15" class="ln"/><text x="1360" y="85" text-anchor="middle">F</text>
+      <circle cx="90" cy="160" r="15" class="ln"/><text x="90" y="165" text-anchor="middle">1</text>
+      <circle cx="90" cy="360" r="15" class="ln"/><text x="90" y="365" text-anchor="middle">2</text>
+      <circle cx="90" cy="560" r="15" class="ln"/><text x="90" y="565" text-anchor="middle">3</text>
+      <circle cx="90" cy="740" r="15" class="ln"/><text x="90" y="745" text-anchor="middle">4</text>
+    </g>
+
+    <!-- Walls with door openings -->
+    <path class="wall draw" pathLength="1" d="M140 140 H760 M820 140 H1380 V760 H1060 M980 760 H140 V140"/>
+    <path class="wall draw" pathLength="1" d="M150 150 H760 M820 150 H1370 V750 H1060 M980 750 H150 V150"/>
+    <path class="ln thin" d="M760 140 A60 60 0 0 1 820 200"/>
+    <!-- Pillars -->
+    <g fill="currentColor" opacity=".8">
+      <rect x="392" y="352" width="16" height="16"/><rect x="632" y="352" width="16" height="16"/><rect x="872" y="352" width="16" height="16"/><rect x="1112" y="352" width="16" height="16"/>
+      <rect x="392" y="552" width="16" height="16"/><rect x="632" y="552" width="16" height="16"/><rect x="872" y="552" width="16" height="16"/><rect x="1112" y="552" width="16" height="16"/>
+    </g>
+    <!-- Floor drains -->
+    <g class="ln thin">
+      <path d="M180 660 H1340" stroke-dasharray="3 7" class="draw" pathLength="1"/>
+      <circle cx="300" cy="660" r="9"/><path d="M293 653 307 667M307 653 293 667"/>
+      <circle cx="760" cy="660" r="9"/><path d="M753 653 767 667M767 653 753 667"/>
+      <circle cx="1240" cy="660" r="9"/><path d="M1233 653 1247 667M1247 653 1233 667"/>
+    </g>
+
+    <!-- Equipment -->
+    <rect class="eq draw" pathLength="1" x="200" y="210" width="150" height="110" rx="4"/>
+    <rect x="215" y="225" width="120" height="50" fill="url(#hatch)"/>
+    <text x="215" y="300">CB-1</text><text x="215" y="316" class="lbl">CRUSHER</text>
+
+    <rect class="eq draw" pathLength="1" x="450" y="200" width="150" height="140" rx="4"/>
+    <circle class="ln draw" pathLength="1" cx="525" cy="262" r="46"/>
+    <path class="ln thin" d="M495 262h60M525 232v60"/>
+    <text x="460" y="330">MX-1 · 3 000 kg</text>
+
+    <path class="eq draw" pathLength="1" d="M600 250 L860 222 L866 262 L606 290 Z"/>
+    <path class="ln thin" d="M630 252 640 282M660 249 670 279M690 246 700 276M720 242 730 272M750 239 760 269M780 236 790 266M810 232 820 262"/>
+    <text x="680" y="214" class="lbl">SCREW CONVEYOR</text>
+
+    <g>
+      <rect class="eq draw" pathLength="1" x="920" y="190" width="80" height="150" rx="3"/>
+      <rect class="eq draw" pathLength="1" x="1010" y="190" width="80" height="150" rx="3"/>
+      <rect class="eq draw" pathLength="1" x="1100" y="190" width="80" height="150" rx="3"/>
+      <rect class="eq draw" pathLength="1" x="1190" y="190" width="80" height="150" rx="3"/>
+      <g class="ln thin"><path d="M920 215h80M920 240h80M920 265h80M920 290h80M920 315h80M1010 215h80M1010 240h80M1010 265h80M1010 290h80M1010 315h80M1100 215h80M1100 240h80M1100 265h80M1100 290h80M1100 315h80M1190 215h80M1190 240h80M1190 265h80M1190 290h80M1190 315h80"/></g>
+      <text x="920" y="182">PF-1</text><text x="1010" y="182">PF-2</text><text x="1100" y="182">PF-3</text><text x="1190" y="182">PF-4</text>
+      <text x="1290" y="270" class="lbl">PLATE</text><text x="1290" y="286" class="lbl">FREEZERS</text>
+    </g>
+
+    <rect class="eq draw" pathLength="1" x="940" y="410" width="330" height="120" rx="3"/>
+    <rect class="eq draw" pathLength="1" x="950" y="420" width="140" height="100" rx="2"/>
+    <text x="1104" y="460">PAL-1</text><text x="1104" y="478" class="lbl">BLOCK PALLETISER</text>
+
+    <g>
+      <rect class="eq draw" pathLength="1" x="430" y="410" width="400" height="200" rx="3"/>
+      <g class="ln thin">
+        <path d="M430 450h400M430 490h400M430 530h400M430 570h400M480 410v200M530 410v200M580 410v200M630 410v200M680 410v200M730 410v200M780 410v200"/>
+      </g>
+      <g fill="currentColor" opacity=".18"><rect x="481" y="451" width="48" height="38"/><rect x="631" y="491" width="48" height="38"/><rect x="731" y="531" width="48" height="38"/><rect x="531" y="571" width="48" height="38"/></g>
+      <text x="440" y="632">BS-1 · BINSTACKER · 5 000 BINS</text>
+    </g>
+
+    <!-- Material flow -->
+    <path class="flow" marker-end="url(#arr)" d="M275 330 V380 H470 M600 270 H600 M866 245 H905 M1230 345 V395 M940 470 H850"/>
+
+    <!-- Dimensions -->
+    <g class="ln thin">
+      <line x1="160" y1="815" x2="400" y2="815" marker-start="url(#tick)" marker-end="url(#tick)"/>
+      <line x1="400" y1="815" x2="640" y2="815" marker-start="url(#tick)" marker-end="url(#tick)"/>
+      <line x1="640" y1="815" x2="880" y2="815" marker-start="url(#tick)" marker-end="url(#tick)"/>
+      <line x1="880" y1="815" x2="1120" y2="815" marker-start="url(#tick)" marker-end="url(#tick)"/>
+      <line x1="1120" y1="815" x2="1360" y2="815" marker-start="url(#tick)" marker-end="url(#tick)"/>
+      <line x1="1440" y1="160" x2="1440" y2="740" marker-start="url(#tick)" marker-end="url(#tick)"/>
+    </g>
+    <g text-anchor="middle"><text x="280" y="808">6000</text><text x="520" y="808">6000</text><text x="760" y="808">6000</text><text x="1000" y="808">6000</text><text x="1240" y="808">6000</text></g>
+    <text x="1452" y="455" transform="rotate(90 1452 455)" text-anchor="middle">CEILING H 5200</text>
+
+    <!-- Title block -->
+    <g>
+      <rect class="ln" x="1180" y="840" width="380" height="50"/>
+      <line class="ln thin" x1="1400" y1="840" x2="1400" y2="890"/>
+      <text x="1194" y="861">PROCESS LAYOUT · 2D</text><text x="1194" y="880" class="lbl">EXISTING FACTORY</text>
+      <text x="1414" y="861">SCALE 1:100</text><text x="1414" y="880" class="lbl">REV A</text>
+    </g>
+  </svg>
+  <div class="wrap">
+    <h2 id="cta-h">Send us your <em>2D drawing.</em></h2>
+    <div class="cta-row">
+      <p>Planning a new factory or a line in an existing one? Bring us in early. The line fits best when it is planned before the walls go up.</p>
+      <a class="pill on-light" href="#footer">Talk to an engineer <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
+    </div>
+  </div>
+</section>
+
+<footer class="foot" id="footer">
+  <div class="wrap">
+    <div class="foot-grid">
+      <div>
+        <img src="media/logo-white.png" alt="Finmatec" style="height:26px;width:auto">
+        <p style="margin-top:22px;line-height:1.7">Finmatec Oy Ab<br>Mottisenkatu 3<br>67700 Kokkola, Finland<br>info@finmatec.fi</p>
+      </div>
+      <div><h4>Solutions &amp; Products</h4><ul><li><a href="#chain">Process lines: meat, poultry, pet food</a></li><li><a href="#chain">Plate freezing systems</a></li><li><a href="#chain">BinStacker</a></li><li><a href="#chain">Crushers and grinders, Titan series</a></li><li><a href="#chain">Equipment from partners</a></li></ul></div>
+      <div><h4>Finmatec</h4><ul><li><a href="#process">About us</a></li><li><a href="#proof">References</a></li><li><a href="#cta">Contact</a></li><li><a href="#footer">LinkedIn</a></li><li><a href="#footer">YouTube</a></li></ul></div>
+      <div class="fi" lang="fi"><h4>Suomeksi</h4><p style="margin-bottom:16px">Varaosat, kulutusosat ja tarvikkeet.</p><a href="#footer">Varaosat ja tuki <span aria-hidden="true">→</span></a><p style="margin-top:14px">varaosat@finmatec.fi</p></div>
+    </div>
+    <div class="base"><span>Privacy policy · Terms of service</span><span>WWTP Solutions →</span></div>
+  </div>
+</footer>
+</main>
+
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
+<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+<script>
+(function(){
+  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
+
+  // Lazy videos: load when near the viewport
+  var lazy = document.querySelectorAll('video[data-lazy]');
+  var io = new IntersectionObserver(function(es){ es.forEach(function(e){
+    if (!e.isIntersecting) return; var v = e.target; var s = v.querySelector('source');
+    if (s && s.dataset.src && !s.src){ s.src = s.dataset.src; v.load(); }
+    if (!reduce) { var p = v.play(); if (p && p.catch) p.catch(function(){}); }
+    io.unobserve(v);
+  }); }, {rootMargin:'400px'});
+  lazy.forEach(function(v){ io.observe(v); });
+  if (reduce) document.querySelectorAll('video').forEach(function(v){ v.removeAttribute('autoplay'); v.pause && v.pause(); });
+
+  // Nav goes solid after the hero
+  var nav = document.getElementById('nav');
+  var onScroll = function(){ nav.classList.toggle('solid', window.scrollY > window.innerHeight * 0.6); };
+  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
+
+  if (!window.gsap || !window.ScrollTrigger || reduce) return;
+  document.documentElement.classList.add('js');
+  gsap.registerPlugin(ScrollTrigger);
+
+  // Statement: split words, scrub from dim to full
+  var p = document.getElementById('words');
+  var nodes = Array.prototype.slice.call(p.childNodes); p.textContent = '';
+  nodes.forEach(function(n){
+    if (n.nodeType === 3){ n.textContent.split(/(\s+)/).forEach(function(t){ if (!t) return; if (/^\s+$/.test(t)){ p.appendChild(document.createTextNode(t)); } else { var s = document.createElement('span'); s.className = 'w'; s.textContent = t; p.appendChild(s); } }); }
+    else { n.classList.add('w'); p.appendChild(n); }
+  });
+  gsap.to('#words .w', {opacity:1, stagger:0.06, ease:'none', scrollTrigger:{trigger:'#words', start:'top 78%', end:'bottom 40%', scrub:true}});
+
+  // Hero video drifts slower than the page
+  gsap.to('.hero video, .hero .poster', {yPercent:12, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
+  gsap.from('.hero h1, .hero .lede, .hero .ctas, .readout', {y:36, duration:1.2, ease:'expo.out', stagger:0.1});
+
+  // 40 KG: the type pulls back as you pass, revealing more of the footage
+  gsap.fromTo('#kg', {scale:1.5}, {scale:0.92, ease:'none', scrollTrigger:{trigger:'.mask', start:'top bottom', end:'bottom top', scrub:true}});
+
+  // The chain: pinned horizontal travel on wide screens
+  var mm = gsap.matchMedia();
+  mm.add('(min-width: 761px)', function(){
+    var rail = document.getElementById('rail');
+    var dist = function(){ return Math.max(0, rail.scrollWidth - window.innerWidth); };
+    gsap.to(rail, {x:function(){ return -dist(); }, ease:'none', scrollTrigger:{trigger:'#chain .rail-wrap', start:'top 12%', end:function(){ return '+=' + dist(); }, pin:true, scrub:0.6, invalidateOnRefresh:true}});
+  });
+
+  // Process: the green line draws as you read
+  gsap.to('#line', {scaleY:1, ease:'none', scrollTrigger:{trigger:'#steps', start:'top 60%', end:'bottom 60%', scrub:true}});
+  gsap.utils.toArray('#steps li').forEach(function(li){ gsap.from(li, {y:28, duration:0.9, ease:'expo.out', scrollTrigger:{trigger:li, start:'top 85%'}}); });
+
+  // Bento cells settle in
+  gsap.utils.toArray('.cell').forEach(function(c, i){ gsap.from(c, {y:56, duration:1.1, delay:(i%2)*0.08, ease:'expo.out', scrollTrigger:{trigger:c, start:'top 90%'}}); });
+
+  // 2D drawing draws itself as the CTA comes in
+  gsap.to('#plan .draw', {strokeDashoffset:0, ease:'none', stagger:0.03, scrollTrigger:{trigger:'#cta', start:'top 85%', end:'center 55%', scrub:0.8}});
+  gsap.from('#plan .flow', {opacity:0, ease:'none', scrollTrigger:{trigger:'#cta', start:'center 70%', end:'center 50%', scrub:true}});
+
+  // CTA headline rises
+  gsap.from('#cta-h', {yPercent:14, duration:1.4, ease:'expo.out', scrollTrigger:{trigger:'#cta', start:'top 80%'}});
+  window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
+})();
+</script>
+</body>
+</html>
