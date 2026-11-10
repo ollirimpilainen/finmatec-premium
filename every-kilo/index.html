@@ -97,6 +97,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
 .vpill{display:inline-block;vertical-align:middle;width:1.9em;height:.92em;border-radius:999px;overflow:hidden;margin:0 .12em;transform:translateY(-.06em);box-shadow:0 0 0 2px rgba(255,255,255,.18)}
 .vpill video{width:100%;height:100%;object-fit:cover}
 .why{font-size:clamp(32px,3.6vw,56px);line-height:1;margin-top:120px}
+.why-lede{margin-top:20px;max-width:52ch;font-size:clamp(17px,1.4vw,20px);color:#c9d2fa}
 .facts{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;margin-top:40px}
 .usp.hygiene{grid-column:span 6}
 .usp.hygiene>.core{min-height:360px}
@@ -233,6 +234,12 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
 .need-links a:hover{background:rgba(255,255,255,.09);transform:translateX(6px)}
 .need-links .data{color:var(--frost);font-weight:400}
 .need-links .arr{width:40px;height:40px;border-radius:999px;display:grid;place-items:center;background:var(--signal);color:var(--ink);font-family:var(--font-body);font-size:18px}
+.trading{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;justify-content:space-between;margin-top:40px;padding:32px 36px;border-radius:28px;background:var(--ice);color:var(--ink)}
+.trading .data{color:var(--ultra)}
+.trading h3{font-size:clamp(26px,2.4vw,38px);line-height:1;margin-top:10px}
+.trading p:not(.data){margin-top:12px;color:#3b456b;max-width:56ch}
+.trading .pill{background:var(--ultra);color:#fff}
+.trading .pill .knob{background:var(--signal);color:var(--ink)}
 @media (max-width: 900px){.need-grid{grid-template-columns:1fr}.need-links a{grid-template-columns:1fr auto}.need-links .data{display:none}}
 
 /* ---------- CTA + footer ---------- */
@@ -284,7 +291,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
     <li><a href="#proof">References</a></li>
     <li><a href="#process">Finmatec</a></li>
   </ul>
-  <div class="lang" role="group" aria-label="Language"><a href="#" aria-current="true" lang="en">EN</a><a href="#footer" lang="fi" hreflang="fi" title="Suomeksi: varaosat, tuotteet ja tuki">FI</a></div>
+  <div class="lang" role="group" aria-label="Language"><a href="#" aria-current="true" lang="en">EN</a><a href="#footer" lang="fi" hreflang="fi" title="Suomeksi: Laitevälitys">FI</a></div>
   <a class="pill" href="#cta">Talk to an engineer <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
 </nav>
 
@@ -307,12 +314,13 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
   <div class="wrap">
     <p class="big" id="words">Raw material handling in the food industry is nothing for beginners. With over 2 500 deliveries, we understand your processes and build solutions that work in practice.</p>
     <h2 class="why">Why choose Finmatec?</h2>
+    <p class="why-lede">The right level of automation for every customer. We automate as far as it makes economic sense, with safety, cleanability and minimal floor spillage built into every delivery.</p>
     <div class="facts">
       <article class="usp safety"><div class="core">
         <video class="bg" autoplay muted loop playsinline preload="none" data-lazy poster="media/v5302.jpg" aria-hidden="true"><source data-src="media/c5302.mp4" type="video/mp4"></video>
         <span class="data">Maximum safety</span>
         <h3>No more 40-kilo lifts.</h3>
-        <p>Our automated systems minimise the risk of accidents, such as crush injuries, slips and strain from handling slippery, 40-kilo frozen meat blocks.</p>
+        <p>Our automated systems minimise the risk of crush injuries, slips and strain from handling slippery, 40-kilo frozen blocks. Every delivery is risk-assessed for CE marking, with mechanical and electrical guards built for daily washdown.</p>
       </div></article>
       <article class="usp capacity"><div class="core">
         <img class="bg" src="media/p12.jpg" alt="" loading="lazy" style="object-position:55% 45%">
@@ -365,13 +373,13 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
       <article class="station">
         <div class="core">
           <div class="media"><img src="media/p07.jpg" alt="Large mixer with service platform and conveyor" loading="lazy"><span class="n">02 · Mixing</span></div>
-          <div class="body"><h3>Mix</h3><p>Mixers sized to your recipes and volumes, with injected CO2 cooling or steam heating where the process needs it.</p><div class="spec"><span>Up to 3 000 kg</span><span>CO2 or steam</span><span>Cleanability</span></div></div>
+          <div class="body"><h3>Mix</h3><p>Finmatec Mixers, sized to your recipes and volumes, with injected CO2 cooling or steam heating where the process needs it.</p><div class="spec"><span>Finmatec Mixers</span><span>Up to 3 000 kg</span><span>CO2 or steam</span><span>Cleanability</span></div></div>
         </div>
       </article>
       <article class="station">
         <div class="core">
           <div class="media"><video autoplay muted loop playsinline preload="none" data-lazy poster="media/p13.jpg" aria-hidden="true"><source data-src="media/c5294.mp4" type="video/mp4"></video><span class="n">03 · Transport</span></div>
-          <div class="body"><h3>Move</h3><p>Screw and belt conveyors that keep MDM and raw material in a closed, hygienic flow with no spillage on the floor.</p><div class="spec"><span>Screw conveyors</span><span>Belt conveyors</span><span>MDM</span></div></div>
+          <div class="body"><h3>Move</h3><p>Finmatec screw conveyors, known and trusted by our customers, plus belt conveyors that keep MDM and raw material in a closed flow with no floor spillage.</p><div class="spec"><span>Finmatec screw conveyors</span><span>Belt conveyors</span><span>MDM</span></div></div>
         </div>
       </article>
       <article class="station">
@@ -386,7 +394,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
             <img src="media/binstacker.png" alt="BinStacker high-bay storage with bins stacked on several levels" loading="lazy">
             <span class="n">05 · Storage</span>
           </div>
-          <div class="body"><h3>Stack</h3><p>BinStacker, our patented high-bay system, builds on ceiling height instead of floor space. Online weighing and RFID on every bin.</p><div class="spec"><span>Up to 5 000 bins</span><span>Bins to 200 kg</span><span>RFID</span><span>AISI 304</span></div></div>
+          <div class="body"><h3>Stack</h3><p>BinStacker, our patented high-bay system, builds on ceiling height instead of floor space. Online weighing and RFID on every bin, and it works together with AGVs.</p><div class="spec"><span>Up to 5 000 bins</span><span>Bins to 200 kg</span><span>RFID</span><span>Patented in USA and Finland</span></div></div>
         </div>
       </article>
     </div>
@@ -442,7 +450,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
       <span class="line" aria-hidden="true"><i id="line"></i></span>
       <ol style="list-style:none;margin:0;padding:0">
       <li><span class="dot">01</span><h3>2D drawing and 3D layout</h3><p>We start from your drawings and model the whole process to fit your ceiling height, pillars and floor drains.</p></li>
-      <li><span class="dot">02</span><h3>Risk assessment</h3><p>Every rotating part is assessed before it is built. Washing and maintenance are designed in, not added later.</p></li>
+      <li><span class="dot">02</span><h3>Risk assessment and CE marking</h3><p>Every delivery is risk-assessed as part of CE marking. Machines are washed every day, so mechanical and electrical guards are designed in from the start.</p></li>
       <li><span class="dot">03</span><h3>Manufacturing</h3><p>Process lines, plate freezing automation and BinStacker, built in our own hands.</p></li>
       <li><span class="dot">04</span><h3>Factory acceptance test</h3><p>Tested before it leaves us, so commissioning is not where problems are found.</p></li>
       <li><span class="dot">05</span><h3>Installation and commissioning</h3><p>Built in, started up and handed over to your operators.</p></li>
@@ -456,12 +464,21 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
   <div class="wrap need-grid">
     <div>
       <h2 id="need-h">Need a specific product?</h2>
-      <p>If you need a specific link in your chain, we can arrange it. Products we no longer make ourselves are available through our expert partners, built up over many years in the European food industry. You can also order wear and spare parts for our products from us.</p>
+      <p>Upgrading an existing line with the link that is missing? Order a single machine from us, or the spare parts for the Finmatec line you already run, wherever in the world it is.</p>
     </div>
     <div class="need-links">
-      <a href="#footer"><span>Crushers, grinders and machines</span><span class="data">Titan series</span><span class="arr" aria-hidden="true">→</span></a>
-      <a href="#footer"><span>Equipment from partners</span><span class="data">Agencies</span><span class="arr" aria-hidden="true">→</span></a>
-      <a href="#footer"><span>Spare parts, wear parts and support</span><span class="data">Service</span><span class="arr" aria-hidden="true">→</span></a>
+      <a href="#chain"><span>Finmatec Mixers</span><span class="data">Own product</span><span class="arr" aria-hidden="true">→</span></a>
+      <a href="#chain"><span>Screw conveyors</span><span class="data">Own product</span><span class="arr" aria-hidden="true">→</span></a>
+      <a href="#chain"><span>Crushers and grinders</span><span class="data">Titan series</span><span class="arr" aria-hidden="true">→</span></a>
+      <a href="#footer"><span>Spare parts for your Finmatec line</span><span class="data">Worldwide</span><span class="arr" aria-hidden="true">→</span></a>
+    </div>
+    <div class="trading">
+      <div>
+        <p class="data">In Finland only · Suomessa</p>
+        <h3>Trading Partners in Finland</h3>
+        <p>Tools, spare parts and consumables for slaughtering and cutting from the brands we represent, delivered fast from our warehouse in Vaasa.</p>
+      </div>
+      <a class="pill" href="#footer" lang="fi">Laitevälitys <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
     </div>
   </div>
 </section>
@@ -585,9 +602,9 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
         <img src="media/logo-white.png" alt="Finmatec" style="height:26px;width:auto">
         <p style="margin-top:22px;line-height:1.7">Finmatec Oy Ab<br>Mottisenkatu 3<br>67700 Kokkola, Finland<br>info@finmatec.fi</p>
       </div>
-      <div><h4>Solutions &amp; Products</h4><ul><li><a href="#chain">Process lines: meat, poultry, pet food</a></li><li><a href="#chain">Plate freezing systems</a></li><li><a href="#chain">BinStacker</a></li><li><a href="#chain">Crushers and grinders, Titan series</a></li><li><a href="#chain">Equipment from partners</a></li></ul></div>
+      <div><h4>Solutions &amp; Products</h4><ul><li><a href="#chain">Process lines: meat, poultry, pet food</a></li><li><a href="#chain">Plate freezing systems</a></li><li><a href="#chain">BinStacker</a></li><li><a href="#chain">Finmatec Mixers</a></li><li><a href="#chain">Screw conveyors</a></li><li><a href="#chain">Crushers and grinders, Titan series</a></li><li><a href="#footer">Spare parts for Finmatec lines</a></li><li><a href="#footer">Trading Partners in Finland</a></li></ul></div>
       <div><h4>Finmatec</h4><ul><li><a href="#process">About us</a></li><li><a href="#proof">References</a></li><li><a href="#cta">Contact</a></li><li><a href="#footer">LinkedIn</a></li><li><a href="#footer">YouTube</a></li></ul></div>
-      <div class="fi" lang="fi"><h4>Suomeksi</h4><p style="margin-bottom:16px">Varaosat, kulutusosat ja tarvikkeet.</p><a href="#footer">Varaosat ja tuki <span aria-hidden="true">→</span></a><p style="margin-top:14px">varaosat@finmatec.fi</p></div>
+      <div class="fi" lang="fi"><h4>Suomessa</h4><p style="margin-bottom:16px">Laitevälitys: työkalut, varaosat ja tarvikkeet edustamiltamme merkeiltä Vaasan varastosta.</p><a href="#footer">Laitevälitys <span aria-hidden="true">→</span></a><p style="margin-top:14px">varaosat@finmatec.fi</p></div>
     </div>
     <div class="base"><span>Privacy policy · Terms of service</span><span>WWTP Solutions →</span></div>
   </div>
