@@ -79,7 +79,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
 .hero::before{content:"";position:absolute;inset:0;z-index:-1;
   background:linear-gradient(90deg,rgba(11,10,38,.88) 0%,rgba(11,10,38,.55) 42%,rgba(11,10,38,.05) 75%),linear-gradient(0deg,rgba(11,10,38,.9) 0%,rgba(11,10,38,0) 45%)}
 .hero-in{width:100%;padding-block:180px 64px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end}
-.hero h1{font-size:clamp(56px, 9.2vw, 152px);line-height:.88;font-weight:760;max-width:11ch}
+.hero h1{font-size:clamp(46px, 6.6vw, 112px);line-height:.92;font-weight:760;max-width:15ch}
 .hero h1 em{font-style:normal;color:var(--frost)}
 .hero .lede{max-width:46ch;font-size:clamp(17px,1.4vw,20px);color:#cdd6f6;margin-top:28px}
 .hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
@@ -96,7 +96,13 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
 .js .statement .w{opacity:.22}
 .vpill{display:inline-block;vertical-align:middle;width:1.9em;height:.92em;border-radius:999px;overflow:hidden;margin:0 .12em;transform:translateY(-.06em);box-shadow:0 0 0 2px rgba(255,255,255,.18)}
 .vpill video{width:100%;height:100%;object-fit:cover}
-.facts{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;margin-top:96px}
+.why{font-size:clamp(32px,3.6vw,56px);line-height:1;margin-top:120px}
+.facts{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;margin-top:40px}
+.usp.hygiene{grid-column:span 6}
+.usp.hygiene>.core{min-height:360px}
+.usp.partner{grid-column:span 6}
+.usp.partner>.core{min-height:360px;background:var(--ultra-deep)}
+.usp.partner .core::before{display:none}
 .usp{position:relative;border-radius:30px;padding:6px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
 .usp>.core{position:relative;height:100%;min-height:440px;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:14px;padding:36px;isolation:isolate}
 .usp .bg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
@@ -215,6 +221,20 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
 .steps p{margin-top:12px;color:#c9d2fa;max-width:46ch}
 @media (max-width: 900px){.proc-grid{grid-template-columns:1fr}.proc h2,.proc .sub{position:static}}
 
+/* ---------- Need a specific product ---------- */
+.need{background:var(--ink);color:var(--on-ultra);padding-block:clamp(100px,11vw,160px)}
+.need-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px 80px;align-items:start}
+.need h2{font-size:clamp(36px,4.2vw,68px);line-height:.95}
+.need p{margin-top:24px;color:#c4cdf0;max-width:44ch}
+.need-links{display:grid;gap:12px}
+.need-links a{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:20px;padding:26px 28px;border-radius:24px;text-decoration:none;
+  background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);font-family:var(--font-display);font-weight:600;font-size:clamp(20px,1.8vw,28px);letter-spacing:-0.02em;
+  transition:background .6s var(--ease),transform .6s var(--ease)}
+.need-links a:hover{background:rgba(255,255,255,.09);transform:translateX(6px)}
+.need-links .data{color:var(--frost);font-weight:400}
+.need-links .arr{width:40px;height:40px;border-radius:999px;display:grid;place-items:center;background:var(--signal);color:var(--ink);font-family:var(--font-body);font-size:18px}
+@media (max-width: 900px){.need-grid{grid-template-columns:1fr}.need-links a{grid-template-columns:1fr auto}.need-links .data{display:none}}
+
 /* ---------- CTA + footer ---------- */
 .cta{position:relative;overflow:hidden;isolation:isolate;background:var(--ice);color:var(--ink);padding-block:clamp(120px,14vw,220px) 80px}
 .plan{position:absolute;z-index:-1;top:50%;right:-4vw;transform:translateY(-50%);width:min(1500px,96vw);height:auto;color:var(--ultra);opacity:.62;
@@ -273,8 +293,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
   <video autoplay muted loop playsinline preload="auto" poster="media/v-cut1.jpg" aria-hidden="true"><source src="media/hero.mp4" type="video/mp4"></video>
   <div class="hero-in wrap">
     <div>
-      <h1>More from every <em>kilo.</em></h1>
-      <p class="lede">Automated raw material handling for meat, poultry and pet food. We raise your capacity and safety with fewer hands on the factory floor.</p>
+      <h1>Automated raw material handling for the <em>food industry.</em></h1>
+      <p class="lede">Get more out of every kilo of raw material. We increase your capacity and safety with fewer hands on the factory floor.</p>
       <div class="ctas">
         <a class="pill" href="#cta">Talk to an engineer <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
         <a class="pill ghost" href="#chain">See the line <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 3v10M4 9l4 4 4-4"/></svg></span></a>
@@ -285,26 +305,39 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
 
 <section class="statement" aria-label="Why automate">
   <div class="wrap">
-    <p class="big" id="words">Emptying a plate freezer by hand means lifting slippery, frozen blocks of up to 40 kilos, all shift long. We take those lifts off the floor.</p>
+    <p class="big" id="words">Raw material handling in the food industry is nothing for beginners. With over 2 500 deliveries, we understand your processes and build solutions that work in practice.</p>
+    <h2 class="why">Why choose Finmatec?</h2>
     <div class="facts">
       <article class="usp safety"><div class="core">
         <video class="bg" autoplay muted loop playsinline preload="none" data-lazy poster="media/v5302.jpg" aria-hidden="true"><source data-src="media/c5302.mp4" type="video/mp4"></video>
-        <span class="data">Safety</span>
+        <span class="data">Maximum safety</span>
         <h3>No more 40-kilo lifts.</h3>
-        <p>Crushed fingers, slips on wet floors and worn-out backs come from handling frozen blocks by hand. Automation takes those stations off your people.</p>
+        <p>Our automated systems minimise the risk of accidents, such as crush injuries, slips and strain from handling slippery, 40-kilo frozen meat blocks.</p>
       </div></article>
       <article class="usp capacity"><div class="core">
         <img class="bg" src="media/p12.jpg" alt="" loading="lazy" style="object-position:55% 45%">
-        <span class="data">Capacity</span>
+        <span class="data">Automation that takes the load</span>
         <h3>Fewer boots on the floor.</h3>
-        <p>More throughput from the same line, without hiring more operators to keep up with volume.</p>
+        <p>We replace heavy manual steps and reduce the staff needed on the factory floor, which frees resources and raises your capacity right away.</p>
       </div></article>
       <article class="usp payback"><div class="core">
-        <span class="data">Payback</span>
+        <span class="data">Short payback</span>
         <div class="row">
           <p class="fig">2-5<small>yrs</small></p>
-          <p>Typical payback for a new automated plate freezing line, from lower staffing costs, fewer sick days and higher capacity.</p>
+          <p>The payback time is short. For a new automated plate freezing line, it is often just 2 to 5 years.</p>
         </div>
+      </div></article>
+      <article class="usp hygiene"><div class="core">
+        <img class="bg" src="media/p16.jpg" alt="" loading="lazy" style="object-position:50% 60%">
+        <span class="data">Hygiene and minimised waste</span>
+        <h3>Clean by design.</h3>
+        <p>Our machines are designed with a strict focus on cleanability and on keeping raw material off the floor, whether you process food or pet food.</p>
+      </div></article>
+      <article class="usp partner"><div class="core">
+        <span class="data">A reliable turnkey partner</span>
+        <h3>One team, all the way.</h3>
+        <p>We take total responsibility for your investment. From planning and design to turnkey installation and automation, the same competent team is with you all the way.</p>
+        <a class="pill" href="#process" style="align-self:flex-start;margin-top:8px">Read more about Finmatec <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
       </div></article>
     </div>
   </div>
@@ -319,7 +352,7 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
 <section class="chain" id="chain">
   <div class="chain-head wrap">
     <h2>From frozen block to pallet. One team.</h2>
-    <p>We design, build and automate the whole chain around your raw material, in your existing factory or in a new one. The same people from the first 2D drawing to the first shift.</p>
+    <p>We plan, design, manufacture and automate process lines for meat and poultry handling. Finmatec machines handle both food and animal feed, and we work as a turnkey supplier for customers in Europe and beyond.</p>
   </div>
   <div class="rail-wrap">
     <div class="rail wrap" id="rail">
@@ -362,11 +395,11 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
 
 <section class="ind" aria-labelledby="ind-h">
   <div class="wrap">
-    <h2 id="ind-h">Built for the protein you process.</h2>
+    <h2 id="ind-h">Explore our solutions for</h2>
     <div class="slices">
-      <a class="slice" href="#cta"><img src="media/v5381.jpg" alt="Frozen meat breaking up in a crusher" loading="lazy"><div class="t"><span class="data">Beef · pork · lamb</span><h3>Meat</h3><p>Heavy, frozen blocks out of human hands. Crushers, grinders and mixers that get the most out of every kilo.</p></div></a>
-      <a class="slice typo" href="#cta"><span class="big" aria-hidden="true">MDM</span><div class="t"><span class="data">Fastest growing protein</span><h3>Poultry</h3><p>High volumes and mechanically deboned meat in a closed flow, straight on to plate freezing.</p></div></a>
-      <a class="slice" href="#cta"><img src="media/p12.jpg" alt="Operators at a pet food line" loading="lazy" style="object-position:55% 50%"><div class="t"><span class="data">Food-grade standard</span><h3>Pet food</h3><p>The same hygiene as a food line. Cleanability first and no raw material lost on the floor.</p></div></a>
+      <a class="slice" href="#cta"><img src="media/v5381.jpg" alt="Frozen meat breaking up in a crusher" loading="lazy"><div class="t"><span class="data">Beef · pork · lamb</span><h3>Meat processing</h3><p>Robust solutions that protect your staff and get the most value out of your raw material.</p></div></a>
+      <a class="slice typo" href="#cta"><span class="big" aria-hidden="true">MDM</span><div class="t"><span class="data">Fastest growing protein</span><h3>Poultry processing</h3><p>Automated process lines for the high volumes and strict food safety demands of the poultry industry.</p></div></a>
+      <a class="slice" href="#cta"><img src="media/p12.jpg" alt="Operators at a pet food line" loading="lazy" style="object-position:55% 50%"><div class="t"><span class="data">Food-grade standard</span><h3>Pet food processing</h3><p>Hygienic design with a strict focus on cleanability and minimised waste.</p></div></a>
     </div>
   </div>
 </section>
@@ -377,7 +410,10 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
       <div class="cell c-quote"><div class="core">
         <div class="mark" aria-hidden="true">“</div>
         <blockquote>Five operators used to be needed on the line. Now we work faster and safer, with fewer boots on the factory floor.</blockquote>
-        <p class="data" style="color:var(--frost)">Magnus Petterson · CEO · Snellman Petfood</p>
+        <div style="display:flex;flex-wrap:wrap;gap:20px 32px;align-items:center;justify-content:space-between">
+          <p class="data" style="color:var(--frost)">Magnus Petterson · CEO · Snellman Petfood</p>
+          <a class="pill" href="#proof">See our references <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
+        </div>
       </div></div>
       <div class="cell c-img"><div class="core"><img src="media/p02.jpg" alt="Operator at the line control panel" loading="lazy" style="object-position:50% 30%"></div></div>
       <div class="cell c-num"><div class="core">
@@ -399,8 +435,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
 <section class="proc" id="process" aria-labelledby="proc-h">
   <div class="wrap proc-grid">
     <div>
-      <h2 id="proc-h">The people who draw your line also start it up.</h2>
-      <p class="sub">Short decision paths, one team and total responsibility for the investment. Plate freezers come from Jackstone, crushers from Wel-Mach. Everything around them is ours.</p>
+      <h2 id="proc-h">We understand your process.</h2>
+      <p class="sub">Use us as your turnkey supplier when you plan a new factory, and we support you all the way from the first 2D drawing to a finished process line. Building a line in your existing factory? We find a solution that works with your dimensions.</p>
     </div>
     <div class="steps" id="steps">
       <span class="line" aria-hidden="true"><i id="line"></i></span>
@@ -412,6 +448,20 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
       <li><span class="dot">05</span><h3>Installation and commissioning</h3><p>Built in, started up and handed over to your operators.</p></li>
       <li><span class="dot">06</span><h3>Service and parts</h3><p>The same team stays with you. Wear and spare parts for every machine we deliver.</p></li>
       </ol>
+    </div>
+  </div>
+</section>
+
+<section class="need" aria-labelledby="need-h">
+  <div class="wrap need-grid">
+    <div>
+      <h2 id="need-h">Need a specific product?</h2>
+      <p>If you need a specific link in your chain, we can arrange it. Products we no longer make ourselves are available through our expert partners, built up over many years in the European food industry. You can also order wear and spare parts for our products from us.</p>
+    </div>
+    <div class="need-links">
+      <a href="#footer"><span>Crushers, grinders and machines</span><span class="data">Titan series</span><span class="arr" aria-hidden="true">→</span></a>
+      <a href="#footer"><span>Equipment from partners</span><span class="data">Agencies</span><span class="arr" aria-hidden="true">→</span></a>
+      <a href="#footer"><span>Spare parts, wear parts and support</span><span class="data">Service</span><span class="arr" aria-hidden="true">→</span></a>
     </div>
   </div>
 </section>
@@ -522,8 +572,8 @@ body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mi
   <div class="wrap">
     <h2 id="cta-h">Send us your <em>2D drawing.</em></h2>
     <div class="cta-row">
-      <p>Planning a new factory or a line in an existing one? Bring us in early. The line fits best when it is planned before the walls go up.</p>
-      <a class="pill on-light" href="#footer">Talk to an engineer <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
+      <p>Contact us at an early stage. It works best when the process lines are planned before the factory is built.</p>
+      <a class="pill on-light" href="#footer">Request contact <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
     </div>
   </div>
 </section>
