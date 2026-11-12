@@ -2,679 +2,719 @@
 <html lang="en">
 <head>
 <meta charset="utf-8">
-<meta name="viewport" content="width=device-width, initial-scale=1, viewport-fit=cover">
-<meta name="robots" content="noindex, nofollow">
-<style>:root{padding-top:env(safe-area-inset-top,0px);padding-bottom:env(safe-area-inset-bottom,0px)}body{margin:0}[hidden]{display:none!important}</style>
+<meta name="viewport" content="width=device-width, initial-scale=1">
 <title>Finmatec Every Kilo</title>
-<meta name="claude:viewport-fit-sides" content="cover">
+<meta name="description" content="Finmatec homepage prototype, Ultramarine direction. Genero, 12.11.2026.">
 <link rel="preconnect" href="https://fonts.googleapis.com">
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
-<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Funnel+Display:wght@300..800&family=Funnel+Sans:wght@300..800&family=Geist+Mono:wght@400;500&display=swap">
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Archivo:wdth,wght@62..125,400..900&amp;display=swap">
 <style>
-/* Layout: one cinematic scroll. Video thesis, then the raw material's journey from frozen block to pallet, told in chapters. */
-:root{
-  --ink:#0b0a26;        /* deep ultramarine black, the night of the cold store */
-  --ultra:#2415BA;      /* Finmatec Mörkblå, carried as a full surface */
-  --ultra-deep:#170d86;
-  --ice:#eaf2fb;        /* frost white, hygiene */
-  --frost:#99C5ED;      /* Finmatec Ljusblå */
-  --signal:#03FF6B;     /* Finmatec Grön, signal only */
-  --turq:#03FF6B;       /* unit marks: Finmatec brand turquoise */
-  --steel:#8f9bb8;
-  --on-ultra:#eef3ff;
-  --font-display:'Funnel Display','Funnel Sans',ui-sans-serif,system-ui,sans-serif;
-  --font-body:'Funnel Sans',ui-sans-serif,system-ui,sans-serif;
-  --font-data:'Geist Mono',ui-monospace,SFMono-Regular,Menlo,monospace;
-  --ease:cubic-bezier(0.32,0.72,0,1);
-  --ease-out:cubic-bezier(0.16,1,0.3,1);
-  --gutter-l:max(16px, env(safe-area-inset-left, 0px));
-  --gutter-r:max(16px, env(safe-area-inset-right, 0px));
-  color-scheme:dark;
-}
-*{box-sizing:border-box}
-html{scroll-behavior:auto}
-body{background:var(--ink);color:var(--on-ultra);font-family:var(--font-body);font-size:17px;line-height:1.5;-webkit-font-smoothing:antialiased;overflow-x:hidden}
-main{overflow-x:hidden;width:100%;max-width:100%}
-img,video{max-width:100%;display:block}
-a{color:inherit}
-h1,h2,h3{font-family:var(--font-display);font-weight:700;letter-spacing:-0.035em;text-wrap:balance;margin:0}
-p{margin:0}
-.wrap{padding-left:max(var(--gutter-l), 4vw);padding-right:max(var(--gutter-r), 4vw)}
-.data{font-family:var(--font-data);font-size:12.5px;letter-spacing:0.02em;text-transform:uppercase}
-:focus-visible{outline:2px solid var(--signal);outline-offset:3px;border-radius:999px}
+.fm { --ink:#141414; --ink2:#3d3d3d; --mute:#6b6b6b; --line:#dcdcd8; --soft:#efefec; --paper:#f7f7f5; --dark:#111111; --dark2:#1c1c1c;
+  --ease: cubic-bezier(.32,.72,0,1);
+  width:1440px; background:#fff; color:var(--ink); font-family:var(--fb); font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased; overflow:hidden; }
+.fm * { box-sizing:border-box; }
+.fm p { margin:0; }
+.fm h1,.fm h2,.fm h3 { margin:0; font-family:var(--fd); font-weight:800; letter-spacing:-0.025em; line-height:1; }
+.fm a { color:inherit; text-decoration:none; }
+.fm img, .fm video { display:block; width:100%; height:100%; object-fit:cover; }
+.wrap { padding:0 72px; }
+.mono { font-family:var(--fl); font-size:12px; letter-spacing:.12em; text-transform:uppercase; }
+.eyebrow { display:inline-flex; align-items:center; gap:10px; font-family:var(--fl); font-size:12px; letter-spacing:.14em; text-transform:uppercase; color:var(--mute); }
+.eyebrow::before { content:""; width:18px; height:1px; background:currentColor; }
 
-/* Grain, fixed and inert */
-body::after{content:"";position:fixed;inset:0;pointer-events:none;opacity:.06;mix-blend-mode:overlay;z-index:30;
-  background-image:url("data:image/svg+xml;utf8,<svg xmlns='http://www.w3.org/2000/svg' width='160' height='160'><filter id='n'><feTurbulence type='fractalNoise' baseFrequency='.9' numOctaves='2' stitchTiles='stitch'/></filter><rect width='100%' height='100%' filter='url(%23n)'/></svg>")}
+/* Buttons: pill with nested arrow */
+.btn { display:inline-flex; align-items:center; gap:14px; height:56px; padding:0 8px 0 26px; border-radius:999px; font-weight:600; font-size:16px; transition:transform .5s var(--ease); white-space:nowrap; }
+.btn i { width:40px; height:40px; border-radius:50%; display:grid; place-items:center; font-style:normal; font-size:17px; }
+.btn.dark { background:var(--ink); color:#fff; } .btn.dark i { background:rgba(255,255,255,.14); }
+.btn.light { background:#fff; color:var(--ink); } .btn.light i { background:var(--soft); }
+.btn.ghost { box-shadow:inset 0 0 0 1.5px currentColor; padding:0 26px; }
+.tlink { display:inline-flex; gap:10px; align-items:center; font-weight:600; border-bottom:1.5px solid currentColor; padding-bottom:3px; }
 
-/* ---------- Island nav ---------- */
-.nav{position:fixed;z-index:20;top:calc(env(safe-area-inset-top, 0px) + 18px);left:50%;transform:translateX(-50%);
-  width:min(1180px, calc(100% - 32px));display:flex;align-items:center;gap:8px;padding:8px 8px 8px 22px;border-radius:999px;
-  background:rgba(11,10,38,.42);backdrop-filter:blur(18px) saturate(140%);-webkit-backdrop-filter:blur(18px) saturate(140%);
-  box-shadow:inset 0 1px 0 rgba(255,255,255,.12),0 0 0 1px rgba(255,255,255,.08);transition:background .6s var(--ease)}
-.nav.solid{background:rgba(11,10,38,.82)}
-.nav img{height:22px;width:auto;margin-right:auto}
-.nav ul{display:flex;gap:4px;list-style:none;margin:0;padding:0}
-.nav ul a{display:block;padding:10px 14px;border-radius:999px;text-decoration:none;font-size:14.5px;font-weight:500;color:#dfe6ff;transition:background .4s var(--ease),color .4s var(--ease)}
-.nav ul a:hover{background:rgba(255,255,255,.08);color:#fff}
-.lang{display:inline-flex;margin:0 8px;padding:3px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
-.lang a{font-family:var(--font-data);font-size:12px;padding:7px 11px;border-radius:999px;text-decoration:none;color:#c9d2fa;transition:background .4s var(--ease),color .4s var(--ease)}
-.lang a[aria-current="true"]{background:rgba(255,255,255,.16);color:#fff}
-.lang a:hover{color:#fff}
-.pill{display:inline-flex;align-items:center;gap:12px;padding:6px 6px 6px 20px;border-radius:999px;background:var(--on-ultra);color:var(--ink);
-  font-weight:650;font-size:15px;text-decoration:none;white-space:nowrap;transition:transform .5s var(--ease),background .5s var(--ease)}
-.pill .knob{width:36px;height:36px;border-radius:999px;background:var(--ultra);color:#fff;display:grid;place-items:center;transition:transform .6s var(--ease)}
-.pill:hover .knob{transform:translate(3px,-2px) scale(1.06)}
-.pill:active{transform:scale(.98)}
-.pill.on-light{background:var(--ultra);color:#fff}
-.pill.on-light .knob{background:var(--signal);color:var(--ink)}
-.pill.ghost{background:transparent;color:var(--on-ultra);box-shadow:inset 0 0 0 1px rgba(255,255,255,.28)}
-.pill.ghost .knob{background:rgba(255,255,255,.12)}
-.knob svg{width:16px;height:16px}
-@media (max-width: 900px){.nav ul{display:none}}
+/* Utility + header */
+.util { height:38px; background:var(--dark); color:#cfcfcf; font-size:13px; display:flex; align-items:center; justify-content:space-between; padding:0 72px; }
+.util span { margin-right:28px; } .util b { color:#fff; font-weight:600; }
+.lang { display:inline-flex; gap:2px; border:1px solid rgba(255,255,255,.25); border-radius:999px; padding:2px; margin-left:20px; }
+.lang em { font-style:normal; padding:2px 10px; border-radius:999px; font-size:12px; } .lang em:first-child { background:#fff; color:var(--ink); }
 
-/* ---------- Hero ---------- */
-.hero{position:relative;min-height:min(900px, 96svh);display:flex;align-items:flex-end;overflow:hidden;isolation:isolate}
-.hero video,.hero .poster{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;z-index:-2;transform:scale(1.06)}
-.hero::before{content:"";position:absolute;inset:0;z-index:-1;
-  background:linear-gradient(90deg,rgba(11,10,38,.88) 0%,rgba(11,10,38,.55) 42%,rgba(11,10,38,.05) 75%),linear-gradient(0deg,rgba(11,10,38,.9) 0%,rgba(11,10,38,0) 45%)}
-.hero-in{width:100%;padding-block:180px 64px;display:grid;grid-template-columns:minmax(0,1fr) auto;gap:40px;align-items:end}
-.hero h1{font-size:clamp(46px, 6.6vw, 112px);line-height:.92;font-weight:760;max-width:15ch}
-.hero h1 em{font-style:normal;color:var(--frost)}
-.hero .lede{max-width:46ch;font-size:clamp(17px,1.4vw,20px);color:#cdd6f6;margin-top:28px}
-.hero .ctas{display:flex;flex-wrap:wrap;gap:12px;margin-top:34px}
-.readout{display:grid;gap:10px;justify-items:end;text-align:right;color:#b9c4ea}
-.readout .rec{display:inline-flex;align-items:center;gap:8px}
-.readout .rec i{width:8px;height:8px;border-radius:50%;background:var(--signal);box-shadow:0 0 0 0 rgba(3,255,107,.6);animation:pulse 2.4s var(--ease) infinite}
-@keyframes pulse{0%{box-shadow:0 0 0 0 rgba(3,255,107,.55)}70%{box-shadow:0 0 0 10px rgba(3,255,107,0)}100%{box-shadow:0 0 0 0 rgba(3,255,107,0)}}
-@media (max-width: 760px){.hero-in{grid-template-columns:1fr;padding-block:140px 40px}.readout{justify-items:start;text-align:left}}
+.hero { position:relative; height:860px; background:var(--dark); color:#fff; }
+.hero .media { position:absolute; inset:0; }
+.hero .media::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,.05) 30%, rgba(10,10,10,.35) 58%, rgba(10,10,10,.92) 100%); }
+.nav { position:absolute; top:22px; left:56px; right:56px; height:68px; display:flex; align-items:center; gap:40px; padding:0 10px 0 26px; border-radius:999px; background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(255,255,255,.62)); color:var(--ink); box-shadow:inset 0 1px 0 rgba(255,255,255,.95), inset 0 0 0 1px rgba(255,255,255,.55), 0 14px 36px -14px rgba(0,0,0,.45); -webkit-backdrop-filter:blur(22px) saturate(170%); backdrop-filter:blur(22px) saturate(170%); z-index:2; }
+.fm img.logoimg { width:auto; height:30px; object-fit:contain; }
+.fm img.logoimg.dark { filter:brightness(0) saturate(0); opacity:.92; }
+.foot img.logoimg { height:34px; }
+.logo { font-family:var(--fd); font-weight:800; font-size:21px; letter-spacing:.04em; }
+.nav ul { list-style:none; display:flex; gap:30px; margin:0; padding:0; font-size:15px; font-weight:500; }
+.nav ul li span { opacity:.6; font-size:11px; margin-left:5px; }
+.nav .btn { margin-left:auto; height:50px; } .nav .btn i { width:34px; height:34px; }
+.hero-copy { position:absolute; left:72px; right:72px; bottom:168px; z-index:1; }
+.hero h1 { font-size:84px; max-width:1296px; line-height:.96; }
+.hero .lead { margin-top:28px; font-size:21px; line-height:1.45; max-width:620px; color:rgba(255,255,255,.82); }
+.router { position:absolute; left:56px; right:56px; bottom:40px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; z-index:1; }
+.router a { display:flex; justify-content:space-between; align-items:center; height:88px; padding:0 14px 0 24px; border-radius:22px; background:rgba(255,255,255,.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,.16); backdrop-filter:blur(14px); }
+.router b { display:block; font-family:var(--fd); font-size:22px; font-weight:800; letter-spacing:-0.02em; }
+.router small { display:block; margin-top:3px; font-size:14px; opacity:.75; }
+.router i { width:44px; height:44px; border-radius:50%; display:grid; place-items:center; font-style:normal; background:rgba(255,255,255,.14); }
+.vidtag { position:absolute; top:112px; right:72px; z-index:1; display:flex; gap:10px; align-items:center; font-size:12px; color:rgba(255,255,255,.8); }
+.vidtag::before { content:""; width:8px; height:8px; border-radius:50%; background:#fff; animation:pulse 2s infinite; }
+@keyframes pulse { 50% { opacity:.25; } }
 
-/* ---------- Statement with inline video pill ---------- */
-.statement{background:var(--ultra);color:var(--on-ultra);padding-block:clamp(110px,14vw,200px)}
-.statement p.big{font-family:var(--font-display);font-weight:600;letter-spacing:-0.03em;font-size:clamp(34px,5.2vw,84px);line-height:1.04;max-width:20ch}
-.statement .w{opacity:1;transition:opacity .2s linear}
-.js .statement .w{opacity:.22}
-.vpill{display:inline-block;vertical-align:middle;width:1.9em;height:.92em;border-radius:999px;overflow:hidden;margin:0 .12em;transform:translateY(-.06em);box-shadow:0 0 0 2px rgba(255,255,255,.18)}
-.vpill video{width:100%;height:100%;object-fit:cover}
-.why{font-size:clamp(32px,3.6vw,56px);line-height:1;margin-top:120px}
-.why-lede{margin-top:20px;max-width:52ch;font-size:clamp(17px,1.4vw,20px);color:#c9d2fa}
-.facts{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));gap:16px;margin-top:40px}
-.usp.hygiene{grid-column:span 6}
-.usp.hygiene>.core{min-height:360px}
-.usp.partner{grid-column:span 6}
-.usp.partner>.core{min-height:360px;background:var(--ultra-deep)}
-.usp.partner .core::before{display:none}
-.usp{position:relative;border-radius:30px;padding:6px;background:rgba(255,255,255,.07);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14)}
-.usp>.core{position:relative;height:100%;min-height:440px;border-radius:24px;overflow:hidden;display:flex;flex-direction:column;justify-content:flex-end;gap:14px;padding:36px;isolation:isolate}
-.usp .bg{position:absolute;inset:0;z-index:-2;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
-.usp:hover .bg{transform:scale(1.05)}
-.usp .core::before{content:"";position:absolute;inset:0;z-index:-1;background:linear-gradient(0deg,rgba(11,10,38,.92) 0%,rgba(11,10,38,.35) 55%,rgba(11,10,38,.1) 100%)}
-.usp .data{color:var(--frost)}
-.usp h3{font-size:clamp(36px,3.6vw,60px);line-height:.92;letter-spacing:-0.04em;max-width:11ch}
-.usp p{color:#cdd6f6;max-width:36ch}
-.usp.safety{grid-column:span 6;grid-row:span 2}
-.usp.safety>.core{min-height:620px}
-.usp.capacity{grid-column:span 6}
-.usp.capacity>.core{min-height:300px}
-.usp.payback{grid-column:span 6}
-.usp.payback>.core{min-height:300px;background:var(--ice);color:var(--ink);justify-content:space-between}
-.usp.payback .core::before{display:none}
-.usp.payback .data{color:var(--ultra)}
-.usp.payback .fig{font-family:var(--font-display);font-weight:780;letter-spacing:-0.06em;line-height:.8;font-size:clamp(96px,11vw,184px);color:var(--ultra)}
-.usp.payback .fig small{font-size:.28em;letter-spacing:-0.02em;margin-left:.15em;color:var(--turq)}
-.usp.payback p{color:#3b456b}
-.usp.payback .row{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:flex-end;gap:16px}
-.usp .tick{position:absolute;top:28px;right:28px;width:44px;height:44px;border-radius:999px;display:grid;place-items:center;background:var(--signal);color:var(--ink)}
-.usp .tick svg{width:18px;height:18px}
-@media (max-width: 900px){.usp{grid-column:span 12!important;grid-row:auto!important}.usp.safety>.core{min-height:460px}}
+/* 40 kg */
+.kg { display:grid; grid-template-columns:1.15fr 1fr; gap:56px; align-items:center; padding:80px 72px 72px; }
+.kg-num { font-family:var(--fd); font-weight:800; font-size:330px; line-height:.8; letter-spacing:-0.05em; color:var(--ink); }
+.kg-num small { font-size:120px; letter-spacing:-0.02em; }
+.kg h2 { font-size:46px; line-height:1.02; }
+.kg p { margin-top:22px; font-size:19px; color:var(--ink2); max-width:520px; }
+.kg .tlink { margin-top:30px; }
 
-/* ---------- 40 KG text mask ---------- */
-.mask{position:relative;height:clamp(420px,62vw,860px);overflow:hidden;background:var(--ink);isolation:isolate}
-.mask video{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.mask .knock{position:absolute;inset:0;background:var(--ink);mix-blend-mode:multiply;display:grid;place-items:center}
-.mask .knock span{font-family:var(--font-display);font-weight:800;color:#fff;letter-spacing:-0.06em;line-height:.8;font-size:clamp(150px,34vw,560px);white-space:nowrap;will-change:transform}
-.mask .cap{position:absolute;left:50%;bottom:32px;transform:translateX(-50%);display:inline-flex;align-items:center;gap:10px;padding:10px 18px;border-radius:999px;background:rgba(11,10,38,.6);backdrop-filter:blur(8px);-webkit-backdrop-filter:blur(8px);box-shadow:inset 0 0 0 1px rgba(255,255,255,.14);color:#cdd6f6;white-space:nowrap;max-width:calc(100% - 32px)}
-.mask .cap i{width:6px;height:6px;border-radius:50%;background:var(--signal);flex:none}
+/* Flow */
+.flow { padding:84px 0 84px; background:var(--paper); }
+.flow-head { display:grid; grid-template-columns:minmax(0,1fr) 360px; gap:48px; padding:0 72px; align-items:center; }
+.flow h2 { font-size:56px; line-height:1.02; }
+.pill { display:inline-block; width:118px; height:50px; border-radius:999px; overflow:hidden; vertical-align:-6px; margin:0 6px; }
+.flow-head p { font-size:18px; color:var(--ink2); }
+.railwrap { margin-top:52px; overflow:hidden; }
+.track { position:relative; display:flex; gap:24px; width:max-content; padding:0 72px; animation:railpan 26s cubic-bezier(.65,0,.35,1) infinite alternate; }
+.track > .st { flex:none; width:430px; }
+.track > .st.star { width:520px; }
+@keyframes railpan { 0%, 14% { transform:translateX(0); } 86%, 100% { transform:translateX(calc(1440px - 100%)); } }
+.track::before { content:""; position:absolute; left:72px; right:72px; top:21px; height:1px; background:var(--line); }
+.st { position:relative; }
+.st .dot { width:42px; height:42px; border-radius:50%; background:#fff; box-shadow:inset 0 0 0 1px var(--line); display:grid; place-items:center; font-family:var(--fl); font-size:12px; margin-bottom:22px; }
+.st .ph { height:260px; border-radius:22px; overflow:hidden; }
+.st h3 { margin-top:22px; font-size:26px; }
+.st .prod { margin-top:10px; font-weight:600; font-size:15px; display:flex; flex-wrap:wrap; gap:4px 14px; }
+.st .prod a { border-bottom:1.5px solid currentColor; }
+.st p { margin-top:10px; font-size:15px; color:var(--mute); }
+.st.star .dot { background:var(--ink); color:#fff; box-shadow:none; }
+.st.star .card { background:var(--dark); color:#fff; border-radius:26px; padding:8px 8px 26px; }
+.st.star .ph { height:260px; border-radius:20px; }
+.st.star h3, .st.star .prod, .st.star p { padding:0 18px; }
+.st.star p { color:rgba(255,255,255,.7); }
+.st.star .badge { display:inline-block; margin:18px 18px 0; font-family:var(--fl); font-size:11px; letter-spacing:.12em; text-transform:uppercase; border:1px solid rgba(255,255,255,.3); border-radius:999px; padding:4px 10px; }
+.st.star h3 { margin-top:12px; }
+.flow-foot { margin:44px 72px 0; padding-top:28px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; font-size:18px; }
 
-/* ---------- The chain: horizontal ---------- */
-.chain{background:var(--ice);color:var(--ink);padding-block:120px 0}
-.chain-head{display:flex;flex-wrap:wrap;justify-content:space-between;align-items:end;gap:24px 64px;padding-bottom:56px}
-.chain-head h2{font-size:clamp(40px,5.4vw,88px);line-height:.94;max-width:14ch}
-.chain-head p{max-width:40ch;color:#3b456b}
-.rail-wrap{overflow:hidden}
-.rail{display:flex;gap:20px;padding-bottom:120px;width:max-content}
-.station{position:relative;width:min(78vw, 560px);flex:none;border-radius:28px;padding:6px;background:rgba(36,21,186,.06);box-shadow:inset 0 0 0 1px rgba(36,21,186,.10)}
-.station .core{border-radius:22px;overflow:hidden;background:#fff;box-shadow:inset 0 1px 1px rgba(255,255,255,.8)}
-.station .media{position:relative;aspect-ratio:4/3;overflow:hidden;background:var(--ink)}
-.station .media img,.station .media video{width:100%;height:100%;object-fit:cover;transition:transform 1.2s var(--ease)}
-.station:hover .media img,.station:hover .media video{transform:scale(1.04)}
-.station .n{position:absolute;top:16px;left:16px;font-family:var(--font-data);font-size:12px;color:#fff;background:rgba(11,10,38,.55);backdrop-filter:blur(6px);padding:6px 10px;border-radius:999px}
-.station .body{padding:26px 28px 30px;display:grid;gap:12px}
-.station h3{font-size:30px;line-height:1;letter-spacing:-0.03em}
-.station p{color:#3b456b;font-size:16px;max-width:44ch}
-.spec{display:flex;flex-wrap:wrap;gap:8px;margin-top:6px}
-.spec span{font-family:var(--font-data);font-size:12px;padding:7px 11px;border-radius:999px;background:var(--ice);color:var(--ultra)}
-.station.bin .media{background:linear-gradient(180deg,#f7f9fc 0%,#e9eef5 100%)}
-.station.bin .media img{object-fit:cover;object-position:34% 42%;transform:scale(1.55);transform-origin:34% 42%}
-.station.bin:hover .media img{transform:scale(1.62)}
-.stack{display:grid;grid-template-columns:repeat(6, 34px);gap:6px;transform:perspective(600px) rotateX(48deg) rotateZ(-32deg)}
-.stack i{height:34px;border-radius:6px;background:rgba(255,255,255,.14);box-shadow:inset 0 0 0 1px rgba(255,255,255,.22)}
-.stack i.on{background:var(--frost)}
-.stack i.go{background:var(--signal)}
-@media (max-width: 760px){.rail{flex-direction:column;width:auto}.station{width:100%}}
+/* Plate freezing */
+.pf { background:var(--dark); color:#fff; padding:88px 72px; display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:72px; align-items:stretch; }
+.pf .eyebrow { color:rgba(255,255,255,.6); }
+.pf h2 { margin-top:20px; font-size:52px; line-height:1; }
+.pf .body { margin-top:24px; font-size:18px; color:rgba(255,255,255,.75); max-width:none; }
+.seg { margin-top:32px; display:grid; grid-template-columns:repeat(3,1fr); padding:5px; border-radius:999px; background:rgba(255,255,255,.07); box-shadow:inset 0 0 0 1px rgba(255,255,255,.12); }
+.seg span { text-align:center; padding:14px 0; border-radius:999px; font-size:15px; font-weight:600; color:rgba(255,255,255,.65); }
+.seg span.on { background:#fff; color:var(--ink); }
+.level { position:relative; margin-top:34px; display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.level .belt { position:absolute; left:7px; right:0; top:5px; height:4px; border-radius:2px; background:rgba(255,255,255,.1); overflow:hidden; z-index:0; }
+.level .belt::after { content:""; position:absolute; inset:0 -48px 0 0; background:repeating-linear-gradient(90deg, rgba(255,255,255,.9) 0 14px, transparent 14px 24px); animation:belt 1.2s linear infinite; }
+@keyframes belt { from { transform:translateX(-24px); } to { transform:translateX(0); } }
+.level > div:not(.belt) { position:relative; z-index:1; padding-top:30px; }
+.level > div:not(.belt)::before { content:""; position:absolute; left:0; top:0; width:14px; height:14px; border-radius:50%; background:var(--dark); box-shadow:inset 0 0 0 3px #fff; }
+.level div b { display:block; font-size:17px; margin-top:4px; } .level div small { font-family:var(--fl); font-size:11px; letter-spacing:.1em; text-transform:uppercase; color:rgba(255,255,255,.55); }
+.level div.auto small { color:#fff; }
+.pf .cap { margin-top:22px; font-size:15px; color:rgba(255,255,255,.6); }
+.pf .ctas { margin-top:36px; display:flex; gap:14px; align-items:center; }
+.pf .btn.ghost { color:#fff; }
+.bezel { padding:10px; border-radius:34px; background:rgba(255,255,255,.06); box-shadow:inset 0 0 0 1px rgba(255,255,255,.12); display:flex; }
+.bezel .in { flex:1; min-height:520px; border-radius:26px; overflow:hidden; position:relative; }
+.bezel .in video { position:absolute; inset:0; opacity:0; animation:clips 18s infinite; }
+.bezel .in video:nth-of-type(2) { animation-delay:6s; } .bezel .in video:nth-of-type(3) { animation-delay:12s; }
+@keyframes clips { 0% { opacity:0; } 4% { opacity:1; } 33% { opacity:1; } 38% { opacity:0; } 100% { opacity:0; } }
+.bezel .tag { position:absolute; left:20px; bottom:20px; background:rgba(0,0,0,.5); backdrop-filter:blur(8px); color:#fff; border-radius:999px; padding:8px 14px; font-size:13px; }
 
-/* ---------- Industries accordion ---------- */
-.ind{background:var(--ink);padding-block:clamp(110px,12vw,180px)}
-.ind h2{font-size:clamp(40px,5.4vw,88px);line-height:.94;max-width:16ch;margin-bottom:56px}
-.slices{display:flex;gap:12px;height:clamp(460px,46vw,640px)}
-.slice{position:relative;flex:1;min-width:0;border-radius:28px;overflow:hidden;text-decoration:none;color:#fff;transition:flex 1s var(--ease)}
-.slices:hover .slice{flex:.7}
-.slices .slice:hover{flex:2.4}
-.slice img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover;transition:transform 1.4s var(--ease)}
-.slice:hover img{transform:scale(1.05)}
-.slice::after{content:"";position:absolute;inset:0;background:linear-gradient(0deg,rgba(11,10,38,.92) 0%,rgba(11,10,38,.1) 60%)}
-.slice .t{position:absolute;left:28px;right:28px;bottom:28px;z-index:1;display:grid;gap:10px}
-.slice h3{font-size:clamp(34px,3.4vw,56px);line-height:.9}
-.slice p{max-width:34ch;color:#d4dbf7;font-size:16px}
-.slice .data{color:var(--frost)}
-.slice.typo{background:var(--ultra)}
-.slice.typo::after{background:none}
-.slice.typo .big{position:absolute;top:22px;left:24px;font-family:var(--font-display);font-weight:800;font-size:clamp(90px,10vw,170px);line-height:.8;letter-spacing:-0.06em;color:rgba(255,255,255,.1)}
-@media (max-width: 760px){.slices{flex-direction:column;height:auto}.slice{height:380px;flex:none!important}}
+/* Why */
+.why { padding:100px 72px 90px; display:grid; grid-template-columns:420px 1fr; gap:90px; }
+.why h2 { font-size:60px; line-height:1; }
+.why .side p { margin-top:22px; color:var(--ink2); font-size:18px; }
+.why .side .ph { margin-top:36px; height:300px; border-radius:24px; overflow:hidden; }
+.reasons { list-style:none; margin:0; padding:0; }
+.reasons li { display:grid; grid-template-columns:64px 0.85fr 1.25fr; gap:24px; padding:22px 0; border-top:1px solid var(--line); align-items:baseline; }
+.reasons li:last-child { border-bottom:1px solid var(--line); }
+.reasons .n { font-family:var(--fl); font-size:14px; color:var(--mute); }
+.reasons h3 { font-size:30px; line-height:1.05; }
+.reasons p { font-size:17px; color:var(--ink2); }
+.reasons li.no h3, .reasons li.no p { color:var(--mute); }
 
-/* ---------- Proof bento ---------- */
-.proof{background:var(--ice);color:var(--ink);padding-block:clamp(110px,12vw,180px)}
-.bento{display:grid;grid-template-columns:repeat(12,minmax(0,1fr));grid-auto-flow:dense;gap:16px}
-.cell{border-radius:28px;padding:6px;background:rgba(36,21,186,.06);box-shadow:inset 0 0 0 1px rgba(36,21,186,.10)}
-.cell>.core{height:100%;border-radius:22px;overflow:hidden;position:relative}
-.c-quote{grid-column:span 7;grid-row:span 2}
-.c-quote .core{background:var(--ultra);color:var(--on-ultra);padding:48px;display:flex;flex-direction:column;justify-content:space-between;gap:40px;min-height:520px}
-.c-quote blockquote{margin:0;font-family:var(--font-display);font-weight:600;letter-spacing:-0.025em;font-size:clamp(28px,2.8vw,44px);line-height:1.1}
-.c-quote .mark{font-family:var(--font-display);font-size:120px;line-height:.5;color:var(--signal)}
-.c-num .core{background:#fff;padding:36px;display:flex;flex-direction:column;justify-content:space-between;gap:28px;min-height:252px}
-.c-num{grid-column:span 4}
-.c-num.dark .core{background:var(--ink)}
-.c-num.dark .num{color:var(--frost)}
-.num{font-family:var(--font-display);font-weight:760;letter-spacing:-0.05em;font-size:clamp(72px,7.4vw,124px);line-height:.85;color:var(--ultra)}
-.num small{font-family:var(--font-data);font-size:13px;letter-spacing:0;color:#3b456b;margin-left:6px;text-transform:uppercase}
-.c-img{grid-column:span 5;grid-row:span 2}
-.c-img .core{min-height:520px}
-.c-img img{position:absolute;inset:0;width:100%;height:100%;object-fit:cover}
-.c-wide{grid-column:span 12}
-.c-wide .core{background:var(--ink);color:var(--on-ultra);padding:36px;display:grid;grid-template-columns:auto 1fr;gap:28px;align-items:end;min-height:252px}
-.c-wide .num{color:var(--frost)}
-.c-wide p{color:#c4cdf0;max-width:38ch}
-@media (max-width: 900px){.bento>*{grid-column:span 12!important;grid-row:auto!important}.c-wide .core{grid-template-columns:1fr}}
+/* 80 % */
+.exist { position:relative; background:#fff; padding:0; overflow:hidden; }
+.exist .left { position:relative; z-index:1; width:680px; padding:80px 72px; display:flex; flex-direction:column; justify-content:space-between; gap:48px; }
+.exist .planfull { position:absolute; inset:0; z-index:0; background:#fff; color:#141414; }
+.exist .planfull::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,#fff 0%,rgba(255,255,255,.95) 36%,rgba(255,255,255,.55) 50%,rgba(255,255,255,0) 64%); pointer-events:none; }
+.exist .planfull svg.plan { position:absolute; inset:0; width:100% !important; height:100% !important; }
+.exist .cta2 .fields { display:grid; grid-template-columns:1fr 1fr; gap:12px; margin-top:16px; }
+.exist .cta2 .f { height:56px; border-radius:14px; background:#fff; box-shadow:inset 0 0 0 1px var(--line); padding:0 18px; display:flex; align-items:center; color:var(--mute); font-size:15px; }
+.exist .cta2 .btn { margin-top:12px; width:100%; justify-content:space-between; }
+.big80 { font-family:var(--fd); font-weight:800; font-size:240px; line-height:.8; letter-spacing:-0.05em; }
+.big80 sup { font-size:110px; vertical-align:top; position:relative; top:22px; }
+.exist h2 { margin-top:26px; font-size:44px; line-height:1.04; max-width:560px; }
+.exist .body { margin-top:22px; font-size:18px; color:var(--ink2); max-width:560px; }
+.phases { margin-top:34px; display:flex; gap:10px; font-size:14px; font-weight:600; }
+.phases span { padding:9px 14px; border-radius:999px; background:#fff; }
+.drop { padding:10px; border-radius:34px; background:#fff; box-shadow:0 30px 60px -30px rgba(0,0,0,.18); }
+.drop .in { border-radius:26px; padding:34px; background:var(--paper); }
+.drop .zone { height:220px; border-radius:20px; border:1.5px dashed #b9b9b4; display:grid; place-items:center; text-align:center; color:var(--ink2); }
+.drop .zone b { display:block; font-family:var(--fd); font-size:24px; color:var(--ink); }
+.drop .zone small { display:block; margin-top:8px; font-family:var(--fl); font-size:12px; letter-spacing:.1em; color:var(--mute); }
+.drop .fields { margin-top:16px; display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.drop .f { height:56px; border-radius:14px; background:#fff; box-shadow:inset 0 0 0 1px var(--line); padding:0 18px; display:flex; align-items:center; color:var(--mute); font-size:15px; }
+.drop .btn { margin-top:16px; width:100%; justify-content:space-between; }
 
-/* ---------- Process ---------- */
-.proc{background:var(--ultra);color:var(--on-ultra);padding-block:clamp(110px,12vw,180px)}
-.proc-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:64px}
-.proc h2{font-size:clamp(40px,4.8vw,80px);line-height:.95;position:sticky;top:120px}
-.proc .sub{margin-top:28px;color:#c9d2fa;max-width:38ch;position:sticky;top:420px}
-.steps{position:relative;list-style:none;margin:0;padding:0 0 0 56px}
-.steps .line{position:absolute;left:15px;top:8px;bottom:8px;width:2px;background:rgba(255,255,255,.16)}
-.steps .line i{position:absolute;inset:0;background:var(--signal);transform-origin:top;transform:scaleY(1)}
-.js .steps .line i{transform:scaleY(0)}
-.steps li{position:relative;padding:0 0 64px}
-.steps li:last-child{padding-bottom:0}
-.steps .dot{position:absolute;left:-56px;top:2px;width:32px;height:32px;border-radius:50%;background:var(--ultra-deep);box-shadow:inset 0 0 0 1px rgba(255,255,255,.3);display:grid;place-items:center;font-family:var(--font-data);font-size:12px}
-.steps h3{font-size:clamp(26px,2.4vw,38px);line-height:1}
-.steps p{margin-top:12px;color:#c9d2fa;max-width:46ch}
-@media (max-width: 900px){.proc-grid{grid-template-columns:1fr}.proc h2,.proc .sub{position:static}}
+/* Proof */
+.proof { padding:120px 72px 112px; }
+.quote { display:grid; grid-template-columns:150px 1fr; gap:48px; }
+.quote .mark { font-family:var(--fd); font-weight:800; font-size:200px; line-height:.7; color:var(--line); }
+.quote blockquote { margin:0; font-family:var(--fd); font-weight:600; font-size:38px; line-height:1.18; letter-spacing:-0.02em; max-width:1080px; }
+.quote cite { display:block; margin-top:26px; font-style:normal; font-size:16px; color:var(--mute); }
+.fm .sentence { margin-top:72px; font-family:var(--fd); font-weight:600; font-size:48px; line-height:1.12; letter-spacing:-0.025em; color:#b5b5b0; max-width:1240px; }
+.sentence b { color:var(--ink); font-weight:800; }
+.stats { margin-top:56px; display:grid; grid-template-columns:repeat(4,1fr); }
+.stats div { padding-right:24px; }
+.stats b { display:block; font-family:var(--fd); font-weight:800; font-size:68px; line-height:.9; letter-spacing:-0.04em; }
+.stats span { display:block; margin-top:14px; font-size:16px; color:var(--ink2); max-width:220px; }
 
-/* ---------- Need a specific product ---------- */
-.need{background:var(--ink);color:var(--on-ultra);padding-block:clamp(100px,11vw,160px)}
-.need-grid{display:grid;grid-template-columns:minmax(0,5fr) minmax(0,7fr);gap:48px 80px;align-items:start}
-.need h2{font-size:clamp(36px,4.2vw,68px);line-height:.95}
-.need p{margin-top:24px;color:#c4cdf0;max-width:44ch}
-.need-links{display:grid;gap:12px}
-.need-links a{display:grid;grid-template-columns:1fr auto auto;align-items:center;gap:20px;padding:26px 28px;border-radius:24px;text-decoration:none;
-  background:rgba(255,255,255,.04);box-shadow:inset 0 0 0 1px rgba(255,255,255,.12);font-family:var(--font-display);font-weight:600;font-size:clamp(20px,1.8vw,28px);letter-spacing:-0.02em;
-  transition:background .6s var(--ease),transform .6s var(--ease)}
-.need-links a:hover{background:rgba(255,255,255,.09);transform:translateX(6px)}
-.need-links .data{color:var(--frost);font-weight:400}
-.need-links .arr{width:40px;height:40px;border-radius:999px;display:grid;place-items:center;background:var(--signal);color:var(--ink);font-family:var(--font-body);font-size:18px}
-.trading{grid-column:1 / -1;display:flex;flex-wrap:wrap;gap:24px 48px;align-items:center;justify-content:space-between;margin-top:40px;padding:32px 36px;border-radius:28px;background:var(--ice);color:var(--ink)}
-.trading .data{color:var(--ultra)}
-.trading h3{font-size:clamp(26px,2.4vw,38px);line-height:1;margin-top:10px}
-.trading p:not(.data){margin-top:12px;color:#3b456b;max-width:56ch}
-.trading .pill{background:var(--ultra);color:#fff}
-.trading .pill .knob{background:var(--signal);color:var(--ink)}
-@media (max-width: 900px){.need-grid{grid-template-columns:1fr}.need-links a{grid-template-columns:1fr auto}.need-links .data{display:none}}
+/* Customers band */
+.band { margin:0 56px; display:grid; grid-template-columns:1.25fr 1fr; gap:12px; }
+.band > div { border-radius:30px; padding:40px 44px; }
+.band .a { background:var(--dark); color:#fff; }
+.band .b { background:var(--soft); display:flex; flex-direction:column; justify-content:space-between; align-items:flex-start; }
+.band h3 { font-size:34px; line-height:1.04; }
+.band ul { list-style:none; margin:26px 0 0; padding:0; display:grid; grid-template-columns:repeat(3,1fr); gap:10px; }
+.band li { border-radius:16px; padding:18px; background:rgba(255,255,255,.07); box-shadow:inset 0 0 0 1px rgba(255,255,255,.12); font-weight:600; display:flex; justify-content:space-between; }
+.band .mail { margin-top:20px; font-size:15px; color:rgba(255,255,255,.65); }
+.band .b p { margin-top:14px; font-size:17px; color:var(--ink2); }
 
-/* ---------- CTA + footer ---------- */
-.cta{position:relative;overflow:hidden;isolation:isolate;background:var(--ice);color:var(--ink);padding-block:clamp(120px,14vw,220px) 80px}
-.plan{position:absolute;z-index:-1;top:50%;right:-4vw;transform:translateY(-50%);width:min(1500px,96vw);height:auto;color:var(--ultra);opacity:.62;
-  -webkit-mask-image:linear-gradient(90deg,transparent 0%,#000 38%,#000 100%);mask-image:linear-gradient(90deg,transparent 0%,#000 38%,#000 100%)}
-.plan *{vector-effect:non-scaling-stroke}
-.plan .ln{fill:none;stroke:currentColor;stroke-width:1}
-.plan .thin{stroke-width:.6;opacity:.55}
-.plan .wall{fill:none;stroke:currentColor;stroke-width:2.2}
-.plan .eq{fill:rgba(36,21,186,.05);stroke:currentColor;stroke-width:1.2}
-.plan .flow{fill:none;stroke:#0aa04d;stroke-width:2;stroke-dasharray:6 6}
-.plan text{font-family:var(--font-data);font-size:13px;fill:currentColor;letter-spacing:.04em}
-.plan .lbl{font-size:11px;opacity:.75}
-.js .plan .draw{stroke-dasharray:1;stroke-dashoffset:1}
-.cta::after{content:"";position:absolute;inset:0;z-index:-1;pointer-events:none;
-  background:radial-gradient(120% 95% at 0% 100%, rgba(234,242,251,.96) 0%, rgba(234,242,251,.88) 34%, rgba(234,242,251,.5) 58%, rgba(234,242,251,0) 82%)}
-@media (max-width: 760px){.plan{opacity:.35;right:-30vw;width:180vw}}
-.cta h2{font-size:clamp(64px,11vw,200px);line-height:.84;letter-spacing:-0.055em;max-width:12ch}
-.cta h2 em{font-style:normal;color:var(--ultra)}
-.cta-row{display:flex;flex-direction:column;align-items:flex-start;gap:32px;margin-top:48px}
-.cta-row p{max-width:44ch;color:#3b456b}
-.foot{background:var(--ink);color:#c4cdf0;padding-block:72px 40px}
-.foot-grid{display:grid;grid-template-columns:1.2fr 1.4fr 1fr 1fr;gap:40px}
-.foot h4{margin:0 0 16px;font-family:var(--font-data);font-weight:500;font-size:12px;text-transform:uppercase;letter-spacing:.04em;color:var(--frost)}
-.foot ul{list-style:none;margin:0;padding:0;display:grid;gap:10px}
-.foot a{text-decoration:none}
-.foot a:hover{color:#fff}
-.foot .fi a{display:inline-flex;align-items:center;gap:10px;padding:12px 16px;border-radius:999px;box-shadow:inset 0 0 0 1px rgba(255,255,255,.2);color:#fff}
-.foot .base{display:flex;flex-wrap:wrap;gap:20px;justify-content:space-between;margin-top:64px;padding-top:24px;border-top:1px solid rgba(255,255,255,.1);font-size:13px;color:#7f8ab5}
-@media (max-width: 900px){.foot-grid{grid-template-columns:1fr 1fr}}
-@media (max-width: 520px){.foot-grid{grid-template-columns:1fr}}
+/* Engineers */
+.eng { padding:80px 72px 80px; display:grid; grid-template-columns:1.1fr 1fr; gap:90px; align-items:center; }
+.eng h2 { margin-top:22px; font-size:56px; line-height:1; }
+.eng .body { margin-top:22px; font-size:18px; color:var(--ink2); max-width:520px; }
+.eng .btn { margin-top:34px; }
+.sheet { padding:10px; border-radius:34px; background:var(--soft); }
+.sheet .in { border-radius:26px; background:#fff; padding:34px 36px; box-shadow:0 1px 0 rgba(0,0,0,.04); }
+.sheet .top { display:flex; justify-content:space-between; align-items:baseline; padding-bottom:22px; border-bottom:1px solid var(--line); }
+.sheet .top b { font-family:var(--fd); font-size:26px; }
+.sheet table { width:100%; border-collapse:collapse; margin-top:6px; font-size:15px; }
+.sheet td { padding:13px 0; border-bottom:1px solid var(--soft); }
+.sheet td:first-child { font-family:var(--fl); font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:var(--mute); width:46%; }
+.sheet td .bar { display:inline-block; height:10px; border-radius:5px; background:#e6e6e3; }
+.sheet .dl { margin-top:22px; display:flex; gap:10px; }
+.sheet .dl span { padding:10px 16px; border-radius:999px; background:var(--soft); font-size:14px; font-weight:600; }
 
-@media (prefers-reduced-motion: reduce){
-  *{transition:none!important;animation:none!important}
-  .js .statement .w{opacity:1}
-  .js .steps .line i{transform:none}
-}
+/* Contact */
+.cb { padding:72px 72px 0; display:grid; grid-template-columns:1fr 1.1fr; gap:72px; }
+.cb h2 { font-size:84px; line-height:.92; }
+.cb .lead { margin-top:22px; font-size:19px; color:var(--ink2); max-width:480px; }
+.cb .ppl { margin-top:40px; display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:560px; }
+.cb .ppl > div { display:grid; gap:16px; }
+.cb .ppl .av { width:100%; height:300px; border-radius:22px; overflow:hidden; background:var(--soft); }
+.cb .ppl .av img { width:100%; height:100%; object-fit:cover; object-position:50% 20%; display:block; }
+.cb .ppl b { display:block; font-size:17px; } .cb .ppl span span { display:block; margin-top:2px; font-size:14px; color:var(--mute); }
+.cb .form { padding:10px; border-radius:36px; background:var(--soft); display:flex; }
+.cb .form .in { flex:1; display:flex; flex-direction:column; border-radius:28px; background:#fff; padding:34px; }
+.cb .form .lab { font-family:var(--fl); font-size:11px; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); }
+.cb .chips { margin-top:12px; display:flex; flex-wrap:wrap; gap:8px; }
+.cb .chips span { padding:11px 16px; border-radius:999px; font-size:14px; font-weight:600; box-shadow:inset 0 0 0 1.5px var(--line); }
+.cb .chips span.on { background:var(--ink); color:#fff; box-shadow:none; }
+.cb .form .f2 { margin-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:12px; }
+.cb .form .f { height:56px; border-radius:14px; box-shadow:inset 0 0 0 1px var(--line); padding:0 18px; display:flex; align-items:center; color:var(--mute); font-size:15px; }
+.cb .form .ta { margin-top:12px; flex:1; min-height:120px; border-radius:14px; box-shadow:inset 0 0 0 1px var(--line); padding:16px 18px; color:var(--mute); font-size:15px; }
+.cb .form .btn { margin-top:16px; width:100%; justify-content:space-between; }
+.contact { margin:0 56px; border-radius:40px; background:var(--dark); color:#fff; padding:90px 72px; display:grid; grid-template-columns:1.1fr 1fr; gap:80px; }
+.contact h2 { font-size:84px; line-height:.92; }
+.contact .lead { margin-top:26px; font-size:19px; color:rgba(255,255,255,.75); max-width:480px; }
+.contact .ctas { margin-top:40px; display:flex; gap:14px; }
+.contact .btn.ghost { color:#fff; }
+.people { display:grid; grid-template-columns:1fr 1fr; gap:14px; align-self:end; }
+.person .ph { height:300px; border-radius:22px; background:#2a2a2a; overflow:hidden; }
+.person .ph img { width:100%; height:100%; object-fit:cover; object-position:50% 20%; display:block; }
+.person b { display:block; margin-top:18px; font-size:19px; }
+.person span { display:block; font-size:15px; color:rgba(255,255,255,.65); margin-top:2px; }
+
+/* Footer */
+.foot { margin-top:72px; background:#0c0c0c; color:#bdbdbd; padding:64px 72px 36px; }
+.foot .grid { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:40px; padding-bottom:60px; border-bottom:1px solid #2a2a2a; }
+.foot .logo { color:#fff; font-size:28px; }
+.foot p { margin-top:18px; max-width:300px; font-size:15px; }
+.foot h4 { margin:0 0 16px; color:#fff; font-size:14px; font-weight:600; }
+.foot ul { list-style:none; margin:0; padding:0; display:grid; gap:9px; font-size:15px; }
+.foot .bottom { padding-top:26px; display:flex; justify-content:space-between; font-size:13px; }
+.foot .bottom span a { margin-left:24px; }
+.wb { padding:84px 72px; }
+.wb .head { display:flex; justify-content:space-between; align-items:flex-end; }
+.wb h2 { font-size:58px; }
+.wb .head p { font-size:18px; color:var(--ink2); max-width:420px; }
+.bento { margin-top:44px; display:grid; grid-template-columns:repeat(4,1fr); grid-auto-rows:250px; gap:12px; grid-auto-flow:dense; }
+.tile { border-radius:28px; padding:28px; background:var(--soft); display:flex; flex-direction:column; justify-content:space-between; position:relative; overflow:hidden; }
+.tile .mono { color:var(--mute); }
+.tile h3 { font-size:28px; line-height:1.05; }
+.tile p { margin-top:10px; font-size:15px; color:var(--ink2); }
+.tile.big { grid-column:span 2; grid-row:span 2; padding:0; color:#fff; }
+.tile.big img { position:absolute; inset:0; }
+.tile.big::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(0,0,0,0) 35%, rgba(0,0,0,.8) 100%); }
+.tile.big .b { position:relative; z-index:1; margin-top:auto; padding:32px; }
+.tile.big h3 { font-size:40px; } .tile.big p { color:rgba(255,255,255,.8); font-size:17px; max-width:480px; }
+.tile.big .mono { position:relative; z-index:1; padding:28px 32px 0; color:rgba(255,255,255,.7); }
+.tile.dark { background:var(--dark); color:#fff; } .tile.dark p { color:rgba(255,255,255,.7); } .tile.dark .mono { color:rgba(255,255,255,.55); }
+.nodo { margin-top:12px; border-radius:28px; background:var(--dark); color:#fff; padding:26px 32px; display:flex; gap:40px; align-items:center; }
+.nodo .mono { color:rgba(255,255,255,.55); } .nodo p { font-size:18px; }
+.tile .figure { font-family:var(--fd); font-weight:800; font-size:64px; line-height:.9; letter-spacing:-0.04em; }
+.planwrap { border-radius:18px; background:#fff; padding:10px; color:#141414; box-shadow:inset 0 0 0 1px var(--line); }
+.plan { font-family:var(--fd); }
+.plan text { fill:currentColor; font-size:11px; }
+.plan .eq { fill:rgba(20,20,20,.05); stroke:currentColor; stroke-width:1.2; }
+.plan .ln { fill:none; stroke:currentColor; stroke-width:1; }
+.plan .thin { stroke-width:.6; opacity:.55; }
+.plan .wall { fill:none; stroke:currentColor; stroke-width:2.2; }
+.plan .lbl { font-size:11px; opacity:.75; }
+.plan * { vector-effect:non-scaling-stroke; }
+.plan .flow { fill:none; stroke:#141414; stroke-width:2; stroke-dasharray:6 6; animation:planflow 1.4s linear infinite; }
+@keyframes planflow { to { stroke-dashoffset:-24; } }
+.plan .mroute { fill:none; stroke:#141414; stroke-width:1.4; stroke-dasharray:2 7; opacity:.45; animation:planflow 1.4s linear infinite; }
+.plan .mblk { fill:#141414; stroke:none; }
+.ptitle { margin-top:16px; display:flex; justify-content:space-between; align-items:baseline; }
+.ptitle b { font-size:22px; letter-spacing:-0.02em; }
+.ptitle small { font-size:12px; letter-spacing:.1em; color:var(--mute); }
+.logos { margin:72px -72px 0; overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line); -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+.logos .ltrack { display:flex; width:max-content; will-change:transform; }
+.logos .ltrack div { flex:none; width:200px; height:104px; display:grid; place-items:center; padding:20px 26px; border-left:1px solid var(--line); }
+@keyframes logoscroll { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+.fm .logos img { width:auto; height:auto; max-width:100%; max-height:52px; object-fit:contain; filter:grayscale(1) brightness(1.08) contrast(2.6); mix-blend-mode:multiply; }
+/* Footer (variantti B) */
+.fb2 { position:relative; margin-top:60px; background:var(--soft); padding:60px 72px 0; overflow:hidden; }
+.fb2 > *:not(.sym) { position:relative; z-index:1; }
+.fb2 .sym { position:absolute; z-index:0; right:-140px; top:-170px; height:1000px; width:auto; }
+.fb2 .grid { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:40px; }
+.fb2 p { font-size:15px; color:var(--ink2); max-width:320px; margin-top:0; }
+.fb2 h4 { margin:0 0 14px; font-size:14px; font-weight:600; }
+.fb2 ul { list-style:none; margin:0; padding:0; display:grid; gap:9px; font-size:15px; color:var(--ink2); }
+.fb2 .bottom { margin-top:56px; display:flex; justify-content:space-between; font-size:13px; color:var(--mute); }
+.fb2 .bottom span a { margin-left:24px; }
+.fb2 .word { position:relative; margin:40px 0 0; width:1296px; height:192px; overflow:hidden; }
+.fm .fb2 .word img { position:absolute; left:-432px; top:-104px; width:1730px; height:auto; max-width:none; filter:brightness(0); opacity:.92; }
+.fb2 { padding-bottom:56px !important; }
+
+/* ===== Theme layer ===== */
+.fm h1,.fm h2,.fm h3,.kg-num,.big80,.stats b,.tile .figure,.quote .mark,.router b,.sheet .top b { font-weight:var(--dw); letter-spacing:var(--dls); font-stretch:var(--dst); }
+.mono,.eyebrow,.st .dot,.badge,.lab,.level div small,.sheet td:first-child,.reasons .n,.ptitle small { letter-spacing:var(--lls); }
+
+.fm { --ink:#0D0E2B; --ink2:#3A3C5C; --mute:#5F617E; --line:#D9DBE8; --soft:#ECEEF7; --paper:#F5F6FB; --dark:#2415BA; --dark2:#1B1092; --acc:#03FF6B; --deep:#0D0E2B;
+  --fd:'Archivo',sans-serif; --fb:'Archivo',sans-serif; --fl:'Archivo',sans-serif; --dw:800; --dls:-0.02em; --dst:112%; --lls:.1em; }
+.fm .mono,.fm .eyebrow,.fm .st .dot,.fm .badge,.fm .lab,.fm .level div small,.fm .sheet td:first-child,.fm .reasons .n,.fm .ptitle small,.fm .intro .g small,.fm .cb .form .lab { font-weight:600; font-stretch:112%; }
+.util { background:var(--deep); }
+.hero { background:var(--deep); }
+.btn.dark { background:var(--dark); } .btn.dark i { background:rgba(255,255,255,.16); }
+.cb .chips span.on { background:var(--dark); }
+.kg-num { color:var(--dark); }
+.st.star .dot { background:var(--acc); color:var(--deep); }
+.st.star .card { background:var(--dark); }
+.st.star .badge { border-color:var(--acc); color:var(--acc); }
+.level .belt::after { background:repeating-linear-gradient(90deg, var(--acc) 0 14px, transparent 14px 24px); }
+.level > div:not(.belt)::before { box-shadow:inset 0 0 0 3px var(--acc); }
+.seg span.on { background:var(--acc); color:var(--deep); }
+.fm .sentence { color:#A7A9C6; } .sentence b { color:var(--dark); }
+.tile.dark { background:var(--deep); }
+.eyebrow { color:var(--dark); } .pf .eyebrow { color:var(--acc); }
+.plan .mblk { fill:var(--dark); } .plan .mroute { stroke:var(--dark); opacity:.6; }
+.fb2 { background:var(--soft); }
+.fb2 .sym path[fill="#e2e2de"] { fill:#E1E4F2; } .fb2 .sym path[fill="#d3d3ce"] { fill:#CDD2EC; }
+/* blue headings and highlights */
+.fm h2 { color:var(--dark); }
+.hero h1 { font-size:64px; line-height:.98; max-width:1180px; }
+.pf h2, .hero h1 { color:#fff; }
+.fm .hl { color:#8F88E6; }
+.big80, .tile .figure { color:var(--dark); }
+.quote .mark { color:#C9C6F1; }
+.fm .tlink { color:var(--dark); }
+/* machined knob: contact CTA only (approved Steel accent) */
+.btn.qk i { width:40px; height:40px; color:#0b0a26; filter:drop-shadow(0 1px 0 rgba(255,255,255,.9)); background:repeating-radial-gradient(circle at 50% 50%,rgba(255,255,255,0) 0 1px,rgba(27,29,43,.05) 1px 2px),conic-gradient(from 25deg,#f6f8fa,#a9b0bc 11%,#eef1f5 24%,#99a1ae 37%,#f3f5f8 50%,#adb4c0 63%,#ebeef2 75%,#a1a9b6 88%,#f6f8fa) !important; box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 0 0 1px rgba(11,10,38,.18),0 2px 5px rgba(11,10,38,.3); }
+.nav .btn.qk i { width:36px; height:36px; }
+.btn.dark.qk { box-shadow:0 10px 24px rgba(36,21,186,.28); }
+.fm .fb2 .word img.wcol { filter:none; opacity:1; }
+
+/* intro under hero */
+.intro { position:relative; padding:112px 72px 72px; background:#fff; overflow:hidden; }
+.intro .stmt { margin:0; font-family:var(--fd); font-weight:800; font-stretch:112%; font-size:56px; line-height:1; letter-spacing:-0.03em; color:var(--ink); max-width:1000px; }
+.intro .stmt em { font-style:normal; color:var(--dark); background:linear-gradient(var(--acc),var(--acc)) 0 92%/100% 9px no-repeat; }
+.intro .gains { position:relative; margin-top:56px; display:grid; grid-template-columns:repeat(3,1fr); gap:24px; padding:44px 48px 48px; border-radius:34px; background:var(--dark); color:#fff; overflow:hidden; box-shadow:0 30px 60px -30px rgba(36,21,186,.55); }
+.intro .g { position:relative; display:flex; flex-direction:column; gap:22px; }
+.intro .ic { flex:none; width:68px; height:68px; border-radius:50%; display:grid; place-items:center; background:#fff; color:var(--dark); }
+.intro .g.up .ic svg { animation:gainup 2.4s cubic-bezier(.32,.72,0,1) infinite; }
+.intro .g.dn .ic { background:var(--acc); color:var(--deep); }
+.intro .g.dn .ic svg { animation:gaindn 2.4s cubic-bezier(.32,.72,0,1) infinite; }
+@keyframes gainup { 0%,100% { transform:translateY(3px); } 50% { transform:translateY(-3px); } }
+@keyframes gaindn { 0%,100% { transform:translateY(-3px); } 50% { transform:translateY(3px); } }
+.intro .g b { display:block; margin-top:8px; font-family:var(--fd); font-weight:800; font-stretch:112%; font-size:34px; line-height:1.02; letter-spacing:-0.02em; color:#fff; }
+.intro .g small { display:block; font-family:var(--fl); font-size:12px; letter-spacing:.08em; text-transform:uppercase; color:rgba(255,255,255,.7); }
+.intro .g.dn small { color:var(--acc); }
+.intro .isub { margin-top:40px; font-size:19px; color:var(--ink2); }
+.fb2 .word { height:auto !important; overflow:visible !important; } .fb2 .word svg { display:block; width:100%; height:auto; fill:var(--dark); }
+.fb2 .sym path[fill="#e2e2de"] { fill:#2415BA; fill-opacity:.085; } .fb2 .sym path[fill="#d3d3ce"] { fill:#03FF6B; fill-opacity:.15; }
+</style>
+<style>
+html,body{margin:0;background:#fff}
+body{overflow-x:hidden}
+.fm{margin:0 auto;transform-origin:top left}
+.fm .burger{display:none}
+.fm.m .nav ul,.fm.m .nav .btn{display:none}
+.fm.m .burger{display:grid}
+/* ===== Mobile 390 ===== */
+.fm.m { width:390px; font-size:16px; }
+.fm.m .util { display:none; }
+.fm.m .hero { height:780px; }
+.fm.m .nav { top:14px; left:12px; right:12px; height:58px; padding:0 7px 0 18px; gap:12px; justify-content:space-between; }
+.fm.m .nav img.logoimg { height:24px; }
+.fm.m .burger { width:44px; height:44px; border-radius:50%; border:0; padding:0; background:var(--dark); display:grid; place-content:center; gap:4px; cursor:pointer; }
+.fm.m .burger span { display:block; width:18px; height:2px; border-radius:1px; background:#fff; }
+.fm.m .hero-copy { left:20px; right:20px; bottom:276px; }
+.fm.m .hero h1 { font-size:32px; line-height:1.04; max-width:none; }
+.fm.m .hero .lead { margin-top:16px; font-size:16px; }
+.fm.m .router { left:12px; right:12px; bottom:16px; grid-template-columns:1fr; gap:8px; }
+.fm.m .router a { height:72px; padding:0 12px 0 18px; border-radius:18px; }
+.fm.m .router b { font-size:18px; } .fm.m .router small { font-size:13px; } .fm.m .router i { width:38px; height:38px; }
+.fm.m .intro { padding:56px 20px; }
+.fm.m .intro .stmt { font-size:30px; line-height:1.04; }
+.fm.m .intro .stmt em { background-size:100% 6px; }
+.fm.m .intro .gains { margin-top:32px; grid-template-columns:1fr; gap:26px; padding:28px 24px; border-radius:26px; }
+.fm.m .intro .gains::before { display:none; }
+.fm.m .intro .g { flex-direction:row; align-items:center; gap:18px; }
+.fm.m .intro .ic { width:52px; height:52px; box-shadow:none; }
+.fm.m .intro .g b { font-size:24px; margin-top:4px; } .fm.m .intro .g small { font-size:11px; }
+.fm.m .intro .isub { margin-top:24px; font-size:16px; }
+.fm.m .kg { grid-template-columns:1fr; gap:20px; padding:56px 20px; }
+.fm.m .kg-num { font-size:150px; } .fm.m .kg-num small { font-size:56px; }
+.fm.m .kg h2 { font-size:30px; } .fm.m .kg p { font-size:16px; }
+.fm.m .flow { padding:56px 0; }
+.fm.m .flow-head { grid-template-columns:1fr; gap:16px; padding:0 20px; }
+.fm.m .flow h2 { font-size:32px; } .fm.m .flow-head p { font-size:16px; }
+.fm.m .railwrap { margin-top:32px; }
+.fm.m .track { padding:0 20px; gap:14px; animation:railpanm 22s cubic-bezier(.65,0,.35,1) infinite alternate; }
+@keyframes railpanm { 0%, 12% { transform:translateX(0); } 88%, 100% { transform:translateX(calc(390px - 100%)); } }
+.fm.m .track::before { left:20px; right:20px; }
+.fm.m .track > .st { width:280px; } .fm.m .track > .st.star { width:300px; }
+.fm.m .st .ph, .fm.m .st.star .ph { height:190px; }
+.fm.m .st h3 { font-size:22px; }
+.fm.m .flow-foot { margin:32px 20px 0; flex-direction:column; align-items:flex-start; gap:12px; font-size:16px; }
+.fm.m .pf { padding:56px 20px; grid-template-columns:1fr; gap:32px; }
+.fm.m .pf h2 { font-size:32px; } .fm.m .pf .body { font-size:16px; }
+.fm.m .seg { margin-top:24px; } .fm.m .seg span { font-size:12.5px; padding:12px 0; }
+.fm.m .level { margin-top:28px; } .fm.m .level div b { font-size:14px; } .fm.m .level div small { font-size:9.5px; }
+.fm.m .pf .ctas { flex-direction:column; align-items:stretch; gap:10px; }
+.fm.m .pf .ctas .btn { justify-content:space-between; } .fm.m .pf .ctas .btn.ghost { justify-content:center; }
+.fm.m .bezel .in { min-height:300px; }
+.fm.m .wb { padding:56px 20px; }
+.fm.m .wb .head { flex-direction:column; align-items:flex-start; gap:10px; }
+.fm.m .wb h2 { font-size:32px; } .fm.m .wb .head p { font-size:16px; }
+.fm.m .bento { margin-top:28px; grid-template-columns:1fr; grid-auto-rows:auto; }
+.fm.m .tile { min-height:190px; padding:24px; border-radius:24px; gap:28px; }
+.fm.m .tile.big { grid-column:auto; grid-row:auto; height:380px; padding:0; }
+.fm.m .tile.big .b { padding:24px; } .fm.m .tile.big .mono { padding:24px 24px 0; }
+.fm.m .tile h3 { font-size:22px; } .fm.m .tile.big h3 { font-size:28px; } .fm.m .tile .figure { font-size:52px; }
+.fm.m .exist { display:flex; flex-direction:column; }
+.fm.m .exist .planfull { position:relative; inset:auto; order:-1; height:250px; }
+.fm.m .exist .planfull::after { background:linear-gradient(180deg,rgba(255,255,255,0) 55%,#fff 100%); }
+.fm.m .exist .left { width:auto; padding:24px 20px 56px; gap:36px; }
+.fm.m .big80 { font-size:120px; } .fm.m .big80 sup { font-size:54px; top:10px; }
+.fm.m .exist h2 { font-size:28px; } .fm.m .exist .body { font-size:16px; }
+.fm.m .exist .cta2 .fields { grid-template-columns:1fr; }
+.fm.m .proof { padding:64px 20px; }
+.fm.m .quote { grid-template-columns:1fr; gap:0; }
+.fm.m .quote .mark { font-size:120px; height:70px; }
+.fm.m .quote blockquote { font-size:24px; } .fm.m .quote cite { font-size:14px; margin-top:18px; }
+.fm.m .logos { margin:48px -20px 0; }
+.fm.m .logos .ltrack div { width:150px; height:80px; padding:16px 20px; }
+.fm.m .sentence { margin-top:48px; font-size:28px; }
+.fm.m .band { margin:0 12px; grid-template-columns:1fr; gap:10px; }
+.fm.m .band > div { padding:28px 22px; border-radius:24px; gap:24px; }
+.fm.m .band h3 { font-size:26px; }
+.fm.m .band ul { grid-template-columns:1fr; gap:8px; }
+.fm.m .eng { padding:56px 20px; grid-template-columns:1fr; gap:32px; }
+.fm.m .eng > div:last-child { order:-1; }
+.fm.m .eng h2 { font-size:32px; } .fm.m .eng .body { font-size:16px; }
+.fm.m .sheet .in { padding:22px; } .fm.m .sheet .top b { font-size:20px; }
+.fm.m .sheet .dl { flex-wrap:wrap; }
+.fm.m .cb { padding:56px 20px 0; grid-template-columns:1fr; gap:32px; }
+.fm.m .cb h2 { font-size:52px; } .fm.m .cb .lead { font-size:16px; }
+.fm.m .cb .ppl { margin-top:28px; gap:12px; } .fm.m .cb .ppl .av { height:200px; }
+.fm.m .cb .ppl > div { align-content:start; gap:12px; } .fm.m .cb .ppl span span { font-size:13px; }
+.fm.m .sheet .top { flex-direction:column; align-items:flex-start; gap:6px; }
+.fm.m .cb .form .in { padding:22px; }
+.fm.m .cb .form .f2 { grid-template-columns:1fr; }
+.fm.m .fb2 { margin-top:56px; padding:48px 20px 40px !important; }
+.fm.m .fb2 .grid { grid-template-columns:1fr 1fr; gap:32px 24px; }
+.fm.m .fb2 .grid > div:first-child { grid-column:span 2; }
+.fm.m .fb2 .bottom { margin-top:36px; flex-direction:column; gap:10px; }
+.fm.m .fb2 .bottom span a { margin:0 16px 0 0; }
+.fm.m .fb2 .sym { right:-220px; top:-80px; height:700px; }
+.fm.m .fb2 .word { margin-top:32px; width:350px; }
+
 </style>
 </head>
 <body>
+<div class="fm">
+  <div class="util">
+    <div><span>Spare parts: <b>varaosat@finmatec.fi</b></span><span>Service hotline</span></div>
+    <div>Trading Partners in Finland <span class="lang"><em>EN</em><em>FI</em></span></div>
+  </div>
 
-<main>
-<nav class="nav" id="nav" aria-label="Main">
-  <img src="media/logo-white.png" alt="Finmatec">
-  <ul>
-    <li><a href="#chain">Food Processing</a></li>
-    <li><a href="#footer">Parts, Products &amp; Support</a></li>
-    <li><a href="#proof">References</a></li>
-    <li><a href="#process">Finmatec</a></li>
-  </ul>
-  <div class="lang" role="group" aria-label="Language"><a href="#" aria-current="true" lang="en">EN</a><a href="#footer" lang="fi" hreflang="fi" title="Suomeksi: Laitevälitys">FI</a></div>
-  <a class="pill" href="#cta">Talk to an engineer <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
-</nav>
+  <!-- 1 Hero -->
+  <section class="hero">
+    <div class="media"><video src="media/hero.mp4" poster="media/k10.jpg" autoplay="" muted="" loop="" playsinline=""></video></div>
+    <nav class="nav">
+      <img class="logoimg" src="media/finmatec-logo.svg" alt="Finmatec">
+      <ul><li>Food Processing<span>&#9662;</span></li><li>Products<span>&#9662;</span></li><li>Service &amp; Spare Parts<span>&#9662;</span></li><li>References</li><li>Resources<span>&#9662;</span></li><li>About<span>&#9662;</span></li></ul>
+      <a class="btn dark qk">Request a quote <i><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"></path></svg></i></a><button class="burger" type="button" aria-label="Open menu"><span></span><span></span><span></span></button>
+    </nav>
+    <div class="hero-copy">
+      <h1>Automated raw material handling for the food industry</h1>
+    </div>
+    <div class="router">
+      <a><span><b>Meat Processing</b><small>Ergonomics and maximum yield</small></span><i>&#8594;</i></a>
+      <a><span><b>Poultry Processing</b><small>High volumes, MDM and food safety</small></span><i>&#8594;</i></a>
+      <a><span><b>Pet Food Processing</b><small>Food-grade hygiene, minimal spillage</small></span><i>&#8594;</i></a>
+    </div>
+  </section>
 
-<header class="hero">
-  <img class="poster" src="media/v-cut1.jpg" alt="">
-  <video autoplay muted loop playsinline preload="auto" poster="media/v-cut1.jpg" aria-hidden="true"><source src="media/hero.mp4" type="video/mp4"></video>
-  <div class="hero-in wrap">
+  <!-- 1b Intro -->
+  <section class="intro">
+    <p class="stmt">Get more out of <em>every kilo</em> of raw material.</p>
+    <div class="gains">
+      <div class="g up"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 18V4M5 10l6-6 6 6"></path></svg></span><span><small>Increase</small><b>Capacity</b></span></div>
+      <div class="g up"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 18V4M5 10l6-6 6 6"></path></svg></span><span><small>Increase</small><b>Safety</b></span></div>
+      <div class="g dn"><span class="ic"><svg width="22" height="22" viewBox="0 0 22 22" fill="none" stroke="currentColor" stroke-width="2" aria-hidden="true"><path d="M11 4v14M5 12l6 6 6-6"></path></svg></span><span><small>Fewer</small><b>Hands on the floor</b></span></div>
+    </div>
+  </section>
+
+  <!-- 3 Flow -->
+  <section class="flow">
+    <div class="flow-head">
+      <h2>From raw material<br>to frozen pallet. <span class="hl">One team.</span></h2>
+      <p>We plan, design, manufacture and automate the handling of your raw material, from the first 2D drawing to a running line.</p>
+    </div>
+    <div class="railwrap"><div class="track">
+      <div class="st"><div class="dot">01</div><div class="ph"><img src="media/v-cut1.jpg" alt="Crushed raw material"></div><h3>Crush &amp; grind</h3><div class="prod"><a>Titan Series</a></div><p>Frozen block breakers, grinders and shredders.</p></div>
+      <div class="st"><div class="dot">02</div><div class="ph"><img src="media/k7.jpg" alt="Mixer with screw conveyor"></div><h3>Pump &amp; mix</h3><div class="prod"><a>Finmatec Mixers</a></div><p>Open and cooling mixers up to 5&nbsp;500 litres.</p></div>
+      <div class="st"><div class="dot">03</div><div class="ph"><img src="media/k11.jpg" alt="Finmatec screw conveyor"></div><h3>Convey</h3><div class="prod"><a>Screw Conveyors</a><a>Belt Conveyors</a></div><p>Stainless conveyors in a closed, safe flow.</p></div>
+      <div class="st star"><div class="dot">04</div><div class="card"><div class="ph"><img src="media/v5302.jpg" alt="Frozen blocks"></div><span class="badge">Our core</span><h3>Freeze</h3><div class="prod"><a>Plate Freezing Systems</a></div><p>Loading, freezing, unloading and palletising, automated around the plate freezer.</p></div></div>
+      <div class="st"><div class="dot">05</div><div class="ph" style="background:#fff"><img src="media/binstacker.png" alt="BinStacker" style="object-fit:contain"></div><h3>Store</h3><div class="prod"><a>BinStacker</a><a>Silos, Bins &amp; Hoppers</a></div><p>Automatic bin storage for up to 5&nbsp;000 bins.</p></div>
+    </div></div>
+    <div class="flow-foot"><span>Every station is also sold on its own.</span><a class="tlink">All products &#8594;</a></div>
+  </section>
+
+  <!-- 2 40 kg -->
+  <section class="kg">
+    <div class="kg-num">40<small>kg</small></div>
     <div>
-      <h1>Automated raw material handling for the <em>food industry.</em></h1>
-      <p class="lede">Get more out of every kilo of raw material. We increase your capacity and safety with fewer hands on the factory floor.</p>
-      <div class="ctas">
-        <a class="pill" href="#cta">Talk to an engineer <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
-        <a class="pill ghost" href="#chain">See the line <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M8 3v10M4 9l4 4 4-4"/></svg></span></a>
-      </div>
+      <span class="eyebrow">The heaviest job on the floor</span>
+      <h2 style="margin-top:22px">One slippery frozen block, lifted by hand.</h2>
+      <p>Lifting frozen blocks causes crush injuries, falls and worn-out backs. We take the heavy manual steps off the factory floor, and automate only as far as it makes economic sense for your volumes.</p>
+      <a class="tlink">Why the right level of automation &#8594;</a>
     </div>
-  </div>
-</header>
+  </section>
 
-<section class="statement" aria-label="Why automate">
-  <div class="wrap">
-    <p class="big" id="words">Raw material handling in the food industry is nothing for beginners. With over 2 500 deliveries, we understand your processes and build solutions that work in practice.</p>
-    <h2 class="why">Why choose Finmatec?</h2>
-    <p class="why-lede">The right level of automation for every customer. We automate as far as it makes economic sense, with safety, cleanability and minimal floor spillage built into every delivery.</p>
-    <div class="facts">
-      <article class="usp safety"><div class="core">
-        <video class="bg" autoplay muted loop playsinline preload="none" data-lazy poster="media/v5302.jpg" aria-hidden="true"><source data-src="media/c5302.mp4" type="video/mp4"></video>
-        <span class="data">Maximum safety</span>
-        <h3>No more 40-kilo lifts.</h3>
-        <p>Our automated systems minimise the risk of crush injuries, slips and strain from handling slippery, 40-kilo frozen blocks. Every delivery is risk-assessed for CE marking, with mechanical and electrical guards built for daily washdown.</p>
-      </div></article>
-      <article class="usp capacity"><div class="core">
-        <img class="bg" src="media/p12.jpg" alt="" loading="lazy" style="object-position:55% 45%">
-        <span class="data">Automation that takes the load</span>
-        <h3>Fewer boots on the floor.</h3>
-        <p>We replace heavy manual steps and reduce the staff needed on the factory floor, which frees resources and raises your capacity right away.</p>
-      </div></article>
-      <article class="usp payback"><div class="core">
-        <span class="data">Short payback</span>
-        <div class="row">
-          <p class="fig">2-5<small>yrs</small></p>
-          <p>The payback time is short. For a new automated plate freezing line, it is often just 2 to 5 years.</p>
-        </div>
-      </div></article>
-      <article class="usp hygiene"><div class="core">
-        <img class="bg" src="media/p16.jpg" alt="" loading="lazy" style="object-position:50% 60%">
-        <span class="data">Hygiene and minimised waste</span>
-        <h3>Clean by design.</h3>
-        <p>Our machines are designed with a strict focus on cleanability and on keeping raw material off the floor, whether you process food or pet food.</p>
-      </div></article>
-      <article class="usp partner"><div class="core">
-        <span class="data">A reliable turnkey partner</span>
-        <h3>One team, all the way.</h3>
-        <p>We take total responsibility for your investment. From planning and design to turnkey installation and automation, the same competent team is with you all the way.</p>
-        <a class="pill" href="#process" style="align-self:flex-start;margin-top:8px">Read more about Finmatec <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
-      </div></article>
-    </div>
-  </div>
-</section>
-
-<section class="mask" aria-label="Blocks up to 40 kilograms">
-  <video autoplay muted loop playsinline preload="none" data-lazy aria-hidden="true"><source data-src="media/c5363.mp4" type="video/mp4"></video>
-  <div class="knock" aria-hidden="true"><span id="kg">40 KG</span></div>
-  <div class="cap data"><i aria-hidden="true"></i><span>One frozen block, lifted by hand, many times a shift</span></div>
-</section>
-
-<section class="chain" id="chain">
-  <div class="chain-head wrap">
-    <h2>From frozen block to pallet. One team.</h2>
-    <p>We plan, design, manufacture and automate process lines for meat and poultry handling. Finmatec machines handle both food and animal feed, and we work as a turnkey supplier for customers in Europe and beyond.</p>
-  </div>
-  <div class="rail-wrap">
-    <div class="rail wrap" id="rail">
-      <article class="station">
-        <div class="core">
-          <div class="media"><video autoplay muted loop playsinline preload="none" data-lazy poster="media/v5381.jpg" aria-hidden="true"><source data-src="media/c5381.mp4" type="video/mp4"></video><span class="n">01 · Intake</span></div>
-          <div class="body"><h3>Crush</h3><p>CombiBreaker Mini Titan breaks massive frozen blocks into fist-sized pieces that feed safely into the grinders.</p><div class="spec"><span>Titan series</span><span>Standstill monitors</span><span>Stainless steel</span></div></div>
-        </div>
-      </article>
-      <article class="station">
-        <div class="core">
-          <div class="media"><img src="media/p07.jpg" alt="Large mixer with service platform and conveyor" loading="lazy"><span class="n">02 · Mixing</span></div>
-          <div class="body"><h3>Mix</h3><p>Finmatec Mixers, sized to your recipes and volumes, with injected CO2 cooling or steam heating where the process needs it.</p><div class="spec"><span>Finmatec Mixers</span><span>Up to 3 000 kg</span><span>CO2 or steam</span><span>Cleanability</span></div></div>
-        </div>
-      </article>
-      <article class="station">
-        <div class="core">
-          <div class="media"><video autoplay muted loop playsinline preload="none" data-lazy poster="media/p13.jpg" aria-hidden="true"><source data-src="media/c5294.mp4" type="video/mp4"></video><span class="n">03 · Transport</span></div>
-          <div class="body"><h3>Move</h3><p>Finmatec screw conveyors, known and trusted by our customers, plus belt conveyors that keep MDM and raw material in a closed flow with no floor spillage.</p><div class="spec"><span>Finmatec screw conveyors</span><span>Belt conveyors</span><span>MDM</span></div></div>
-        </div>
-      </article>
-      <article class="station">
-        <div class="core">
-          <div class="media"><img src="media/v5302.jpg" alt="Frozen blocks leaving a plate freezer" loading="lazy" style="object-position:50% 0%"><span class="n">04 · Freezing</span></div>
-          <div class="body"><h3>Freeze</h3><p>Automated filling, emptying and palletising around Jackstone plate freezers. 50+ turnkey installations worldwide.</p><div class="spec"><span>Blocks to 40 kg</span><span>Jackstone</span><span>Payback 2 to 5 yrs</span></div></div>
-        </div>
-      </article>
-      <article class="station bin">
-        <div class="core">
-          <div class="media">
-            <img src="media/binstacker.png" alt="BinStacker high-bay storage with bins stacked on several levels" loading="lazy">
-            <span class="n">05 · Storage</span>
-          </div>
-          <div class="body"><h3>Stack</h3><p>BinStacker, our patented high-bay system, builds on ceiling height instead of floor space. Online weighing and RFID on every bin, and it works together with AGVs.</p><div class="spec"><span>Up to 5 000 bins</span><span>Bins to 200 kg</span><span>RFID</span><span>Patented in USA and Finland</span></div></div>
-        </div>
-      </article>
-    </div>
-  </div>
-</section>
-
-<section class="ind" aria-labelledby="ind-h">
-  <div class="wrap">
-    <h2 id="ind-h">Explore our solutions for</h2>
-    <div class="slices">
-      <a class="slice" href="#cta"><img src="media/v5381.jpg" alt="Frozen meat breaking up in a crusher" loading="lazy"><div class="t"><span class="data">Beef · pork · lamb</span><h3>Meat processing</h3><p>Robust solutions that protect your staff and get the most value out of your raw material.</p></div></a>
-      <a class="slice typo" href="#cta"><span class="big" aria-hidden="true">MDM</span><div class="t"><span class="data">Fastest growing protein</span><h3>Poultry processing</h3><p>Automated process lines for the high volumes and strict food safety demands of the poultry industry.</p></div></a>
-      <a class="slice" href="#cta"><img src="media/p12.jpg" alt="Operators at a pet food line" loading="lazy" style="object-position:55% 50%"><div class="t"><span class="data">Food-grade standard</span><h3>Pet food processing</h3><p>Hygienic design with a strict focus on cleanability and minimised waste.</p></div></a>
-    </div>
-  </div>
-</section>
-
-<section class="proof" id="proof" aria-label="Proof">
-  <div class="wrap">
-    <div class="bento">
-      <div class="cell c-quote"><div class="core">
-        <div class="mark" aria-hidden="true">“</div>
-        <blockquote>Five process operators used to be needed on the line. Now we work both faster and safer, with fewer boots on the factory floor.</blockquote>
-        <div style="display:flex;flex-wrap:wrap;gap:20px 32px;align-items:center;justify-content:space-between">
-          <p class="data" style="color:var(--frost)">Magnus Petterson · CEO · Snellman Petfood</p>
-          <a class="pill" href="#proof">See our references <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
-        </div>
-      </div></div>
-      <div class="cell c-img"><div class="core"><img src="media/p02.jpg" alt="Operator at the line control panel" loading="lazy" style="object-position:50% 30%"></div></div>
-      <div class="cell c-num"><div class="core">
-        <p class="num">2 500<span style="color:var(--turq)">+</span></p>
-        <p class="data" style="color:#3b456b">Deliveries to food and pet food producers since 1989</p>
-      </div></div>
-      <div class="cell c-num"><div class="core">
-        <p class="num">50<span style="color:var(--turq)">+</span></p>
-        <p class="data" style="color:#3b456b">Turnkey plate freezing installations worldwide</p>
-      </div></div>
-      <div class="cell c-num"><div class="core">
-        <p class="num">80<span style="color:var(--turq)"> %</span></p>
-        <p class="data" style="color:#3b456b">Of our projects are built into existing factories</p>
-      </div></div>
-    </div>
-  </div>
-</section>
-
-<section class="proc" id="process" aria-labelledby="proc-h">
-  <div class="wrap proc-grid">
+  <!-- 4 Plate freezing -->
+  <section class="pf">
     <div>
-      <h2 id="proc-h">We understand your process.</h2>
-      <p class="sub">Use us as your turnkey supplier when you plan a new factory, and we support you all the way from the first 2D drawing to a finished process line. Building a line in your existing factory? We find a solution that works with your dimensions.</p>
+      <span class="eyebrow">Plate Freezing Systems</span>
+      <h2>The right level of automation, around every plate freezer.</h2>
+      <p class="body">We automate the handling around the plate freezer as far as it pays off for your volumes. The plate freezers are made by our partner Jackstone; we plan, automate and install everything around them.</p>
+      <div class="seg"><span>Manual stacking</span><span>Semi-automatic</span><span class="on">Fully automatic</span></div>
+      <div class="level"><div class="belt"></div><div class="auto"><small>Automated</small><b>Loading</b></div><div class="auto"><small>Automated</small><b>Freezing</b></div><div class="auto"><small>Automated</small><b>Unloading</b></div><div class="auto"><small>Automated</small><b>Palletising</b></div></div>
+      <p class="cap">Capacity up to 180 tonnes per 24 hours.</p>
+      <div class="ctas"><a class="btn light">Plate Freezing Systems <i>&#8594;</i></a><a class="btn ghost">Download brochure (PDF)</a></div>
     </div>
-    <div class="steps" id="steps">
-      <span class="line" aria-hidden="true"><i id="line"></i></span>
-      <ol style="list-style:none;margin:0;padding:0">
-      <li><span class="dot">01</span><h3>2D drawing and 3D layout</h3><p>We start from your drawings and model the whole process to fit your ceiling height, pillars and floor drains.</p></li>
-      <li><span class="dot">02</span><h3>Risk assessment and CE marking</h3><p>Every delivery is risk-assessed as part of CE marking. Machines are washed every day, so mechanical and electrical guards are designed in from the start.</p></li>
-      <li><span class="dot">03</span><h3>Manufacturing</h3><p>Process lines, plate freezing automation and BinStacker, built in our own hands.</p></li>
-      <li><span class="dot">04</span><h3>Factory acceptance test</h3><p>Tested before it leaves us, so commissioning is not where problems are found.</p></li>
-      <li><span class="dot">05</span><h3>Installation and commissioning</h3><p>Built in, started up and handed over to your operators.</p></li>
-      <li><span class="dot">06</span><h3>Service and parts</h3><p>The same team stays with you. Wear and spare parts for every machine we deliver.</p></li>
-      </ol>
-    </div>
+    <div class="bezel"><div class="in"><video src="media/c5302.mp4" poster="media/v5302.jpg" autoplay="" muted="" loop="" playsinline=""></video><video src="media/c5363.mp4" autoplay="" muted="" loop="" playsinline=""></video><video src="media/c5294.mp4" autoplay="" muted="" loop="" playsinline=""></video><span class="tag" style="z-index:2">&#9654; Footage from Finmatec lines</span></div></div>
+  </section>
+
+  <!-- 5 Why (variant B) -->
+  <section class="wb">
+  <div class="head"><h2>Why choose Finmatec?</h2></div>
+  <div class="bento">
+    <div class="tile big"><img src="media/k2.jpg" alt=""><span class="mono">01</span><div class="b"><h3>Automation that relieves</h3><p>We replace heavy manual steps and reduce the boots on your factory floor, as far as it makes economic sense.</p></div></div>
+    <div class="tile"><span class="mono">02</span><div><h3>Safety built in</h3><p>Every delivery is risk-assessed and CE-marked, with mechanical and electrical guards for daily washdown.</p></div></div>
+    <div class="tile"><span class="mono">03</span><div><h3>Hygiene and minimal waste</h3><p>Designed for cleanability and minimal raw material on the floor, for food and pet food alike.</p></div></div>
+    <div class="tile"><span class="mono">04 · Short payback</span><div><div class="figure">2-5 yrs</div><p>Typical payback for a new automated plate freezing line.</p></div></div>
+    <div class="tile"><span class="mono">05</span><div><h3>One team, full responsibility</h3><p>Planning, risk assessment, manufacturing, FAT, installation, commissioning and service.</p></div></div>
   </div>
 </section>
 
-<section class="need" aria-labelledby="need-h">
-  <div class="wrap need-grid">
-    <div>
-      <h2 id="need-h">Need a specific product?</h2>
-      <p>Upgrading an existing line with the link that is missing? Order a single machine from us, or the spare parts for the Finmatec line you already run, wherever in the world it is.</p>
-    </div>
-    <div class="need-links">
-      <a href="#chain"><span>Finmatec Mixers</span><span class="data">Own product</span><span class="arr" aria-hidden="true">→</span></a>
-      <a href="#chain"><span>Screw conveyors</span><span class="data">Own product</span><span class="arr" aria-hidden="true">→</span></a>
-      <a href="#chain"><span>Crushers and grinders</span><span class="data">Titan series</span><span class="arr" aria-hidden="true">→</span></a>
-      <a href="#footer"><span>Spare parts for your Finmatec line</span><span class="data">Worldwide</span><span class="arr" aria-hidden="true">→</span></a>
-    </div>
-    <div class="trading">
+  <!-- 6 Existing factories -->
+  <section class="exist">
+    <div class="left">
       <div>
-        <p class="data">In Finland only · Suomessa</p>
-        <h3>Trading Partners in Finland</h3>
-        <p>Tools, spare parts and consumables for slaughtering and cutting from the brands we represent, delivered fast from our warehouse in Vaasa.</p>
+        <div class="big80">80<sup>%</sup></div>
+        <h2>of our projects are built into existing factories.</h2>
+        <p class="body">Low ceilings, tight floors, a fixed shutdown window: we find a solution that fits your dimensions and installs during your shutdown. Planning a new factory? We support you from the first 2D drawing to a finished line.</p>
       </div>
-      <a class="pill" href="#footer" lang="fi">Laitevälitys <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
+      <div class="cta2">
+        <div class="ptitle" style="margin-top:0"><b>Send us your floor plan</b><small>PDF · DWG · JPG</small></div>
+        <div class="fields"><div class="f">Name</div><div class="f">Work email</div></div>
+        <a class="btn dark">Send floor plan <i>&#8594;</i></a>
+      </div>
     </div>
-  </div>
-</section>
-
-<section class="cta" id="cta" aria-labelledby="cta-h">
-  <svg class="plan" id="plan" viewBox="0 0 1600 900" aria-hidden="true" focusable="false">
-    <defs>
-      <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="currentColor" stroke-width=".8" opacity=".5"/></pattern>
-      <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#0aa04d"/></marker>
-      <marker id="tick" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M2 8 8 2" stroke="currentColor" stroke-width="1.2"/></marker>
-    </defs>
-
-    <!-- Structural grid: axes A to F, 1 to 4 -->
-    <g class="ln thin">
-      <line x1="160" y1="110" x2="160" y2="770" class="draw" pathLength="1"/><line x1="400" y1="110" x2="400" y2="770" class="draw" pathLength="1"/><line x1="640" y1="110" x2="640" y2="770" class="draw" pathLength="1"/><line x1="880" y1="110" x2="880" y2="770" class="draw" pathLength="1"/><line x1="1120" y1="110" x2="1120" y2="770" class="draw" pathLength="1"/><line x1="1360" y1="110" x2="1360" y2="770" class="draw" pathLength="1"/>
-      <line x1="120" y1="160" x2="1400" y2="160" class="draw" pathLength="1"/><line x1="120" y1="360" x2="1400" y2="360" class="draw" pathLength="1"/><line x1="120" y1="560" x2="1400" y2="560" class="draw" pathLength="1"/><line x1="120" y1="740" x2="1400" y2="740" class="draw" pathLength="1"/>
-    </g>
-    <g>
-      <circle cx="160" cy="80" r="15" class="ln"/><text x="160" y="85" text-anchor="middle">A</text>
-      <circle cx="400" cy="80" r="15" class="ln"/><text x="400" y="85" text-anchor="middle">B</text>
-      <circle cx="640" cy="80" r="15" class="ln"/><text x="640" y="85" text-anchor="middle">C</text>
-      <circle cx="880" cy="80" r="15" class="ln"/><text x="880" y="85" text-anchor="middle">D</text>
-      <circle cx="1120" cy="80" r="15" class="ln"/><text x="1120" y="85" text-anchor="middle">E</text>
-      <circle cx="1360" cy="80" r="15" class="ln"/><text x="1360" y="85" text-anchor="middle">F</text>
-      <circle cx="90" cy="160" r="15" class="ln"/><text x="90" y="165" text-anchor="middle">1</text>
-      <circle cx="90" cy="360" r="15" class="ln"/><text x="90" y="365" text-anchor="middle">2</text>
-      <circle cx="90" cy="560" r="15" class="ln"/><text x="90" y="565" text-anchor="middle">3</text>
-      <circle cx="90" cy="740" r="15" class="ln"/><text x="90" y="745" text-anchor="middle">4</text>
-    </g>
-
-    <!-- Walls with door openings -->
-    <path class="wall draw" pathLength="1" d="M140 140 H760 M820 140 H1380 V760 H1060 M980 760 H140 V140"/>
-    <path class="wall draw" pathLength="1" d="M150 150 H760 M820 150 H1370 V750 H1060 M980 750 H150 V150"/>
-    <path class="ln thin" d="M760 140 A60 60 0 0 1 820 200"/>
-    <!-- Pillars -->
-    <g fill="currentColor" opacity=".8">
-      <rect x="392" y="352" width="16" height="16"/><rect x="632" y="352" width="16" height="16"/><rect x="872" y="352" width="16" height="16"/><rect x="1112" y="352" width="16" height="16"/>
-      <rect x="392" y="552" width="16" height="16"/><rect x="632" y="552" width="16" height="16"/><rect x="872" y="552" width="16" height="16"/><rect x="1112" y="552" width="16" height="16"/>
-    </g>
-    <!-- Floor drains -->
-    <g class="ln thin">
-      <path d="M180 660 H1340" stroke-dasharray="3 7" class="draw" pathLength="1"/>
-      <circle cx="300" cy="660" r="9"/><path d="M293 653 307 667M307 653 293 667"/>
-      <circle cx="760" cy="660" r="9"/><path d="M753 653 767 667M767 653 753 667"/>
-      <circle cx="1240" cy="660" r="9"/><path d="M1233 653 1247 667M1247 653 1233 667"/>
-    </g>
-
-    <!-- Equipment -->
-    <rect class="eq draw" pathLength="1" x="200" y="210" width="150" height="110" rx="4"/>
-    <rect x="215" y="225" width="120" height="50" fill="url(#hatch)"/>
-    <text x="215" y="300">CB-1</text><text x="215" y="316" class="lbl">CRUSHER</text>
-
-    <rect class="eq draw" pathLength="1" x="450" y="200" width="150" height="140" rx="4"/>
-    <circle class="ln draw" pathLength="1" cx="525" cy="262" r="46"/>
-    <path class="ln thin" d="M495 262h60M525 232v60"/>
-    <text x="460" y="330">MX-1 · 3 000 kg</text>
-
-    <path class="eq draw" pathLength="1" d="M600 250 L860 222 L866 262 L606 290 Z"/>
-    <path class="ln thin" d="M630 252 640 282M660 249 670 279M690 246 700 276M720 242 730 272M750 239 760 269M780 236 790 266M810 232 820 262"/>
-    <text x="680" y="214" class="lbl">SCREW CONVEYOR</text>
-
-    <g>
-      <rect class="eq draw" pathLength="1" x="920" y="190" width="80" height="150" rx="3"/>
-      <rect class="eq draw" pathLength="1" x="1010" y="190" width="80" height="150" rx="3"/>
-      <rect class="eq draw" pathLength="1" x="1100" y="190" width="80" height="150" rx="3"/>
-      <rect class="eq draw" pathLength="1" x="1190" y="190" width="80" height="150" rx="3"/>
-      <g class="ln thin"><path d="M920 215h80M920 240h80M920 265h80M920 290h80M920 315h80M1010 215h80M1010 240h80M1010 265h80M1010 290h80M1010 315h80M1100 215h80M1100 240h80M1100 265h80M1100 290h80M1100 315h80M1190 215h80M1190 240h80M1190 265h80M1190 290h80M1190 315h80"/></g>
+    <div class="planfull"><svg class="plan" viewBox="0 0 1600 900" preserveAspectRatio="xMidYMid slice" aria-hidden="true" focusable="false">
+      <defs>
+        <pattern id="hatch" width="8" height="8" patternUnits="userSpaceOnUse" patternTransform="rotate(45)"><line x1="0" y1="0" x2="0" y2="8" stroke="currentColor" stroke-width=".8" opacity=".5"></line></pattern>
+        <marker id="arr" viewBox="0 0 10 10" refX="8" refY="5" markerWidth="7" markerHeight="7" orient="auto-start-reverse"><path d="M0 0 10 5 0 10z" fill="#141414"></path></marker>
+        <marker id="tick" viewBox="0 0 10 10" refX="5" refY="5" markerWidth="9" markerHeight="9" orient="auto"><path d="M2 8 8 2" stroke="currentColor" stroke-width="1.2"></path></marker>
+      </defs>
+      <g class="ln thin">
+        <line x1="160" y1="110" x2="160" y2="770" pathLength="1"></line><line x1="400" y1="110" x2="400" y2="770" pathLength="1"></line><line x1="640" y1="110" x2="640" y2="770" pathLength="1"></line><line x1="880" y1="110" x2="880" y2="770" pathLength="1"></line><line x1="1120" y1="110" x2="1120" y2="770" pathLength="1"></line><line x1="1360" y1="110" x2="1360" y2="770" pathLength="1"></line>
+        <line x1="120" y1="160" x2="1400" y2="160" pathLength="1"></line><line x1="120" y1="360" x2="1400" y2="360" pathLength="1"></line><line x1="120" y1="560" x2="1400" y2="560" pathLength="1"></line><line x1="120" y1="740" x2="1400" y2="740" pathLength="1"></line>
+      </g>
+      <g>
+        <circle cx="160" cy="80" r="15" class="ln"></circle><text x="160" y="85" text-anchor="middle">A</text>
+        <circle cx="400" cy="80" r="15" class="ln"></circle><text x="400" y="85" text-anchor="middle">B</text>
+        <circle cx="640" cy="80" r="15" class="ln"></circle><text x="640" y="85" text-anchor="middle">C</text>
+        <circle cx="880" cy="80" r="15" class="ln"></circle><text x="880" y="85" text-anchor="middle">D</text>
+        <circle cx="1120" cy="80" r="15" class="ln"></circle><text x="1120" y="85" text-anchor="middle">E</text>
+        <circle cx="1360" cy="80" r="15" class="ln"></circle><text x="1360" y="85" text-anchor="middle">F</text>
+        <circle cx="90" cy="160" r="15" class="ln"></circle><text x="90" y="165" text-anchor="middle">1</text>
+        <circle cx="90" cy="360" r="15" class="ln"></circle><text x="90" y="365" text-anchor="middle">2</text>
+        <circle cx="90" cy="560" r="15" class="ln"></circle><text x="90" y="565" text-anchor="middle">3</text>
+        <circle cx="90" cy="740" r="15" class="ln"></circle><text x="90" y="745" text-anchor="middle">4</text>
+      </g>
+      <path class="wall" pathLength="1" d="M140 140 H760 M820 140 H1380 V760 H1060 M980 760 H140 V140"></path>
+      <path class="wall" pathLength="1" d="M150 150 H760 M820 150 H1370 V750 H1060 M980 750 H150 V150"></path>
+      <path class="ln thin" d="M760 140 A60 60 0 0 1 820 200"></path>
+      <g fill="currentColor" opacity=".8">
+        <rect x="392" y="352" width="16" height="16"></rect><rect x="632" y="352" width="16" height="16"></rect><rect x="872" y="352" width="16" height="16"></rect><rect x="1112" y="352" width="16" height="16"></rect>
+        <rect x="392" y="552" width="16" height="16"></rect><rect x="632" y="552" width="16" height="16"></rect><rect x="872" y="552" width="16" height="16"></rect><rect x="1112" y="552" width="16" height="16"></rect>
+      </g>
+      <g class="ln thin">
+        <path d="M180 660 H1340" stroke-dasharray="3 7"></path>
+        <circle cx="300" cy="660" r="9"></circle><path d="M293 653 307 667M307 653 293 667"></path>
+        <circle cx="760" cy="660" r="9"></circle><path d="M753 653 767 667M767 653 753 667"></path>
+        <circle cx="1240" cy="660" r="9"></circle><path d="M1233 653 1247 667M1247 653 1233 667"></path>
+      </g>
+      <rect class="eq" pathLength="1" x="200" y="210" width="150" height="110" rx="4"></rect>
+      <rect x="215" y="225" width="120" height="50" fill="url(#hatch)"></rect>
+      <text x="215" y="300">CB-1</text><text x="215" y="316" class="lbl">CRUSHER</text>
+      <rect class="eq" pathLength="1" x="450" y="200" width="150" height="140" rx="4"></rect>
+      <circle class="ln" cx="525" cy="262" r="46"></circle>
+      <path class="ln thin" d="M495 262h60M525 232v60"></path>
+      <text x="460" y="330">MX-1 · 3 000 kg</text>
+      <path class="eq" pathLength="1" d="M600 250 L860 222 L866 262 L606 290 Z"></path>
+      <path class="ln thin" d="M630 252 640 282M660 249 670 279M690 246 700 276M720 242 730 272M750 239 760 269M780 236 790 266M810 232 820 262"></path>
+      <text x="680" y="214" class="lbl">SCREW CONVEYOR</text>
+      <rect class="eq" pathLength="1" x="920" y="190" width="80" height="150" rx="3"></rect>
+      <rect class="eq" pathLength="1" x="1010" y="190" width="80" height="150" rx="3"></rect>
+      <rect class="eq" pathLength="1" x="1100" y="190" width="80" height="150" rx="3"></rect>
+      <rect class="eq" pathLength="1" x="1190" y="190" width="80" height="150" rx="3"></rect>
+      <g class="ln thin"><path d="M920 215h80M920 240h80M920 265h80M920 290h80M920 315h80M1010 215h80M1010 240h80M1010 265h80M1010 290h80M1010 315h80M1100 215h80M1100 240h80M1100 265h80M1100 290h80M1100 315h80M1190 215h80M1190 240h80M1190 265h80M1190 290h80M1190 315h80"></path></g>
       <text x="920" y="182">PF-1</text><text x="1010" y="182">PF-2</text><text x="1100" y="182">PF-3</text><text x="1190" y="182">PF-4</text>
       <text x="1290" y="270" class="lbl">PLATE</text><text x="1290" y="286" class="lbl">FREEZERS</text>
-    </g>
-
-    <rect class="eq draw" pathLength="1" x="940" y="410" width="330" height="120" rx="3"/>
-    <rect class="eq draw" pathLength="1" x="950" y="420" width="140" height="100" rx="2"/>
-    <text x="1104" y="460">PAL-1</text><text x="1104" y="478" class="lbl">BLOCK PALLETISER</text>
-
-    <g>
-      <rect class="eq draw" pathLength="1" x="430" y="410" width="400" height="200" rx="3"/>
-      <g class="ln thin">
-        <path d="M430 450h400M430 490h400M430 530h400M430 570h400M480 410v200M530 410v200M580 410v200M630 410v200M680 410v200M730 410v200M780 410v200"/>
-      </g>
-      <g fill="currentColor" opacity=".18"><rect x="481" y="451" width="48" height="38"/><rect x="631" y="491" width="48" height="38"/><rect x="731" y="531" width="48" height="38"/><rect x="531" y="571" width="48" height="38"/></g>
+      <rect class="eq" pathLength="1" x="940" y="410" width="330" height="120" rx="3"></rect>
+      <rect class="eq" pathLength="1" x="950" y="420" width="140" height="100" rx="2"></rect>
+      <text x="1104" y="460">PAL-1</text><text x="1104" y="478" class="lbl">BLOCK PALLETISER</text>
+      <rect class="eq" pathLength="1" x="430" y="410" width="400" height="200" rx="3"></rect>
+      <g class="ln thin"><path d="M430 450h400M430 490h400M430 530h400M430 570h400M480 410v200M530 410v200M580 410v200M630 410v200M680 410v200M730 410v200M780 410v200"></path></g>
+      <g fill="currentColor" opacity=".18"><rect x="481" y="451" width="48" height="38"></rect><rect x="631" y="491" width="48" height="38"></rect><rect x="731" y="531" width="48" height="38"></rect><rect x="531" y="571" width="48" height="38"></rect></g>
       <text x="440" y="632">BS-1 · BINSTACKER · 5 000 BINS</text>
-    </g>
+      <path class="flow" marker-end="url(#arr)" d="M275 330 V380 H470 M600 270 H600 M866 245 H905 M1230 345 V395 M940 470 H850"></path>
+      <g class="ln thin">
+        <line x1="160" y1="815" x2="400" y2="815" marker-start="url(#tick)" marker-end="url(#tick)"></line>
+        <line x1="400" y1="815" x2="640" y2="815" marker-start="url(#tick)" marker-end="url(#tick)"></line>
+        <line x1="640" y1="815" x2="880" y2="815" marker-start="url(#tick)" marker-end="url(#tick)"></line>
+        <line x1="880" y1="815" x2="1120" y2="815" marker-start="url(#tick)" marker-end="url(#tick)"></line>
+        <line x1="1120" y1="815" x2="1360" y2="815" marker-start="url(#tick)" marker-end="url(#tick)"></line>
+        <line x1="1440" y1="160" x2="1440" y2="740" marker-start="url(#tick)" marker-end="url(#tick)"></line>
+      </g>
+      <g text-anchor="middle"><text x="280" y="808">6000</text><text x="520" y="808">6000</text><text x="760" y="808">6000</text><text x="1000" y="808">6000</text><text x="1240" y="808">6000</text></g>
+      <text x="1452" y="455" transform="rotate(90 1452 455)" text-anchor="middle">CEILING H 5200</text>
+      <g>
+        <rect class="ln" x="1180" y="840" width="380" height="50"></rect>
+        <line class="ln thin" x1="1400" y1="840" x2="1400" y2="890"></line>
+        <text x="1194" y="861">PROCESS LAYOUT · 2D</text><text x="1194" y="880" class="lbl">EXISTING FACTORY</text>
+        <text x="1414" y="861">SCALE 1:100</text><text x="1414" y="880" class="lbl">REV A</text>
+      </g>
+    <path id="mroute" class="mroute" d="M275 265 H525 L866 245 H1230 V470 H630 V520"/><rect class="mblk" x="-7" y="-7" width="14" height="14" rx="2"><animateMotion dur="12s" begin="0.0s" repeatCount="indefinite" rotate="0"><mpath href="#mroute"/></animateMotion></rect><rect class="mblk" x="-7" y="-7" width="14" height="14" rx="2"><animateMotion dur="12s" begin="-1.5s" repeatCount="indefinite" rotate="0"><mpath href="#mroute"/></animateMotion></rect><rect class="mblk" x="-7" y="-7" width="14" height="14" rx="2"><animateMotion dur="12s" begin="-3.0s" repeatCount="indefinite" rotate="0"><mpath href="#mroute"/></animateMotion></rect><rect class="mblk" x="-7" y="-7" width="14" height="14" rx="2"><animateMotion dur="12s" begin="-4.5s" repeatCount="indefinite" rotate="0"><mpath href="#mroute"/></animateMotion></rect><rect class="mblk" x="-7" y="-7" width="14" height="14" rx="2"><animateMotion dur="12s" begin="-6.0s" repeatCount="indefinite" rotate="0"><mpath href="#mroute"/></animateMotion></rect><rect class="mblk" x="-7" y="-7" width="14" height="14" rx="2"><animateMotion dur="12s" begin="-7.5s" repeatCount="indefinite" rotate="0"><mpath href="#mroute"/></animateMotion></rect><rect class="mblk" x="-7" y="-7" width="14" height="14" rx="2"><animateMotion dur="12s" begin="-9.0s" repeatCount="indefinite" rotate="0"><mpath href="#mroute"/></animateMotion></rect><rect class="mblk" x="-7" y="-7" width="14" height="14" rx="2"><animateMotion dur="12s" begin="-10.5s" repeatCount="indefinite" rotate="0"><mpath href="#mroute"/></animateMotion></rect></svg></div>
+  </section>
 
-    <!-- Material flow -->
-    <path class="flow" marker-end="url(#arr)" d="M275 330 V380 H470 M600 270 H600 M866 245 H905 M1230 345 V395 M940 470 H850"/>
-
-    <!-- Dimensions -->
-    <g class="ln thin">
-      <line x1="160" y1="815" x2="400" y2="815" marker-start="url(#tick)" marker-end="url(#tick)"/>
-      <line x1="400" y1="815" x2="640" y2="815" marker-start="url(#tick)" marker-end="url(#tick)"/>
-      <line x1="640" y1="815" x2="880" y2="815" marker-start="url(#tick)" marker-end="url(#tick)"/>
-      <line x1="880" y1="815" x2="1120" y2="815" marker-start="url(#tick)" marker-end="url(#tick)"/>
-      <line x1="1120" y1="815" x2="1360" y2="815" marker-start="url(#tick)" marker-end="url(#tick)"/>
-      <line x1="1440" y1="160" x2="1440" y2="740" marker-start="url(#tick)" marker-end="url(#tick)"/>
-    </g>
-    <g text-anchor="middle"><text x="280" y="808">6000</text><text x="520" y="808">6000</text><text x="760" y="808">6000</text><text x="1000" y="808">6000</text><text x="1240" y="808">6000</text></g>
-    <text x="1452" y="455" transform="rotate(90 1452 455)" text-anchor="middle">CEILING H 5200</text>
-
-    <!-- Title block -->
-    <g>
-      <rect class="ln" x="1180" y="840" width="380" height="50"/>
-      <line class="ln thin" x1="1400" y1="840" x2="1400" y2="890"/>
-      <text x="1194" y="861">PROCESS LAYOUT · 2D</text><text x="1194" y="880" class="lbl">EXISTING FACTORY</text>
-      <text x="1414" y="861">SCALE 1:100</text><text x="1414" y="880" class="lbl">REV A</text>
-    </g>
-  </svg>
-  <div class="wrap">
-    <h2 id="cta-h">Send us your <em>2D drawing.</em></h2>
-    <div class="cta-row">
-      <p>Contact us at an early stage. It works best when the process lines are planned before the factory is built.</p>
-      <a class="pill on-light" href="#footer">Request contact <span class="knob" aria-hidden="true"><svg viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.6"><path d="M4 12 12 4M6 4h6v6"/></svg></span></a>
-    </div>
-  </div>
-</section>
-
-<footer class="foot" id="footer">
-  <div class="wrap">
-    <div class="foot-grid">
+  <!-- 7 Proof -->
+  <section class="proof">
+    <div class="quote">
+      <div class="mark">&#8220;</div>
       <div>
-        <img src="media/logo-white.png" alt="Finmatec" style="height:26px;width:auto">
-        <p style="margin-top:22px;line-height:1.7">Finmatec Oy Ab<br>Mottisenkatu 3<br>67700 Kokkola, Finland<br>info@finmatec.fi</p>
+        <blockquote>Five process operators used to be needed on the line. Now we work both faster and safer, with fewer boots on the factory floor.</blockquote>
+        <cite>Magnus Petterson, CEO, Snellman Petfood</cite>
       </div>
-      <div><h4>Solutions &amp; Products</h4><ul><li><a href="#chain">Process lines: meat, poultry, pet food</a></li><li><a href="#chain">Plate freezing systems</a></li><li><a href="#chain">BinStacker</a></li><li><a href="#chain">Finmatec Mixers</a></li><li><a href="#chain">Screw conveyors</a></li><li><a href="#chain">Crushers and grinders, Titan series</a></li><li><a href="#footer">Spare parts for Finmatec lines</a></li><li><a href="#footer">Trading Partners in Finland</a></li></ul></div>
-      <div><h4>Finmatec</h4><ul><li><a href="#process">About us</a></li><li><a href="#proof">References</a></li><li><a href="#cta">Contact</a></li><li><a href="#footer">LinkedIn</a></li><li><a href="#footer">YouTube</a></li></ul></div>
-      <div class="fi" lang="fi"><h4>Suomessa</h4><p style="margin-bottom:16px">Laitevälitys: työkalut, varaosat ja tarvikkeet edustamiltamme merkeiltä Vaasan varastosta.</p><a href="#footer">Laitevälitys <span aria-hidden="true">→</span></a><p style="margin-top:14px">varaosat@finmatec.fi</p></div>
     </div>
-    <div class="base"><span>Privacy policy · Terms of service</span><span>WWTP Solutions →</span></div>
-  </div>
-</footer>
-</main>
+    <div class="logos"><div class="ltrack" ref="{{logoRef}}"><div><img src="media/logos/db41df73ea537bcf857ce027f037e9d7.jpg" alt="Gudruns"></div><div><img src="media/logos/ee6f7b1a3c87811373a7a657e338bf87.jpg" alt="Snellman"></div><div><img src="media/logos/e3a2cae03b9d5339246cc39e546f3fd8.jpg" alt="HKFoods"></div><div><img src="media/logos/455518c9f4d52316f23408ce544001d6.jpg" alt="La Provincia"></div><div><img src="media/logos/1c44fe89610bdf27e7e239529df660c2.jpg" alt="Bonduelle"></div><div><img src="media/logos/c38c161d56a48c05337aaf605542433f.jpg" alt="Darling Ingredients"></div><div><img src="media/logos/e60cd0ef5c5e4b0f0d90a00c7ff3c5cf.jpg" alt="Fazer"></div><div><img src="media/logos/cb1a542922041e53d1428090ab083545.jpg" alt="Hill's"></div><div><img src="media/logos/3c9964ff3a94c0fa3ca143f838d4f995.jpg" alt="Leo Group"></div><div><img src="media/logos/6dd42c92304e8c46ba06f21e31f61552.jpg" alt="BHJ"></div><div><img src="media/logos/7ee9e6c67c61d08acda3b71f4e650f7d.jpg" alt="MHP"></div><div><img src="media/logos/03f6d5f6855e65d50db6f43549aa1ec1.jpg" alt="Norpel"></div><div><img src="media/logos/9fdc97369df16609d2e982ad9dc75e5c.jpg" alt="Omega Protein"></div><div><img src="media/logos/6bd0aebf4b76bfa0b906b279589d48a0.jpg" alt="Pilgrim's"></div><div><img src="media/logos/bb57978990ca1125688c5bbd7f61dcc0.jpg" alt="Saarioinen"></div><div><img src="media/logos/df9fb50b6176d70f54270a0a93528867.jpg" alt="Ulmer Fleisch"></div><div><img src="media/logos/db41df73ea537bcf857ce027f037e9d7.jpg" aria-hidden="true" alt="Gudruns"></div><div><img src="media/logos/ee6f7b1a3c87811373a7a657e338bf87.jpg" aria-hidden="true" alt="Snellman"></div><div><img src="media/logos/e3a2cae03b9d5339246cc39e546f3fd8.jpg" aria-hidden="true" alt="HKFoods"></div><div><img src="media/logos/455518c9f4d52316f23408ce544001d6.jpg" aria-hidden="true" alt="La Provincia"></div><div><img src="media/logos/1c44fe89610bdf27e7e239529df660c2.jpg" aria-hidden="true" alt="Bonduelle"></div><div><img src="media/logos/c38c161d56a48c05337aaf605542433f.jpg" aria-hidden="true" alt="Darling Ingredients"></div><div><img src="media/logos/e60cd0ef5c5e4b0f0d90a00c7ff3c5cf.jpg" aria-hidden="true" alt="Fazer"></div><div><img src="media/logos/cb1a542922041e53d1428090ab083545.jpg" aria-hidden="true" alt="Hill's"></div><div><img src="media/logos/3c9964ff3a94c0fa3ca143f838d4f995.jpg" aria-hidden="true" alt="Leo Group"></div><div><img src="media/logos/6dd42c92304e8c46ba06f21e31f61552.jpg" aria-hidden="true" alt="BHJ"></div><div><img src="media/logos/7ee9e6c67c61d08acda3b71f4e650f7d.jpg" aria-hidden="true" alt="MHP"></div><div><img src="media/logos/03f6d5f6855e65d50db6f43549aa1ec1.jpg" aria-hidden="true" alt="Norpel"></div><div><img src="media/logos/9fdc97369df16609d2e982ad9dc75e5c.jpg" aria-hidden="true" alt="Omega Protein"></div><div><img src="media/logos/6bd0aebf4b76bfa0b906b279589d48a0.jpg" aria-hidden="true" alt="Pilgrim's"></div><div><img src="media/logos/bb57978990ca1125688c5bbd7f61dcc0.jpg" aria-hidden="true" alt="Saarioinen"></div><div><img src="media/logos/df9fb50b6176d70f54270a0a93528867.jpg" aria-hidden="true" alt="Ulmer Fleisch"></div></div></div>
+    <p class="sentence">Since <b>1989</b>, we have made <b>2&nbsp;500+</b> deliveries and built <b>50+</b> turnkey plants in <b>12 countries</b>, with local partners in <b>8</b> regions.</p>
+  </section>
 
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/gsap.min.js"></script>
-<script src="https://cdnjs.cloudflare.com/ajax/libs/gsap/3.12.5/ScrollTrigger.min.js"></script>
+  <!-- 8 Customers band -->
+  <section class="band">
+    <div class="a">
+      <h3>Already running a Finmatec line?</h3>
+      <ul><li>Spare parts <span>&#8594;</span></li><li>Maintenance &amp; support <span>&#8594;</span></li><li>Upgrades &amp; retrofits <span>&#8594;</span></li></ul>
+      <p class="mail">Order spare parts for your Finmatec machines anywhere in the world.</p>
+    </div>
+    <div class="b">
+      <div><h3>Need one machine?</h3><p>Every station in the flow is also sold on its own, for replacing an old machine or adding the missing link.</p></div>
+      <a class="tlink">All products &#8594;</a>
+    </div>
+  </section>
+
+  <!-- 9 Engineers -->
+  <section class="eng">
+    <div class="sheet"><div class="in">
+      <div class="top"><b>Finmatec Mixers · CMX 3000</b><span class="mono">Datasheet</span></div>
+      <table>
+        <tr><td>Volume</td><td><b>3&nbsp;000 l</b></td></tr>
+        <tr><td>Max. load</td><td><b>2&nbsp;000-2&nbsp;200 kg</b></td></tr>
+        <tr><td>Installed power</td><td><b>2 x 11 kW</b></td></tr>
+        <tr><td>Dimensions (L x W x H)</td><td><b>3&nbsp;400 x 2&nbsp;000 x 2&nbsp;900 mm</b></td></tr>
+        <tr><td>Net weight</td><td><b>3&nbsp;500 kg</b></td></tr>
+        <tr><td>Fuse</td><td><b>3 x 50 A</b></td></tr>
+        <tr><td>Compressed air</td><td><b>min. 6 bar</b></td></tr>
+        <tr><td>Cooling</td><td><b>CO2, 4 nozzles</b></td></tr>
+        <tr><td>Control</td><td><b>Siemens PLC, 9" HMI</b></td></tr>
+      </table>
+      <div class="dl"><span>&#8595; Datasheet</span><span>&#8595; CAD model</span><span>Ask the engineer</span></div>
+    </div></div>
+    <div>
+      <span class="eyebrow">For engineering firms and EPCs</span>
+      <h2>Specs you can put straight into your layout.</h2>
+      <p class="body">Dimensions, capacities and utilities in plain HTML on every product page, datasheets and CAD models to download, and a named application engineer when something is unclear.</p>
+      <a class="btn dark">Engineering resources <i>&#8594;</i></a>
+    </div>
+  </section>
+
+  <!-- 10 Contact -->
+  <section class="cb">
+    <div><h2>Talk to us.</h2><p class="lead">Planning a new line or upgrading an existing one? Tell us about your raw material, volumes and premises, and we come back with a proposal.</p>
+      <div class="ppl"><div><span class="av"><img src="media/mats.webp" alt="Mats Strandvall"></span><span><b>Mats Strandvall</b><span>Sales Director · +358 40 086 2694</span></span></div><div><span class="av"><img src="media/anders.webp" alt="Anders Asplund"></span><span><b>Anders Asplund</b><span>CEO · +358 50 505 0587</span></span></div></div></div>
+    <div class="form"><div class="in">
+      <span class="lab">What is your request?</span>
+      <div class="chips"><span class="on">New project or line</span><span>Budget quote</span><span>Business case</span><span>Technical question</span><span>Service</span></div>
+      <div class="f2"><div class="f">Name</div><div class="f">Company</div><div class="f">Work email</div><div class="f">Phone</div></div>
+      <div class="ta">Raw material, volumes and premises</div>
+      <a class="btn dark qk">Request a quote <i><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"></path></svg></i></a>
+    </div></div>
+  </section>
+
+  <!-- Footer -->
+  <footer class="fb2"><svg class="sym" viewBox="0 0 442.72 507.99" aria-hidden="true"><path fill="#e2e2de" d="M293.68,146.30C291.07,145.59 287.69,142.95 282.47,138.10C277.25,133.26 268.14,123.79 262.35,117.23C256.56,110.66 251.17,103.81 247.73,98.72C244.29,93.62 243.28,90.56 241.71,86.65C240.14,82.73 239.14,79.34 238.30,75.21C237.46,71.07 236.93,66.48 236.64,61.83C236.36,57.19 236.35,51.81 236.60,47.33C236.86,42.85 237.34,38.88 238.18,34.96C239.02,31.04 240.18,27.58 241.67,23.83C243.15,20.08 245.29,15.76 247.10,12.46C248.91,9.16 250.87,5.77 252.54,4.02C254.22,2.28 254.43,0.69 257.15,2.00C259.88,3.31 263.68,6.95 268.90,11.91C274.13,16.87 283.03,25.94 288.49,31.74C293.96,37.54 298.58,42.62 301.71,46.71C304.84,50.80 305.53,52.50 307.25,56.27C308.96,60.04 310.71,64.65 312.00,69.33C313.29,74.02 314.50,79.49 314.99,84.40C315.49,89.30 315.35,94.22 314.99,98.77C314.62,103.32 313.81,107.68 312.81,111.71C311.81,115.74 310.53,119.29 309.00,122.96C307.47,126.63 305.45,130.48 303.63,133.72C301.81,136.95 299.74,140.27 298.08,142.36C296.42,144.46 296.28,147.01 293.68,146.30Z"/><path fill="#d3d3ce" d="M267.38,293.76C264.86,295.09 263.52,295.05 261.87,294.12C260.22,293.19 258.98,290.92 257.48,288.17C255.97,285.41 254.17,281.69 252.85,277.58C251.52,273.48 250.24,268.47 249.51,263.52C248.77,258.57 248.40,252.83 248.43,247.90C248.47,242.96 248.89,238.27 249.69,233.90C250.49,229.52 251.71,225.63 253.25,221.65C254.78,217.67 256.28,214.15 258.88,210.02C261.48,205.90 264.70,201.71 268.87,196.90C273.03,192.08 278.98,186.16 283.86,181.11C288.75,176.05 293.95,171.14 298.16,166.58C302.38,162.02 305.87,158.09 309.18,153.75C312.48,149.41 315.45,144.93 317.97,140.53C320.50,136.13 322.59,131.64 324.34,127.33C326.09,123.03 327.39,119.30 328.46,114.71C329.53,110.11 330.21,104.76 330.76,99.77C331.32,94.78 331.43,88.40 331.78,84.77C332.14,81.14 332.26,79.07 332.89,77.99C333.53,76.91 333.69,77.03 335.58,78.31C337.47,79.59 340.48,82.14 344.22,85.69C347.96,89.24 354.04,95.23 358.01,99.62C361.99,104.01 365.45,107.94 368.06,112.02C370.67,116.10 372.07,119.70 373.69,124.08C375.31,128.47 376.80,133.86 377.78,138.33C378.76,142.80 379.37,146.86 379.59,150.90C379.81,154.93 379.58,158.59 379.12,162.52C378.67,166.45 377.82,170.72 376.86,174.46C375.89,178.20 374.99,181.33 373.34,184.96C371.69,188.58 372.03,189.98 366.97,196.21C361.90,202.44 353.58,211.50 342.95,222.33C332.31,233.17 314.15,250.60 303.16,261.24C292.17,271.87 282.97,280.72 277.01,286.14C271.05,291.56 269.91,292.43 267.38,293.76Z"/><path fill="#e2e2de" d="M2.00,280.75C1.87,275.66 2.31,273.33 2.98,270.04C3.66,266.75 4.69,264.61 6.06,261.02C7.43,257.43 9.36,252.38 11.23,248.52C13.10,244.67 9.40,246.79 17.30,237.90C25.20,229.00 39.08,214.87 58.62,195.15C78.16,175.42 115.40,138.40 134.55,119.56C153.69,100.73 166.46,88.14 173.48,82.14C180.49,76.14 175.36,82.32 176.64,83.57C177.92,84.82 179.57,87.04 181.17,89.62C182.77,92.19 184.74,95.63 186.26,99.02C187.78,102.41 189.22,105.46 190.31,109.96C191.41,114.46 192.53,119.65 192.82,126.02C193.10,132.40 192.94,141.14 192.00,148.21C191.07,155.28 189.17,162.73 187.19,168.46C185.21,174.19 186.17,175.12 180.14,182.60C174.10,190.09 164.29,200.03 150.98,213.35C137.66,226.67 113.64,249.49 100.26,262.53C86.88,275.56 76.87,285.07 70.69,291.57C64.51,298.08 65.53,297.81 63.17,301.56C60.81,305.31 58.57,309.14 56.53,314.08C54.49,319.03 52.34,325.15 50.95,331.21C49.57,337.27 48.69,345.03 48.21,350.46C47.73,355.89 48.22,360.92 48.07,363.81C47.92,366.70 48.46,367.87 47.31,367.79C46.16,367.70 44.18,366.00 41.19,363.31C38.20,360.62 33.28,356.00 29.37,351.65C25.46,347.29 21.09,342.24 17.72,337.16C14.35,332.08 11.48,327.27 9.16,321.17C6.83,315.07 4.95,307.29 3.75,300.55C2.56,293.82 2.13,285.83 2.00,280.75Z"/><path fill="#e2e2de" d="M269.38,424.99C261.96,430.46 266.19,423.15 264.27,420.72C262.35,418.30 259.74,414.07 257.87,410.46C256.00,406.85 254.31,403.02 253.04,399.08C251.77,395.15 250.88,391.32 250.22,386.83C249.57,382.34 249.09,377.10 249.10,372.15C249.11,367.19 249.62,361.65 250.29,357.08C250.95,352.52 251.95,348.45 253.07,344.77C254.20,341.09 255.32,338.40 257.01,335.02C258.70,331.64 257.63,331.06 263.21,324.50C268.79,317.94 277.64,308.57 290.50,295.67C303.37,282.76 326.40,261.01 340.39,247.06C354.39,233.11 366.87,220.75 374.47,211.96C382.07,203.17 383.05,200.04 385.98,194.33C388.92,188.63 390.56,183.19 392.06,177.71C393.56,172.23 394.43,166.29 394.97,161.46C395.52,156.63 395.35,151.98 395.33,148.71C395.31,145.44 394.84,143.34 394.83,141.82C394.82,140.31 394.45,139.50 395.25,139.61C396.05,139.72 397.16,140.34 399.63,142.46C402.11,144.59 406.44,148.62 410.09,152.34C413.74,156.07 418.30,160.87 421.51,164.81C424.73,168.76 427.18,172.33 429.40,176.02C431.61,179.71 433.29,183.28 434.81,186.96C436.33,190.64 437.55,194.07 438.51,198.08C439.48,202.09 440.23,206.33 440.60,211.02C440.97,215.71 441.05,221.28 440.72,226.21C440.39,231.14 439.63,236.15 438.63,240.58C437.63,245.02 436.41,248.78 434.71,252.83C433.01,256.89 436.63,255.22 428.42,264.92C420.21,274.61 405.38,290.51 385.45,311.00C365.51,331.49 328.14,368.87 308.80,387.87C289.46,406.87 276.81,419.51 269.38,424.99Z"/><path fill="#d3d3ce" d="M109.47,429.89C108.73,430.63 108.52,430.55 106.57,429.06C104.62,427.57 101.81,425.19 97.76,420.94C93.71,416.70 86.81,409.47 82.25,403.60C77.70,397.73 73.22,391.21 70.43,385.73C67.64,380.25 66.66,375.60 65.52,370.71C64.39,365.82 63.76,361.19 63.61,356.40C63.46,351.60 63.72,347.02 64.60,341.96C65.48,336.90 66.97,331.17 68.90,326.02C70.83,320.87 70.39,318.47 76.17,311.05C81.94,303.63 91.39,293.80 103.54,281.49C115.69,269.19 137.21,248.47 149.07,237.20C160.93,225.94 169.57,217.96 174.70,213.91C179.82,209.86 178.31,212.47 179.83,212.91C181.35,213.36 182.53,214.92 183.81,216.58C185.10,218.25 186.37,220.43 187.54,222.90C188.71,225.37 189.84,227.78 190.82,231.40C191.81,235.01 192.97,239.24 193.45,244.58C193.93,249.93 194.23,257.13 193.70,263.46C193.17,269.79 191.78,277.08 190.27,282.58C188.75,288.08 186.88,292.25 184.62,296.46C182.35,300.67 180.30,303.45 176.68,307.83C173.06,312.21 168.11,317.28 162.89,322.75C157.68,328.22 150.50,335.15 145.39,340.66C140.27,346.17 135.68,351.34 132.21,355.81C128.74,360.28 126.85,363.26 124.57,367.46C122.28,371.66 120.30,376.09 118.50,381.02C116.70,385.95 114.88,391.80 113.75,397.02C112.62,402.24 112.17,407.73 111.72,412.33C111.27,416.94 111.40,421.73 111.03,424.66C110.65,427.59 110.21,429.16 109.47,429.89Z"/><path fill="#e2e2de" d="M186.94,505.99C184.43,504.95 181.10,502.09 175.70,496.97C170.29,491.85 160.74,482.33 154.50,475.27C148.26,468.22 142.14,460.91 138.25,454.65C134.36,448.39 132.87,443.22 131.15,437.71C129.42,432.20 128.42,426.49 127.89,421.58C127.36,416.68 127.53,412.64 127.95,408.27C128.37,403.91 129.34,399.58 130.43,395.40C131.52,391.21 132.90,386.99 134.51,383.15C136.12,379.30 138.24,375.46 140.10,372.31C141.95,369.16 144.03,366.09 145.65,364.22C147.28,362.36 147.30,360.20 149.84,361.12C152.38,362.03 155.83,365.00 160.88,369.71C165.93,374.41 174.74,383.44 180.14,389.33C185.53,395.23 190.03,400.44 193.24,405.08C196.45,409.73 197.54,412.63 199.39,417.21C201.25,421.79 203.21,427.08 204.38,432.58C205.54,438.08 206.24,444.30 206.38,450.21C206.51,456.11 206.00,462.59 205.20,468.02C204.40,473.45 203.10,478.31 201.58,482.77C200.07,487.23 197.90,491.36 196.11,494.77C194.31,498.18 192.34,501.35 190.81,503.22C189.29,505.09 189.46,507.03 186.94,505.99Z"/></svg><div class="grid"><div><img class="logoimg" src="media/finmatec-logo.svg" alt="Finmatec" style="height:34px;margin-bottom:18px"><p>Automated raw material handling for the food industry since 1989.</p><p style="margin-top:14px">Oy Finmatec Ab<br>Mottisenkatu 3, 67100 Kokkola, Finland<br>+358 40 086 2694 · info@finmatec.fi</p></div><div><h4>Solutions &amp; Products</h4><ul><li>Meat Processing</li><li>Poultry Processing</li><li>Pet Food Processing</li><li>Plate Freezing Systems</li><li>BinStacker</li><li>Titan Series</li></ul></div>
+<div><h4>Service</h4><ul><li>Spare Parts</li><li>Maintenance &amp; Support</li><li>Upgrades &amp; Retrofits</li><li>Engineering Resources</li></ul></div>
+<div><h4>Finmatec</h4><ul><li>About</li><li>References</li><li>Join our team</li><li>Contact</li><li>Trading Partners in Finland</li></ul></div></div>
+<div class="bottom"><span>© 2026 Oy Finmatec Ab · LinkedIn · YouTube</span><span><a>Privacy Policy</a><a>Terms of Service</a><a>WWTP Solutions</a></span></div>
+<div class="word"><svg viewBox="181 43 548 83" role="img" aria-label="Finmatec"><path fill-rule="evenodd" d="M705.38,124.38 L700.88,124.41 L699.12,124.08 L694.25,123.85 L688.88,122.66 L685.75,121.67 L681.62,119.71 L678.38,117.64 L675.79,115.50 L671.38,110.58 L668.12,104.76 L666.05,98.62 L665.10,94.00 L664.46,88.25 L664.45,81.75 L664.78,80.25 L665.16,75.62 L666.14,71.38 L667.28,68.00 L669.13,64.00 L671.18,60.50 L673.23,57.75 L677.65,53.25 L680.50,51.10 L683.88,49.15 L688.38,47.16 L691.62,46.16 L697.62,45.04 L701.00,44.80 L706.25,44.82 L711.50,45.28 L715.62,46.08 L722.50,48.22 L726.12,50.06 L726.58,50.50 L726.72,51.00 L723.68,60.12 L722.59,63.00 L722.00,63.69 L720.75,63.78 L717.02,62.12 L713.88,61.12 L708.50,60.07 L701.62,59.92 L699.25,60.13 L695.75,61.04 L693.25,62.07 L691.38,63.20 L690.00,64.26 L687.38,66.95 L685.07,70.50 L684.04,72.88 L683.13,75.75 L682.44,80.50 L682.17,84.12 L682.44,88.38 L683.14,93.12 L684.11,96.62 L686.17,100.62 L688.29,103.25 L691.00,105.62 L694.88,107.69 L698.00,108.66 L703.12,109.17 L707.12,109.17 L711.38,108.77 L716.38,107.74 L719.25,106.80 L722.62,105.30 L723.25,105.31 L723.71,105.75 L727.71,117.38 L727.80,118.12 L727.50,118.79 L726.29,119.62 L724.12,120.62 L717.88,122.64 L712.00,123.80 L706.88,124.10ZM198.62,122.81 L183.50,122.81 L182.25,122.00 L182.25,47.12 L184.00,46.51 L232.62,46.51 L233.42,48.25 L233.42,59.75 L232.88,60.78 L201.00,60.78 L199.61,61.51 L199.61,76.88 L229.14,76.88 L229.72,78.12 L229.72,89.62 L229.38,90.98 L228.25,91.40 L201.12,91.40 L199.61,91.88 L199.61,121.75ZM262.00,122.79 L247.00,122.79 L245.65,122.00 L245.65,48.62 L245.74,47.00 L246.38,46.47 L261.62,46.47 L262.73,47.38 L262.73,121.62ZM344.75,122.88 L332.88,122.88 L331.50,122.36 L312.68,92.38 L302.80,79.25 L298.00,73.98 L297.39,75.12 L297.39,122.12 L295.75,122.87 L282.00,122.87 L280.53,122.38 L280.53,48.25 L280.96,46.59 L292.88,46.59 L294.99,47.25 L301.62,54.35 L309.74,64.50 L328.38,90.37 L329.06,89.12 L329.06,47.11 L330.25,46.43 L344.75,46.43 L345.90,46.88 L345.90,121.62 L345.75,122.57ZM444.75,122.88 L432.00,122.88 L430.83,122.12 L428.81,79.88 L427.75,74.08 L426.95,74.50 L410.65,112.50 L409.25,113.06 L400.00,113.06 L398.12,112.19 L381.25,73.71 L380.06,80.75 L378.35,122.12 L376.88,122.73 L362.13,122.73 L362.13,109.88 L364.16,79.25 L366.17,57.50 L367.93,46.88 L369.12,46.41 L382.75,46.41 L384.38,47.26 L391.63,61.62 L404.75,90.90 L405.74,90.12 L416.24,65.62 L425.28,47.25 L427.12,46.64 L441.00,46.64 L441.65,48.50 L443.71,66.38 L446.96,108.75 L446.96,122.12 L446.62,122.76ZM530.88,122.76 L514.25,122.76 L508.76,107.38 L506.75,106.47 L479.00,106.47 L478.04,107.38 L472.50,122.60 L455.45,122.60 L460.14,108.25 L471.18,79.12 L480.23,57.75 L485.75,46.57 L500.75,46.57 L502.51,47.88 L513.70,73.12 L521.72,93.38 L531.71,120.88 L531.92,122.38ZM565.75,122.88 L551.12,122.88 L549.83,122.38 L549.83,62.00 L548.12,60.96 L527.25,60.96 L526.80,59.75 L526.80,48.12 L527.50,46.48 L588.62,46.48 L589.80,47.00 L589.80,59.75 L589.38,60.99 L568.00,60.99 L566.95,61.75 L566.95,121.62 L566.62,122.56ZM653.75,122.69 L601.09,122.69 L601.09,48.25 L601.50,46.51 L650.50,46.51 L652.28,47.00 L652.28,59.62 L651.75,60.82 L619.62,60.82 L618.31,61.38 L618.31,75.88 L648.12,75.88 L648.70,77.12 L648.70,88.62 L648.38,89.58 L647.25,90.00 L618.50,90.00 L618.06,91.12 L618.06,106.75 L618.44,108.00 L619.62,108.50 L654.25,108.50 L654.88,109.88 L654.88,121.75ZM503.23,92.78 L503.88,91.62 L502.81,88.38 L494.83,67.25 L493.25,64.78 L485.07,85.12 L482.88,92.20 L484.12,92.78Z"></path></svg></div></footer>
+</div>
 <script>
 (function(){
-  var reduce = window.matchMedia('(prefers-reduced-motion: reduce)').matches;
-
-  // Lazy videos: load when near the viewport
-  var lazy = document.querySelectorAll('video[data-lazy]');
-  var io = new IntersectionObserver(function(es){ es.forEach(function(e){
-    if (!e.isIntersecting) return; var v = e.target; var s = v.querySelector('source');
-    if (s && s.dataset.src && !s.src){ s.src = s.dataset.src; v.load(); }
-    if (!reduce) { var p = v.play(); if (p && p.catch) p.catch(function(){}); }
-    io.unobserve(v);
-  }); }, {rootMargin:'400px'});
-  lazy.forEach(function(v){ io.observe(v); });
-  if (reduce) document.querySelectorAll('video').forEach(function(v){ v.removeAttribute('autoplay'); v.pause && v.pause(); });
-
-  // Nav goes solid after the hero
-  var nav = document.getElementById('nav');
-  var onScroll = function(){ nav.classList.toggle('solid', window.scrollY > window.innerHeight * 0.6); };
-  window.addEventListener('scroll', onScroll, {passive:true}); onScroll();
-
-  if (!window.gsap || !window.ScrollTrigger || reduce) return;
-  document.documentElement.classList.add('js');
-  gsap.registerPlugin(ScrollTrigger);
-
-  // Statement: split words, scrub from dim to full
-  var p = document.getElementById('words');
-  var nodes = Array.prototype.slice.call(p.childNodes); p.textContent = '';
-  nodes.forEach(function(n){
-    if (n.nodeType === 3){ n.textContent.split(/(\s+)/).forEach(function(t){ if (!t) return; if (/^\s+$/.test(t)){ p.appendChild(document.createTextNode(t)); } else { var s = document.createElement('span'); s.className = 'w'; s.textContent = t; p.appendChild(s); } }); }
-    else { n.classList.add('w'); p.appendChild(n); }
-  });
-  gsap.to('#words .w', {opacity:1, stagger:0.06, ease:'none', scrollTrigger:{trigger:'#words', start:'top 78%', end:'bottom 40%', scrub:true}});
-
-  // Hero video drifts slower than the page
-  gsap.to('.hero video, .hero .poster', {yPercent:12, ease:'none', scrollTrigger:{trigger:'.hero', start:'top top', end:'bottom top', scrub:true}});
-  gsap.from('.hero h1, .hero .lede, .hero .ctas', {y:36, duration:1.2, ease:'expo.out', stagger:0.1});
-
-  // 40 KG: the type pulls back as you pass, revealing more of the footage
-  gsap.fromTo('#kg', {scale:1.5}, {scale:0.92, ease:'none', scrollTrigger:{trigger:'.mask', start:'top bottom', end:'bottom top', scrub:true}});
-
-  // The chain: pinned horizontal travel on wide screens
-  var mm = gsap.matchMedia();
-  mm.add('(min-width: 761px)', function(){
-    var rail = document.getElementById('rail');
-    var dist = function(){ return Math.max(0, rail.scrollWidth - window.innerWidth); };
-    gsap.to(rail, {x:function(){ return -dist(); }, ease:'none', scrollTrigger:{trigger:'#chain .rail-wrap', start:'top 12%', end:function(){ return '+=' + dist(); }, pin:true, scrub:0.6, invalidateOnRefresh:true}});
-  });
-
-  // Process: the green line draws as you read
-  gsap.to('#line', {scaleY:1, ease:'none', scrollTrigger:{trigger:'#steps', start:'top 60%', end:'bottom 60%', scrub:true}});
-  gsap.utils.toArray('#steps li').forEach(function(li){ gsap.from(li, {y:28, duration:0.9, ease:'expo.out', scrollTrigger:{trigger:li, start:'top 85%'}}); });
-
-  // Bento cells settle in
-  gsap.utils.toArray('.cell').forEach(function(c, i){ gsap.from(c, {y:56, duration:1.1, delay:(i%2)*0.08, ease:'expo.out', scrollTrigger:{trigger:c, start:'top 90%'}}); });
-
-  // 2D drawing draws itself as the CTA comes in
-  gsap.to('#plan .draw', {strokeDashoffset:0, ease:'none', stagger:0.03, scrollTrigger:{trigger:'#cta', start:'top 85%', end:'center 55%', scrub:0.8}});
-  gsap.from('#plan .flow', {opacity:0, ease:'none', scrollTrigger:{trigger:'#cta', start:'center 70%', end:'center 50%', scrub:true}});
-
-  // CTA headline rises
-  gsap.from('#cta-h', {yPercent:14, duration:1.4, ease:'expo.out', scrollTrigger:{trigger:'#cta', start:'top 80%'}});
-  window.addEventListener('load', function(){ ScrollTrigger.refresh(); });
+  var fm=document.querySelector('.fm');
+  function fit(){
+    var w=document.documentElement.clientWidth, m=w<=760;
+    fm.classList.toggle('m',m);
+    var base=m?390:1440, z=Math.min(1,w/base);
+    if(m) z=w/390;
+    fm.style.zoom=z;
+  }
+  window.addEventListener('resize',fit); fit();
+  document.querySelectorAll('video').forEach(function(v){v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){});});
+  var el=document.getElementById('ltrack');
+  if(el && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    (function step(){var half=el.scrollWidth/2;if(half>0)el.style.transform='translateX('+(-((Date.now()/1000*45)%half))+'px)';requestAnimationFrame(step);})();
+  }
 })();
 </script>
 </body>
