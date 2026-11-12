@@ -451,7 +451,12 @@ body{overflow-x:hidden}
 .fm.m .fb2 .grid { grid-template-columns:1fr 1fr; gap:32px 24px; }
 .fm.m .fb2 .grid > div:first-child { grid-column:span 2; }
 .fm.m .fb2 .bottom { margin-top:36px; flex-direction:column; gap:10px; }
-.fm.m .fb2 .bottom span a { margin:0 16px 0 0; }
+.fm.m .fb2 .bottom span a { margin:0 16px 0 0; display:inline-flex; align-items:center; min-height:44px; }
+.fm.m .fb2 .bottom > span:first-child { display:inline-flex; align-items:center; min-height:44px; }
+.fm.m .fb2 ul li { min-height:44px; display:flex; align-items:center; }
+.fm.m .tlink { min-height:44px; }
+.fm.m .cb .chips span { min-height:44px; display:inline-flex; align-items:center; }
+.fm.m .st .prod a { min-height:44px; display:inline-flex; align-items:center; }
 .fm.m .fb2 .sym { right:-220px; top:-80px; height:700px; }
 .fm.m .fb2 .word { margin-top:32px; width:350px; }
 
