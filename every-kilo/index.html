@@ -397,6 +397,10 @@
 .c-num .num span { color:var(--acc); }
 .c-num .cap { margin:0; font-family:var(--fl); font-weight:600; font-stretch:112%; font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink2); }
 .proof .logos { margin-top:72px; }
+
+/* external link icon in util bar (Olli 13.11) */
+.util .ext { display:inline-flex; align-items:center; gap:7px; color:#fff; } .util .ext .exti { opacity:.8; }
+.router i { background:var(--dark); color:#fff; }
 </style>
 <style>
 html,body{margin:0;background:#fff}
@@ -535,7 +539,7 @@ body{overflow-x:hidden}
 <div class="fm">
   <div class="util">
     <div><span>Spare parts: <b>varaosat@finmatec.fi</b></span><span>Service hotline</span></div>
-    <div>Trading Partners in Finland <span class="lang"><em>EN</em><em>FI</em></span></div>
+    <div><a class="ext">Trading Partners in Finland <svg class="exti" width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M9 3h4v4M13 3 7 9M11 9.5V13H3V5h3.5"></path></svg></a> <span class="lang"><em>EN</em><em>FI</em></span></div>
   </div>
 
   <!-- 1 Hero -->
@@ -589,7 +593,6 @@ body{overflow-x:hidden}
       <span class="eyebrow">The heaviest job on the floor</span>
       <h2 style="margin-top:22px">One slippery frozen block, lifted by hand.</h2>
       <p>Lifting frozen blocks causes crush injuries, falls and worn-out backs. We take the heavy manual steps off the factory floor, and automate only as far as it makes economic sense for your volumes.</p>
-      <a class="tlink">Why the right level of automation &#8594;</a>
     </div>
   </section>
 
