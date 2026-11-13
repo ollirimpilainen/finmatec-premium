@@ -401,6 +401,20 @@
 /* external link icon in util bar (Olli 13.11) */
 .util .ext { display:inline-flex; align-items:center; gap:7px; color:#fff; } .util .ext .exti { opacity:.8; }
 .router i { background:var(--dark); color:#fff; }
+
+/* certificates in Why block (Olli 13.11., option B; only CE, risk assessment and food-grade oils are confirmed) */
+.wb .bento { grid-auto-rows:300px; }
+.tile .tags { display:flex; flex-wrap:wrap; gap:8px; margin-top:16px; }
+.tile .tags span { display:inline-flex; align-items:center; gap:6px; padding:7px 12px; border-radius:999px; background:#fff; color:var(--dark); font-size:13px; font-weight:600; line-height:1.2; }
+.tile .tags span.tbc { background:transparent; border:1.5px dashed rgba(36,21,186,.32); padding:5.5px 11px; color:var(--mute); font-weight:500; }
+.certline { margin:20px 0 0; padding:22px 28px; border-radius:22px; box-shadow:inset 0 0 0 1px var(--line); display:flex; justify-content:space-between; align-items:center; gap:32px; }
+.certline b { display:block; font-family:var(--fd); font-size:20px; font-weight:700; color:var(--ink); }
+.certline span { font-size:15px; color:var(--ink2); }
+.certline .dl { display:inline-flex; align-items:center; gap:8px; white-space:nowrap; }
+
+.fm.m .wb .bento { grid-auto-rows:auto; }
+.fm.m .certline { flex-direction:column; align-items:flex-start; gap:14px; padding:20px; }
+.fm.m .tile .tags span { min-height:36px; }
 </style>
 <style>
 html,body{margin:0;background:#fff}
@@ -615,11 +629,12 @@ body{overflow-x:hidden}
   <div class="head"><h2>Why choose Finmatec?</h2></div>
   <div class="bento">
     <div class="tile big"><img src="media/k2.jpg" alt=""><span class="mono">01</span><div class="b"><h3>Automation that relieves</h3><p>We replace heavy manual steps and reduce the boots on your factory floor, as far as it makes economic sense.</p></div></div>
-    <div class="tile"><span class="mono">02</span><div><h3>Safety built in</h3><p>Every delivery is risk-assessed and CE-marked, with mechanical and electrical guards for daily washdown.</p></div></div>
-    <div class="tile"><span class="mono">03</span><div><h3>Hygiene and minimal waste</h3><p>Designed for cleanability and minimal raw material on the floor, for food and pet food alike.</p></div></div>
+    <div class="tile"><span class="mono">02</span><div><h3>Safety built in</h3><p>Every delivery is risk-assessed and CE-marked, with mechanical and electrical guards for daily washdown.</p><div class="tags"><span><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5"></path></svg>CE marked</span><span><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5"></path></svg>Risk-assessed</span></div></div></div>
+    <div class="tile"><span class="mono">03</span><div><h3>Hygiene and minimal waste</h3><p>Designed for cleanability and minimal raw material on the floor, for food and pet food alike.</p><div class="tags"><span><svg width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8.5 6.5 12 13 4.5"></path></svg>Food-grade oils</span><span class="tbc">Hygiene certificates to confirm</span></div></div></div>
     <div class="tile"><span class="mono">04 · Short payback</span><div><div class="figure">2-5 yrs</div><p>Typical payback for a new automated plate freezing line.</p></div></div>
     <div class="tile"><span class="mono">05</span><div><h3>One team, full responsibility</h3><p>Planning, risk assessment, manufacturing, FAT, installation, commissioning and service.</p></div></div>
   </div>
+  <div class="certline"><span><b>Quality, safety and hygiene certificates</b>CE declarations, risk assessments and certificates for your supplier evaluation.</span><a class="tlink dl">Download certificates (PDF) <svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8M4.5 7 8 10.5 11.5 7M3 13.5h10"></path></svg></a></div>
 </section>
 
   <!-- 6 Existing factories -->
