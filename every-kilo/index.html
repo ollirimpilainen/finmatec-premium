@@ -352,6 +352,51 @@
 .intro .isub { margin-top:40px; font-size:19px; color:var(--ink2); }
 .fb2 .word { height:auto !important; overflow:visible !important; } .fb2 .word svg { display:block; width:100%; height:auto; fill:var(--dark); }
 .fb2 .sym path[fill="#e2e2de"] { fill:#2415BA; fill-opacity:.085; } .fb2 .sym path[fill="#d3d3ce"] { fill:#03FF6B; fill-opacity:.15; }
+
+/* v1 station cards: double bezel, 4:3 media, number pill, chips */
+.track { gap:20px; padding:0 72px; animation:railpan 30s cubic-bezier(.65,0,.35,1) infinite alternate; }
+.track::before { display:none; }
+.track > .st, .track > .st.star { width:520px; }
+.st { border-radius:28px; padding:6px; background:rgba(36,21,186,.06); box-shadow:inset 0 0 0 1px rgba(36,21,186,.10); }
+.st .core { height:100%; border-radius:22px; overflow:hidden; background:#fff; box-shadow:inset 0 1px 1px rgba(255,255,255,.8); }
+.st .ph, .st.star .ph { position:relative; height:auto; aspect-ratio:4/3; border-radius:0; overflow:hidden; background:var(--deep); }
+.st .ph img { width:100%; height:100%; object-fit:cover; transition:transform 1.2s var(--ease); }
+.st:hover .ph img { transform:scale(1.04); }
+.st .n { position:absolute; top:16px; left:16px; font-family:var(--fl); font-weight:600; font-stretch:112%; font-size:12px; letter-spacing:.1em; color:#fff; background:rgba(13,14,43,.55); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); padding:7px 11px; border-radius:999px; }
+.st .body { padding:26px 28px 30px; display:grid; gap:12px; align-content:start; }
+.st h3, .st.star h3 { margin:0; padding:0; font-size:30px; line-height:1; }
+.st p, .st.star p { margin:0; padding:0; font-size:16px; color:var(--ink2); max-width:44ch; }
+.st .prod, .st.star .prod { margin:6px 0 0; padding:0; gap:8px; }
+.st .prod a { border:0; padding:8px 13px; border-radius:999px; background:var(--soft); color:var(--dark); font-size:13px; font-weight:600; }
+.st.star { background:rgba(36,21,186,.16); }
+.st.star .core { background:var(--dark); color:#fff; box-shadow:none; }
+.st.star h3 { color:#fff; } .st.star p { color:rgba(255,255,255,.76); }
+.st.star .prod a { background:rgba(255,255,255,.14); color:#fff; }
+.st.star .badge { position:absolute; top:16px; right:16px; margin:0; padding:7px 11px; font-size:11px; background:var(--acc); color:var(--deep); border:0; }
+.st.bin .ph { background:linear-gradient(180deg,#f7f9fc 0%,#e9eef5 100%); }
+.st.bin .ph img { object-position:34% 42%; transform:scale(1.55); transform-origin:34% 42%; }
+.st.bin:hover .ph img { transform:scale(1.62); }
+.flow-foot { margin-top:40px; }
+/* v1 proof bento: quote, photo, big numbers */
+.proof { background:var(--paper); }
+.pbento { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:16px; }
+.cell { border-radius:28px; padding:6px; background:rgba(36,21,186,.06); box-shadow:inset 0 0 0 1px rgba(36,21,186,.10); }
+.cell > .core { position:relative; height:100%; border-radius:22px; overflow:hidden; }
+.c-quote { grid-column:span 7; }
+.c-quote .core { background:var(--dark); color:#fff; padding:48px; display:flex; flex-direction:column; justify-content:space-between; gap:40px; min-height:520px; }
+.c-quote .mark { font-family:var(--fd); font-weight:800; font-stretch:112%; font-size:120px; line-height:.5; height:44px; color:var(--acc); }
+.c-quote blockquote { margin:0; font-family:var(--fd); font-weight:600; font-size:40px; line-height:1.12; letter-spacing:-0.02em; color:#fff; }
+.c-quote .qfoot { display:flex; flex-wrap:wrap; gap:20px 32px; align-items:center; justify-content:space-between; }
+.c-quote cite { font-style:normal; font-family:var(--fl); font-weight:600; font-stretch:112%; font-size:12px; letter-spacing:.1em; text-transform:uppercase; color:#C9C6F1; }
+.btn.rf { height:48px; padding:0 6px 0 20px; font-size:15px; } .btn.rf i { width:36px; height:36px; background:var(--dark); color:#fff; }
+.c-img { grid-column:span 5; }
+.c-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:55% 50%; }
+.c-num { grid-column:span 4; }
+.c-num .core { background:#fff; padding:36px; display:flex; flex-direction:column; justify-content:space-between; gap:28px; min-height:252px; }
+.c-num .num { margin:0; font-family:var(--fd); font-weight:800; font-stretch:112%; font-size:96px; line-height:.85; letter-spacing:-0.04em; color:var(--dark); }
+.c-num .num span { color:var(--acc); }
+.c-num .cap { margin:0; font-family:var(--fl); font-weight:600; font-stretch:112%; font-size:13px; letter-spacing:.1em; text-transform:uppercase; color:var(--ink2); }
+.proof .logos { margin-top:72px; }
 </style>
 <style>
 html,body{margin:0;background:#fff}
@@ -360,6 +405,13 @@ body{overflow-x:hidden}
 .fm .burger{display:none}
 .fm.m .nav ul,.fm.m .nav .btn{display:none}
 .fm.m .burger{display:grid}
+.fm{overflow:clip}
+.fm.pin .track,.fm.nopin .track{animation:none}
+.fm.pin .track{will-change:transform}
+.fm.pin .railwrap{position:sticky}
+.fm.nopin .railwrap{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.fm.nopin .railwrap::-webkit-scrollbar{display:none}
+.fm.nopin .track > .st{scroll-snap-align:center}
 /* ===== Mobile 390 ===== */
 .fm.m { width:390px; font-size:16px; }
 .fm.m .util { display:none; }
@@ -459,6 +511,23 @@ body{overflow-x:hidden}
 .fm.m .st .prod a { min-height:44px; display:inline-flex; align-items:center; }
 .fm.m .fb2 .sym { right:-220px; top:-80px; height:700px; }
 .fm.m .fb2 .word { margin-top:32px; width:350px; }
+/* v1 cards + bento, mobile */
+.fm.m .track { padding:0 20px; gap:12px; }
+.fm.m .track > .st, .fm.m .track > .st.star { width:300px; }
+.fm.m .st .ph, .fm.m .st.star .ph { height:auto; }
+.fm.m .st .body { padding:20px 20px 24px; gap:10px; }
+.fm.m .st h3, .fm.m .st.star h3 { font-size:24px; }
+.fm.m .st p { font-size:15px; }
+.fm.m .pbento { grid-template-columns:1fr; gap:12px; }
+.fm.m .pbento > .cell { grid-column:auto; }
+.fm.m .c-quote .core { padding:28px 24px; min-height:0; gap:28px; }
+.fm.m .c-quote .mark { font-size:90px; height:30px; }
+.fm.m .c-quote blockquote { font-size:24px; line-height:1.18; }
+.fm.m .c-img .core { min-height:300px; }
+.fm.m .c-num .core { padding:26px 24px; min-height:0; gap:18px; }
+.fm.m .c-num .num { font-size:76px; }
+.fm.m .c-num .cap { font-size:12px; }
+.fm.m .proof .logos { margin:48px -20px 0; }
 
 </style>
 </head>
@@ -503,13 +572,13 @@ body{overflow-x:hidden}
       <h2>From raw material<br>to frozen pallet. <span class="hl">One team.</span></h2>
       <p>We plan, design, manufacture and automate the handling of your raw material, from the first 2D drawing to a running line.</p>
     </div>
-    <div class="railwrap"><div class="track">
-      <div class="st"><div class="dot">01</div><div class="ph"><img src="media/v-cut1.jpg" alt="Crushed raw material"></div><h3>Crush &amp; grind</h3><div class="prod"><a>Titan Series</a></div><p>Frozen block breakers, grinders and shredders.</p></div>
-      <div class="st"><div class="dot">02</div><div class="ph"><img src="media/k7.jpg" alt="Mixer with screw conveyor"></div><h3>Pump &amp; mix</h3><div class="prod"><a>Finmatec Mixers</a></div><p>Open and cooling mixers up to 5&nbsp;500 litres.</p></div>
-      <div class="st"><div class="dot">03</div><div class="ph"><img src="media/k11.jpg" alt="Finmatec screw conveyor"></div><h3>Convey</h3><div class="prod"><a>Screw Conveyors</a><a>Belt Conveyors</a></div><p>Stainless conveyors in a closed, safe flow.</p></div>
-      <div class="st star"><div class="dot">04</div><div class="card"><div class="ph"><img src="media/v5302.jpg" alt="Frozen blocks"></div><span class="badge">Our core</span><h3>Freeze</h3><div class="prod"><a>Plate Freezing Systems</a></div><p>Loading, freezing, unloading and palletising, automated around the plate freezer.</p></div></div>
-      <div class="st"><div class="dot">05</div><div class="ph" style="background:#fff"><img src="media/binstacker.png" alt="BinStacker" style="object-fit:contain"></div><h3>Store</h3><div class="prod"><a>BinStacker</a><a>Silos, Bins &amp; Hoppers</a></div><p>Automatic bin storage for up to 5&nbsp;000 bins.</p></div>
-    </div></div>
+    <div class="pinwrap"><div class="railwrap"><div class="track">
+      <article class="st"><div class="core"><div class="ph"><img src="media/v-cut1.jpg" alt="Crushed raw material"><span class="n">01</span></div><div class="body"><h3>Crush &amp; grind</h3><p>Frozen block breakers, grinders and shredders.</p><div class="prod"><a>Titan Series</a></div></div></div></article>
+      <article class="st"><div class="core"><div class="ph"><img src="media/k7.jpg" alt="Mixer with screw conveyor"><span class="n">02</span></div><div class="body"><h3>Pump &amp; mix</h3><p>Open and cooling mixers up to 5&nbsp;500 litres.</p><div class="prod"><a>Finmatec Mixers</a></div></div></div></article>
+      <article class="st"><div class="core"><div class="ph"><img src="media/k11.jpg" alt="Finmatec screw conveyor"><span class="n">03</span></div><div class="body"><h3>Convey</h3><p>Stainless conveyors in a closed, safe flow.</p><div class="prod"><a>Screw Conveyors</a><a>Belt Conveyors</a></div></div></div></article>
+      <article class="st star"><div class="core"><div class="ph"><img src="media/v5302.jpg" alt="Frozen blocks"><span class="n">04</span><span class="badge">Our core</span></div><div class="body"><h3>Freeze</h3><p>Loading, freezing, unloading and palletising, automated around the plate freezer.</p><div class="prod"><a>Plate Freezing Systems</a></div></div></div></article>
+      <article class="st bin"><div class="core"><div class="ph"><img src="media/binstacker.png" alt="BinStacker"><span class="n">05</span></div><div class="body"><h3>Store</h3><p>Automatic bin storage for up to 5&nbsp;000 bins.</p><div class="prod"><a>BinStacker</a><a>Silos, Bins &amp; Hoppers</a></div></div></div></article>
+    </div></div></div>
     <div class="flow-foot"><span>Every station is also sold on its own.</span><a class="tlink">All products &#8594;</a></div>
   </section>
 
@@ -645,15 +714,18 @@ body{overflow-x:hidden}
 
   <!-- 7 Proof -->
   <section class="proof">
-    <div class="quote">
-      <div class="mark">&#8220;</div>
-      <div>
+    <div class="pbento">
+      <div class="cell c-quote"><div class="core">
+        <div class="mark" aria-hidden="true">&#8220;</div>
         <blockquote>Five process operators used to be needed on the line. Now we work both faster and safer, with fewer boots on the factory floor.</blockquote>
-        <cite>Magnus Petterson, CEO, Snellman Petfood</cite>
-      </div>
+        <div class="qfoot"><cite>Magnus Petterson &#183; CEO &#183; Snellman Petfood</cite><a class="btn light rf">See our references <i><svg width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"></path></svg></i></a></div>
+      </div></div>
+      <div class="cell c-img"><div class="core"><img src="media/k12.jpg" alt="Two operators working at the line"></div></div>
+      <div class="cell c-num"><div class="core"><p class="num">2&nbsp;500<span>+</span></p><p class="cap">Deliveries since 1989</p></div></div>
+      <div class="cell c-num"><div class="core"><p class="num">50<span>+</span></p><p class="cap">Turnkey plants built</p></div></div>
+      <div class="cell c-num"><div class="core"><p class="num">12</p><p class="cap">Countries, with local partners in 8 regions</p></div></div>
     </div>
     <div class="logos"><div class="ltrack" ref="{{logoRef}}"><div><img src="media/logos/db41df73ea537bcf857ce027f037e9d7.jpg" alt="Gudruns"></div><div><img src="media/logos/ee6f7b1a3c87811373a7a657e338bf87.jpg" alt="Snellman"></div><div><img src="media/logos/e3a2cae03b9d5339246cc39e546f3fd8.jpg" alt="HKFoods"></div><div><img src="media/logos/455518c9f4d52316f23408ce544001d6.jpg" alt="La Provincia"></div><div><img src="media/logos/1c44fe89610bdf27e7e239529df660c2.jpg" alt="Bonduelle"></div><div><img src="media/logos/c38c161d56a48c05337aaf605542433f.jpg" alt="Darling Ingredients"></div><div><img src="media/logos/e60cd0ef5c5e4b0f0d90a00c7ff3c5cf.jpg" alt="Fazer"></div><div><img src="media/logos/cb1a542922041e53d1428090ab083545.jpg" alt="Hill's"></div><div><img src="media/logos/3c9964ff3a94c0fa3ca143f838d4f995.jpg" alt="Leo Group"></div><div><img src="media/logos/6dd42c92304e8c46ba06f21e31f61552.jpg" alt="BHJ"></div><div><img src="media/logos/7ee9e6c67c61d08acda3b71f4e650f7d.jpg" alt="MHP"></div><div><img src="media/logos/03f6d5f6855e65d50db6f43549aa1ec1.jpg" alt="Norpel"></div><div><img src="media/logos/9fdc97369df16609d2e982ad9dc75e5c.jpg" alt="Omega Protein"></div><div><img src="media/logos/6bd0aebf4b76bfa0b906b279589d48a0.jpg" alt="Pilgrim's"></div><div><img src="media/logos/bb57978990ca1125688c5bbd7f61dcc0.jpg" alt="Saarioinen"></div><div><img src="media/logos/df9fb50b6176d70f54270a0a93528867.jpg" alt="Ulmer Fleisch"></div><div><img src="media/logos/db41df73ea537bcf857ce027f037e9d7.jpg" aria-hidden="true" alt="Gudruns"></div><div><img src="media/logos/ee6f7b1a3c87811373a7a657e338bf87.jpg" aria-hidden="true" alt="Snellman"></div><div><img src="media/logos/e3a2cae03b9d5339246cc39e546f3fd8.jpg" aria-hidden="true" alt="HKFoods"></div><div><img src="media/logos/455518c9f4d52316f23408ce544001d6.jpg" aria-hidden="true" alt="La Provincia"></div><div><img src="media/logos/1c44fe89610bdf27e7e239529df660c2.jpg" aria-hidden="true" alt="Bonduelle"></div><div><img src="media/logos/c38c161d56a48c05337aaf605542433f.jpg" aria-hidden="true" alt="Darling Ingredients"></div><div><img src="media/logos/e60cd0ef5c5e4b0f0d90a00c7ff3c5cf.jpg" aria-hidden="true" alt="Fazer"></div><div><img src="media/logos/cb1a542922041e53d1428090ab083545.jpg" aria-hidden="true" alt="Hill's"></div><div><img src="media/logos/3c9964ff3a94c0fa3ca143f838d4f995.jpg" aria-hidden="true" alt="Leo Group"></div><div><img src="media/logos/6dd42c92304e8c46ba06f21e31f61552.jpg" aria-hidden="true" alt="BHJ"></div><div><img src="media/logos/7ee9e6c67c61d08acda3b71f4e650f7d.jpg" aria-hidden="true" alt="MHP"></div><div><img src="media/logos/03f6d5f6855e65d50db6f43549aa1ec1.jpg" aria-hidden="true" alt="Norpel"></div><div><img src="media/logos/9fdc97369df16609d2e982ad9dc75e5c.jpg" aria-hidden="true" alt="Omega Protein"></div><div><img src="media/logos/6bd0aebf4b76bfa0b906b279589d48a0.jpg" aria-hidden="true" alt="Pilgrim's"></div><div><img src="media/logos/bb57978990ca1125688c5bbd7f61dcc0.jpg" aria-hidden="true" alt="Saarioinen"></div><div><img src="media/logos/df9fb50b6176d70f54270a0a93528867.jpg" aria-hidden="true" alt="Ulmer Fleisch"></div></div></div>
-    <p class="sentence">Since <b>1989</b>, we have made <b>2&nbsp;500+</b> deliveries and built <b>50+</b> turnkey plants in <b>12 countries</b>, with local partners in <b>8</b> regions.</p>
   </section>
 
   <!-- 8 Customers band -->
@@ -724,7 +796,28 @@ body{overflow-x:hidden}
     if(m) z=w/390;
     fm.style.zoom=z;
   }
-  window.addEventListener('resize',fit); fit();
+  /* flow: pinned horizontal scroll on desktop, like the Every Kilo v1 chain */
+  var pw=fm.querySelector('.pinwrap'), rw=pw&&pw.querySelector('.railwrap'), tr=rw&&rw.querySelector('.track');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches, on=false, cur=0, dist=0, mt=0, rh=0;
+  function setup(){
+    if(!pw) return;
+    on=!fm.classList.contains('m') && !reduce;
+    fm.classList.toggle('pin',on); fm.classList.toggle('nopin',!on);
+    pw.style.height=''; rw.style.top=''; tr.style.transform=''; cur=0;
+    if(!on) return;
+    var z=parseFloat(fm.style.zoom)||1;
+    dist=Math.max(0,tr.scrollWidth-rw.clientWidth);
+    mt=parseFloat(getComputedStyle(rw).marginTop)||0; rh=rw.offsetHeight;
+    rw.style.top=Math.max(0,(window.innerHeight/z-rh)/2)+'px';
+    pw.style.height=(mt+rh+dist)+'px';
+  }
+  function target(){
+    var a=pw.getBoundingClientRect(), b=rw.getBoundingClientRect(), k=a.height/pw.offsetHeight||1;
+    var off=(b.top-a.top)/k-mt; return dist? Math.min(1,Math.max(0,off/dist))*dist : 0;
+  }
+  (function loop(){ if(on){ var t=target(); cur+= (t-cur)*0.14; if(Math.abs(t-cur)<.2) cur=t; tr.style.transform='translate3d('+(-cur)+'px,0,0)'; } requestAnimationFrame(loop); })();
+  window.addEventListener('resize',function(){fit();setup();}); fit(); setup();
+  window.addEventListener('load',setup);
   document.querySelectorAll('video').forEach(function(v){v.muted=true;var p=v.play();if(p&&p.catch)p.catch(function(){});});
   var el=document.getElementById('ltrack');
   if(el && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
