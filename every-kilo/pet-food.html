@@ -87,9 +87,9 @@
 /* Fields: hairline */
 .fm label.f, .fm label.ta { display:flex; padding:0 2px; border-bottom:1.5px solid var(--line); color:var(--mute); font-size:15px; }
 .fm label.f { height:52px; align-items:center; }
-.fm label.ta { height:auto; min-height:112px; padding-top:14px; align-items:flex-start; }
+.fm label.ta { height:auto; min-height:96px; padding-top:14px; align-items:flex-start; }
 .fm label.f input, .fm label.ta textarea { all:unset; width:100%; font:inherit; font-size:15px; color:var(--ink); }
-.fm label.ta textarea { height:100%; min-height:100px; }
+.fm label.ta textarea { height:100%; min-height:72px; }
 .fm label.f input::placeholder, .fm label.ta textarea::placeholder { color:var(--mute); opacity:1; }
 .fm label.f:focus-within, .fm label.ta:focus-within { border-bottom-color:var(--dark); }
 
@@ -308,7 +308,8 @@
 .fm .cb .form .lab { color:var(--ink2); }
 .cb .chips { margin-top:12px; display:flex; flex-wrap:wrap; gap:8px; }
 .cb .form .f2 { margin-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:6px 28px; }
-.cb .form .ta { margin-top:12px; flex:1; }
+.cb > .form { align-self:start; }
+.cb .form .ta { margin-top:12px; }
 .cb .form .btn { align-self:flex-start; margin-top:20px; justify-content:space-between; }
 
 /* Footer */
@@ -559,7 +560,7 @@ body{overflow-x:hidden}
     <span class="eyebrow">The same standard as food</span>
     <h2>Pet food is not a lower standard.</h2>
     <p class="lead w2-lead">It is a common misconception. A modern pet food line needs exactly the same machinery and hygiene standard as a food line. Your raw material is demanding, your machines are powerful, and everything is washed every day.</p>
-    <div class="w2-wrap"><div class="wph w2-ph"><img loading="lazy" decoding="async" src="media/k14.jpg" alt="Operator in hygiene clothing on a stainless steel service platform in a pet food plant" style="object-position:78% 50%"><div class="b"><h3>Washed every day.</h3><p>Every machine is designed to be cleaned easily, without risk to the people who wash it.</p></div></div><div class="w2-grid"><div class="w2-c"><h3>Safe during washdown</h3><p>Every delivery is risk-assessed and CE&#8209;marked. Standstill monitors keep rotating parts still while they are washed and serviced.</p></div><div class="w2-c"><h3>Nothing on the floor</h3><p>Raw material stays in the process, not on the floor, so more of every kilo ends up in your product.</p></div><div class="w2-c"><h3>No metal in the grinder</h3><p>One metal object in a fine grinder can break blades and hole plates worth several thousand euros. Metal detection is built into the line.</p></div><div class="w2-c"><h3>Fewer boots on the floor</h3><p>Automated transfers remove heavy, dangerous lifts. Capacity goes up, quality evens out and your people are spared.</p></div></div></div>
+    <div class="w2-wrap"><div class="wph w2-ph"><img loading="lazy" decoding="async" src="media/k11.jpg" alt="Clean stainless steel Finmatec screw conveyor in a pet food plant" style="object-position:40% 50%"><div class="b"><h3>Washed every day.</h3><p>Every machine is designed to be cleaned easily, without risk to the people who wash it.</p></div></div><div class="w2-grid"><div class="w2-c"><h3>Safe during washdown</h3><p>Every delivery is risk-assessed and CE&#8209;marked. Standstill monitors keep rotating parts still while they are washed and serviced.</p></div><div class="w2-c"><h3>Nothing on the floor</h3><p>Raw material stays in the process, not on the floor, so more of every kilo ends up in your product.</p></div><div class="w2-c"><h3>No metal in the grinder</h3><p>One metal object in a fine grinder can break blades and hole plates worth several thousand euros. Metal detection is built into the line.</p></div><div class="w2-c"><h3>Fewer boots on the floor</h3><p>Automated transfers remove heavy, dangerous lifts. Capacity goes up, quality evens out and your people are spared.</p></div></div></div>
   </section>
 
   <!-- 3 Guide: your raw materials, pet food numbers, pet food customers (homepage component: gains and numbers, K) -->
@@ -568,9 +569,9 @@ body{overflow-x:hidden}
     <h2 class="stmt">We know what arrives at <em>your door</em>.</h2>
     <p class="lead rw-lead">High-quality pet food is often made from raw materials that are hard to handle, from MDM to vegetables such as spinach. We tailor the line to your recipes and raw materials.</p>
     <div class="rwk-grid"><div class="rw-i"><span class="rw-ph"><img loading="lazy" decoding="async" src="media/k13.jpg" alt="Minced raw material in a screw conveyor"></span><span class="rw-t"><small>Mechanically separated meat</small><b>MDM</b></span></div><div class="rw-i"><span class="rw-ph"><img loading="lazy" decoding="async" src="media/v-cut1.jpg" alt="Crushed raw material"></span><span class="rw-t"><small>Crushed and finely ground</small><b>Bones</b></span></div><div class="rw-i"><span class="rw-ph"><img loading="lazy" decoding="async" src="media/k16.jpg" alt="Pet food mass on a belt conveyor"></span><span class="rw-t"><small>Mixed, cooled or heated</small><b>Your recipe</b></span></div><div class="rw-i rw-n"><span class="rw-num">5&nbsp;500</span><span class="rw-t"><small>Up to, in one mixer</small><b>Litres</b></span></div><div class="rw-i rw-n"><span class="rw-num">30<i>+</i></span><span class="rw-t"><small>Years designing</small><b>Food industry mixers</b></span></div><div class="rw-i rw-n"><span class="rw-num">2&nbsp;500<i>+</i></span><span class="rw-t"><small>Since 1989</small><b>Deliveries</b></span></div></div>
-    <div class="rw-note"><span class="tbc">To be confirmed</span><span>Pet food lines delivered and countries, from Finmatec. They replace the group figure 2&nbsp;500+, which covers all industries.</span></div>
+    
     <div class="logos fixed"><div class="ltrack"><div><img loading="lazy" decoding="async" src="media/logos/ee6f7b1a3c87811373a7a657e338bf87.jpg" alt="Snellman"></div><div><img loading="lazy" decoding="async" src="media/logos/cb1a542922041e53d1428090ab083545.jpg" alt="Hill's"></div><div><img loading="lazy" decoding="async" src="media/logos/c38c161d56a48c05337aaf605542433f.jpg" alt="Darling Ingredients"></div><div><img loading="lazy" decoding="async" src="media/logos/3c9964ff3a94c0fa3ca143f838d4f995.jpg" alt="Leo Group"></div></div></div>
-    <div class="rw-note"><span class="tbc">To be confirmed</span><span>Which of these are pet food customers.</span></div>
+    
   </section>
 
   <!-- 4 Plan: the line in 3D, pinned scrollytelling. First frame shown here; interactive artboards PetFoodLinja3D / PetFoodLinja3DMobile. -->
@@ -748,17 +749,15 @@ body{overflow-x:hidden}
 .sc .figs span{display:block;margin-top:8px;font-size:13px;line-height:1.4;color:var(--mute)}
 .sc .links{display:flex;flex-wrap:wrap;gap:8px 20px;margin-top:22px}
 .sc .links a{display:inline-flex;align-items:center;gap:8px;font-size:15px;font-weight:600;color:var(--brand);text-decoration:none;border-bottom:1.5px solid currentColor;padding-bottom:2px}
-.sc .next{display:inline-flex;align-items:center;gap:10px;margin-top:24px;min-height:44px;padding:0 18px 0 6px;border:0;border-radius:999px;background:var(--soft);color:var(--ink);font:600 14px/1 "Exo 2",sans-serif;cursor:pointer}
-.sc .next i{display:grid;place-items:center;width:32px;height:32px;border-radius:50%;background:#fff;font-style:normal}
 .sc .cta{display:inline-flex;align-items:center;gap:14px;height:56px;margin-top:26px;padding:0 8px 0 26px;border-radius:999px;background:var(--brand);color:#fff;font-weight:600;font-size:16px;text-decoration:none}
 .sc .cta i{display:grid;place-items:center;width:40px;height:40px;border-radius:50%;background:rgba(255,255,255,.16);font-style:normal}
 .sc .card .ph{margin:-24px -26px 22px;height:180px;border-radius:16px;overflow:hidden;position:relative;background:var(--soft)}
 .sc .card .ph img{display:block;width:100%;height:100%;object-fit:cover}
-.sc .card .ph figcaption{position:absolute;left:10px;bottom:10px;padding:5px 10px;border-radius:999px;background:rgba(13,14,43,.55);color:#fff;font-size:11px;font-weight:600;letter-spacing:.04em}
+.sc .card .ph.render{background:var(--paper)}
+.sc .card .ph.render img{object-fit:contain;padding:12px 16px 0}
 .sc .card .ph.none{display:grid;place-items:center;border:1.5px dashed var(--line);background:#fff}
 .sc .card .ph.none span{font-size:12px;font-weight:600;letter-spacing:.14em;text-transform:uppercase;color:var(--mute)}
 .sc .tbc{display:inline-flex;margin-top:16px;padding:6px 10px;border-radius:999px;border:1.5px dashed var(--line);font-size:11px;font-weight:700;letter-spacing:.1em;text-transform:uppercase;color:var(--mute)}
-.sc .skip{display:block;margin-top:14px;font-size:14px;font-weight:600;color:var(--mute)}
 /* progress rail */
 .sc .rail{position:absolute;z-index:3;display:flex;gap:6px;list-style:none;margin:0;padding:0}
 .sc .rail button{display:inline-flex;align-items:center;gap:10px;border:0;padding:0;background:none;cursor:pointer;font:600 12px/1 "Exo 2",sans-serif;color:var(--mute);letter-spacing:.04em}
@@ -769,7 +768,7 @@ body{overflow-x:hidden}
 .sc.d{width:1440px;height:900px}
 .sc.d .steps{padding:0 0 0 72px;margin-top:-900px}
 .sc.d .step{min-height:900px}
-.sc.d .step:not(:first-child){min-height:760px}
+.sc.d .step:not(:first-child){min-height:900px;padding:200px 0}
 .sc.d .card{width:460px}
 .sc.d .rail{right:36px;top:50%;transform:translateY(-50%);flex-direction:column;align-items:flex-end}
 .sc.d .rail button{flex-direction:row-reverse}
@@ -789,7 +788,6 @@ body{overflow-x:hidden}
 .sc.m .card .ph{margin:-16px -14px 16px;height:130px;border-radius:12px}
 .sc.m .figs b{font-size:22px}
 .sc.m .figs span{font-size:12px}
-.sc.m .next{margin-top:16px}
 .sc.m .rail{top:0;left:0;right:0;justify-content:space-between;padding:12px 12px 10px;background:rgba(245,246,251,.94)}
 .sc.m .rail button span{display:none}
 .sc.m .rail button i{width:34px;height:34px}
@@ -801,7 +799,7 @@ body{overflow-x:hidden}
 .sc.p .pin{height:var(--vh,100vh);overflow:hidden}
 .sc.p .steps{position:relative;z-index:2;pointer-events:none;margin-top:calc(-1 * var(--vh,100vh))}
 .sc.p .step{min-height:var(--vh,100vh)}
-.sc.p.d .step:not(:first-child){min-height:calc(var(--vh,100vh) * .85)}
+.sc.p.d .step:not(:first-child){min-height:var(--vh,100vh);padding:calc(var(--vh,100vh) * .22) 0}
 .sc.p.m .step{min-height:var(--vh,100vh);padding:430px 0 60px}
 .sc.p .label.tl{position:absolute}
 </style>
@@ -841,7 +839,7 @@ body{overflow-x:hidden}
       <span class="label tl">Illustrative layout</span>
       <ol class="rail" aria-label="Stations"><li><button data-rail="01" aria-label="01 Reception"><i>01</i><span>Reception</span></button></li><li><button data-rail="02" aria-label="02 Crushing"><i>02</i><span>Crushing</span></button></li><li><button data-rail="03" aria-label="03 Conveying"><i>03</i><span>Conveying</span></button></li><li><button data-rail="04" aria-label="04 Mixing"><i>04</i><span>Mixing</span></button></li><li><button data-rail="05" aria-label="05 Metal detection"><i>05</i><span>Metal detection</span></button></li><li><button data-rail="06" aria-label="06 Pumping and freezing"><i>06</i><span>Pumping and freezing</span></button></li><li><button data-rail="07" aria-label="07 Storage"><i>07</i><span>Storage</span></button></li></ol>
     </div>
-    <div class="steps"><section class="step" data-step="0"><div class="card"><span class="eyebrow">The line</span><h2>From reception to plate freezer. One line, one&nbsp;team.</h2><p>Every station opens the machines behind it. We build the whole material flow or the one station you are missing.</p><button class="next" data-go="1"><i><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2v10M3 8l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Next: 01 Reception and buffer storage</button><a class="skip" href="#after-line">Skip the line</a></div></section><section class="step" data-step="1"><div class="card"><figure class="ph"><img loading="lazy" decoding="async" src="media/k9.jpg" alt="Raw material bins next to a mixer line"><figcaption>Photo from a pet food plant</figcaption></figure><span class="no"><i>01</i>Station 01</span><h3>Reception and buffer storage</h3><p>Raw material is received and stored in silos or bins.</p><div class="links"><a href="#">Silos, Bins &amp; Hoppers &rarr;</a></div><button class="next" data-go="2"><i><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2v10M3 8l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Next: 02 Crushing</button></div></section><section class="step" data-step="2"><div class="card"><figure class="ph"><img loading="lazy" decoding="async" src="media/v-cut1.jpg" alt="Crushed raw material"><figcaption>Photo from a pet food plant</figcaption></figure><span class="no"><i>02</i>Station 02</span><h3>Crushing</h3><p>Frozen blocks and bones are crushed.</p><p>The single shaft CombiBreaker Mini Titan breaks frozen blocks and crushes all kinds of bones. Feed and discharge are built for a hoist or a conveyor.</p><div class="figs"><div><b>5 t/h</b><span>frozen blocks</span></div><div><b>9 t/h</b><span>bones, with the 18.5 kW motor</span></div></div><div class="links"><a href="#">Titan Series &rarr;</a></div><button class="next" data-go="3"><i><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2v10M3 8l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Next: 03 Conveying</button></div></section><section class="step" data-step="3"><div class="card"><figure class="ph"><img loading="lazy" decoding="async" src="media/k11.jpg" alt="Finmatec screw conveyor"><figcaption>Photo from a pet food plant</figcaption></figure><span class="no"><i>03</i>Station 03</span><h3>Conveying</h3><p>Screw and belt conveyors move the raw material.</p><p>Belt conveyors in stainless steel from 0.25 to 11 kW, with scrapers, filling and discharge hoppers, and adjustable height and speed as options.</p><div class="links"><a href="#">Screw Conveyors &rarr;</a><a href="#">Belt Conveyors &rarr;</a></div><button class="next" data-go="4"><i><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2v10M3 8l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Next: 04 Mixing, cooling or heating</button></div></section><section class="step" data-step="4"><div class="card"><figure class="ph"><img loading="lazy" decoding="async" src="media/k7.jpg" alt="Mixer with a screw conveyor"><figcaption>Photo from a pet food plant</figcaption></figure><span class="no"><i>04</i>Station 04</span><h3>Mixing, cooling or heating</h3><p>Large mixers, with CO2 cooling or steam heating when needed.</p><p>The closed CMX mixer cools with CO2 while it mixes, and direct steam injection heats the raw material. Shown: CMX 3000 with twin shafts, a sliding lid and four CO2 nozzles.</p><div class="figs"><div><b>3,000 l</b><span>CMX 3000</span></div></div><div class="links"><a href="#">Finmatec Mixers &rarr;</a></div><button class="next" data-go="5"><i><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2v10M3 8l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Next: 05 Metal detection</button></div></section><section class="step" data-step="5"><div class="card"><figure class="ph none"><span>Photo to be shot</span></figure><span class="no"><i>05</i>Station 05</span><h3>Metal detection</h3><p>A metal detector protects the process before the grinders.</p><button class="next" data-go="6"><i><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2v10M3 8l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Next: 06 Pumping and plate freezing</button></div></section><section class="step" data-step="6"><div class="card"><figure class="ph"><img loading="lazy" decoding="async" src="media/v5302.jpg" alt="Frozen blocks from a plate freezer"><figcaption>Photo from a pet food plant</figcaption></figure><span class="no"><i>06</i>Station 06</span><h3>Pumping and plate freezing</h3><p>The mass is pumped straight into the plate freezers.</p><p>The plate freezers are made by our partner Jackstone. We automate the filling, unloading and palletising around them.</p><div class="figs"><div><b>180 t</b><span>a day, fully or partly automated</span></div><div><b>1 person</b><span>runs the system</span></div></div><div class="links"><a href="#">Plate Freezing Systems &rarr;</a></div><button class="next" data-go="7"><i><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2v10M3 8l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>Next: 07 Storage</button></div></section><section class="step" data-step="7"><div class="card"><figure class="ph none"><span>Photo to be shot</span></figure><span class="no"><i>07</i>Station 07</span><h3>Storage</h3><p>Storage and traceability.</p><p>BinStacker is our patented automated bin store. It builds upwards, weighs every bin at the infeed and tracks it by RFID or barcode.</p><div class="figs"><div><b>Patented</b><span>US 12,570,471 B2</span></div></div><span class="tbc">Storage station to be confirmed</span><div class="links"><a href="#">BinStacker &rarr;</a></div><button class="next" data-go="8"><i><svg width="14" height="14" viewBox="0 0 14 14" aria-hidden="true"><path d="M7 2v10M3 8l4 4 4-4" fill="none" stroke="currentColor" stroke-width="1.6" stroke-linecap="round" stroke-linejoin="round"/></svg></i>The whole line</button></div></section><section class="step" data-step="8"><div class="card"><span class="eyebrow">One line, one team</span><h2>We design, manufacture and automate the&nbsp;line.</h2><p>We automate as far as it makes economic sense for your volumes.</p><p>The plate freezers are made by our partner Jackstone. Further processing and packaging are not part of our scope.</p><a class="cta" href="#">Discuss your pet food line <i>&rarr;</i></a></div></section></div>
+    <div class="steps"><section class="step" data-step="0"><div class="card"><span class="eyebrow">The line</span><h2>From reception to plate freezer. One line, one&nbsp;team.</h2><p>Every station opens the machines behind it. We build the whole material flow or the one station you are missing.</p></div></section><section class="step" data-step="1"><div class="card"><figure class="ph"><img loading="lazy" decoding="async" src="media/k9.jpg" alt="Raw material bins next to a mixer line"></figure><span class="no"><i>01</i>Station 01</span><h3>Reception and buffer storage</h3><p>Raw material is received and stored in silos or bins.</p><div class="links"><a href="#">Silos, Bins &amp; Hoppers &rarr;</a></div></div></section><section class="step" data-step="2"><div class="card"><figure class="ph"><img loading="lazy" decoding="async" src="media/v-cut1.jpg" alt="Crushed raw material"></figure><span class="no"><i>02</i>Station 02</span><h3>Crushing</h3><p>Frozen blocks and bones are crushed.</p><p>The single shaft CombiBreaker Mini Titan breaks frozen blocks and crushes all kinds of bones. Feed and discharge are built for a hoist or a conveyor.</p><div class="figs"><div><b>5 t/h</b><span>frozen blocks</span></div><div><b>9 t/h</b><span>bones, with the 18.5 kW motor</span></div></div><div class="links"><a href="#">Titan Series &rarr;</a></div></div></section><section class="step" data-step="3"><div class="card"><figure class="ph"><img loading="lazy" decoding="async" src="media/k17.jpg" alt="Belt conveyor carrying pet food mass"></figure><span class="no"><i>03</i>Station 03</span><h3>Conveying</h3><p>Screw and belt conveyors move the raw material.</p><p>Belt conveyors in stainless steel from 0.25 to 11 kW, with scrapers, filling and discharge hoppers, and adjustable height and speed as options.</p><div class="links"><a href="#">Screw Conveyors &rarr;</a><a href="#">Belt Conveyors &rarr;</a></div></div></section><section class="step" data-step="4"><div class="card"><figure class="ph"><img loading="lazy" decoding="async" src="media/k7.jpg" alt="Mixer with a screw conveyor"></figure><span class="no"><i>04</i>Station 04</span><h3>Mixing, cooling or heating</h3><p>Large mixers, with CO2 cooling or steam heating when needed.</p><p>The closed CMX mixer cools with CO2 while it mixes, and direct steam injection heats the raw material. Shown: CMX 3000 with twin shafts, a sliding lid and four CO2 nozzles.</p><div class="figs"><div><b>3,000 l</b><span>CMX 3000</span></div></div><div class="links"><a href="#">Finmatec Mixers &rarr;</a></div></div></section><section class="step" data-step="5"><div class="card"><span class="no"><i>05</i>Station 05</span><h3>Metal detection</h3><p>A metal detector protects the process before the grinders.</p></div></section><section class="step" data-step="6"><div class="card"><figure class="ph"><img loading="lazy" decoding="async" src="media/pf06.jpg" alt="Operator at a pump filling a vertical plate freezer"></figure><span class="no"><i>06</i>Station 06</span><h3>Pumping and plate freezing</h3><p>The mass is pumped straight into the plate freezers.</p><p>The plate freezers are made by our partner Jackstone. We automate the filling, unloading and palletising around them.</p><div class="figs"><div><b>180 t</b><span>a day, fully or partly automated</span></div><div><b>1 person</b><span>runs the system</span></div></div><div class="links"><a href="#">Plate Freezing Systems &rarr;</a></div></div></section><section class="step" data-step="7"><div class="card"><figure class="ph render"><img loading="lazy" decoding="async" src="media/pf07.png" alt="BinStacker automated bin storage, illustration"></figure><span class="no"><i>07</i>Station 07</span><h3>Storage</h3><p>Storage and traceability.</p><p>BinStacker is our patented automated bin store. It builds upwards, weighs every bin at the infeed and tracks it by RFID or barcode.</p><div class="figs"><div><b>Patented</b><span>US 12,570,471 B2</span></div></div><div class="links"><a href="#">BinStacker &rarr;</a></div></div></section><section class="step" data-step="8"><div class="card"><span class="eyebrow">One line, one team</span><h2>We design, manufacture and automate the&nbsp;line.</h2><p>We automate as far as it makes economic sense for your volumes.</p><p>The plate freezers are made by our partner Jackstone. Further processing and packaging are not part of our scope.</p><a class="cta" href="#">Discuss your pet food line <i>&rarr;</i></a></div></section></div>
   </div>
 </div></section>
 <script>function pfInit(root, D, ST, MC) {
@@ -886,7 +884,7 @@ body{overflow-x:hidden}
     if (!V) return commit(c);
     var W = stage.clientWidth, H = stage.clientHeight, k = W / c[2], s = V[2] / c[2];
     var tx = (V[0] - c[0]) * k, ty = (V[1] - c[1]) * k;
-    if (Math.abs(tx) > W * 0.45 || Math.abs(ty) > H * 0.45 || s > 1.7 || s < 0.6) return commit(c);
+    if (Math.abs(tx) > W * 0.48 || Math.abs(ty) > H * 0.48 || s > 2.4 || s < 0.45) return commit(c);
     svg.style.transform = "translate(" + tx.toFixed(1) + "px," + ty.toFixed(1) + "px) scale(" + s.toFixed(4) + ")";
   }
   // ----- state -----
@@ -908,7 +906,9 @@ body{overflow-x:hidden}
     steps.forEach(function (st, i) { var c = st.querySelector(".card").getBoundingClientRect(), r = page ? { top: 0 } : scroller.getBoundingClientRect(); if (c.top - r.top < line) pick = i; });
     return pick;
   }
-  (page ? window : scroller).addEventListener("scroll", function () { activate(current()); }, { passive: true });
+  var dirty = false, lastScroll = 0;
+  function onScroll() { lastScroll = performance.now(); if (still.matches) { activate(current()); return; } dirty = true; kick(); clearTimeout(onScroll.t); onScroll.t = setTimeout(function () { if (dirty) { dirty = false; activate(current()); } }, 150); }
+  (page ? window : scroller).addEventListener("scroll", onScroll, { passive: true });
   if (page) window.addEventListener("resize", function () { requestAnimationFrame(function () { sizeVh(); var a = active; active = -1; activate(a < 0 ? current() : a); }); });
   function go(i) {
     var st = steps[i]; if (!st) return;
@@ -949,19 +949,22 @@ body{overflow-x:hidden}
     bsLift.setAttribute("transform", T(0, 0, D.bsLift[0] + (D.bsLift[1] - D.bsLift[0]) * (seg(w, 1, 6) - seg(w, 10, 15))));
   }
   // ----- frame loop: only while visible and allowed to move -----
-  var t0 = performance.now(), raf = 0, visible = true, lastT = t0;
+  var t0 = performance.now(), raf = 0, visible = true, lastT = t0, lastPose = t0, animT = 6.5;
   function frame(now) {
     raf = 0;
     if (!root.isConnected) return;
     var dt = Math.min(0.05, (now - lastT) / 1000); lastT = now;
+    if (dirty) { dirty = false; activate(current()); }
+    var camMoving = false;
     if (target && (cam[0] !== target[0] || cam[1] !== target[1] || cam[2] !== target[2])) {
       // critically damped spring: eases in from rest, keeps velocity when retargeted, settles in about 0.6 s
       var w = 10, moving = false, n = dt > 0.02 ? 2 : 1, h = dt / n;
       for (var r = 0; r < n; r++) for (var j = 0; j < 4; j++) { vel[j] += (w * w * (target[j] - cam[j]) - 2 * w * vel[j]) * h; cam[j] += vel[j] * h; }
       for (j = 0; j < 4; j++) if (Math.abs(target[j] - cam[j]) > 0.08 || Math.abs(vel[j]) > 0.5) moving = true;
       if (moving) setView(cam); else { cam = target.slice(); vel = [0, 0, 0, 0]; commit(cam); }
+      camMoving = moving;
     }
-    pose((now - t0) / 1000);
+    if (!camMoving && now - lastScroll > 220 && now - lastPose > 32) { animT += Math.min(0.1, (now - lastPose) / 1000); lastPose = now; pose(animT); }
     if (visible && !still.matches) raf = requestAnimationFrame(frame);
   }
   function kick() { if (still.matches) { if (target) { cam = target.slice(); vel = [0, 0, 0, 0]; commit(cam); } return; } if (!raf && visible) { lastT = performance.now(); raf = requestAnimationFrame(frame); } }
@@ -985,7 +988,7 @@ document.addEventListener("DOMContentLoaded", function () { var el = document.qu
 
   <!-- 5 Peak: a pet food line in the customer's words (homepage component: proof) -->
   <section class="proof case">
-    <div class="case-head"><div><span class="eyebrow">Customer story</span><h2>A pet food line, in the customer&rsquo;s words.</h2></div><div class="lead"><p>Why they started, what limited the solution and what changed on the line.</p><span class="tbc">Customer, project and approval to be confirmed</span></div></div>
+    <div class="case-head"><div><span class="eyebrow">Customer story</span><h2>A pet food line, in the customer&rsquo;s words.</h2></div><div class="lead"><p>Why they started, what limited the solution and what changed on the line.</p></div></div>
     <div class="pbento">
       <div class="cell c-quote"><div class="core">
         <div class="mark" aria-hidden="true">&#8220;</div>
@@ -1018,7 +1021,7 @@ document.addEventListener("DOMContentLoaded", function () { var el = document.qu
       <h2>Machine specs for your pet food layout.</h2>
       <p class="lead">Capacities, loads and utilities in plain HTML, datasheets and CAD models to download, and a named application engineer when something is unclear.</p>
       <div class="eq-tabs" role="radiogroup" aria-label="Machines"><label class="eq-tab"><input type="radio" name="eq-d" value="cmxp" checked><span><b>CMXP 3000</b><small>Closed mixer with pump</small></span></label><label class="eq-tab"><input type="radio" name="eq-d" value="cmx"><span><b>CMX 3000</b><small>Closed cooling mixer</small></span></label><label class="eq-tab"><input type="radio" name="eq-d" value="omx"><span><b>OMX 3000</b><small>Open mixer</small></span></label><label class="eq-tab"><input type="radio" name="eq-d" value="titan"><span><b>CombiBreaker Mini Titan</b><small>Crusher for frozen blocks and bones</small></span></label></div>
-      <p class="eq-note"><span class="tbc">To be confirmed</span><span>Which machines are most used in pet food lines.</span></p>
+      
       <a class="btn pri" href="#">Engineering resources <i><svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a>
     </div>
     <div class="sheet"><div class="in">
@@ -1050,7 +1053,7 @@ document.addEventListener("DOMContentLoaded", function () { var el = document.qu
   </section>
 
   <section class="wv pfcert">
-    <div class="wc w2-cert"><span class="wc-t"><b>Quality, safety and hygiene certificates</b><span>CE declaration and risk assessment for every delivery, for your supplier evaluation. Hygiene certificates to be confirmed.</span></span><a class="tlink" href="#">Download certificates (PDF) <svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8M4.5 7 8 10.5 11.5 7M3 13.5h10"></path></svg></a></div>
+    <div class="wc w2-cert"><span class="wc-t"><b>Quality, safety and hygiene certificates</b><span>CE declaration and risk assessment for every delivery, for your supplier evaluation.</span></span><a class="tlink" href="#">Download certificates (PDF) <svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8M4.5 7 8 10.5 11.5 7M3 13.5h10"></path></svg></a></div>
   </section>
 
   <!-- 8 End: the smallest safe step (homepage components: 80 %, contact) -->
@@ -1138,7 +1141,7 @@ document.addEventListener("DOMContentLoaded", function () { var el = document.qu
   <section class="cb" id="contact">
     <div><h2>Discuss your pet food line.</h2><p class="lead">Tell us about your raw material, recipes, volumes and premises, and we come back with a proposal.</p>
       <div class="ppl"><div><span class="av"><img loading="lazy" decoding="async" src="media/mats.webp" alt="Mats Strandvall"></span><span><b>Mats Strandvall</b><span>Sales Director · +358&nbsp;40&nbsp;086&nbsp;2694</span></span></div><div><span class="av"><img loading="lazy" decoding="async" src="media/anders.webp" alt="Anders Asplund"></span><span><b>Anders Asplund</b><span>CEO · +358&nbsp;50&nbsp;505&nbsp;0587</span></span></div></div>
-      <div class="ppl-note"><span class="tbc">To be confirmed</span><span>Named contact for pet food lines.</span></div></div>
+      </div>
     <div class="form"><div class="in">
       <span class="lab" id="req-l">What is your request?</span>
       <div class="chips" role="group" aria-labelledby="req-l"><button type="button" class="chip opt on" aria-pressed="true">New project or line</button><button type="button" class="chip opt" aria-pressed="false">Budget quote</button><button type="button" class="chip opt" aria-pressed="false">Business case</button><button type="button" class="chip opt" aria-pressed="false">Technical question</button><button type="button" class="chip opt" aria-pressed="false">Service</button></div>
