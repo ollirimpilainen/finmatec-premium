@@ -86,9 +86,9 @@
 /* Fields: hairline */
 .fm label.f, .fm label.ta { display:flex; padding:0 2px; border-bottom:1.5px solid var(--line); color:var(--mute); font-size:15px; }
 .fm label.f { height:52px; align-items:center; }
-.fm label.ta { height:auto; min-height:112px; padding-top:14px; align-items:flex-start; }
+.fm label.ta { height:auto; min-height:96px; padding-top:14px; align-items:flex-start; }
 .fm label.f input, .fm label.ta textarea { all:unset; width:100%; font:inherit; font-size:15px; color:var(--ink); }
-.fm label.ta textarea { height:100%; min-height:100px; }
+.fm label.ta textarea { height:100%; min-height:72px; }
 .fm label.f input::placeholder, .fm label.ta textarea::placeholder { color:var(--mute); opacity:1; }
 .fm label.f:focus-within, .fm label.ta:focus-within { border-bottom-color:var(--dark); }
 
@@ -307,7 +307,8 @@
 .fm .cb .form .lab { color:var(--ink2); }
 .cb .chips { margin-top:12px; display:flex; flex-wrap:wrap; gap:8px; }
 .cb .form .f2 { margin-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:6px 28px; }
-.cb .form .ta { margin-top:12px; flex:1; }
+.cb > .form { align-self:start; }
+.cb .form .ta { margin-top:12px; }
 .cb .form .btn { align-self:flex-start; margin-top:20px; justify-content:space-between; }
 
 /* Footer */
@@ -514,7 +515,7 @@ body{overflow-x:hidden}
       <p class="cap">Capacity up to 180 tonnes per 24 hours.</p>
       <div class="ctas"><a class="btn sec" href="#">Plate Freezing Systems <i><svg class="ic" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><a class="btn ghost" href="#">Download brochure (PDF) <i><svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8M4.5 7 8 10.5 11.5 7M3 13.5h10"></path></svg></i></a></div>
     </div>
-    <div class="bezel"><div class="in"><video data-src="media/c5302.mp4" poster="media/v5302.jpg" muted="" loop="" playsinline="" preload="none" aria-hidden="true"></video><video data-src="media/c5363.mp4" muted="" loop="" playsinline="" preload="none" aria-hidden="true"></video><video data-src="media/c5294.mp4" muted="" loop="" playsinline="" preload="none" aria-hidden="true"></video><span class="tag"><svg class="ic" width="10" height="10" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4.5 2.5v11L13 8z"></path></svg>Footage from Finmatec lines</span></div></div>
+    <div class="bezel"><div class="in"><video data-src="media/c5302.mp4" poster="media/v5302.jpg" muted="" playsinline="" preload="none" aria-hidden="true"></video><video data-src="media/c5363.mp4" muted="" playsinline="" preload="none" aria-hidden="true"></video><video data-src="media/c5294.mp4" muted="" loop="" playsinline="" preload="none" aria-hidden="true"></video><span class="tag"><svg class="ic" width="10" height="10" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4.5 2.5v11L13 8z"></path></svg>Footage from Finmatec lines</span></div></div>
   </section>
 
   <!-- 5 Why (W2, Olli 16.11) -->
@@ -724,6 +725,10 @@ body{overflow-x:hidden}
     (function step(){var half=el.scrollWidth/2;if(half>0)el.style.transform='translateX('+(-((Date.now()/1000*45)%half))+'px)';requestAnimationFrame(step);})();
   }
 })();
+document.querySelectorAll('.bezel video:not([loop])').forEach(function (v) {
+  function again() { if (!v.getAttribute('src')) return; v.currentTime = 0; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+  v.addEventListener('animationstart', again); v.addEventListener('animationiteration', again);
+});
 </script>
 </body>
 </html>
