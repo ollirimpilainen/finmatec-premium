@@ -1011,7 +1011,7 @@ document.addEventListener("DOMContentLoaded", function () { var el = document.qu
       <p class="cap">Pump filling is recommended for minced material. Payback for a new automated line is often 2 to 5 years.</p>
       <div class="ctas"><a class="btn sec" href="#">See our plate freezing systems <i><svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><a class="btn ghost" href="#">Download brochure (PDF) <i><svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8M4.5 7 8 10.5 11.5 7M3 13.5h10"></path></svg></i></a></div>
     </div>
-    <div class="bezel"><div class="in"><video data-src="media/c5302.mp4" poster="media/v5302.jpg" muted="" loop="" playsinline="" preload="none" aria-hidden="true"></video><video data-src="media/c5363.mp4" muted="" loop="" playsinline="" preload="none" aria-hidden="true"></video><video data-src="media/c5294.mp4" muted="" loop="" playsinline="" preload="none" aria-hidden="true"></video><span class="tag"><svg class="ic" width="10" height="10" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4.5 2.5v11L13 8z"></path></svg>Footage from Finmatec lines</span></div></div>
+    <div class="bezel"><div class="in"><video data-src="media/c5302.mp4" poster="media/v5302.jpg" muted="" playsinline="" preload="none" aria-hidden="true"></video><video data-src="media/c5363.mp4" muted="" playsinline="" preload="none" aria-hidden="true"></video><video data-src="media/c5294.mp4" muted="" loop="" playsinline="" preload="none" aria-hidden="true"></video><span class="tag"><svg class="ic" width="10" height="10" viewBox="0 0 16 16" fill="currentColor" aria-hidden="true"><path d="M4.5 2.5v11L13 8z"></path></svg>Footage from Finmatec lines</span></div></div>
   </section>
 
   <!-- 7 Proof for the slow mind: specs and certificates (homepage components: engineers, certificate row) -->
@@ -1210,6 +1210,10 @@ document.addEventListener("DOMContentLoaded", function () { var el = document.qu
     (function step(){var half=el.scrollWidth/2;if(half>0)el.style.transform='translateX('+(-((Date.now()/1000*45)%half))+'px)';requestAnimationFrame(step);})();
   }
 })();
+document.querySelectorAll('.bezel video:not([loop])').forEach(function (v) {
+  function again() { if (!v.getAttribute('src')) return; v.currentTime = 0; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+  v.addEventListener('animationstart', again); v.addEventListener('animationiteration', again);
+});
 </script>
 </body>
 </html>
