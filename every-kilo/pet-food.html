@@ -1000,8 +1000,12 @@ function pfInit(root, D, ST, MC) {
     mxl.forEach(function (l, si) { l[0].innerHTML = pl[si][0]; l[1].innerHTML = pl[si][1]; });
     mxLumps.forEach(function (o) { var a = 2 * Math.PI * (o.ph + (o.si ? -1 : 1) * RPS * t * 0.5), c = Math.max(0, Math.cos(a)) * 1.2; o.g.setAttribute("transform", mxTr(D.ey, Math.sin(a) * D.mx.hw, [D.ez[0] * c, D.ez[1] * c])); });
   }
-  function pose(t) {
-    mixPose(t);
+  var lastMix = 0;
+  function pose(t, busy) {
+    // the mixer paddles rebuild path markup, so while the page scrolls or the
+    // camera moves they update at about 15 fps instead of 30; nothing stops
+    var now = performance.now();
+    if (!busy || now - lastMix > 64) { lastMix = now; mixPose(t); }
     var span = D.belt[1] - D.belt[0];
     portions.forEach(function (g, i) {
       var x = D.belt[0] + ((t * 12 + i * span / portions.length) % span);
@@ -1038,7 +1042,8 @@ function pfInit(root, D, ST, MC) {
       if (moving) setView(cam); else { cam = target.slice(); vel = [0, 0, 0, 0]; commit(cam); }
       camMoving = moving;
     }
-    if (!camMoving && now - lastScroll > 220 && now - lastPose > 32) { animT += Math.min(0.1, (now - lastPose) / 1000); lastPose = now; pose(animT); }
+    // moving parts keep running while the page scrolls and the camera moves, at about 30 fps
+    if (now - lastPose > 32) { animT += Math.min(0.1, (now - lastPose) / 1000); lastPose = now; pose(animT, camMoving || now - lastScroll < 220); }
     if (visible && !still.matches) raf = requestAnimationFrame(frame);
   }
   function kick() { if (still.matches) { if (target) { cam = target.slice(); vel = [0, 0, 0, 0]; commit(cam); } return; } if (!raf && visible) { lastT = performance.now(); raf = requestAnimationFrame(frame); } }
