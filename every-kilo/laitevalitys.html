@@ -451,8 +451,8 @@
 .fm .lhero .hctas { margin-top:34px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
 .fm .lwall { background:#fff; border:1px solid var(--line); border-radius:var(--r-panel); padding:26px; }
 .fm .lwall-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--r-card-in); overflow:hidden; }
-.fm .lwall-grid span { background:#fff; min-height:76px; display:flex; align-items:center; justify-content:center; padding:14px; }
-.fm .lwall-grid img { width:auto; height:auto; max-width:100%; max-height:30px; object-fit:contain; opacity:.8; }
+.fm .lwall-grid a { background:#fff; min-height:76px; display:flex; align-items:center; justify-content:center; padding:14px; text-decoration:none; }
+.fm .lwall-grid img { width:auto; height:auto; max-width:100%; max-height:32px; object-fit:contain; }
 .fm .lwall-grid b { font-family:var(--fd); font-size:15px; font-weight:700; color:var(--ink2); text-align:center; }
 .fm .lwall .more { margin-top:16px; display:flex; justify-content:space-between; align-items:center; gap:16px; color:var(--mute); }
 
@@ -468,7 +468,7 @@
 .fm .lgrid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
 .fm .lcard { display:grid; grid-template-columns:92px minmax(0,1fr); gap:20px; align-items:center; background:#fff; border:1px solid var(--line); border-radius:var(--r-row); padding:20px 24px; text-decoration:none; color:inherit; }
 .fm .lcard .mark { height:44px; display:flex; align-items:center; justify-content:center; }
-.fm .lcard .mark img { width:auto; height:auto; max-width:92px; max-height:36px; object-fit:contain; opacity:.85; }
+.fm .lcard .mark img { width:auto; height:auto; max-width:92px; max-height:38px; object-fit:contain; }
 .fm .lcard .mark b { font-family:var(--fd); font-size:16px; color:var(--ink2); text-align:center; line-height:1.15; }
 .fm .lcard h3 { font-family:var(--fd); font-size:19px; font-weight:700; letter-spacing:-0.005em; line-height:1.2; }
 .fm .lcard h3 i { font-style:normal; margin-left:10px; color:var(--mute); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
@@ -490,28 +490,27 @@
 .fm .lnum-grid > .rw-i + .rw-i { padding-left:32px; }
 .fm .lnum-grid > .rw-i:last-child { border-right:0; }
 .fm .lnum-grid .rw-num { display:block; margin-bottom:12px; font-size:60px; }
-.fm .lnum-grid .rw-t b { display:block; font-family:var(--fd); font-size:19px; font-weight:700; letter-spacing:-0.005em; line-height:1.2; }
-.fm .lnum-grid .rw-t small { display:block; margin-bottom:5px; color:var(--ink2); }
+.fm .lnum-grid .rw-t b { display:block; font-family:var(--fd); font-size:21px; font-weight:700; letter-spacing:-0.005em; line-height:1.2; }
+.fm .lnum-grid .rw-t small { display:block; margin-top:8px; max-width:30ch; color:var(--ink2); font-size:var(--small); line-height:1.5; letter-spacing:0; text-transform:none; }
 .fm .lwhy { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
 .fm .lwhy > div { background:#fff; border:1px solid var(--line); border-radius:var(--r-card); padding:28px; }
 .fm .lwhy h3 { font-size:var(--h4); margin-bottom:10px; }
 .fm .lwhy p { color:var(--ink2); }
 
-/* Asiakkaat: sama logokohtelu kuin pääsivuston logonauhassa (Olli 17.11., kommentti f03edef9):
-   hiusviivasolut 104 px, harmaasävy ja multiply, logon enimmäiskorkeus 52 px. Ruudukko, jotta
-   kaikki kymmenen näkyvät kerralla. */
-.fm .lcust { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); margin:0 calc(-1 * var(--gut)); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-.fm .lcust span { height:104px; display:grid; place-items:center; padding:20px 26px; border-left:1px solid var(--line); }
-.fm .lcust span:nth-child(5n+1) { border-left:0; }
-.fm .lcust span:nth-child(n+6) { border-top:1px solid var(--line); }
-.fm .lcust img { width:auto; height:auto; max-width:100%; max-height:52px; object-fit:contain; filter:grayscale(1) contrast(1.05); opacity:.78; mix-blend-mode:multiply; }
+/* Asiakkaat: etusivun liukuva logonauha (.logos .ltrack). Pohjatyylit tulevat etusivun tyylitiedostosta,
+   tässä vain kierto ja kevyempi suodatin, koska etusivun contrast(2.6) hävittää Mushin ja Musti Groupin. */
+.fm .logos.lv { margin:0 calc(-1 * var(--gut)); }
+.fm .logos.lv .ltrack { animation:lvtrack 46s linear infinite; }
+@keyframes lvtrack { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+.fm .logos.lv img { filter:grayscale(1) contrast(1.05); opacity:.78; mix-blend-mode:multiply; max-height:50px; }
 
 /* Tuotekatalogi ja tarjouskori (17.11.2026). Woo-katalogi: tuote on pääasia, ryhmä ja merkki suodattimia. */
 .fm .cwrap { padding:40px var(--gut) var(--sec); }
 .fm .cwrap { position:relative; }
 .fm .ctop { display:grid; grid-template-columns:minmax(0,1fr) 440px; gap:56px; align-items:end; margin-bottom:34px; }
 .fm .ctop .lsearch { margin-top:26px; }
-.fm .lnav .btn .cnt { font-style:normal; margin-left:8px; min-width:22px; height:22px; padding:0 7px; border-radius:999px; background:var(--acc); color:var(--ink); font-size:13px; font-weight:800; display:inline-grid; place-items:center; }
+.fm .lnav .btn.cart { gap:9px; }
+.fm .lnav .btn .cnt { font-style:normal; min-width:20px; height:20px; padding:0 6px; border-radius:999px; background:rgba(255,255,255,.22); color:#fff; font-size:12px; font-weight:700; display:inline-grid; place-items:center; }
 /* Tarjouspyyntö on korin paikalla: headerin napin alla aukeava paneeli, ei suodatinpalkissa (Olli 17.11., kommentti 6bc928de) */
 .fm .cmini { position:absolute; right:var(--gut); top:10px; width:396px; z-index:6; background:var(--deep); color:#fff; border-radius:var(--r-card); padding:26px 28px; box-shadow:0 26px 60px rgba(13,14,43,.24); }
 .fm .cmini::before { content:""; position:absolute; top:-8px; right:56px; width:18px; height:18px; background:var(--deep); transform:rotate(45deg); border-radius:3px; }
@@ -556,13 +555,18 @@
    Olli 17.11., kommentti 7d80fe42. Kapeassa palstassa ostolaatikko putoaa omalle rivilleen. */
 .fm .crow { display:grid; grid-template-columns:88px minmax(0,1fr) auto; column-gap:20px; align-items:center; background:#fff; border:1px solid var(--line); border-radius:var(--r-row); padding:16px 20px; container-type:inline-size; }
 .fm .crow .mk { width:88px; height:64px; display:grid; place-items:center; background:var(--paper); border-radius:12px; }
-.fm .crow .mk img { width:auto; height:auto; max-width:66px; max-height:30px; object-fit:contain; opacity:.85; }
+.fm .crow .mk img { width:auto; height:auto; max-width:66px; max-height:32px; object-fit:contain; }
+.fm .crow .mk img.shot { width:100%; height:100%; max-width:none; max-height:none; object-fit:cover; border-radius:12px; }
+.fm .crow .mk--dark { background:var(--deep); }
 .fm .crow .mk b { font-family:var(--fd); font-size:13px; color:var(--ink2); text-align:center; line-height:1.15; padding:0 6px; }
 .fm .crow .info { min-width:0; }
 .fm .crow h3 { font-family:var(--fd); font-size:18px; font-weight:700; letter-spacing:-0.005em; line-height:1.3; }
 .fm .crow p { margin-top:3px; color:var(--mute); font-size:var(--small); }
 .fm .crow .buy { display:flex; align-items:center; justify-content:flex-end; gap:12px; min-width:230px; }
-.fm .crow .buy .stepper { display:inline-flex; align-items:center; gap:10px; border:1px solid var(--line); border-radius:999px; padding:8px 16px; font-family:var(--fd); font-size:14px; font-weight:700; white-space:nowrap; }
+.fm .crow .buy .stepper { display:inline-flex; align-items:center; border:1px solid var(--line); border-radius:999px; padding:3px; background:#fff; }
+.fm .crow .buy .stepper button { width:34px; height:34px; border:0; border-radius:999px; background:none; color:var(--dark); font-family:var(--fd); font-size:19px; font-weight:700; line-height:1; cursor:pointer; display:grid; place-items:center; }
+.fm .crow .buy .stepper button:hover { background:var(--soft); }
+.fm .crow .buy .stepper b { min-width:52px; text-align:center; font-family:var(--fd); font-size:14px; font-weight:700; white-space:nowrap; }
 .fm .crow .btn { white-space:nowrap; }
 @container (max-width:560px) {
   .fm .crow { grid-template-columns:72px minmax(0,1fr); column-gap:14px; padding:14px 16px; }
@@ -598,12 +602,15 @@
 .fm .pshot img { width:auto; height:auto; max-height:420px; max-width:100%; object-fit:contain; }
 .fm .pbuy { background:#fff; border:1px solid var(--line); border-radius:var(--r-card); padding:34px 36px; }
 .fm .pbuy .mk { height:30px; margin-bottom:18px; display:flex; }
-.fm .pbuy .mk img { width:auto; height:auto; max-height:28px; max-width:150px; object-fit:contain; }
+.fm .pbuy .mk img { width:auto; height:auto; max-height:30px; max-width:150px; object-fit:contain; }
 .fm .pbuy .mk b { font-family:var(--fd); font-size:17px; color:var(--ink2); }
 .fm .pbuy h1 { font-size:var(--h3); line-height:1.1; }
 .fm .pbuy p.lead { margin-top:14px; color:var(--ink2); }
 .fm .pqty { margin-top:26px; display:flex; gap:12px; align-items:center; }
-.fm .pqty .stepper { display:inline-flex; align-items:center; gap:18px; border:1px solid var(--line); border-radius:999px; padding:10px 20px; font-family:var(--fd); font-weight:700; }
+.fm .pqty .stepper { display:inline-flex; align-items:center; border:1px solid var(--line); border-radius:999px; padding:4px; background:#fff; }
+.fm .pqty .stepper button { width:40px; height:40px; border:0; border-radius:999px; background:none; color:var(--dark); font-family:var(--fd); font-size:21px; font-weight:700; line-height:1; cursor:pointer; display:grid; place-items:center; }
+.fm .pqty .stepper button:hover { background:var(--soft); }
+.fm .pqty .stepper b { min-width:58px; text-align:center; font-family:var(--fd); font-weight:700; }
 .fm .pqty .btn { flex:1; }
 .fm .pfacts { margin-top:28px; border-top:1px solid var(--line); }
 .fm .pfacts div { display:grid; grid-template-columns:150px minmax(0,1fr); gap:16px; padding:13px 0; border-bottom:1px solid var(--line); font-size:15px; }
@@ -635,17 +642,22 @@
 .fm .ccat small { color:var(--mute); }
 .fm .ccat .n { margin-top:auto; font-family:var(--fd); font-size:15px; font-weight:700; color:var(--dark); }
 .fm .bband { display:grid; grid-template-columns:repeat(8,minmax(0,1fr)); margin:0 calc(-1 * var(--gut)); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-.fm .bband span { height:104px; display:grid; place-items:center; padding:18px 22px; border-left:1px solid var(--line); }
-.fm .bband span:nth-child(8n+1) { border-left:0; }
-.fm .bband span:nth-child(n+9) { border-top:1px solid var(--line); }
-.fm .bband img { width:auto; height:auto; max-width:100%; max-height:40px; object-fit:contain; opacity:.72; }
+.fm .bband a { height:104px; display:grid; place-items:center; padding:18px 22px; border-left:1px solid var(--line); text-decoration:none; }
+.fm .bband a:nth-child(8n+1) { border-left:0; }
+.fm .bband a:nth-child(n+9) { border-top:1px solid var(--line); }
+.fm .bband img { width:auto; height:auto; max-width:100%; max-height:42px; object-fit:contain; }
 .fm .bband b { font-family:var(--fd); font-size:13px; color:var(--mute); text-align:center; }
 .fm.m .ccat { grid-template-columns:1fr; }
 .fm.m .bband { grid-template-columns:repeat(3,minmax(0,1fr)); margin:0 -20px; }
-.fm.m .bband span { height:76px; padding:12px 14px; border-left:1px solid var(--line); }
-.fm.m .bband span:nth-child(8n+1) { border-left:1px solid var(--line); }
-.fm.m .bband span:nth-child(3n+1) { border-left:0; }
-.fm.m .bband span:nth-child(n+4) { border-top:1px solid var(--line); }
+.fm.m .bband a { height:76px; padding:12px 14px; border-left:1px solid var(--line); }
+.fm.m .bband a:nth-child(8n+1) { border-left:1px solid var(--line); }
+.fm.m .bband a:nth-child(3n+1) { border-left:0; }
+.fm.m .bband a:nth-child(n+4) { border-top:1px solid var(--line); }
+
+/* Tarjouspyyntöpaneeli omana artboardinaan (avattu tila) */
+.fm .koriwrap { padding:28px; }
+.fm .cmini--solo { position:static; width:auto; box-shadow:none; }
+.fm .cmini--solo::before { display:none; }
 
 /* Mobiili 390 */
 .fm.m .lnav { padding:16px 20px; gap:12px; }
@@ -657,7 +669,7 @@
 .fm.m .lhero p.lead { font-size:16px; }
 .fm.m .lwall { padding:14px; border-radius:var(--r-card); }
 .fm.m .lwall-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
-.fm.m .lwall-grid span { min-height:62px; padding:10px; }
+.fm.m .lwall-grid a { min-height:62px; padding:10px; }
 .fm.m .lwall .more { flex-direction:column; align-items:flex-start; gap:6px; }
 .fm.m .lsec { padding:56px 20px; }
 .fm.m .lhead { grid-template-columns:1fr; gap:16px; margin-bottom:28px; }
@@ -668,11 +680,7 @@
 .fm.m .lnum-grid { grid-template-columns:1fr; margin-bottom:32px; }
 .fm.m .lnum-grid > .rw-i, .fm.m .lnum-grid > .rw-i + .rw-i { padding:18px 0; border-right:0; border-top:1px solid var(--line); }
 .fm.m .lnum-grid > .rw-i:first-child { border-top:0; padding-top:0; }
-.fm.m .lcust { grid-template-columns:repeat(2,minmax(0,1fr)); margin:0 -20px; }
-.fm.m .lcust span { height:80px; padding:16px 20px; }
-.fm.m .lcust span:nth-child(5n+1) { border-left:1px solid var(--line); }
-.fm.m .lcust span:nth-child(odd) { border-left:0; }
-.fm.m .lcust span:nth-child(n+3) { border-top:1px solid var(--line); }
+.fm.m .logos.lv { margin:0 -20px; }
 .fm.m .fb2.lv .grid { grid-template-columns:1fr; }
 </style>
 <style media="(max-width:760px)">
@@ -1118,8 +1126,8 @@
 .fm .lhero .hctas { margin-top:34px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
 .fm .lwall { background:#fff; border:1px solid var(--line); border-radius:var(--r-panel); padding:26px; }
 .fm .lwall-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--r-card-in); overflow:hidden; }
-.fm .lwall-grid span { background:#fff; min-height:76px; display:flex; align-items:center; justify-content:center; padding:14px; }
-.fm .lwall-grid img { width:auto; height:auto; max-width:100%; max-height:30px; object-fit:contain; opacity:.8; }
+.fm .lwall-grid a { background:#fff; min-height:76px; display:flex; align-items:center; justify-content:center; padding:14px; text-decoration:none; }
+.fm .lwall-grid img { width:auto; height:auto; max-width:100%; max-height:32px; object-fit:contain; }
 .fm .lwall-grid b { font-family:var(--fd); font-size:15px; font-weight:700; color:var(--ink2); text-align:center; }
 .fm .lwall .more { margin-top:16px; display:flex; justify-content:space-between; align-items:center; gap:16px; color:var(--mute); }
 
@@ -1135,7 +1143,7 @@
 .fm .lgrid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
 .fm .lcard { display:grid; grid-template-columns:92px minmax(0,1fr); gap:20px; align-items:center; background:#fff; border:1px solid var(--line); border-radius:var(--r-row); padding:20px 24px; text-decoration:none; color:inherit; }
 .fm .lcard .mark { height:44px; display:flex; align-items:center; justify-content:center; }
-.fm .lcard .mark img { width:auto; height:auto; max-width:92px; max-height:36px; object-fit:contain; opacity:.85; }
+.fm .lcard .mark img { width:auto; height:auto; max-width:92px; max-height:38px; object-fit:contain; }
 .fm .lcard .mark b { font-family:var(--fd); font-size:16px; color:var(--ink2); text-align:center; line-height:1.15; }
 .fm .lcard h3 { font-family:var(--fd); font-size:19px; font-weight:700; letter-spacing:-0.005em; line-height:1.2; }
 .fm .lcard h3 i { font-style:normal; margin-left:10px; color:var(--mute); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
@@ -1157,28 +1165,27 @@
 .fm .lnum-grid > .rw-i + .rw-i { padding-left:32px; }
 .fm .lnum-grid > .rw-i:last-child { border-right:0; }
 .fm .lnum-grid .rw-num { display:block; margin-bottom:12px; font-size:60px; }
-.fm .lnum-grid .rw-t b { display:block; font-family:var(--fd); font-size:19px; font-weight:700; letter-spacing:-0.005em; line-height:1.2; }
-.fm .lnum-grid .rw-t small { display:block; margin-bottom:5px; color:var(--ink2); }
+.fm .lnum-grid .rw-t b { display:block; font-family:var(--fd); font-size:21px; font-weight:700; letter-spacing:-0.005em; line-height:1.2; }
+.fm .lnum-grid .rw-t small { display:block; margin-top:8px; max-width:30ch; color:var(--ink2); font-size:var(--small); line-height:1.5; letter-spacing:0; text-transform:none; }
 .fm .lwhy { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
 .fm .lwhy > div { background:#fff; border:1px solid var(--line); border-radius:var(--r-card); padding:28px; }
 .fm .lwhy h3 { font-size:var(--h4); margin-bottom:10px; }
 .fm .lwhy p { color:var(--ink2); }
 
-/* Asiakkaat: sama logokohtelu kuin pääsivuston logonauhassa (Olli 17.11., kommentti f03edef9):
-   hiusviivasolut 104 px, harmaasävy ja multiply, logon enimmäiskorkeus 52 px. Ruudukko, jotta
-   kaikki kymmenen näkyvät kerralla. */
-.fm .lcust { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); margin:0 calc(-1 * var(--gut)); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-.fm .lcust span { height:104px; display:grid; place-items:center; padding:20px 26px; border-left:1px solid var(--line); }
-.fm .lcust span:nth-child(5n+1) { border-left:0; }
-.fm .lcust span:nth-child(n+6) { border-top:1px solid var(--line); }
-.fm .lcust img { width:auto; height:auto; max-width:100%; max-height:52px; object-fit:contain; filter:grayscale(1) contrast(1.05); opacity:.78; mix-blend-mode:multiply; }
+/* Asiakkaat: etusivun liukuva logonauha (.logos .ltrack). Pohjatyylit tulevat etusivun tyylitiedostosta,
+   tässä vain kierto ja kevyempi suodatin, koska etusivun contrast(2.6) hävittää Mushin ja Musti Groupin. */
+.fm .logos.lv { margin:0 calc(-1 * var(--gut)); }
+.fm .logos.lv .ltrack { animation:lvtrack 46s linear infinite; }
+@keyframes lvtrack { from { transform:translateX(0); } to { transform:translateX(-50%); } }
+.fm .logos.lv img { filter:grayscale(1) contrast(1.05); opacity:.78; mix-blend-mode:multiply; max-height:50px; }
 
 /* Tuotekatalogi ja tarjouskori (17.11.2026). Woo-katalogi: tuote on pääasia, ryhmä ja merkki suodattimia. */
 .fm .cwrap { padding:40px var(--gut) var(--sec); }
 .fm .cwrap { position:relative; }
 .fm .ctop { display:grid; grid-template-columns:minmax(0,1fr) 440px; gap:56px; align-items:end; margin-bottom:34px; }
 .fm .ctop .lsearch { margin-top:26px; }
-.fm .lnav .btn .cnt { font-style:normal; margin-left:8px; min-width:22px; height:22px; padding:0 7px; border-radius:999px; background:var(--acc); color:var(--ink); font-size:13px; font-weight:800; display:inline-grid; place-items:center; }
+.fm .lnav .btn.cart { gap:9px; }
+.fm .lnav .btn .cnt { font-style:normal; min-width:20px; height:20px; padding:0 6px; border-radius:999px; background:rgba(255,255,255,.22); color:#fff; font-size:12px; font-weight:700; display:inline-grid; place-items:center; }
 /* Tarjouspyyntö on korin paikalla: headerin napin alla aukeava paneeli, ei suodatinpalkissa (Olli 17.11., kommentti 6bc928de) */
 .fm .cmini { position:absolute; right:var(--gut); top:10px; width:396px; z-index:6; background:var(--deep); color:#fff; border-radius:var(--r-card); padding:26px 28px; box-shadow:0 26px 60px rgba(13,14,43,.24); }
 .fm .cmini::before { content:""; position:absolute; top:-8px; right:56px; width:18px; height:18px; background:var(--deep); transform:rotate(45deg); border-radius:3px; }
@@ -1223,13 +1230,18 @@
    Olli 17.11., kommentti 7d80fe42. Kapeassa palstassa ostolaatikko putoaa omalle rivilleen. */
 .fm .crow { display:grid; grid-template-columns:88px minmax(0,1fr) auto; column-gap:20px; align-items:center; background:#fff; border:1px solid var(--line); border-radius:var(--r-row); padding:16px 20px; container-type:inline-size; }
 .fm .crow .mk { width:88px; height:64px; display:grid; place-items:center; background:var(--paper); border-radius:12px; }
-.fm .crow .mk img { width:auto; height:auto; max-width:66px; max-height:30px; object-fit:contain; opacity:.85; }
+.fm .crow .mk img { width:auto; height:auto; max-width:66px; max-height:32px; object-fit:contain; }
+.fm .crow .mk img.shot { width:100%; height:100%; max-width:none; max-height:none; object-fit:cover; border-radius:12px; }
+.fm .crow .mk--dark { background:var(--deep); }
 .fm .crow .mk b { font-family:var(--fd); font-size:13px; color:var(--ink2); text-align:center; line-height:1.15; padding:0 6px; }
 .fm .crow .info { min-width:0; }
 .fm .crow h3 { font-family:var(--fd); font-size:18px; font-weight:700; letter-spacing:-0.005em; line-height:1.3; }
 .fm .crow p { margin-top:3px; color:var(--mute); font-size:var(--small); }
 .fm .crow .buy { display:flex; align-items:center; justify-content:flex-end; gap:12px; min-width:230px; }
-.fm .crow .buy .stepper { display:inline-flex; align-items:center; gap:10px; border:1px solid var(--line); border-radius:999px; padding:8px 16px; font-family:var(--fd); font-size:14px; font-weight:700; white-space:nowrap; }
+.fm .crow .buy .stepper { display:inline-flex; align-items:center; border:1px solid var(--line); border-radius:999px; padding:3px; background:#fff; }
+.fm .crow .buy .stepper button { width:34px; height:34px; border:0; border-radius:999px; background:none; color:var(--dark); font-family:var(--fd); font-size:19px; font-weight:700; line-height:1; cursor:pointer; display:grid; place-items:center; }
+.fm .crow .buy .stepper button:hover { background:var(--soft); }
+.fm .crow .buy .stepper b { min-width:52px; text-align:center; font-family:var(--fd); font-size:14px; font-weight:700; white-space:nowrap; }
 .fm .crow .btn { white-space:nowrap; }
 @container (max-width:560px) {
   .fm .crow { grid-template-columns:72px minmax(0,1fr); column-gap:14px; padding:14px 16px; }
@@ -1265,12 +1277,15 @@
 .fm .pshot img { width:auto; height:auto; max-height:420px; max-width:100%; object-fit:contain; }
 .fm .pbuy { background:#fff; border:1px solid var(--line); border-radius:var(--r-card); padding:34px 36px; }
 .fm .pbuy .mk { height:30px; margin-bottom:18px; display:flex; }
-.fm .pbuy .mk img { width:auto; height:auto; max-height:28px; max-width:150px; object-fit:contain; }
+.fm .pbuy .mk img { width:auto; height:auto; max-height:30px; max-width:150px; object-fit:contain; }
 .fm .pbuy .mk b { font-family:var(--fd); font-size:17px; color:var(--ink2); }
 .fm .pbuy h1 { font-size:var(--h3); line-height:1.1; }
 .fm .pbuy p.lead { margin-top:14px; color:var(--ink2); }
 .fm .pqty { margin-top:26px; display:flex; gap:12px; align-items:center; }
-.fm .pqty .stepper { display:inline-flex; align-items:center; gap:18px; border:1px solid var(--line); border-radius:999px; padding:10px 20px; font-family:var(--fd); font-weight:700; }
+.fm .pqty .stepper { display:inline-flex; align-items:center; border:1px solid var(--line); border-radius:999px; padding:4px; background:#fff; }
+.fm .pqty .stepper button { width:40px; height:40px; border:0; border-radius:999px; background:none; color:var(--dark); font-family:var(--fd); font-size:21px; font-weight:700; line-height:1; cursor:pointer; display:grid; place-items:center; }
+.fm .pqty .stepper button:hover { background:var(--soft); }
+.fm .pqty .stepper b { min-width:58px; text-align:center; font-family:var(--fd); font-weight:700; }
 .fm .pqty .btn { flex:1; }
 .fm .pfacts { margin-top:28px; border-top:1px solid var(--line); }
 .fm .pfacts div { display:grid; grid-template-columns:150px minmax(0,1fr); gap:16px; padding:13px 0; border-bottom:1px solid var(--line); font-size:15px; }
@@ -1302,17 +1317,22 @@
 .fm .ccat small { color:var(--mute); }
 .fm .ccat .n { margin-top:auto; font-family:var(--fd); font-size:15px; font-weight:700; color:var(--dark); }
 .fm .bband { display:grid; grid-template-columns:repeat(8,minmax(0,1fr)); margin:0 calc(-1 * var(--gut)); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
-.fm .bband span { height:104px; display:grid; place-items:center; padding:18px 22px; border-left:1px solid var(--line); }
-.fm .bband span:nth-child(8n+1) { border-left:0; }
-.fm .bband span:nth-child(n+9) { border-top:1px solid var(--line); }
-.fm .bband img { width:auto; height:auto; max-width:100%; max-height:40px; object-fit:contain; opacity:.72; }
+.fm .bband a { height:104px; display:grid; place-items:center; padding:18px 22px; border-left:1px solid var(--line); text-decoration:none; }
+.fm .bband a:nth-child(8n+1) { border-left:0; }
+.fm .bband a:nth-child(n+9) { border-top:1px solid var(--line); }
+.fm .bband img { width:auto; height:auto; max-width:100%; max-height:42px; object-fit:contain; }
 .fm .bband b { font-family:var(--fd); font-size:13px; color:var(--mute); text-align:center; }
 .fm.m .ccat { grid-template-columns:1fr; }
 .fm.m .bband { grid-template-columns:repeat(3,minmax(0,1fr)); margin:0 -20px; }
-.fm.m .bband span { height:76px; padding:12px 14px; border-left:1px solid var(--line); }
-.fm.m .bband span:nth-child(8n+1) { border-left:1px solid var(--line); }
-.fm.m .bband span:nth-child(3n+1) { border-left:0; }
-.fm.m .bband span:nth-child(n+4) { border-top:1px solid var(--line); }
+.fm.m .bband a { height:76px; padding:12px 14px; border-left:1px solid var(--line); }
+.fm.m .bband a:nth-child(8n+1) { border-left:1px solid var(--line); }
+.fm.m .bband a:nth-child(3n+1) { border-left:0; }
+.fm.m .bband a:nth-child(n+4) { border-top:1px solid var(--line); }
+
+/* Tarjouspyyntöpaneeli omana artboardinaan (avattu tila) */
+.fm .koriwrap { padding:28px; }
+.fm .cmini--solo { position:static; width:auto; box-shadow:none; }
+.fm .cmini--solo::before { display:none; }
 
 /* Mobiili 390 */
 .fm.m .lnav { padding:16px 20px; gap:12px; }
@@ -1324,7 +1344,7 @@
 .fm.m .lhero p.lead { font-size:16px; }
 .fm.m .lwall { padding:14px; border-radius:var(--r-card); }
 .fm.m .lwall-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
-.fm.m .lwall-grid span { min-height:62px; padding:10px; }
+.fm.m .lwall-grid a { min-height:62px; padding:10px; }
 .fm.m .lwall .more { flex-direction:column; align-items:flex-start; gap:6px; }
 .fm.m .lsec { padding:56px 20px; }
 .fm.m .lhead { grid-template-columns:1fr; gap:16px; margin-bottom:28px; }
@@ -1335,11 +1355,7 @@
 .fm.m .lnum-grid { grid-template-columns:1fr; margin-bottom:32px; }
 .fm.m .lnum-grid > .rw-i, .fm.m .lnum-grid > .rw-i + .rw-i { padding:18px 0; border-right:0; border-top:1px solid var(--line); }
 .fm.m .lnum-grid > .rw-i:first-child { border-top:0; padding-top:0; }
-.fm.m .lcust { grid-template-columns:repeat(2,minmax(0,1fr)); margin:0 -20px; }
-.fm.m .lcust span { height:80px; padding:16px 20px; }
-.fm.m .lcust span:nth-child(5n+1) { border-left:1px solid var(--line); }
-.fm.m .lcust span:nth-child(odd) { border-left:0; }
-.fm.m .lcust span:nth-child(n+3) { border-top:1px solid var(--line); }
+.fm.m .logos.lv { margin:0 -20px; }
 .fm.m .fb2.lv .grid { grid-template-columns:1fr; }
 </style>
 <style>
@@ -1361,7 +1377,7 @@ body{overflow-x:hidden}
 <body>
 <template id="td"><div class="fm">
   <div class="util lutil"><div><span>Laitev&auml;litys: edustamamme merkit Suomessa</span><span>Varasto Vaasassa</span></div><div><a class="ext" href="#">Finmatec.fi: elintarviketeollisuuden ratkaisut (EN)</a></div></div>
-<nav class="nav lnav"><span class="wb"><img loading="lazy" decoding="async" class="logoimg" src="media/finmatec-logo.svg" alt="Finmatec"><em>Laitev&auml;litys</em></span><ul><li><a href="laitevalitys-tuotteet.html">Tuotteet</a></li><li><a href="laitevalitys.html#merkit">Merkit</a></li><li><a href="laitevalitys.html#miksi">Miksi Finmatec</a></li><li><a href="#yhteys">Yhteystiedot</a></li></ul><span class="tel"><b>+358&nbsp;500&nbsp;845&nbsp;583</b><a class="btn pri qk s" href="laitevalitys-tuotteet.html#kori"><i><svg class="ic" width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h2l1.2 7.2a1 1 0 0 0 1 .8h5.4a1 1 0 0 0 1-.8L13.5 6H5"></path><circle cx="6.5" cy="13" r="1"></circle><circle cx="12" cy="13" r="1"></circle></svg></i> Tarjouspyynt&ouml; <em class="cnt">3</em></a></span></nav>
+<nav class="nav lnav"><span class="wb"><img loading="lazy" decoding="async" class="logoimg" src="media/finmatec-logo.svg" alt="Finmatec"><em>Laitev&auml;litys</em></span><ul><li><a href="laitevalitys-tuotteet.html">Tuotteet</a></li><li><a href="laitevalitys.html#merkit">Merkit</a></li><li><a href="laitevalitys.html#miksi">Miksi Finmatec</a></li><li><a href="#yhteys">Yhteystiedot</a></li></ul><span class="tel"><b>+358&nbsp;500&nbsp;845&nbsp;583</b><a class="btn pri s cart" href="laitevalitys-tuotteet.html#kori"><i><svg class="ic" width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h2l1.2 7.2a1 1 0 0 0 1 .8h5.4a1 1 0 0 0 1-.8L13.5 6H5"></path><circle cx="6.5" cy="13" r="1"></circle><circle cx="12" cy="13" r="1"></circle></svg></i> Tarjouspyynt&ouml; <em class="cnt">3</em></a></span></nav>
   <!-- 1 Hero: ostaja tietää jo mitä hakee, joten lupaus ja merkkiseinä ovat samassa ruudussa.
        Ei valokuvaa: osion sisältö on luettelo, ei tarina (IA luku 9). -->
   <section class="lhero">
@@ -1376,7 +1392,7 @@ body{overflow-x:hidden}
         </div>
       </div>
       <div class="lwall">
-        <div class="lwall-grid"><span><img loading="lazy" decoding="async" src="media/logot/efa-mono.svg" alt="EFA"></span><span><img loading="lazy" decoding="async" src="media/logot/giesser-mono.svg" alt="Giesser"></span><span><img loading="lazy" decoding="async" src="media/logot/morakniv-mono.svg" alt="Morakniv"></span><span><img loading="lazy" decoding="async" src="media/logot/knecht-mono.svg" alt="KNECHT"></span><span><img loading="lazy" decoding="async" src="media/logot/steen-mono.svg" alt="STEEN"></span><span><img loading="lazy" decoding="async" src="media/logot/nock-mono.svg" alt="NOCK"></span><span><img loading="lazy" decoding="async" src="media/logot/brokelmann-mono.svg" alt="Brökelmann"></span><span><img loading="lazy" decoding="async" src="media/logot/hoecker-mono.svg" alt="Höcker"></span><span><img loading="lazy" decoding="async" src="media/logot/termet-mono.svg" alt="Termet"></span><span><img loading="lazy" decoding="async" src="media/logot/syspal-mono.svg" alt="SYSPAL"></span><span><img loading="lazy" decoding="async" src="media/logot/manulatex-mono.svg" alt="Manulatex"></span><span><img loading="lazy" decoding="async" src="media/logot/exos-mono.svg" alt="EXOS"></span></div>
+        <div class="lwall-grid"><a href="#"><img loading="lazy" decoding="async" src="media/logot/efa.svg" alt="EFA"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/giesser.svg" alt="Giesser"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/morakniv.svg" alt="Morakniv"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/knecht.svg" alt="KNECHT"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/steen.svg" alt="STEEN"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/nock.svg" alt="NOCK"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/brokelmann.svg" alt="Brökelmann"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/hoecker.svg" alt="Höcker"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/termet.svg" alt="Termet"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/syspal.svg" alt="SYSPAL"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/manulatex.svg" alt="Manulatex"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/exos.svg" alt="EXOS"></a></div>
         <div class="more mono"><span>22 merkki&auml;, yksi yhteyshenkil&ouml;</span><a class="tlink" href="#merkit">Koko merkkihakemisto</a></div>
       </div>
     </div>
@@ -1390,7 +1406,7 @@ body{overflow-x:hidden}
       <p>L&ouml;yd&auml;t merkin nimell&auml; tai sen mukaan, mit&auml; se valmistaa. Jokaisella merkill&auml; on oma sivunsa, jolla ovat mallitunnukset ja yhteydenotto.</p>
     </div>
     <div class="lfilter"><div class="lsearch"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.5"></circle><path d="M10.5 10.5 14 14"></path></svg><span>Hae merkill&auml; tai tuotteella</span></div><div class="chips" role="group" aria-label="Tuoteryhm&auml;"><button type="button" class="chip opt on" aria-pressed="true">Kaikki 22</button><button type="button" class="chip opt" aria-pressed="false">Ty&ouml;kalut ja tarvikkeet 17</button><button type="button" class="chip opt" aria-pressed="false">Laitteet 7</button></div></div>
-    <div class="lgrid"><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/efa-mono.svg" alt=""></span><div><h3>EFA</h3><p>Sahat, nylkyveitset sekä trimmaus- ja leikkuutyökalut</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/giesser-mono.svg" alt=""></span><div><h3>Giesser</h3><p>Veitset ja teroitusvälineet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/morakniv-mono.svg" alt=""></span><div><h3>Morakniv</h3><p>Veitset, aiemmin Frosts Mora</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/knecht-mono.svg" alt=""></span><div><h3>KNECHT</h3><p>Teroitus- ja hiontakoneet</p></div></a><a class="lcard" href="#"><span class="mark"><b>ZAHND</b></span><div><h3>ZAHND</h3><p>Teroituskoneet EVO4, FP02 ja Z200, KNECHTin valikoimaa</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/mado-mono.svg" alt=""></span><div><h3>MADO</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/wiegand-mono.svg" alt=""></span><div><h3>Wiegand</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/bobet-materiel-mono.svg" alt=""></span><div><h3>Bobet matériel<i>Ranska</i></h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/tmp-mono.svg" alt=""></span><div><h3>tmp</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/sharpymax-mono.svg" alt=""></span><div><h3>Sharpymax</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/manulatex-mono.svg" alt=""></span><div><h3>Manulatex<i>Ranska</i></h3><p>Teräsverkkokäsineet, PPE-luokka III</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/brauer-mono.svg" alt=""></span><div><h3>Brauer</h3><p>Lämpötulostuspäät merkintään</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/termet-mono.svg" alt=""></span><div><h3>Termet</h3><p>Hygienialaitteet ja sterilointi</p></div></a><a class="lcard" href="#"><span class="mark"><b>Duram</b></span><div><h3>Duram<i>Israel</i></h3><p>Kynimäsormet siipikarjalle</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/exos-mono.svg" alt=""></span><div><h3>EXOS<i>Ruotsi</i></h3><p>Kalojen ruodonpoistolaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/nock-mono.svg" alt=""></span><div><h3>NOCK<i>Saksa</i></h3><p>Nahonta- ja kalvokuorintakoneet, jäähiutalekoneet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/steen-mono.svg" alt=""></span><div><h3>STEEN<i>Belgia</i></h3><p>Nylkemiskoneet ST600K, ST700K ja ST111K, kylkiluunleikkuri ST350</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/syspal-mono.svg" alt=""></span><div><h3>SYSPAL<i>Iso-Britannia</i></h3><p>Mollasekoittimet, DIN9797</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/omet-foodtech-mono.svg" alt=""></span><div><h3>Omet Foodtech<i>Italia</i></h3><p>Lihamyllyt ja sekoittimet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/brokelmann-mono.svg" alt=""></span><div><h3>Brökelmann<i>Saksa</i></h3><p>Mollat ja astiat, nostimet, savustusvaunut, pesulaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/wamma-mono.svg" alt=""></span><div><h3>WAMMA<i>Puola</i></h3><p>Koukut, levittimet ja ripustimet, teurastuslinjat</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/hoecker-mono.svg" alt=""></span><div><h3>Höcker<i>Saksa</i></h3><p>Hygienialaitteet, veitsien sterilointi, hygieniasulut</p></div></a></div>
+    <div class="lgrid"><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/efa.svg" alt=""></span><div><h3>EFA</h3><p>Sahat, nylkyveitset sekä trimmaus- ja leikkuutyökalut</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/giesser.svg" alt=""></span><div><h3>Giesser</h3><p>Veitset ja teroitusvälineet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/morakniv.svg" alt=""></span><div><h3>Morakniv</h3><p>Veitset, aiemmin Frosts Mora</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/knecht.svg" alt=""></span><div><h3>KNECHT</h3><p>Teroitus- ja hiontakoneet</p></div></a><a class="lcard" href="#"><span class="mark"><b>ZAHND</b></span><div><h3>ZAHND</h3><p>Teroituskoneet EVO4, FP02 ja Z200, KNECHTin valikoimaa</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/mado.svg" alt=""></span><div><h3>MADO</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/wiegand.svg" alt=""></span><div><h3>Wiegand</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/bobet-materiel.svg" alt=""></span><div><h3>Bobet matériel<i>Ranska</i></h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/tmp.svg" alt=""></span><div><h3>tmp</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/sharpymax.svg" alt=""></span><div><h3>Sharpymax</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/manulatex.svg" alt=""></span><div><h3>Manulatex<i>Ranska</i></h3><p>Teräsverkkokäsineet, PPE-luokka III</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/brauer.svg" alt=""></span><div><h3>Brauer</h3><p>Lämpötulostuspäät merkintään</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/termet.svg" alt=""></span><div><h3>Termet</h3><p>Hygienialaitteet ja sterilointi</p></div></a><a class="lcard" href="#"><span class="mark"><b>Duram</b></span><div><h3>Duram<i>Israel</i></h3><p>Kynimäsormet siipikarjalle</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/exos.svg" alt=""></span><div><h3>EXOS<i>Ruotsi</i></h3><p>Kalojen ruodonpoistolaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/nock.svg" alt=""></span><div><h3>NOCK<i>Saksa</i></h3><p>Nahonta- ja kalvokuorintakoneet, jäähiutalekoneet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/steen.svg" alt=""></span><div><h3>STEEN<i>Belgia</i></h3><p>Nylkemiskoneet ST600K, ST700K ja ST111K, kylkiluunleikkuri ST350</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/syspal.svg" alt=""></span><div><h3>SYSPAL<i>Iso-Britannia</i></h3><p>Mollasekoittimet, DIN9797</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/omet-foodtech.svg" alt=""></span><div><h3>Omet Foodtech<i>Italia</i></h3><p>Lihamyllyt ja sekoittimet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/brokelmann.svg" alt=""></span><div><h3>Brökelmann<i>Saksa</i></h3><p>Mollat ja astiat, nostimet, savustusvaunut, pesulaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/wamma.svg" alt=""></span><div><h3>WAMMA<i>Puola</i></h3><p>Koukut, levittimet ja ripustimet, teurastuslinjat</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/hoecker.svg" alt=""></span><div><h3>Höcker<i>Saksa</i></h3><p>Hygienialaitteet, veitsien sterilointi, hygieniasulut</p></div></a></div>
   </section>
 
   <!-- 3 Kolme tuoteryhmää: kantavat yleisnimihaut (teurastamotarvikkeet, veitset, reikälevyt).
@@ -1410,7 +1426,7 @@ body{overflow-x:hidden}
       <div><span class="eyebrow">Miksi Finmatec</span><h2>Varasto Vaasassa ja ihminen, joka vastaa.</h2></div>
       <p>Edustus on osa samaa taloa, joka suunnittelee ja rakentaa tuotantolinjoja. Sama osaaminen on takana, kun valitaan ter&auml; tai kokonainen kone.</p>
     </div>
-    <div class="lnum-grid"><div class="rw-i rw-n"><span class="rw-num">22</span><span class="rw-t"><small class="mono">Ty&ouml;kaluista koneisiin</small><b>Edustettua merkki&auml;</b></span></div><div class="rw-i rw-n"><span class="rw-num">6</span><span class="rw-t"><small class="mono">Liha, kala, lemmikkiruoka, valmisruoka, leipomo ja sivutuotteet</small><b>Toimialaa</b></span></div><div class="rw-i rw-n"><span class="rw-num">1</span><span class="rw-t"><small class="mono">Tuotep&auml;&auml;llikk&ouml;, joka tuntee koneet</small><b>Yhteyshenkil&ouml;</b></span></div></div>
+    <div class="lnum-grid"><div class="rw-i rw-n"><span class="rw-num">22</span><span class="rw-t"><b>Edustettua merkki&auml;</b><small>Ty&ouml;kaluista ja tarvikkeista kokonaisiin koneisiin.</small></span></div><div class="rw-i rw-n"><span class="rw-num">6</span><span class="rw-t"><b>Toimialaa</b><small>Liha, kala, lemmikkiruoka, valmisruoka, leipomo ja sivutuotteet.</small></span></div><div class="rw-i rw-n"><span class="rw-num">1</span><span class="rw-t"><b>Yhteyshenkil&ouml;</b><small>Tuotep&auml;&auml;llikk&ouml;, joka tuntee koneet ja vastaa itse.</small></span></div></div>
     <div class="lwhy">
       <div><h3>Varasto Vaasassa</h3><p>Kuluvat osat ja ty&ouml;kalut ovat omassa varastossa, eiv&auml;t valmistajan tehtaalla Keski-Euroopassa.</p></div>
       <div><h3>Tuotep&auml;&auml;llikk&ouml;, ei vaihde</h3><p>Sama ihminen hoitaa ty&ouml;kalut, tarvikkeet ja varaosat, joten kysymykseen vastaa se, joka tuntee koneet.</p></div>
@@ -1425,7 +1441,7 @@ body{overflow-x:hidden}
       <div><span class="eyebrow">Asiakkaat</span><h2>Suomalaiset teurastamot, leikkaamot ja lemmikkiruokatehtaat.</h2></div>
       <p>Samat talot ostavat meilt&auml; sek&auml; kuluvat osat ett&auml; kokonaisia koneita.</p>
     </div>
-    <div class="lcust"><span><img loading="lazy" decoding="async" src="media/as-snellman.jpg" alt="Snellman"></span><span><img loading="lazy" decoding="async" src="media/as-hkfoods.jpg" alt="HKFoods"></span><span><img loading="lazy" decoding="async" src="media/as-mush.jpg" alt="Mush"></span><span><img loading="lazy" decoding="async" src="media/as-atria.png" alt="Atria"></span><span><img loading="lazy" decoding="async" src="media/as-lansikalkkuna.png" alt="Länsi-Kalkkuna"></span><span><img loading="lazy" decoding="async" src="media/as-hietanen.png" alt="Liha Hietanen"></span><span><img loading="lazy" decoding="async" src="media/as-ronka.jpg" alt="Veljekset Rönkä"></span><span><img loading="lazy" decoding="async" src="media/as-kalaneuvos.png" alt="Kalaneuvos"></span><span><img loading="lazy" decoding="async" src="media/as-musti.png" alt="Musti Group"></span><span><img loading="lazy" decoding="async" src="media/as-leroy.png" alt="Lerøy Finland"></span></div>
+    <div class="logos lv"><div class="ltrack"><div><img loading="lazy" decoding="async" src="media/as-snellman.jpg" alt="Snellman"></div><div><img loading="lazy" decoding="async" src="media/as-hkfoods.jpg" alt="HKFoods"></div><div><img loading="lazy" decoding="async" src="media/as-mush.jpg" alt="Mush"></div><div><img loading="lazy" decoding="async" src="media/as-atria.png" alt="Atria"></div><div><img loading="lazy" decoding="async" src="media/as-lansikalkkuna.png" alt="Länsi-Kalkkuna"></div><div><img loading="lazy" decoding="async" src="media/as-hietanen.png" alt="Liha Hietanen"></div><div><img loading="lazy" decoding="async" src="media/as-ronka.jpg" alt="Veljekset Rönkä"></div><div><img loading="lazy" decoding="async" src="media/as-kalaneuvos.png" alt="Kalaneuvos"></div><div><img loading="lazy" decoding="async" src="media/as-musti.png" alt="Musti Group"></div><div><img loading="lazy" decoding="async" src="media/as-leroy.png" alt="Lerøy Finland"></div><div><img loading="lazy" decoding="async" src="media/as-snellman.jpg" alt="Snellman"></div><div><img loading="lazy" decoding="async" src="media/as-hkfoods.jpg" alt="HKFoods"></div><div><img loading="lazy" decoding="async" src="media/as-mush.jpg" alt="Mush"></div><div><img loading="lazy" decoding="async" src="media/as-atria.png" alt="Atria"></div><div><img loading="lazy" decoding="async" src="media/as-lansikalkkuna.png" alt="Länsi-Kalkkuna"></div><div><img loading="lazy" decoding="async" src="media/as-hietanen.png" alt="Liha Hietanen"></div><div><img loading="lazy" decoding="async" src="media/as-ronka.jpg" alt="Veljekset Rönkä"></div><div><img loading="lazy" decoding="async" src="media/as-kalaneuvos.png" alt="Kalaneuvos"></div><div><img loading="lazy" decoding="async" src="media/as-musti.png" alt="Musti Group"></div><div><img loading="lazy" decoding="async" src="media/as-leroy.png" alt="Lerøy Finland"></div></div></div>
   </section>
 
   <!-- 6 Yhteydenotto: puhelu on ykkönen (persoonakortti P4), lomake kakkonen. Merkki ja tuote omana kenttänään. -->
@@ -1460,7 +1476,7 @@ body{overflow-x:hidden}
 
 </div></template>
 <template id="tm"><div class="fm m">
-<nav class="nav lnav"><span class="wb"><img loading="lazy" decoding="async" class="logoimg" src="media/finmatec-logo.svg" alt="Finmatec"><em>Laitev&auml;litys</em></span><a class="btn pri qk mq" href="laitevalitys-tuotteet.html#kori"><i><svg class="ic" width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h2l1.2 7.2a1 1 0 0 0 1 .8h5.4a1 1 0 0 0 1-.8L13.5 6H5"></path><circle cx="6.5" cy="13" r="1"></circle><circle cx="12" cy="13" r="1"></circle></svg></i><em class="cnt">3</em></a><button class="burger" type="button" aria-label="Open menu"><span></span><span></span><span></span></button></button></nav>
+<nav class="nav lnav"><span class="wb"><img loading="lazy" decoding="async" class="logoimg" src="media/finmatec-logo.svg" alt="Finmatec"><em>Laitev&auml;litys</em></span><a class="btn pri mq cart" href="laitevalitys-tuotteet.html#kori"><i><svg class="ic" width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h2l1.2 7.2a1 1 0 0 0 1 .8h5.4a1 1 0 0 0 1-.8L13.5 6H5"></path><circle cx="6.5" cy="13" r="1"></circle><circle cx="12" cy="13" r="1"></circle></svg></i><em class="cnt">3</em></a><button class="burger" type="button" aria-label="Open menu"><span></span><span></span><span></span></button></button></nav>
   <!-- 1 Hero: ostaja tietää jo mitä hakee, joten lupaus ja merkkiseinä ovat samassa ruudussa.
        Ei valokuvaa: osion sisältö on luettelo, ei tarina (IA luku 9). -->
   <section class="lhero">
@@ -1475,7 +1491,7 @@ body{overflow-x:hidden}
         </div>
       </div>
       <div class="lwall">
-        <div class="lwall-grid"><span><img loading="lazy" decoding="async" src="media/logot/efa-mono.svg" alt="EFA"></span><span><img loading="lazy" decoding="async" src="media/logot/giesser-mono.svg" alt="Giesser"></span><span><img loading="lazy" decoding="async" src="media/logot/morakniv-mono.svg" alt="Morakniv"></span><span><img loading="lazy" decoding="async" src="media/logot/knecht-mono.svg" alt="KNECHT"></span><span><img loading="lazy" decoding="async" src="media/logot/steen-mono.svg" alt="STEEN"></span><span><img loading="lazy" decoding="async" src="media/logot/nock-mono.svg" alt="NOCK"></span><span><img loading="lazy" decoding="async" src="media/logot/brokelmann-mono.svg" alt="Brökelmann"></span><span><img loading="lazy" decoding="async" src="media/logot/hoecker-mono.svg" alt="Höcker"></span><span><img loading="lazy" decoding="async" src="media/logot/termet-mono.svg" alt="Termet"></span><span><img loading="lazy" decoding="async" src="media/logot/syspal-mono.svg" alt="SYSPAL"></span><span><img loading="lazy" decoding="async" src="media/logot/manulatex-mono.svg" alt="Manulatex"></span><span><img loading="lazy" decoding="async" src="media/logot/exos-mono.svg" alt="EXOS"></span></div>
+        <div class="lwall-grid"><a href="#"><img loading="lazy" decoding="async" src="media/logot/efa.svg" alt="EFA"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/giesser.svg" alt="Giesser"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/morakniv.svg" alt="Morakniv"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/knecht.svg" alt="KNECHT"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/steen.svg" alt="STEEN"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/nock.svg" alt="NOCK"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/brokelmann.svg" alt="Brökelmann"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/hoecker.svg" alt="Höcker"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/termet.svg" alt="Termet"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/syspal.svg" alt="SYSPAL"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/manulatex.svg" alt="Manulatex"></a><a href="#"><img loading="lazy" decoding="async" src="media/logot/exos.svg" alt="EXOS"></a></div>
         <div class="more mono"><span>22 merkki&auml;, yksi yhteyshenkil&ouml;</span><a class="tlink" href="#merkit">Koko merkkihakemisto</a></div>
       </div>
     </div>
@@ -1489,7 +1505,7 @@ body{overflow-x:hidden}
       <p>L&ouml;yd&auml;t merkin nimell&auml; tai sen mukaan, mit&auml; se valmistaa. Jokaisella merkill&auml; on oma sivunsa, jolla ovat mallitunnukset ja yhteydenotto.</p>
     </div>
     <div class="lfilter"><div class="lsearch"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.5"></circle><path d="M10.5 10.5 14 14"></path></svg><span>Hae merkill&auml; tai tuotteella</span></div><div class="chips" role="group" aria-label="Tuoteryhm&auml;"><button type="button" class="chip opt on" aria-pressed="true">Kaikki 22</button><button type="button" class="chip opt" aria-pressed="false">Ty&ouml;kalut ja tarvikkeet 17</button><button type="button" class="chip opt" aria-pressed="false">Laitteet 7</button></div></div>
-    <div class="lgrid"><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/efa-mono.svg" alt=""></span><div><h3>EFA</h3><p>Sahat, nylkyveitset sekä trimmaus- ja leikkuutyökalut</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/giesser-mono.svg" alt=""></span><div><h3>Giesser</h3><p>Veitset ja teroitusvälineet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/morakniv-mono.svg" alt=""></span><div><h3>Morakniv</h3><p>Veitset, aiemmin Frosts Mora</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/knecht-mono.svg" alt=""></span><div><h3>KNECHT</h3><p>Teroitus- ja hiontakoneet</p></div></a><a class="lcard" href="#"><span class="mark"><b>ZAHND</b></span><div><h3>ZAHND</h3><p>Teroituskoneet EVO4, FP02 ja Z200, KNECHTin valikoimaa</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/mado-mono.svg" alt=""></span><div><h3>MADO</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/wiegand-mono.svg" alt=""></span><div><h3>Wiegand</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/bobet-materiel-mono.svg" alt=""></span><div><h3>Bobet matériel<i>Ranska</i></h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/tmp-mono.svg" alt=""></span><div><h3>tmp</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/sharpymax-mono.svg" alt=""></span><div><h3>Sharpymax</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/manulatex-mono.svg" alt=""></span><div><h3>Manulatex<i>Ranska</i></h3><p>Teräsverkkokäsineet, PPE-luokka III</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/brauer-mono.svg" alt=""></span><div><h3>Brauer</h3><p>Lämpötulostuspäät merkintään</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/termet-mono.svg" alt=""></span><div><h3>Termet</h3><p>Hygienialaitteet ja sterilointi</p></div></a><a class="lcard" href="#"><span class="mark"><b>Duram</b></span><div><h3>Duram<i>Israel</i></h3><p>Kynimäsormet siipikarjalle</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/exos-mono.svg" alt=""></span><div><h3>EXOS<i>Ruotsi</i></h3><p>Kalojen ruodonpoistolaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/nock-mono.svg" alt=""></span><div><h3>NOCK<i>Saksa</i></h3><p>Nahonta- ja kalvokuorintakoneet, jäähiutalekoneet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/steen-mono.svg" alt=""></span><div><h3>STEEN<i>Belgia</i></h3><p>Nylkemiskoneet ST600K, ST700K ja ST111K, kylkiluunleikkuri ST350</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/syspal-mono.svg" alt=""></span><div><h3>SYSPAL<i>Iso-Britannia</i></h3><p>Mollasekoittimet, DIN9797</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/omet-foodtech-mono.svg" alt=""></span><div><h3>Omet Foodtech<i>Italia</i></h3><p>Lihamyllyt ja sekoittimet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/brokelmann-mono.svg" alt=""></span><div><h3>Brökelmann<i>Saksa</i></h3><p>Mollat ja astiat, nostimet, savustusvaunut, pesulaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/wamma-mono.svg" alt=""></span><div><h3>WAMMA<i>Puola</i></h3><p>Koukut, levittimet ja ripustimet, teurastuslinjat</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/hoecker-mono.svg" alt=""></span><div><h3>Höcker<i>Saksa</i></h3><p>Hygienialaitteet, veitsien sterilointi, hygieniasulut</p></div></a></div>
+    <div class="lgrid"><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/efa.svg" alt=""></span><div><h3>EFA</h3><p>Sahat, nylkyveitset sekä trimmaus- ja leikkuutyökalut</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/giesser.svg" alt=""></span><div><h3>Giesser</h3><p>Veitset ja teroitusvälineet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/morakniv.svg" alt=""></span><div><h3>Morakniv</h3><p>Veitset, aiemmin Frosts Mora</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/knecht.svg" alt=""></span><div><h3>KNECHT</h3><p>Teroitus- ja hiontakoneet</p></div></a><a class="lcard" href="#"><span class="mark"><b>ZAHND</b></span><div><h3>ZAHND</h3><p>Teroituskoneet EVO4, FP02 ja Z200, KNECHTin valikoimaa</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/mado.svg" alt=""></span><div><h3>MADO</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/wiegand.svg" alt=""></span><div><h3>Wiegand</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/bobet-materiel.svg" alt=""></span><div><h3>Bobet matériel<i>Ranska</i></h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/tmp.svg" alt=""></span><div><h3>tmp</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/sharpymax.svg" alt=""></span><div><h3>Sharpymax</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/manulatex.svg" alt=""></span><div><h3>Manulatex<i>Ranska</i></h3><p>Teräsverkkokäsineet, PPE-luokka III</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/brauer.svg" alt=""></span><div><h3>Brauer</h3><p>Lämpötulostuspäät merkintään</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/termet.svg" alt=""></span><div><h3>Termet</h3><p>Hygienialaitteet ja sterilointi</p></div></a><a class="lcard" href="#"><span class="mark"><b>Duram</b></span><div><h3>Duram<i>Israel</i></h3><p>Kynimäsormet siipikarjalle</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/exos.svg" alt=""></span><div><h3>EXOS<i>Ruotsi</i></h3><p>Kalojen ruodonpoistolaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/nock.svg" alt=""></span><div><h3>NOCK<i>Saksa</i></h3><p>Nahonta- ja kalvokuorintakoneet, jäähiutalekoneet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/steen.svg" alt=""></span><div><h3>STEEN<i>Belgia</i></h3><p>Nylkemiskoneet ST600K, ST700K ja ST111K, kylkiluunleikkuri ST350</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/syspal.svg" alt=""></span><div><h3>SYSPAL<i>Iso-Britannia</i></h3><p>Mollasekoittimet, DIN9797</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/omet-foodtech.svg" alt=""></span><div><h3>Omet Foodtech<i>Italia</i></h3><p>Lihamyllyt ja sekoittimet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/brokelmann.svg" alt=""></span><div><h3>Brökelmann<i>Saksa</i></h3><p>Mollat ja astiat, nostimet, savustusvaunut, pesulaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/wamma.svg" alt=""></span><div><h3>WAMMA<i>Puola</i></h3><p>Koukut, levittimet ja ripustimet, teurastuslinjat</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/hoecker.svg" alt=""></span><div><h3>Höcker<i>Saksa</i></h3><p>Hygienialaitteet, veitsien sterilointi, hygieniasulut</p></div></a></div>
   </section>
 
   <!-- 3 Kolme tuoteryhmää: kantavat yleisnimihaut (teurastamotarvikkeet, veitset, reikälevyt).
@@ -1509,7 +1525,7 @@ body{overflow-x:hidden}
       <div><span class="eyebrow">Miksi Finmatec</span><h2>Varasto Vaasassa ja ihminen, joka vastaa.</h2></div>
       <p>Edustus on osa samaa taloa, joka suunnittelee ja rakentaa tuotantolinjoja. Sama osaaminen on takana, kun valitaan ter&auml; tai kokonainen kone.</p>
     </div>
-    <div class="lnum-grid"><div class="rw-i rw-n"><span class="rw-num">22</span><span class="rw-t"><small class="mono">Ty&ouml;kaluista koneisiin</small><b>Edustettua merkki&auml;</b></span></div><div class="rw-i rw-n"><span class="rw-num">6</span><span class="rw-t"><small class="mono">Liha, kala, lemmikkiruoka, valmisruoka, leipomo ja sivutuotteet</small><b>Toimialaa</b></span></div><div class="rw-i rw-n"><span class="rw-num">1</span><span class="rw-t"><small class="mono">Tuotep&auml;&auml;llikk&ouml;, joka tuntee koneet</small><b>Yhteyshenkil&ouml;</b></span></div></div>
+    <div class="lnum-grid"><div class="rw-i rw-n"><span class="rw-num">22</span><span class="rw-t"><b>Edustettua merkki&auml;</b><small>Ty&ouml;kaluista ja tarvikkeista kokonaisiin koneisiin.</small></span></div><div class="rw-i rw-n"><span class="rw-num">6</span><span class="rw-t"><b>Toimialaa</b><small>Liha, kala, lemmikkiruoka, valmisruoka, leipomo ja sivutuotteet.</small></span></div><div class="rw-i rw-n"><span class="rw-num">1</span><span class="rw-t"><b>Yhteyshenkil&ouml;</b><small>Tuotep&auml;&auml;llikk&ouml;, joka tuntee koneet ja vastaa itse.</small></span></div></div>
     <div class="lwhy">
       <div><h3>Varasto Vaasassa</h3><p>Kuluvat osat ja ty&ouml;kalut ovat omassa varastossa, eiv&auml;t valmistajan tehtaalla Keski-Euroopassa.</p></div>
       <div><h3>Tuotep&auml;&auml;llikk&ouml;, ei vaihde</h3><p>Sama ihminen hoitaa ty&ouml;kalut, tarvikkeet ja varaosat, joten kysymykseen vastaa se, joka tuntee koneet.</p></div>
@@ -1524,7 +1540,7 @@ body{overflow-x:hidden}
       <div><span class="eyebrow">Asiakkaat</span><h2>Suomalaiset teurastamot, leikkaamot ja lemmikkiruokatehtaat.</h2></div>
       <p>Samat talot ostavat meilt&auml; sek&auml; kuluvat osat ett&auml; kokonaisia koneita.</p>
     </div>
-    <div class="lcust"><span><img loading="lazy" decoding="async" src="media/as-snellman.jpg" alt="Snellman"></span><span><img loading="lazy" decoding="async" src="media/as-hkfoods.jpg" alt="HKFoods"></span><span><img loading="lazy" decoding="async" src="media/as-mush.jpg" alt="Mush"></span><span><img loading="lazy" decoding="async" src="media/as-atria.png" alt="Atria"></span><span><img loading="lazy" decoding="async" src="media/as-lansikalkkuna.png" alt="Länsi-Kalkkuna"></span><span><img loading="lazy" decoding="async" src="media/as-hietanen.png" alt="Liha Hietanen"></span><span><img loading="lazy" decoding="async" src="media/as-ronka.jpg" alt="Veljekset Rönkä"></span><span><img loading="lazy" decoding="async" src="media/as-kalaneuvos.png" alt="Kalaneuvos"></span><span><img loading="lazy" decoding="async" src="media/as-musti.png" alt="Musti Group"></span><span><img loading="lazy" decoding="async" src="media/as-leroy.png" alt="Lerøy Finland"></span></div>
+    <div class="logos lv"><div class="ltrack"><div><img loading="lazy" decoding="async" src="media/as-snellman.jpg" alt="Snellman"></div><div><img loading="lazy" decoding="async" src="media/as-hkfoods.jpg" alt="HKFoods"></div><div><img loading="lazy" decoding="async" src="media/as-mush.jpg" alt="Mush"></div><div><img loading="lazy" decoding="async" src="media/as-atria.png" alt="Atria"></div><div><img loading="lazy" decoding="async" src="media/as-lansikalkkuna.png" alt="Länsi-Kalkkuna"></div><div><img loading="lazy" decoding="async" src="media/as-hietanen.png" alt="Liha Hietanen"></div><div><img loading="lazy" decoding="async" src="media/as-ronka.jpg" alt="Veljekset Rönkä"></div><div><img loading="lazy" decoding="async" src="media/as-kalaneuvos.png" alt="Kalaneuvos"></div><div><img loading="lazy" decoding="async" src="media/as-musti.png" alt="Musti Group"></div><div><img loading="lazy" decoding="async" src="media/as-leroy.png" alt="Lerøy Finland"></div><div><img loading="lazy" decoding="async" src="media/as-snellman.jpg" alt="Snellman"></div><div><img loading="lazy" decoding="async" src="media/as-hkfoods.jpg" alt="HKFoods"></div><div><img loading="lazy" decoding="async" src="media/as-mush.jpg" alt="Mush"></div><div><img loading="lazy" decoding="async" src="media/as-atria.png" alt="Atria"></div><div><img loading="lazy" decoding="async" src="media/as-lansikalkkuna.png" alt="Länsi-Kalkkuna"></div><div><img loading="lazy" decoding="async" src="media/as-hietanen.png" alt="Liha Hietanen"></div><div><img loading="lazy" decoding="async" src="media/as-ronka.jpg" alt="Veljekset Rönkä"></div><div><img loading="lazy" decoding="async" src="media/as-kalaneuvos.png" alt="Kalaneuvos"></div><div><img loading="lazy" decoding="async" src="media/as-musti.png" alt="Musti Group"></div><div><img loading="lazy" decoding="async" src="media/as-leroy.png" alt="Lerøy Finland"></div></div></div>
   </section>
 
   <!-- 6 Yhteydenotto: puhelu on ykkönen (persoonakortti P4), lomake kakkonen. Merkki ja tuote omana kenttänään. -->
