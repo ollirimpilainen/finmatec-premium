@@ -241,6 +241,11 @@
 .fpz-ic { width:52px; height:52px; border-radius:50%; background:var(--dark); color:#fff; display:grid; place-items:center; grid-row:span 2; }
 .fpz-drop b { font-family:var(--fd); font-weight:700; font-size:20px; color:var(--ink); align-self:end; }
 .fpz-drop span { font-size:var(--small); color:var(--ink2); align-self:start; }
+/* the title and hint may come wrapped in one span (Spare Parts): stack them next to the icon */
+.fpz-drop > span:not(.fpz-ic) { grid-row:span 2; display:flex; flex-direction:column; gap:2px; align-self:center; }
+.fpz-drop > span:not(.fpz-ic) b, .fpz-drop > span:not(.fpz-ic) span { align-self:auto; }
+/* inside a form that already sits on a panel the drop zone needs no halo frame of its own */
+.rform .fpz-pan { box-shadow:none; background:none; padding:0; border-radius:0; }
 .fpz-drop .fpz-ic { color:#fff; }
 .fpz-drop u { color:var(--dark); font-weight:600; text-underline-offset:3px; }
 .fpz-row { display:flex; align-items:center; gap:20px; padding:8px 0 0 20px; }

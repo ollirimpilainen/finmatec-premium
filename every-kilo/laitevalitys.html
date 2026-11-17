@@ -535,6 +535,12 @@
 .fm .cfl label.on .box { background:var(--dark); border-color:var(--dark); }
 .fm .cfl i { font-style:normal; margin-left:auto; color:var(--mute); font-size:13px; }
 .fm .cbrands { max-height:300px; overflow:hidden; }
+.fm .ctree > div + div { margin-top:20px; padding-top:18px; border-top:1px solid var(--line); }
+.fm .ctree .grp { display:flex; align-items:center; gap:12px; font-family:var(--fd); font-size:15px; font-weight:700; }
+.fm .ctree .grp .box { width:20px; height:20px; border:1.5px solid var(--line); border-radius:6px; flex:none; background:#fff; }
+.fm .ctree .grp.on .box { background:var(--dark); border-color:var(--dark); }
+.fm .ctree .grp i { font-style:normal; margin-left:auto; color:var(--mute); font-size:13px; font-weight:600; }
+.fm .ctree .sub { margin-top:12px; padding-left:32px; }
 .fm .crail > div.basket { background:var(--deep); color:#fff; border:0; }
 .fm .basket h3 { color:rgba(255,255,255,.6); }
 .fm .basket ul { list-style:none; margin:0 0 18px; padding:0; display:flex; flex-direction:column; gap:12px; }
@@ -546,13 +552,23 @@
 .fm .basket p { margin-top:12px; color:rgba(255,255,255,.62); font-size:13px; }
 .fm .cres { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:16px; color:var(--mute); }
 .fm .clist { display:flex; flex-direction:column; gap:10px; }
-.fm .crow { display:grid; grid-template-columns:104px minmax(0,1fr) auto; gap:22px; align-items:center; background:#fff; border:1px solid var(--line); border-radius:var(--r-row); padding:16px 22px; }
-.fm .crow .mk { height:34px; display:flex; align-items:center; }
-.fm .crow .mk img { width:auto; height:auto; max-width:104px; max-height:26px; object-fit:contain; opacity:.85; }
-.fm .crow .mk b { font-family:var(--fd); font-size:14px; color:var(--ink2); }
-.fm .crow h3 { font-family:var(--fd); font-size:18px; font-weight:700; letter-spacing:-0.005em; line-height:1.2; }
-.fm .crow p { margin-top:4px; color:var(--mute); font-size:var(--small); }
+/* Tuoterivi: Snellman Retailin B-kortin asettelu (kuva 88 px, tiedot, ostolaatikko oikealla),
+   Olli 17.11., kommentti 7d80fe42. Kapeassa palstassa ostolaatikko putoaa omalle rivilleen. */
+.fm .crow { display:grid; grid-template-columns:88px minmax(0,1fr) auto; column-gap:20px; align-items:center; background:#fff; border:1px solid var(--line); border-radius:var(--r-row); padding:16px 20px; container-type:inline-size; }
+.fm .crow .mk { width:88px; height:64px; display:grid; place-items:center; background:var(--paper); border-radius:12px; }
+.fm .crow .mk img { width:auto; height:auto; max-width:66px; max-height:30px; object-fit:contain; opacity:.85; }
+.fm .crow .mk b { font-family:var(--fd); font-size:13px; color:var(--ink2); text-align:center; line-height:1.15; padding:0 6px; }
+.fm .crow .info { min-width:0; }
+.fm .crow h3 { font-family:var(--fd); font-size:18px; font-weight:700; letter-spacing:-0.005em; line-height:1.3; }
+.fm .crow p { margin-top:3px; color:var(--mute); font-size:var(--small); }
+.fm .crow .buy { display:flex; align-items:center; justify-content:flex-end; gap:12px; min-width:230px; }
+.fm .crow .buy .stepper { display:inline-flex; align-items:center; gap:10px; border:1px solid var(--line); border-radius:999px; padding:8px 16px; font-family:var(--fd); font-size:14px; font-weight:700; white-space:nowrap; }
 .fm .crow .btn { white-space:nowrap; }
+@container (max-width:560px) {
+  .fm .crow { grid-template-columns:72px minmax(0,1fr); column-gap:14px; padding:14px 16px; }
+  .fm .crow .mk { width:72px; height:56px; }
+  .fm .crow .buy { grid-column:1 / -1; min-width:0; justify-content:space-between; margin-top:12px; padding-top:12px; border-top:1px solid var(--line); }
+}
 .fm .cmore { margin-top:22px; display:flex; justify-content:center; }
 .fm.m .cwrap { padding:28px 20px 56px; }
 .fm.m .ctop { grid-template-columns:1fr; gap:14px; margin-bottom:22px; }
@@ -563,9 +579,7 @@
 .fm.m .cmain { grid-template-columns:1fr; gap:20px; }
 .fm.m .crail > div { padding:18px 20px; }
 .fm.m .cbrands { max-height:none; }
-.fm.m .crow { grid-template-columns:72px minmax(0,1fr); gap:14px; padding:14px 16px; }
-.fm.m .crow .btn { grid-column:1 / -1; width:100%; margin-top:6px; }
-.fm.m .crow .mk img { max-width:72px; }
+.fm.m .crow .buy .btn { flex:1; }
 
 /* Merkkisivu ja tuotesivu (17.11.2026) */
 .fm .crumb { display:flex; gap:10px; align-items:center; color:var(--mute); margin-bottom:18px; }
@@ -606,6 +620,32 @@
 .fm.m .pshot img { max-height:260px; }
 .fm.m .pbuy { padding:24px 22px; }
 .fm.m .pfacts div { grid-template-columns:120px minmax(0,1fr); gap:10px; }
+
+/* Etusivun variantti B: tuotelajit merkkien sijaan (Olli 17.11., kommentti 113d4750) */
+.fm .lwall-list { display:flex; flex-direction:column; }
+.fm .lwall-list a { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:16px; align-items:center; padding:13px 2px; border-top:1px solid var(--line); text-decoration:none; color:inherit; font-size:15px; }
+.fm .lwall-list a:first-child { border-top:0; }
+.fm .lwall-list a i { font-style:normal; color:var(--mute); font-size:13px; }
+.fm .cgrp { display:flex; align-items:center; gap:14px; font-family:var(--fd); font-size:var(--h4); margin:34px 0 16px; }
+.fm .cgrp:first-of-type { margin-top:0; }
+.fm .cgrp i { font-style:normal; color:var(--mute); font-size:15px; font-weight:600; }
+.fm .ccat { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
+.fm .ccat a { background:#fff; border:1px solid var(--line); border-radius:var(--r-row); padding:22px 24px; text-decoration:none; color:inherit; display:flex; flex-direction:column; gap:6px; min-height:116px; }
+.fm .ccat h3 { font-family:var(--fd); font-size:18px; font-weight:700; letter-spacing:-0.005em; line-height:1.2; }
+.fm .ccat small { color:var(--mute); }
+.fm .ccat .n { margin-top:auto; font-family:var(--fd); font-size:15px; font-weight:700; color:var(--dark); }
+.fm .bband { display:grid; grid-template-columns:repeat(8,minmax(0,1fr)); margin:0 calc(-1 * var(--gut)); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.fm .bband span { height:104px; display:grid; place-items:center; padding:18px 22px; border-left:1px solid var(--line); }
+.fm .bband span:nth-child(8n+1) { border-left:0; }
+.fm .bband span:nth-child(n+9) { border-top:1px solid var(--line); }
+.fm .bband img { width:auto; height:auto; max-width:100%; max-height:40px; object-fit:contain; opacity:.72; }
+.fm .bband b { font-family:var(--fd); font-size:13px; color:var(--mute); text-align:center; }
+.fm.m .ccat { grid-template-columns:1fr; }
+.fm.m .bband { grid-template-columns:repeat(3,minmax(0,1fr)); margin:0 -20px; }
+.fm.m .bband span { height:76px; padding:12px 14px; border-left:1px solid var(--line); }
+.fm.m .bband span:nth-child(8n+1) { border-left:1px solid var(--line); }
+.fm.m .bband span:nth-child(3n+1) { border-left:0; }
+.fm.m .bband span:nth-child(n+4) { border-top:1px solid var(--line); }
 
 /* Mobiili 390 */
 .fm.m .lnav { padding:16px 20px; gap:12px; }
@@ -1162,6 +1202,12 @@
 .fm .cfl label.on .box { background:var(--dark); border-color:var(--dark); }
 .fm .cfl i { font-style:normal; margin-left:auto; color:var(--mute); font-size:13px; }
 .fm .cbrands { max-height:300px; overflow:hidden; }
+.fm .ctree > div + div { margin-top:20px; padding-top:18px; border-top:1px solid var(--line); }
+.fm .ctree .grp { display:flex; align-items:center; gap:12px; font-family:var(--fd); font-size:15px; font-weight:700; }
+.fm .ctree .grp .box { width:20px; height:20px; border:1.5px solid var(--line); border-radius:6px; flex:none; background:#fff; }
+.fm .ctree .grp.on .box { background:var(--dark); border-color:var(--dark); }
+.fm .ctree .grp i { font-style:normal; margin-left:auto; color:var(--mute); font-size:13px; font-weight:600; }
+.fm .ctree .sub { margin-top:12px; padding-left:32px; }
 .fm .crail > div.basket { background:var(--deep); color:#fff; border:0; }
 .fm .basket h3 { color:rgba(255,255,255,.6); }
 .fm .basket ul { list-style:none; margin:0 0 18px; padding:0; display:flex; flex-direction:column; gap:12px; }
@@ -1173,13 +1219,23 @@
 .fm .basket p { margin-top:12px; color:rgba(255,255,255,.62); font-size:13px; }
 .fm .cres { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:16px; color:var(--mute); }
 .fm .clist { display:flex; flex-direction:column; gap:10px; }
-.fm .crow { display:grid; grid-template-columns:104px minmax(0,1fr) auto; gap:22px; align-items:center; background:#fff; border:1px solid var(--line); border-radius:var(--r-row); padding:16px 22px; }
-.fm .crow .mk { height:34px; display:flex; align-items:center; }
-.fm .crow .mk img { width:auto; height:auto; max-width:104px; max-height:26px; object-fit:contain; opacity:.85; }
-.fm .crow .mk b { font-family:var(--fd); font-size:14px; color:var(--ink2); }
-.fm .crow h3 { font-family:var(--fd); font-size:18px; font-weight:700; letter-spacing:-0.005em; line-height:1.2; }
-.fm .crow p { margin-top:4px; color:var(--mute); font-size:var(--small); }
+/* Tuoterivi: Snellman Retailin B-kortin asettelu (kuva 88 px, tiedot, ostolaatikko oikealla),
+   Olli 17.11., kommentti 7d80fe42. Kapeassa palstassa ostolaatikko putoaa omalle rivilleen. */
+.fm .crow { display:grid; grid-template-columns:88px minmax(0,1fr) auto; column-gap:20px; align-items:center; background:#fff; border:1px solid var(--line); border-radius:var(--r-row); padding:16px 20px; container-type:inline-size; }
+.fm .crow .mk { width:88px; height:64px; display:grid; place-items:center; background:var(--paper); border-radius:12px; }
+.fm .crow .mk img { width:auto; height:auto; max-width:66px; max-height:30px; object-fit:contain; opacity:.85; }
+.fm .crow .mk b { font-family:var(--fd); font-size:13px; color:var(--ink2); text-align:center; line-height:1.15; padding:0 6px; }
+.fm .crow .info { min-width:0; }
+.fm .crow h3 { font-family:var(--fd); font-size:18px; font-weight:700; letter-spacing:-0.005em; line-height:1.3; }
+.fm .crow p { margin-top:3px; color:var(--mute); font-size:var(--small); }
+.fm .crow .buy { display:flex; align-items:center; justify-content:flex-end; gap:12px; min-width:230px; }
+.fm .crow .buy .stepper { display:inline-flex; align-items:center; gap:10px; border:1px solid var(--line); border-radius:999px; padding:8px 16px; font-family:var(--fd); font-size:14px; font-weight:700; white-space:nowrap; }
 .fm .crow .btn { white-space:nowrap; }
+@container (max-width:560px) {
+  .fm .crow { grid-template-columns:72px minmax(0,1fr); column-gap:14px; padding:14px 16px; }
+  .fm .crow .mk { width:72px; height:56px; }
+  .fm .crow .buy { grid-column:1 / -1; min-width:0; justify-content:space-between; margin-top:12px; padding-top:12px; border-top:1px solid var(--line); }
+}
 .fm .cmore { margin-top:22px; display:flex; justify-content:center; }
 .fm.m .cwrap { padding:28px 20px 56px; }
 .fm.m .ctop { grid-template-columns:1fr; gap:14px; margin-bottom:22px; }
@@ -1190,9 +1246,7 @@
 .fm.m .cmain { grid-template-columns:1fr; gap:20px; }
 .fm.m .crail > div { padding:18px 20px; }
 .fm.m .cbrands { max-height:none; }
-.fm.m .crow { grid-template-columns:72px minmax(0,1fr); gap:14px; padding:14px 16px; }
-.fm.m .crow .btn { grid-column:1 / -1; width:100%; margin-top:6px; }
-.fm.m .crow .mk img { max-width:72px; }
+.fm.m .crow .buy .btn { flex:1; }
 
 /* Merkkisivu ja tuotesivu (17.11.2026) */
 .fm .crumb { display:flex; gap:10px; align-items:center; color:var(--mute); margin-bottom:18px; }
@@ -1233,6 +1287,32 @@
 .fm.m .pshot img { max-height:260px; }
 .fm.m .pbuy { padding:24px 22px; }
 .fm.m .pfacts div { grid-template-columns:120px minmax(0,1fr); gap:10px; }
+
+/* Etusivun variantti B: tuotelajit merkkien sijaan (Olli 17.11., kommentti 113d4750) */
+.fm .lwall-list { display:flex; flex-direction:column; }
+.fm .lwall-list a { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:16px; align-items:center; padding:13px 2px; border-top:1px solid var(--line); text-decoration:none; color:inherit; font-size:15px; }
+.fm .lwall-list a:first-child { border-top:0; }
+.fm .lwall-list a i { font-style:normal; color:var(--mute); font-size:13px; }
+.fm .cgrp { display:flex; align-items:center; gap:14px; font-family:var(--fd); font-size:var(--h4); margin:34px 0 16px; }
+.fm .cgrp:first-of-type { margin-top:0; }
+.fm .cgrp i { font-style:normal; color:var(--mute); font-size:15px; font-weight:600; }
+.fm .ccat { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
+.fm .ccat a { background:#fff; border:1px solid var(--line); border-radius:var(--r-row); padding:22px 24px; text-decoration:none; color:inherit; display:flex; flex-direction:column; gap:6px; min-height:116px; }
+.fm .ccat h3 { font-family:var(--fd); font-size:18px; font-weight:700; letter-spacing:-0.005em; line-height:1.2; }
+.fm .ccat small { color:var(--mute); }
+.fm .ccat .n { margin-top:auto; font-family:var(--fd); font-size:15px; font-weight:700; color:var(--dark); }
+.fm .bband { display:grid; grid-template-columns:repeat(8,minmax(0,1fr)); margin:0 calc(-1 * var(--gut)); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.fm .bband span { height:104px; display:grid; place-items:center; padding:18px 22px; border-left:1px solid var(--line); }
+.fm .bband span:nth-child(8n+1) { border-left:0; }
+.fm .bband span:nth-child(n+9) { border-top:1px solid var(--line); }
+.fm .bband img { width:auto; height:auto; max-width:100%; max-height:40px; object-fit:contain; opacity:.72; }
+.fm .bband b { font-family:var(--fd); font-size:13px; color:var(--mute); text-align:center; }
+.fm.m .ccat { grid-template-columns:1fr; }
+.fm.m .bband { grid-template-columns:repeat(3,minmax(0,1fr)); margin:0 -20px; }
+.fm.m .bband span { height:76px; padding:12px 14px; border-left:1px solid var(--line); }
+.fm.m .bband span:nth-child(8n+1) { border-left:1px solid var(--line); }
+.fm.m .bband span:nth-child(3n+1) { border-left:0; }
+.fm.m .bband span:nth-child(n+4) { border-top:1px solid var(--line); }
 
 /* Mobiili 390 */
 .fm.m .lnav { padding:16px 20px; gap:12px; }
@@ -1281,7 +1361,7 @@ body{overflow-x:hidden}
 <body>
 <template id="td"><div class="fm">
   <div class="util lutil"><div><span>Laitev&auml;litys: edustamamme merkit Suomessa</span><span>Varasto Vaasassa</span></div><div><a class="ext" href="#">Finmatec.fi: elintarviketeollisuuden ratkaisut (EN)</a></div></div>
-<nav class="nav lnav"><span class="wb"><img loading="lazy" decoding="async" class="logoimg" src="media/finmatec-logo.svg" alt="Finmatec"><em>Laitev&auml;litys</em></span><ul><li><a href="#tuotteet">Tuotteet</a></li><li><a href="#merkit">Merkit</a></li><li><a href="#miksi">Miksi Finmatec</a></li><li><a href="#yhteys">Yhteystiedot</a></li></ul><span class="tel"><b>+358&nbsp;500&nbsp;845&nbsp;583</b><a class="btn pri qk s" href="#kori"><i><svg class="ic" width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h2l1.2 7.2a1 1 0 0 0 1 .8h5.4a1 1 0 0 0 1-.8L13.5 6H5"></path><circle cx="6.5" cy="13" r="1"></circle><circle cx="12" cy="13" r="1"></circle></svg></i> Tarjouspyynt&ouml; <em class="cnt">3</em></a></span></nav>
+<nav class="nav lnav"><span class="wb"><img loading="lazy" decoding="async" class="logoimg" src="media/finmatec-logo.svg" alt="Finmatec"><em>Laitev&auml;litys</em></span><ul><li><a href="laitevalitys-tuotteet.html">Tuotteet</a></li><li><a href="laitevalitys.html#merkit">Merkit</a></li><li><a href="laitevalitys.html#miksi">Miksi Finmatec</a></li><li><a href="#yhteys">Yhteystiedot</a></li></ul><span class="tel"><b>+358&nbsp;500&nbsp;845&nbsp;583</b><a class="btn pri qk s" href="laitevalitys-tuotteet.html#kori"><i><svg class="ic" width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h2l1.2 7.2a1 1 0 0 0 1 .8h5.4a1 1 0 0 0 1-.8L13.5 6H5"></path><circle cx="6.5" cy="13" r="1"></circle><circle cx="12" cy="13" r="1"></circle></svg></i> Tarjouspyynt&ouml; <em class="cnt">3</em></a></span></nav>
   <!-- 1 Hero: ostaja tietää jo mitä hakee, joten lupaus ja merkkiseinä ovat samassa ruudussa.
        Ei valokuvaa: osion sisältö on luettelo, ei tarina (IA luku 9). -->
   <section class="lhero">
@@ -1371,7 +1451,7 @@ body{overflow-x:hidden}
         <p>Edustamiemme merkkien ty&ouml;kalut, tarvikkeet, varaosat ja laitteet Suomessa. Varasto Vaasassa.</p>
         <p style="margin-top:14px">Oy Finmatec Ab<br>Mottisenkatu 3, 67100 Kokkola<br>+358&nbsp;500&nbsp;845&nbsp;583 &#183; teemu.mattila@finmatec.fi</p>
       </div>
-      <div><h4>T&auml;ll&auml; sivulla</h4><ul><li><a href="#tuotteet">Tuotteet</a></li><li><a href="#merkit">Merkit</a></li><li><a href="#miksi">Miksi Finmatec</a></li><li><a href="#yhteys">Yhteystiedot</a></li></ul></div>
+      <div><h4>T&auml;ll&auml; sivulla</h4><ul><li><a href="laitevalitys-tuotteet.html">Tuotteet</a></li><li><a href="laitevalitys.html#merkit">Merkit</a></li><li><a href="laitevalitys.html#miksi">Miksi Finmatec</a></li><li><a href="#yhteys">Yhteystiedot</a></li></ul></div>
       <div><h4>Finmatec</h4><ul><li><a href="#">Finmatec.fi: elintarviketeollisuuden ratkaisut</a></li><li><a href="#">Omien koneiden varaosat ja huolto</a></li><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li></ul></div>
     </div>
     <div class="bottom"><span>&#169; 2026 Oy Finmatec Ab</span><span><a href="#">Tietosuoja</a></span></div>
@@ -1380,7 +1460,7 @@ body{overflow-x:hidden}
 
 </div></template>
 <template id="tm"><div class="fm m">
-<nav class="nav lnav"><span class="wb"><img loading="lazy" decoding="async" class="logoimg" src="media/finmatec-logo.svg" alt="Finmatec"><em>Laitev&auml;litys</em></span><a class="btn pri qk mq" href="#kori"><i><svg class="ic" width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h2l1.2 7.2a1 1 0 0 0 1 .8h5.4a1 1 0 0 0 1-.8L13.5 6H5"></path><circle cx="6.5" cy="13" r="1"></circle><circle cx="12" cy="13" r="1"></circle></svg></i><em class="cnt">3</em></a><button class="burger" type="button" aria-label="Open menu"><span></span><span></span><span></span></button></button></nav>
+<nav class="nav lnav"><span class="wb"><img loading="lazy" decoding="async" class="logoimg" src="media/finmatec-logo.svg" alt="Finmatec"><em>Laitev&auml;litys</em></span><a class="btn pri qk mq" href="laitevalitys-tuotteet.html#kori"><i><svg class="ic" width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h2l1.2 7.2a1 1 0 0 0 1 .8h5.4a1 1 0 0 0 1-.8L13.5 6H5"></path><circle cx="6.5" cy="13" r="1"></circle><circle cx="12" cy="13" r="1"></circle></svg></i><em class="cnt">3</em></a><button class="burger" type="button" aria-label="Open menu"><span></span><span></span><span></span></button></button></nav>
   <!-- 1 Hero: ostaja tietää jo mitä hakee, joten lupaus ja merkkiseinä ovat samassa ruudussa.
        Ei valokuvaa: osion sisältö on luettelo, ei tarina (IA luku 9). -->
   <section class="lhero">
@@ -1470,7 +1550,7 @@ body{overflow-x:hidden}
         <p>Edustamiemme merkkien ty&ouml;kalut, tarvikkeet, varaosat ja laitteet Suomessa. Varasto Vaasassa.</p>
         <p style="margin-top:14px">Oy Finmatec Ab<br>Mottisenkatu 3, 67100 Kokkola<br>+358&nbsp;500&nbsp;845&nbsp;583 &#183; teemu.mattila@finmatec.fi</p>
       </div>
-      <div><h4>T&auml;ll&auml; sivulla</h4><ul><li><a href="#tuotteet">Tuotteet</a></li><li><a href="#merkit">Merkit</a></li><li><a href="#miksi">Miksi Finmatec</a></li><li><a href="#yhteys">Yhteystiedot</a></li></ul></div>
+      <div><h4>T&auml;ll&auml; sivulla</h4><ul><li><a href="laitevalitys-tuotteet.html">Tuotteet</a></li><li><a href="laitevalitys.html#merkit">Merkit</a></li><li><a href="laitevalitys.html#miksi">Miksi Finmatec</a></li><li><a href="#yhteys">Yhteystiedot</a></li></ul></div>
       <div><h4>Finmatec</h4><ul><li><a href="#">Finmatec.fi: elintarviketeollisuuden ratkaisut</a></li><li><a href="#">Omien koneiden varaosat ja huolto</a></li><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li></ul></div>
     </div>
     <div class="bottom"><span>&#169; 2026 Oy Finmatec Ab</span><span><a href="#">Tietosuoja</a></span></div>
