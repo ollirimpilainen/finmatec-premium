@@ -195,10 +195,11 @@
 .pf .btn.ghost { color:#fff; }
 .bezel { padding:8px; border-radius:var(--r-panel); background:rgba(255,255,255,.06); box-shadow:inset 0 0 0 1px rgba(255,255,255,.12); display:flex; }
 .bezel .in { flex:1; min-height:520px; border-radius:var(--r-panel-in); overflow:hidden; position:relative; background:var(--deep) url(media/v5302.jpg) center/cover; }
-.bezel .in video { position:absolute; inset:0; opacity:0; animation:clips 18s infinite; }
-.bezel .in video:nth-of-type(2) { animation-delay:6s; }
-.bezel .in video:nth-of-type(3) { animation-delay:12s; }
-@keyframes clips { 0% { opacity:0; } 4% { opacity:1; } 33% { opacity:1; } 38% { opacity:0; } 100% { opacity:0; } }
+.bezel .in video { position:absolute; inset:0; opacity:0; animation:clips 15s infinite; }
+.bezel .in video:nth-of-type(2) { animation-delay:5s; }
+.bezel .in video:nth-of-type(3) { animation-delay:10s; }
+/* one 5 s slot per clip: the clip ends as its fade-out starts, so it never stands still (Olli 17.11.) */
+@keyframes clips { 0% { opacity:0; } 4% { opacity:1; } 33.3% { opacity:1; } 37% { opacity:0; } 100% { opacity:0; } }
 .bezel .tag { position:absolute; z-index:2; left:20px; bottom:20px; display:inline-flex; align-items:center; gap:8px; background:rgba(0,0,0,.5); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); color:#fff; border-radius:999px; padding:8px 14px; font-size:13px; }
 .bezel .tag svg { width:10px; height:10px; }
 
@@ -227,18 +228,24 @@
 
 /* 80 %: existing factories, floor plan */
 .exist { position:relative; background:#fff; padding:0; overflow:hidden; }
-.exist .left { position:relative; z-index:1; width:680px; padding:var(--sec) var(--gut); display:flex; flex-direction:column; justify-content:space-between; gap:48px; }
-.big80 { font-family:var(--fd); font-weight:700; font-size:240px; line-height:.8; letter-spacing:-0.005em; color:var(--dark); }
-.big80 sup { font-size:110px; vertical-align:top; position:relative; top:22px; color:var(--acc); }
-.exist h2 { margin-top:26px; max-width:560px; }
-.exist .lead { margin-top:22px; max-width:560px; }
+.exist .left { position:relative; z-index:1; width:680px; padding:var(--sec) var(--gut); display:flex; flex-direction:column; justify-content:space-between; gap:32px; }
+.big80 { font-family:var(--fd); font-weight:700; font-size:184px; line-height:.8; letter-spacing:-0.005em; color:var(--dark); }
+.big80 sup { font-size:84px; vertical-align:top; position:relative; top:16px; color:var(--acc); }
+.exist h2 { margin-top:20px; max-width:560px; }
+.exist .lead { margin-top:18px; max-width:560px; }
 .ptitle { display:flex; justify-content:space-between; align-items:baseline; }
 .ptitle b { font-size:22px; letter-spacing:-0.02em; }
 .fpz-pan { margin-top:18px; }
-.fpz-drop { border-radius:var(--r-panel-in); border:1.5px dashed rgba(36,21,186,.32); background:rgba(36,21,186,.03); padding:26px 20px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:6px; }
-.fpz-ic { width:52px; height:52px; border-radius:50%; background:var(--dark); color:#fff; display:grid; place-items:center; margin-bottom:8px; }
-.fpz-drop b { font-family:var(--fd); font-weight:700; font-size:20px; color:var(--ink); }
-.fpz-drop span { font-size:var(--small); color:var(--ink2); }
+/* drop zone in one row (icon left, text right) so the 80 % section fits one screen (Olli 17.11.) */
+.fpz-drop { border-radius:var(--r-panel-in); border:1.5px dashed rgba(36,21,186,.32); background:rgba(36,21,186,.03); padding:18px 22px; display:grid; grid-template-columns:52px 1fr; column-gap:18px; row-gap:2px; align-items:center; text-align:left; }
+.fpz-ic { width:52px; height:52px; border-radius:50%; background:var(--dark); color:#fff; display:grid; place-items:center; grid-row:span 2; }
+.fpz-drop b { font-family:var(--fd); font-weight:700; font-size:20px; color:var(--ink); align-self:end; }
+.fpz-drop span { font-size:var(--small); color:var(--ink2); align-self:start; }
+/* the title and hint may come wrapped in one span (Spare Parts): stack them next to the icon */
+.fpz-drop > span:not(.fpz-ic) { grid-row:span 2; display:flex; flex-direction:column; gap:2px; align-self:center; }
+.fpz-drop > span:not(.fpz-ic) b, .fpz-drop > span:not(.fpz-ic) span { align-self:auto; }
+/* inside a form that already sits on a panel the drop zone needs no halo frame of its own */
+.rform .fpz-pan { box-shadow:none; background:none; padding:0; border-radius:0; }
 .fpz-drop .fpz-ic { color:#fff; }
 .fpz-drop u { color:var(--dark); font-weight:600; text-underline-offset:3px; }
 .fpz-row { display:flex; align-items:center; gap:20px; padding:8px 0 0 20px; }
@@ -393,7 +400,7 @@
 .fm.m .big80 sup { font-size:54px; top:10px; }
 .fm.m .fpz-row { flex-direction:column; align-items:stretch; gap:14px; padding:8px 0 0; }
 .fm.m .fpz-row .f { margin:0 14px; }
-.fm.m .fpz-drop { padding:22px 14px; }
+.fm.m .fpz-drop { padding:16px 14px; column-gap:14px; }
 .fm.m .exist .planfull { position:relative; inset:auto; left:auto; right:auto; order:1; height:auto; aspect-ratio:16/9; margin:0 var(--gut) var(--sec); }
 .fm.m .exist .planfull::after { display:none; }
 .fm.m .pbento { grid-template-columns:1fr; gap:12px; }
@@ -549,7 +556,7 @@
 .rform legend .n { width:24px; height:24px; border-radius:50%; display:grid; place-items:center; background:var(--dark); color:#fff; letter-spacing:0; }
 .rform .chips { margin-top:14px; display:flex; flex-wrap:wrap; gap:8px; }
 .rform .f2 { margin-top:10px; display:grid; grid-template-columns:1fr 1fr; gap:4px 28px; }
-.rform .fpz-pan { margin-top:16px; padding:6px; }
+.rform .fpz-pan { margin-top:16px; }
 .rform .fpz-drop { padding:20px; flex-direction:row; text-align:left; gap:16px; justify-content:flex-start; }
 .rform .fpz-drop .fpz-ic { margin:0; }
 .rform .fpz-drop > span:last-child { display:grid; gap:2px; }
@@ -817,10 +824,11 @@
 .pf .btn.ghost { color:#fff; }
 .bezel { padding:8px; border-radius:var(--r-panel); background:rgba(255,255,255,.06); box-shadow:inset 0 0 0 1px rgba(255,255,255,.12); display:flex; }
 .bezel .in { flex:1; min-height:520px; border-radius:var(--r-panel-in); overflow:hidden; position:relative; background:var(--deep) url(media/v5302.jpg) center/cover; }
-.bezel .in video { position:absolute; inset:0; opacity:0; animation:clips 18s infinite; }
-.bezel .in video:nth-of-type(2) { animation-delay:6s; }
-.bezel .in video:nth-of-type(3) { animation-delay:12s; }
-@keyframes clips { 0% { opacity:0; } 4% { opacity:1; } 33% { opacity:1; } 38% { opacity:0; } 100% { opacity:0; } }
+.bezel .in video { position:absolute; inset:0; opacity:0; animation:clips 15s infinite; }
+.bezel .in video:nth-of-type(2) { animation-delay:5s; }
+.bezel .in video:nth-of-type(3) { animation-delay:10s; }
+/* one 5 s slot per clip: the clip ends as its fade-out starts, so it never stands still (Olli 17.11.) */
+@keyframes clips { 0% { opacity:0; } 4% { opacity:1; } 33.3% { opacity:1; } 37% { opacity:0; } 100% { opacity:0; } }
 .bezel .tag { position:absolute; z-index:2; left:20px; bottom:20px; display:inline-flex; align-items:center; gap:8px; background:rgba(0,0,0,.5); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); color:#fff; border-radius:999px; padding:8px 14px; font-size:13px; }
 .bezel .tag svg { width:10px; height:10px; }
 
@@ -849,18 +857,24 @@
 
 /* 80 %: existing factories, floor plan */
 .exist { position:relative; background:#fff; padding:0; overflow:hidden; }
-.exist .left { position:relative; z-index:1; width:680px; padding:var(--sec) var(--gut); display:flex; flex-direction:column; justify-content:space-between; gap:48px; }
-.big80 { font-family:var(--fd); font-weight:700; font-size:240px; line-height:.8; letter-spacing:-0.005em; color:var(--dark); }
-.big80 sup { font-size:110px; vertical-align:top; position:relative; top:22px; color:var(--acc); }
-.exist h2 { margin-top:26px; max-width:560px; }
-.exist .lead { margin-top:22px; max-width:560px; }
+.exist .left { position:relative; z-index:1; width:680px; padding:var(--sec) var(--gut); display:flex; flex-direction:column; justify-content:space-between; gap:32px; }
+.big80 { font-family:var(--fd); font-weight:700; font-size:184px; line-height:.8; letter-spacing:-0.005em; color:var(--dark); }
+.big80 sup { font-size:84px; vertical-align:top; position:relative; top:16px; color:var(--acc); }
+.exist h2 { margin-top:20px; max-width:560px; }
+.exist .lead { margin-top:18px; max-width:560px; }
 .ptitle { display:flex; justify-content:space-between; align-items:baseline; }
 .ptitle b { font-size:22px; letter-spacing:-0.02em; }
 .fpz-pan { margin-top:18px; }
-.fpz-drop { border-radius:var(--r-panel-in); border:1.5px dashed rgba(36,21,186,.32); background:rgba(36,21,186,.03); padding:26px 20px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:6px; }
-.fpz-ic { width:52px; height:52px; border-radius:50%; background:var(--dark); color:#fff; display:grid; place-items:center; margin-bottom:8px; }
-.fpz-drop b { font-family:var(--fd); font-weight:700; font-size:20px; color:var(--ink); }
-.fpz-drop span { font-size:var(--small); color:var(--ink2); }
+/* drop zone in one row (icon left, text right) so the 80 % section fits one screen (Olli 17.11.) */
+.fpz-drop { border-radius:var(--r-panel-in); border:1.5px dashed rgba(36,21,186,.32); background:rgba(36,21,186,.03); padding:18px 22px; display:grid; grid-template-columns:52px 1fr; column-gap:18px; row-gap:2px; align-items:center; text-align:left; }
+.fpz-ic { width:52px; height:52px; border-radius:50%; background:var(--dark); color:#fff; display:grid; place-items:center; grid-row:span 2; }
+.fpz-drop b { font-family:var(--fd); font-weight:700; font-size:20px; color:var(--ink); align-self:end; }
+.fpz-drop span { font-size:var(--small); color:var(--ink2); align-self:start; }
+/* the title and hint may come wrapped in one span (Spare Parts): stack them next to the icon */
+.fpz-drop > span:not(.fpz-ic) { grid-row:span 2; display:flex; flex-direction:column; gap:2px; align-self:center; }
+.fpz-drop > span:not(.fpz-ic) b, .fpz-drop > span:not(.fpz-ic) span { align-self:auto; }
+/* inside a form that already sits on a panel the drop zone needs no halo frame of its own */
+.rform .fpz-pan { box-shadow:none; background:none; padding:0; border-radius:0; }
 .fpz-drop .fpz-ic { color:#fff; }
 .fpz-drop u { color:var(--dark); font-weight:600; text-underline-offset:3px; }
 .fpz-row { display:flex; align-items:center; gap:20px; padding:8px 0 0 20px; }
@@ -1015,7 +1029,7 @@
 .fm.m .big80 sup { font-size:54px; top:10px; }
 .fm.m .fpz-row { flex-direction:column; align-items:stretch; gap:14px; padding:8px 0 0; }
 .fm.m .fpz-row .f { margin:0 14px; }
-.fm.m .fpz-drop { padding:22px 14px; }
+.fm.m .fpz-drop { padding:16px 14px; column-gap:14px; }
 .fm.m .exist .planfull { position:relative; inset:auto; left:auto; right:auto; order:1; height:auto; aspect-ratio:16/9; margin:0 var(--gut) var(--sec); }
 .fm.m .exist .planfull::after { display:none; }
 .fm.m .pbento { grid-template-columns:1fr; gap:12px; }
@@ -1171,7 +1185,7 @@
 .rform legend .n { width:24px; height:24px; border-radius:50%; display:grid; place-items:center; background:var(--dark); color:#fff; letter-spacing:0; }
 .rform .chips { margin-top:14px; display:flex; flex-wrap:wrap; gap:8px; }
 .rform .f2 { margin-top:10px; display:grid; grid-template-columns:1fr 1fr; gap:4px 28px; }
-.rform .fpz-pan { margin-top:16px; padding:6px; }
+.rform .fpz-pan { margin-top:16px; }
 .rform .fpz-drop { padding:20px; flex-direction:row; text-align:left; gap:16px; justify-content:flex-start; }
 .rform .fpz-drop .fpz-ic { margin:0; }
 .rform .fpz-drop > span:last-child { display:grid; gap:2px; }
