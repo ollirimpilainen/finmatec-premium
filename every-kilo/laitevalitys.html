@@ -1,0 +1,1715 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Laitevälitys: Trading Partners in Finland | Finmatec</title>
+<meta name="description" content="Finmatec Laitevälitys: Trading Partners in Finland prototype, generated from the Claude Design canvas. Genero, 17.11.2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400..800&amp;display=swap">
+<style media="(min-width:761px)">
+
+/* ===== Finmatec homepage stylesheet: the base for every page (shared by all 4 homepage artboards, unified 16.11.2026) ===== */
+/* Tokens: colour, type, radius, surface, rhythm. Mobile overrides at the bottom. */
+.fm { --ink:#0D0E2B; --ink2:#3A3C5C; --mute:#5F617E; --line:#D9DBE8; --soft:#ECEEF7; --paper:#F5F6FB; --dark:#2415BA; --acc:#03FF6B; --deep:#0D0E2B;
+  --fd:'Exo 2',sans-serif; --fb:'Exo 2',sans-serif; --fl:'Exo 2',sans-serif; --ease:cubic-bezier(.32,.72,0,1);
+  --disp:84px; --h1:64px; --h2:56px; --h2s:44px; --h3:30px; --h4:24px; --lead:18px; --body:16px; --small:14px; --cap:12px;
+  --r-card:28px; --r-card-in:22px; --r-panel:36px; --r-panel-in:28px; --r-row:22px;
+  --tray:rgba(36,21,186,.06); --tray-ring:inset 0 0 0 1px rgba(36,21,186,.10); --halo:0 0 0 6px rgba(36,21,186,.06), 0 0 0 7px rgba(36,21,186,.08);
+  --sec:80px; --gut:72px;
+  width:1440px; background:#fff; color:var(--ink); font-family:var(--fb); font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased; overflow:hidden; }
+
+/* Base */
+.fm * { box-sizing:border-box; }
+.fm p { margin:0; }
+.fm h1, .fm h2, .fm h3 { margin:0; font-family:var(--fd); font-weight:700; letter-spacing:-0.005em; line-height:1; }
+.fm h2 { font-size:var(--h2); line-height:1.02; color:var(--dark); }
+.fm h2.s { font-size:var(--h2s); line-height:1.04; }
+.fm .hl { color:var(--ink); }
+.fm .lead { font-size:var(--lead); color:var(--ink2); }
+.fm a { color:inherit; text-decoration:none; }
+.fm img, .fm video { display:block; width:100%; height:100%; object-fit:cover; }
+.fm a:focus-visible, .fm button:focus-visible { outline:2px solid var(--dark); outline-offset:3px; }
+.fm svg.ic { display:block; flex:none; }
+.sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+
+/* Caps label: eyebrow, field label, card label, table key, quote source. One style. */
+.mono, .eyebrow, .fm .lab, .rw small, .fm .level div small, .st .n, .st.star .badge, .c-quote cite, .fm .sheet td:first-child { font-family:var(--fl); font-size:var(--cap); font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+.eyebrow { display:inline-flex; align-items:center; gap:10px; color:var(--ink2); }
+.eyebrow::before { content:""; width:18px; height:1px; background:var(--dark); }
+.pf .eyebrow, .svc .eyebrow { color:var(--acc); }
+.pf .eyebrow::before, .svc .eyebrow::before { background:var(--acc); }
+
+/* Button: pill + nested arrow ball. Sizes: default 56, .s 48. Styles: .pri, .sec, .ghost; .qk = steel knob, Request a quote only. */
+.btn { display:inline-flex; align-items:center; gap:14px; height:56px; padding:0 8px 0 26px; border-radius:999px; font-weight:600; font-size:16px; transition:transform .5s var(--ease); white-space:nowrap; }
+.btn i { width:40px; height:40px; border-radius:50%; display:grid; place-items:center; flex:none; font-style:normal; }
+.btn i svg { width:18px; height:18px; }
+.btn.s { height:48px; padding:0 6px 0 20px; gap:12px; font-size:15px; }
+.btn.s i { width:36px; height:36px; }
+.btn.s i svg { width:16px; height:16px; }
+.btn.pri { background:var(--dark); color:#fff; }
+.btn.pri i { background:rgba(255,255,255,.16); color:#fff; }
+.btn.sec { background:#fff; color:var(--ink); }
+.btn.sec i { background:var(--dark); color:#fff; }
+.btn.ghost { box-shadow:inset 0 0 0 1.5px currentColor; padding:0 22px 0 26px; gap:10px; }
+.btn.ghost i { width:auto; height:auto; background:none; }
+.btn.qk { box-shadow:0 10px 24px rgba(36,21,186,.28); }
+.btn.qk i { color:#0b0a26; filter:drop-shadow(0 1px 0 rgba(255,255,255,.9)); background:repeating-radial-gradient(circle at 50% 50%,rgba(255,255,255,0) 0 1px,rgba(27,29,43,.05) 1px 2px),conic-gradient(from 25deg,#f6f8fa,#a9b0bc 11%,#eef1f5 24%,#99a1ae 37%,#f3f5f8 50%,#adb4c0 63%,#ebeef2 75%,#a1a9b6 88%,#f6f8fa); box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 0 0 1px rgba(11,10,38,.18),0 2px 5px rgba(11,10,38,.3); }
+
+/* Link row: a whole row is the link, arrow ball on the right. On dark and blue surfaces. */
+.fm .lrow { display:flex; justify-content:space-between; align-items:center; gap:20px; height:88px; padding:0 22px 0 28px; border-radius:var(--r-row); background:rgba(255,255,255,.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,.16); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); color:#fff; transition:background .4s var(--ease); }
+.fm .lrow:hover { background:rgba(255,255,255,.14); }
+.fm .lrow b { display:block; font-family:var(--fd); font-size:22px; font-weight:700; letter-spacing:-0.005em; line-height:1.2; }
+.fm .lrow small { display:block; margin-top:3px; font-size:var(--small); opacity:.75; }
+.fm .lrow i { width:44px; height:44px; border-radius:50%; display:grid; place-items:center; flex:none; background:var(--acc); color:var(--deep); }
+.fm .lrow i svg { width:20px; height:20px; }
+
+/* Chip: small pill link or option. .opt = selectable option in a form. */
+.fm .chip { display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 16px; border-radius:999px; background:var(--soft); color:var(--dark); font-size:var(--small); font-weight:600; white-space:nowrap; }
+.fm .chip svg { width:14px; height:14px; }
+.st.star .chip { background:rgba(255,255,255,.14); color:#fff; }
+.fm .chip.opt { font:inherit; font-size:var(--small); font-weight:600; border:0; background:transparent; color:var(--ink); cursor:pointer; box-shadow:inset 0 0 0 1.5px var(--line); }
+.fm .chip.opt.on { background:var(--dark); color:#fff; box-shadow:none; }
+
+/* Text link */
+.fm .tlink { display:inline-flex; gap:8px; align-items:center; font-size:17px; font-weight:600; border-bottom:1.5px solid currentColor; padding-bottom:3px; color:var(--dark); white-space:nowrap; }
+.fm .tlink svg { width:16px; height:16px; }
+
+/* Surfaces. Card: tray 28 / core 22 (6 px gap). Panel: tray 36 / core 28 (8 px gap, concentric with a 56 px pill). Halo: single surface with a soft ring. */
+.st, .cell { border-radius:var(--r-card); padding:6px; background:var(--tray); box-shadow:var(--tray-ring); }
+.st .core, .cell > .core { border-radius:var(--r-card-in); overflow:hidden; }
+.sheet, .cb .form { border-radius:var(--r-panel); padding:8px; background:var(--tray); box-shadow:var(--tray-ring); display:flex; }
+.sheet .in, .cb .form .in { flex:1; border-radius:var(--r-panel-in); background:#fff; }
+.w2-ph, .w2-cert { border-radius:var(--r-card); box-shadow:var(--halo); }
+.fpz-pan { border-radius:var(--r-panel); box-shadow:var(--halo); background:#fff; padding:8px; }
+
+/* Fields: hairline */
+.fm label.f, .fm label.ta { display:flex; padding:0 2px; border-bottom:1.5px solid var(--line); color:var(--mute); font-size:15px; }
+.fm label.f { height:52px; align-items:center; }
+.fm label.ta { height:auto; min-height:96px; padding-top:14px; align-items:flex-start; }
+.fm label.f input, .fm label.ta textarea { all:unset; width:100%; font:inherit; font-size:15px; color:var(--ink); }
+.fm label.ta textarea { height:100%; min-height:72px; }
+.fm label.f input::placeholder, .fm label.ta textarea::placeholder { color:var(--mute); opacity:1; }
+.fm label.f:focus-within, .fm label.ta:focus-within { border-bottom-color:var(--dark); }
+
+/* Utility bar */
+.util { height:38px; background:var(--deep); color:#cfcfcf; font-size:13px; display:flex; align-items:center; justify-content:space-between; padding:0 var(--gut); }
+.util span { margin-right:28px; }
+.util b { color:#fff; font-weight:600; }
+.util .ext { display:inline-flex; align-items:center; gap:7px; color:#fff; }
+.util .ext svg { width:12px; height:12px; opacity:.8; }
+
+/* Hero and nav */
+.hero { position:relative; height:860px; background:var(--deep); color:#fff; }
+.hero .media { position:absolute; inset:0; }
+.hero .media::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,.05) 30%, rgba(10,10,10,.35) 58%, rgba(10,10,10,.92) 100%); }
+.nav { position:absolute; top:22px; left:56px; right:56px; height:68px; display:flex; align-items:center; gap:40px; padding:0 10px 0 26px; border-radius:999px; background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(255,255,255,.62)); color:var(--ink); box-shadow:inset 0 1px 0 rgba(255,255,255,.95), inset 0 0 0 1px rgba(255,255,255,.55), 0 14px 36px -14px rgba(0,0,0,.45); -webkit-backdrop-filter:blur(22px) saturate(170%); backdrop-filter:blur(22px) saturate(170%); z-index:2; }
+.fm img.logoimg { width:auto; height:30px; object-fit:contain; }
+.nav ul { list-style:none; display:flex; gap:30px; margin:0; padding:0; font-size:15px; font-weight:500; }
+.nav ul li a { display:inline-flex; align-items:center; gap:6px; }
+.nav ul li a svg { width:10px; height:10px; opacity:.6; }
+.nav .btn { margin-left:auto; }
+.fm .nav .mq { display:none; }
+.hero-copy { position:absolute; left:var(--gut); right:var(--gut); bottom:168px; z-index:1; }
+.hero h1 { font-size:var(--h1); line-height:.98; max-width:1180px; color:#fff; }
+.router { position:absolute; left:56px; right:56px; bottom:40px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; z-index:1; }
+
+/* Gains and numbers (open hairline grid) */
+.rw { padding:var(--sec) var(--gut); background:#fff; }
+.rw h2.stmt { max-width:1000px; color:var(--ink); }
+.rw .stmt em { font-style:normal; color:var(--dark); background:linear-gradient(var(--acc),var(--acc)) 0 92%/100% 9px no-repeat; }
+.rwk-grid { margin-top:64px; display:grid; grid-template-columns:repeat(3,1fr); }
+.rwk-grid > .rw-i { padding:34px 40px; border-right:1px solid var(--line); }
+.rwk-grid > .rw-i:nth-child(3n) { border-right:0; padding-right:0; }
+.rwk-grid > .rw-i:nth-child(3n+1) { padding-left:0; }
+.rwk-grid > .rw-i:nth-child(-n+3) { border-bottom:1px solid var(--line); padding-top:8px; }
+.rwk-grid > .rw-i:nth-child(n+4) { padding-bottom:8px; }
+.rw-i { display:flex; align-items:center; gap:20px; }
+.rw-ar { width:72px; height:72px; border-radius:50%; display:grid; place-items:center; background:var(--dark); color:#fff; flex:none; }
+.rw-i.dn .rw-ar { background:var(--acc); color:var(--deep); }
+.rw-ar svg { width:32px; height:32px; }
+.rw small { display:block; margin-bottom:8px; color:var(--ink2); }
+.rw-t b { display:block; font-family:var(--fd); font-weight:700; font-size:34px; line-height:1; color:var(--dark); white-space:nowrap; }
+.rw-num { font-family:var(--fd); font-weight:700; font-size:72px; line-height:.9; letter-spacing:-0.02em; color:var(--dark); flex:none; }
+.rw-num i { font-style:normal; color:var(--acc); }
+.rw-n .rw-t b { font-size:var(--h4); }
+
+/* Logo band */
+.logos { margin:64px calc(-1 * var(--gut)) 0; overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line); -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+.logos .ltrack { display:flex; width:max-content; will-change:transform; }
+.logos .ltrack div { flex:none; width:200px; height:104px; display:grid; place-items:center; padding:20px 26px; border-left:1px solid var(--line); }
+.fm .logos img { width:auto; height:auto; max-width:100%; max-height:52px; object-fit:contain; filter:grayscale(1) brightness(1.08) contrast(2.6); mix-blend-mode:multiply; }
+.fm .logos img[alt="Fazer"], .fm .logos img[alt="Saarioinen"] { max-height:84px; transform:scale(1.35); }
+
+/* Material flow */
+.flow { padding:var(--sec) 0; background:var(--paper); }
+.flow-head { display:grid; grid-template-columns:minmax(0,1fr) 360px; gap:48px; padding:0 var(--gut); align-items:center; }
+.railwrap { margin-top:52px; overflow:hidden; }
+.track { position:relative; display:flex; width:max-content; gap:20px; padding:0 var(--gut); animation:railpan 30s cubic-bezier(.65,0,.35,1) infinite alternate; }
+@keyframes railpan { 0%, 14% { transform:translateX(0); } 86%, 100% { transform:translateX(calc(1440px - 100%)); } }
+.track > .st { flex:none; width:520px; }
+.st { position:relative; }
+.st .core { height:100%; background:#fff; box-shadow:inset 0 1px 1px rgba(255,255,255,.8); }
+.st .ph { position:relative; aspect-ratio:4/3; overflow:hidden; background:var(--deep); }
+.st .ph img { width:100%; height:100%; object-fit:cover; transition:transform 1.2s var(--ease); }
+.st:hover .ph img { transform:scale(1.04); }
+.st .n { position:absolute; top:16px; left:16px; color:#fff; background:rgba(13,14,43,.55); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); padding:7px 11px; border-radius:999px; }
+.st .body { padding:26px 28px 30px; display:grid; gap:12px; align-content:start; }
+.st h3 { font-size:var(--h3); }
+.st p { font-size:var(--body); color:var(--ink2); max-width:44ch; }
+.st .prod { margin-top:6px; display:flex; flex-wrap:wrap; gap:8px; }
+.st.star { background:rgba(36,21,186,.16); }
+.st.star .core { background:var(--dark); color:#fff; box-shadow:none; }
+.st.star h3 { color:#fff; }
+.st.star p { color:rgba(255,255,255,.76); }
+.st.star .badge { position:absolute; top:16px; right:16px; padding:7px 11px; border-radius:999px; background:var(--acc); color:var(--deep); }
+.st.bin .ph { background:linear-gradient(180deg,#f7f9fc 0%,#e9eef5 100%); }
+.st.bin .ph img { object-position:34% 42%; transform:scale(1.55); transform-origin:34% 42%; }
+.st.bin:hover .ph img { transform:scale(1.62); }
+.flow-foot { margin:40px var(--gut) 0; padding-top:28px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; font-size:var(--lead); }
+
+/* 40 kg */
+.kg { display:grid; grid-template-columns:1.15fr 1fr; gap:56px; align-items:center; padding:var(--sec) var(--gut); }
+.kg-num { font-family:var(--fd); font-weight:700; font-size:330px; line-height:.8; letter-spacing:-0.005em; color:var(--dark); }
+.kg-num small { font-size:120px; letter-spacing:-0.02em; color:var(--acc); }
+.kg h2 { margin-top:22px; }
+.kg .lead { margin-top:22px; max-width:520px; }
+
+/* Plate freezing */
+.pf { background:var(--dark); color:#fff; padding:var(--sec) var(--gut); display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:72px; align-items:stretch; }
+.pf h2 { margin-top:20px; color:#fff; }
+.pf .lead { margin-top:24px; color:rgba(255,255,255,.75); }
+.seg { margin-top:32px; display:grid; grid-template-columns:repeat(3,1fr); padding:5px; border-radius:999px; background:rgba(255,255,255,.07); box-shadow:inset 0 0 0 1px rgba(255,255,255,.12); }
+.seg span { text-align:center; padding:14px 0; border-radius:999px; font-size:15px; font-weight:600; color:rgba(255,255,255,.65); }
+.seg span.on { background:var(--acc); color:var(--deep); }
+.level { position:relative; margin-top:34px; display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.level .belt { position:absolute; left:7px; right:0; top:5px; height:4px; border-radius:2px; background:rgba(255,255,255,.1); overflow:hidden; z-index:0; }
+.level .belt::after { content:""; position:absolute; inset:0 -48px 0 0; animation:belt 1.2s linear infinite; background:repeating-linear-gradient(90deg, var(--acc) 0 14px, transparent 14px 24px); }
+@keyframes belt { from { transform:translateX(-24px); } to { transform:translateX(0); } }
+.level > div:not(.belt) { position:relative; z-index:1; padding-top:30px; }
+.level > div:not(.belt)::before { content:""; position:absolute; left:0; top:0; width:14px; height:14px; border-radius:50%; background:var(--dark); box-shadow:inset 0 0 0 3px var(--acc); }
+.level div b { display:block; font-size:17px; margin-top:4px; }
+.fm .level div small { color:rgba(255,255,255,.9); }
+.pf .cap { margin-top:22px; font-size:15px; color:rgba(255,255,255,.6); }
+.pf .ctas { margin-top:36px; display:flex; gap:14px; align-items:center; }
+.pf .btn.ghost { color:#fff; }
+.bezel { padding:8px; border-radius:var(--r-panel); background:rgba(255,255,255,.06); box-shadow:inset 0 0 0 1px rgba(255,255,255,.12); display:flex; }
+.bezel .in { flex:1; min-height:520px; border-radius:var(--r-panel-in); overflow:hidden; position:relative; background:var(--deep) url(media/v5302.jpg) center/cover; }
+.bezel .in video { position:absolute; inset:0; opacity:0; animation:clips 18s infinite; }
+.bezel .in video:nth-of-type(2) { animation-delay:6s; }
+.bezel .in video:nth-of-type(3) { animation-delay:12s; }
+@keyframes clips { 0% { opacity:0; } 4% { opacity:1; } 33% { opacity:1; } 38% { opacity:0; } 100% { opacity:0; } }
+.bezel .tag { position:absolute; z-index:2; left:20px; bottom:20px; display:inline-flex; align-items:center; gap:8px; background:rgba(0,0,0,.5); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); color:#fff; border-radius:999px; padding:8px 14px; font-size:13px; }
+.bezel .tag svg { width:10px; height:10px; }
+
+/* Why choose Finmatec */
+.wv { padding:var(--sec) var(--gut); background:#fff; }
+.wv h3 { font-size:var(--h4); line-height:1.1; color:var(--dark); }
+.wv p { margin:10px 0 0; font-size:var(--body); line-height:1.55; color:var(--ink2); }
+.w2-wrap { margin-top:48px; display:grid; grid-template-columns:4fr 8fr; gap:28px 64px; }
+.w2-ph { min-height:400px; }
+.wv .wph { position:relative; overflow:hidden; color:#fff; }
+.wv .wph img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.wv .wph::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(13,14,43,0) 40%,rgba(13,14,43,.82) 100%); }
+.wv .wph .b { position:absolute; left:32px; right:32px; bottom:30px; z-index:1; }
+.wv .wph h3 { color:#fff; font-size:var(--h3); }
+.wv .wph p { color:rgba(255,255,255,.82); max-width:460px; }
+.w2-grid { display:grid; grid-template-columns:1fr 1fr; }
+.w2-c { padding:32px 36px; display:flex; flex-direction:column; justify-content:center; }
+.w2-c:nth-child(odd) { padding-left:0; border-right:1px solid var(--line); }
+.w2-c:nth-child(even) { padding-right:0; }
+.w2-c:nth-child(-n+2) { border-bottom:1px solid var(--line); }
+.w2-c h3 { white-space:nowrap; }
+.w2-c p { max-width:340px; }
+.w2-cert { margin-top:28px; padding:24px 36px; background:#fff; display:flex; justify-content:space-between; align-items:center; gap:32px; }
+.wv .wc b { display:block; font-family:var(--fd); font-weight:700; font-size:20px; color:var(--dark); }
+.wv .wc span { font-size:15px; color:var(--ink2); }
+
+/* 80 %: existing factories, floor plan */
+.exist { position:relative; background:#fff; padding:0; overflow:hidden; }
+.exist .left { position:relative; z-index:1; width:680px; padding:var(--sec) var(--gut); display:flex; flex-direction:column; justify-content:space-between; gap:48px; }
+.big80 { font-family:var(--fd); font-weight:700; font-size:240px; line-height:.8; letter-spacing:-0.005em; color:var(--dark); }
+.big80 sup { font-size:110px; vertical-align:top; position:relative; top:22px; color:var(--acc); }
+.exist h2 { margin-top:26px; max-width:560px; }
+.exist .lead { margin-top:22px; max-width:560px; }
+.ptitle { display:flex; justify-content:space-between; align-items:baseline; }
+.ptitle b { font-size:22px; letter-spacing:-0.02em; }
+.fpz-pan { margin-top:18px; }
+.fpz-drop { border-radius:var(--r-panel-in); border:1.5px dashed rgba(36,21,186,.32); background:rgba(36,21,186,.03); padding:26px 20px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:6px; }
+.fpz-ic { width:52px; height:52px; border-radius:50%; background:var(--dark); color:#fff; display:grid; place-items:center; margin-bottom:8px; }
+.fpz-drop b { font-family:var(--fd); font-weight:700; font-size:20px; color:var(--ink); }
+.fpz-drop span { font-size:var(--small); color:var(--ink2); }
+.fpz-drop .fpz-ic { color:#fff; }
+.fpz-drop u { color:var(--dark); font-weight:600; text-underline-offset:3px; }
+.fpz-row { display:flex; align-items:center; gap:20px; padding:8px 0 0 20px; }
+.fpz-row .f { flex:1; }
+.fpz-row .btn { flex:none; justify-content:space-between; }
+.exist .planfull { position:absolute; top:0; bottom:0; left:600px; right:56px; z-index:0; background:#fff; color:#141414; }
+.exist .planfull::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,#fff 0%,#fff 10%,rgba(255,255,255,0) 34%); pointer-events:none; }
+.exist .planfull svg.plan { position:absolute; inset:0; width:100% !important; height:100% !important; }
+.plan { font-family:var(--fd); }
+.plan text { fill:currentColor; font-size:11px; }
+.plan .eq { fill:rgba(20,20,20,.05); stroke:currentColor; stroke-width:1.2; }
+.plan .ln { fill:none; stroke:currentColor; stroke-width:1; }
+.plan .thin { stroke-width:.6; opacity:.55; }
+.plan .wall { fill:none; stroke:currentColor; stroke-width:2.2; }
+.plan .lbl { font-size:11px; opacity:.75; }
+.plan * { vector-effect:non-scaling-stroke; }
+.plan .flow { fill:none; stroke:#141414; stroke-width:2; stroke-dasharray:6 6; animation:planflow 1.4s linear infinite; }
+@keyframes planflow { to { stroke-dashoffset:-24; } }
+.plan .mroute { fill:none; stroke:var(--dark); stroke-width:1.4; stroke-dasharray:2 7; opacity:.6; animation:planflow 1.4s linear infinite; }
+.plan .mblk { fill:var(--dark); stroke:none; }
+
+/* Proof: quote and photo */
+.proof { padding:var(--sec) var(--gut); background:#fff; }
+.pbento { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:16px; }
+.cell > .core { position:relative; height:100%; }
+.c-quote { grid-column:span 7; }
+.c-quote .core { background:var(--dark); color:#fff; padding:48px; display:flex; flex-direction:column; justify-content:space-between; gap:40px; min-height:520px; }
+.c-quote .mark { font-family:var(--fd); font-weight:700; font-size:120px; line-height:.5; height:44px; color:var(--acc); }
+.c-quote blockquote { margin:0; font-family:var(--fd); font-weight:600; font-size:40px; line-height:1.12; letter-spacing:-0.02em; color:#fff; }
+.c-quote .qfoot { display:flex; flex-wrap:wrap; gap:20px 32px; align-items:center; justify-content:space-between; }
+.c-quote cite { font-style:normal; color:#C9C6F1; }
+.c-img { grid-column:span 5; }
+.c-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:55% 50%; }
+
+/* Service and spare parts */
+.svc { padding:0 var(--gut); }
+.svc-in { border-radius:var(--r-panel); background:var(--dark); color:#fff; padding:64px; display:grid; grid-template-columns:1fr 1.15fr; gap:72px; align-items:center; }
+.svc h2 { margin-top:18px; color:#fff; }
+.svc-head .lead { margin-top:18px; line-height:1.5; color:rgba(255,255,255,.76); max-width:420px; }
+.svc-links { display:grid; gap:12px; }
+
+/* Engineers: datasheet */
+.eng { padding:var(--sec) var(--gut); display:grid; grid-template-columns:1.1fr 1fr; gap:90px; align-items:center; }
+.eng h2 { margin-top:22px; }
+.eng .lead { margin-top:22px; max-width:520px; }
+.eng .btn { margin-top:34px; }
+.sheet .in { padding:34px 36px; box-shadow:0 1px 0 rgba(0,0,0,.04); }
+.sheet .top { display:flex; justify-content:space-between; align-items:baseline; padding-bottom:22px; border-bottom:1px solid var(--line); }
+.sheet .top b { font-family:var(--fd); font-size:26px; font-weight:700; letter-spacing:-0.005em; }
+.sheet table { width:100%; border-collapse:collapse; margin-top:6px; font-size:15px; }
+.sheet td { padding:13px 0; border-bottom:1px solid var(--soft); }
+.fm .sheet td:first-child { color:var(--mute); width:46%; padding-right:14px; }
+.sheet .dl { margin-top:22px; display:flex; gap:10px; }
+
+/* Contact */
+.cb { padding:var(--sec) var(--gut); display:grid; grid-template-columns:1fr 1.1fr; gap:72px; }
+.cb h2 { font-size:var(--disp); line-height:.92; }
+.cb .lead { margin-top:22px; max-width:480px; }
+.cb .ppl { margin-top:40px; display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:560px; }
+.cb .ppl > div { display:grid; gap:16px; }
+.cb .ppl .av { width:100%; height:300px; border-radius:var(--r-card-in); overflow:hidden; background:var(--soft); }
+.cb .ppl .av img { width:100%; height:100%; object-fit:cover; object-position:50% 20%; display:block; }
+.cb .ppl b { display:block; font-size:17px; }
+.cb .ppl span span { display:block; margin-top:2px; font-size:var(--small); color:var(--mute); }
+.cb .form .in { display:flex; flex-direction:column; padding:34px; }
+.fm .cb .form .lab { color:var(--ink2); }
+.cb .chips { margin-top:12px; display:flex; flex-wrap:wrap; gap:8px; }
+.cb .form .f2 { margin-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:6px 28px; }
+.cb > .form { align-self:start; }
+.cb .form .ta { margin-top:12px; }
+.cb .form .btn { align-self:flex-start; margin-top:20px; justify-content:space-between; }
+
+/* Footer */
+.fb2 { position:relative; padding:60px var(--gut) 56px; overflow:hidden; background:var(--soft); }
+.fb2 > *:not(.sym) { position:relative; z-index:1; }
+.fb2 .sym { position:absolute; z-index:0; right:-140px; top:-170px; height:1000px; width:auto; }
+.fb2 .sym path[fill="#e2e2de"] { fill:#2415BA; fill-opacity:.085; }
+.fb2 .sym path[fill="#d3d3ce"] { fill:#03FF6B; fill-opacity:.15; }
+.fb2 .grid { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:40px; }
+.fb2 p { font-size:15px; color:var(--ink2); max-width:320px; margin-top:0; }
+.fb2 h4 { margin:0 0 14px; font-size:var(--small); font-weight:600; }
+.fb2 ul { list-style:none; margin:0; padding:0; display:grid; gap:9px; font-size:15px; color:var(--ink2); }
+.fb2 .bottom { margin-top:56px; display:flex; justify-content:space-between; font-size:13px; color:var(--mute); }
+.fb2 .bottom span a { margin-left:24px; }
+.fb2 .word { position:relative; margin:40px 0 0; width:auto; height:auto; overflow:visible; }
+.fb2 .word svg { display:block; width:100%; height:auto; fill:var(--dark); }
+
+/* ===== Mobile 390 ===== */
+.fm.m { --disp:52px; --h1:32px; --h2:32px; --h2s:28px; --h3:24px; --h4:21px; --lead:16px; --body:15px; --sec:56px; --gut:20px; --r-panel:28px; --r-panel-in:22px; --r-row:18px; width:390px; font-size:16px; }
+.fm.m .btn:not(.mq) { width:100%; justify-content:space-between; }
+.fm.m .btn.ghost { justify-content:center; }
+.fm.m .chip { height:44px; }
+.fm.m .tlink { min-height:44px; font-size:16px; }
+.fm.m .lrow { height:72px; padding:0 16px 0 20px; }
+.fm.m .lrow b { font-size:18px; }
+.fm.m .lrow small { font-size:13px; }
+.fm.m .lrow i { width:40px; height:40px; }
+.fm.m .lrow i svg { width:18px; height:18px; }
+.fm.m .util { display:none; }
+.fm.m .hero { height:780px; }
+.fm.m .nav { top:14px; left:12px; right:12px; height:58px; padding:0 7px 0 18px; gap:12px; justify-content:space-between; }
+.fm.m .nav img.logoimg { height:24px; }
+.fm.m .nav .btn.mq { display:inline-flex; margin-left:auto; height:44px; padding:0 6px 0 16px; gap:10px; font-size:14px; }
+.fm.m .nav .btn.mq i { width:32px; height:32px; }
+.fm.m .burger { width:44px; height:44px; border-radius:50%; border:0; padding:0; background:var(--dark); display:grid; place-content:center; gap:4px; cursor:pointer; }
+.fm.m .burger span { display:block; width:18px; height:2px; border-radius:1px; background:#fff; }
+.fm.m .hero-copy { bottom:276px; }
+.fm.m .hero h1 { line-height:1.04; max-width:none; }
+.fm.m .router { left:12px; right:12px; bottom:16px; grid-template-columns:1fr; gap:8px; }
+.fm.m .rw h2.stmt { line-height:1.04; }
+.fm.m .rw .stmt em { background-size:100% 6px; }
+.fm.m .rwk-grid { margin-top:28px; grid-template-columns:1fr; }
+.fm.m .rwk-grid > .rw-i { padding:18px 0; border-right:0; border-bottom:1px solid var(--line); gap:16px; }
+.fm.m .rwk-grid > .rw-i:last-child { border-bottom:0; }
+.fm.m .rw-ar { width:52px; height:52px; }
+.fm.m .rw-ar svg { width:24px; height:24px; }
+.fm.m .rw-t b { font-size:24px; white-space:normal; }
+.fm.m .rw-num { font-size:52px; }
+.fm.m .rw-n .rw-t b { font-size:20px; }
+.fm.m .rw small { margin-bottom:6px; }
+.fm.m .logos { margin-top:36px; }
+.fm.m .logos .ltrack div { width:150px; height:80px; padding:16px 20px; }
+.fm.m .flow-head { grid-template-columns:1fr; gap:16px; }
+.fm.m .railwrap { margin-top:32px; }
+.fm.m .track { gap:12px; animation:railpanm 22s cubic-bezier(.65,0,.35,1) infinite alternate; }
+@keyframes railpanm { 0%, 12% { transform:translateX(0); } 88%, 100% { transform:translateX(calc(390px - 100%)); } }
+.fm.m .track > .st { width:300px; }
+.fm.m .st .body { padding:20px 20px 24px; gap:10px; }
+.fm.m .flow-foot { margin-top:32px; flex-direction:column; align-items:flex-start; gap:12px; }
+.fm.m .kg { grid-template-columns:1fr; gap:20px; }
+.fm.m .kg-num { font-size:150px; }
+.fm.m .kg-num small { font-size:56px; }
+.fm.m .pf { grid-template-columns:1fr; gap:32px; }
+.fm.m .seg { margin-top:24px; border-radius:22px; }
+.fm.m .seg span { font-size:13px; line-height:1.15; padding:0 6px; min-height:48px; display:grid; place-items:center; border-radius:18px; }
+.fm.m .level { margin-top:28px; }
+.fm.m .level div b { font-size:var(--small); }
+.fm.m .level div small { font-size:11px; }
+.fm.m .pf .ctas { flex-direction:column; align-items:stretch; gap:10px; }
+.fm.m .bezel .in { min-height:300px; }
+.fm.m .w2-wrap { margin-top:28px; grid-template-columns:1fr; gap:20px; }
+.fm.m .w2-ph { min-height:340px; }
+.fm.m .wv .wph .b { left:22px; right:22px; bottom:22px; }
+.fm.m .w2-grid { grid-template-columns:1fr; }
+.fm.m .w2-c { padding:20px 0; border-right:0 !important; border-bottom:1px solid var(--line); }
+.fm.m .w2-c:last-child { border-bottom:0; }
+.fm.m .w2-c h3 { white-space:normal; }
+.fm.m .w2-cert { margin-top:20px; padding:22px; flex-direction:column; align-items:flex-start; gap:14px; }
+.fm.m .exist { display:flex; flex-direction:column; }
+.fm.m .exist .left { width:auto; padding-bottom:28px; gap:36px; }
+.fm.m .big80 { font-size:120px; }
+.fm.m .big80 sup { font-size:54px; top:10px; }
+.fm.m .fpz-row { flex-direction:column; align-items:stretch; gap:14px; padding:8px 0 0; }
+.fm.m .fpz-row .f { margin:0 14px; }
+.fm.m .fpz-drop { padding:22px 14px; }
+.fm.m .exist .planfull { position:relative; inset:auto; left:auto; right:auto; order:1; height:auto; aspect-ratio:16/9; margin:0 var(--gut) var(--sec); }
+.fm.m .exist .planfull::after { display:none; }
+.fm.m .pbento { grid-template-columns:1fr; gap:12px; }
+.fm.m .pbento > .cell { grid-column:auto; }
+.fm.m .c-quote .core { padding:28px 24px; min-height:0; gap:28px; }
+.fm.m .c-quote .mark { font-size:90px; height:30px; }
+.fm.m .c-quote blockquote { font-size:24px; line-height:1.18; }
+.fm.m .c-img .core { min-height:300px; }
+.fm.m .svc-in { grid-template-columns:1fr; padding:32px 22px 22px; gap:28px; }
+.fm.m .eng { grid-template-columns:1fr; gap:32px; }
+.fm.m .eng > div:last-child { order:-1; }
+.fm.m .sheet .in { padding:22px; }
+.fm.m .sheet .top { flex-direction:column; align-items:flex-start; gap:6px; }
+.fm.m .sheet .top b { font-size:20px; }
+.fm.m .sheet table { table-layout:fixed; }
+.fm.m .sheet td:first-child { width:42%; letter-spacing:.04em; font-size:11px; line-height:1.35; word-break:break-word; }
+.fm.m .sheet .dl { flex-wrap:wrap; }
+.fm.m .cb { grid-template-columns:1fr; gap:32px; }
+.fm.m .cb .ppl { margin-top:28px; gap:12px; }
+.fm.m .cb .ppl > div { align-content:start; gap:12px; }
+.fm.m .cb .ppl .av { height:200px; }
+.fm.m .cb .ppl span span { font-size:13px; }
+.fm.m .cb .form .in { padding:22px; }
+.fm.m .cb .form .f2 { grid-template-columns:1fr; }
+.fm.m .cb .form .btn { align-self:stretch; }
+.fm.m .fb2 { padding:48px var(--gut) 40px; }
+.fm.m .fb2 .sym { right:-220px; top:-80px; height:700px; }
+.fm.m .fb2 .grid { grid-template-columns:1fr 1fr; gap:32px 24px; }
+.fm.m .fb2 .grid > div:first-child { grid-column:span 2; }
+.fm.m .fb2 ul li { min-height:44px; display:flex; align-items:center; }
+.fm.m .fb2 .bottom { margin-top:36px; flex-direction:column; gap:10px; }
+.fm.m .fb2 .bottom span a { margin:0 16px 0 0; display:inline-flex; align-items:center; min-height:44px; }
+.fm.m .fb2 .bottom > span:first-child { display:inline-flex; align-items:center; min-height:44px; }
+.fm.m .fb2 .word { margin-top:32px; width:350px; }
+
+/* ===== Laitevälitys (ui/work/laitevalitys/scripts/laitevalitys_page.py, 17.11.2026) =====
+   Pohja yllä on etusivun elävä tyylitiedosto. Erillinen suomenkielinen osio: oma header ja footer,
+   samat tokenit, napit ja komponentit kuin pääsivustolla. */
+.fm .lutil b { color:#fff; }
+.fm .lnav { gap:28px; position:relative; z-index:3; padding:20px var(--gut); display:flex; align-items:center; background:#fff; border-bottom:1px solid var(--line); }
+.fm .lnav .wb { display:inline-flex; align-items:center; gap:12px; }
+.fm .lnav .wb img { height:26px; width:auto; }
+.fm .lnav .wb em { font-style:normal; font-family:var(--fd); font-size:15px; font-weight:700; letter-spacing:-0.005em; padding-left:12px; border-left:1px solid var(--line); }
+.fm .lnav ul { display:flex; gap:28px; list-style:none; margin:0 auto 0 48px; padding:0; }
+.fm .lnav ul li a { color:var(--ink); text-decoration:none; }
+.fm .lnav .tel { margin-left:auto; display:inline-flex; align-items:center; gap:18px; }
+.fm .lnav .tel b { font-family:var(--fd); font-size:19px; letter-spacing:-0.01em; white-space:nowrap; }
+
+/* Hero: ei valokuvaa. Osion lupaus ja merkkiseinä ovat samassa ruudussa. */
+.fm .lhero { padding:64px var(--gut) 56px; background:var(--paper); border-bottom:1px solid var(--line); }
+.fm .lhero-in { display:grid; grid-template-columns:minmax(0,1fr) 560px; gap:72px; align-items:center; }
+.fm .lhero h1 { font-size:var(--h2); line-height:1.02; letter-spacing:-0.02em; }
+.fm .lhero p.lead { margin-top:22px; max-width:560px; color:var(--ink2); font-size:var(--lead); }
+.fm .lhero .hctas { margin-top:34px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+.fm .lwall { background:#fff; border:1px solid var(--line); border-radius:var(--r-panel); padding:26px; }
+.fm .lwall-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--r-card-in); overflow:hidden; }
+.fm .lwall-grid span { background:#fff; min-height:76px; display:flex; align-items:center; justify-content:center; padding:14px; }
+.fm .lwall-grid img { width:auto; height:auto; max-width:100%; max-height:30px; object-fit:contain; opacity:.8; }
+.fm .lwall-grid b { font-family:var(--fd); font-size:15px; font-weight:700; color:var(--ink2); text-align:center; }
+.fm .lwall .more { margin-top:16px; display:flex; justify-content:space-between; align-items:center; gap:16px; color:var(--mute); }
+
+/* Merkkihakemisto: osion tärkein lohko, heti heron alla. */
+.fm .lsec { padding:var(--sec) var(--gut); }
+.fm .lsec.pap { background:var(--paper); }
+.fm .lhead { display:grid; grid-template-columns:minmax(0,1fr) 440px; gap:56px; align-items:end; margin-bottom:40px; }
+.fm .lhead h2 { margin-top:18px; font-size:var(--h2s); }
+.fm .lhead p { color:var(--ink2); }
+.fm .lfilter { display:flex; gap:18px; align-items:center; flex-wrap:wrap; margin-bottom:26px; }
+.fm .lsearch { flex:1 1 300px; max-width:400px; display:flex; align-items:center; gap:12px; background:#fff; border:1px solid var(--line); border-radius:999px; padding:14px 22px; color:var(--mute); }
+.fm .lsearch svg { flex:none; }
+.fm .lgrid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+.fm .lcard { display:grid; grid-template-columns:92px minmax(0,1fr); gap:20px; align-items:center; background:#fff; border:1px solid var(--line); border-radius:var(--r-row); padding:20px 24px; text-decoration:none; color:inherit; }
+.fm .lcard .mark { height:44px; display:flex; align-items:center; justify-content:center; }
+.fm .lcard .mark img { width:auto; height:auto; max-width:92px; max-height:36px; object-fit:contain; opacity:.85; }
+.fm .lcard .mark b { font-family:var(--fd); font-size:16px; color:var(--ink2); text-align:center; line-height:1.15; }
+.fm .lcard h3 { font-family:var(--fd); font-size:19px; font-weight:700; letter-spacing:-0.005em; line-height:1.2; }
+.fm .lcard h3 i { font-style:normal; margin-left:10px; color:var(--mute); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+.fm .lcard p { margin-top:5px; color:var(--ink2); font-size:var(--small); line-height:1.45; }
+
+/* Kolme tuoteryhmää: nykysivuston omat tuotekuvat valkoisella. */
+.fm .lcat { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+.fm .lcat .cell { background:#fff; border:1px solid var(--line); border-radius:var(--r-card); overflow:hidden; display:flex; flex-direction:column; text-decoration:none; color:inherit; }
+.fm .lcat .ph { background:#fff; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; padding:26px; }
+.fm .lcat .ph img { height:240px; width:auto; max-width:100%; object-fit:contain; }
+.fm .lcat .bd { padding:26px 28px 28px; display:flex; flex-direction:column; gap:12px; flex:1; }
+.fm .lcat h3 { font-size:var(--h4); }
+.fm .lcat p { color:var(--ink2); }
+.fm .lcat .n { margin-top:auto; color:var(--mute); }
+
+/* Miksi Finmatec: etusivun avoin numerorivi ja kolme perustelua. */
+.fm .lnum-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); margin-bottom:48px; }
+.fm .lnum-grid > .rw-i { display:block; min-width:0; padding:4px 32px 4px 0; border-right:1px solid var(--line); }
+.fm .lnum-grid > .rw-i + .rw-i { padding-left:32px; }
+.fm .lnum-grid > .rw-i:last-child { border-right:0; }
+.fm .lnum-grid .rw-num { display:block; margin-bottom:12px; font-size:60px; }
+.fm .lnum-grid .rw-t b { display:block; font-family:var(--fd); font-size:19px; font-weight:700; letter-spacing:-0.005em; line-height:1.2; }
+.fm .lnum-grid .rw-t small { display:block; margin-bottom:5px; color:var(--ink2); }
+.fm .lwhy { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
+.fm .lwhy > div { background:#fff; border:1px solid var(--line); border-radius:var(--r-card); padding:28px; }
+.fm .lwhy h3 { font-size:var(--h4); margin-bottom:10px; }
+.fm .lwhy p { color:var(--ink2); }
+
+/* Asiakkaat: sama logokohtelu kuin pääsivuston logonauhassa (Olli 17.11., kommentti f03edef9):
+   hiusviivasolut 104 px, harmaasävy ja multiply, logon enimmäiskorkeus 52 px. Ruudukko, jotta
+   kaikki kymmenen näkyvät kerralla. */
+.fm .lcust { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); margin:0 calc(-1 * var(--gut)); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.fm .lcust span { height:104px; display:grid; place-items:center; padding:20px 26px; border-left:1px solid var(--line); }
+.fm .lcust span:nth-child(5n+1) { border-left:0; }
+.fm .lcust span:nth-child(n+6) { border-top:1px solid var(--line); }
+.fm .lcust img { width:auto; height:auto; max-width:100%; max-height:52px; object-fit:contain; filter:grayscale(1) contrast(1.05); opacity:.78; mix-blend-mode:multiply; }
+
+/* Tuotekatalogi ja tarjouskori (17.11.2026). Woo-katalogi: tuote on pääasia, ryhmä ja merkki suodattimia. */
+.fm .cwrap { padding:40px var(--gut) var(--sec); }
+.fm .cwrap { position:relative; }
+.fm .ctop { display:grid; grid-template-columns:minmax(0,1fr) 440px; gap:56px; align-items:end; margin-bottom:34px; }
+.fm .ctop .lsearch { margin-top:26px; }
+.fm .lnav .btn .cnt { font-style:normal; margin-left:8px; min-width:22px; height:22px; padding:0 7px; border-radius:999px; background:var(--acc); color:var(--ink); font-size:13px; font-weight:800; display:inline-grid; place-items:center; }
+/* Tarjouspyyntö on korin paikalla: headerin napin alla aukeava paneeli, ei suodatinpalkissa (Olli 17.11., kommentti 6bc928de) */
+.fm .cmini { position:absolute; right:var(--gut); top:10px; width:396px; z-index:6; background:var(--deep); color:#fff; border-radius:var(--r-card); padding:26px 28px; box-shadow:0 26px 60px rgba(13,14,43,.24); }
+.fm .cmini::before { content:""; position:absolute; top:-8px; right:56px; width:18px; height:18px; background:var(--deep); transform:rotate(45deg); border-radius:3px; }
+.fm .cmini h3 { font-family:var(--fl); font-size:var(--cap); font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.6); margin-bottom:16px; }
+.fm .cmini ul { list-style:none; margin:0 0 20px; padding:0; display:flex; flex-direction:column; gap:12px; }
+.fm .cmini li { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:10px; font-size:14px; line-height:1.3; padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,.14); }
+.fm .cmini li b { display:block; font-family:var(--fd); font-size:15px; font-weight:700; }
+.fm .cmini li small, .fm .cmini li span.q { color:rgba(255,255,255,.62); }
+.fm .cmini li span.q { font-size:13px; }
+.fm .cmini .btn { width:100%; }
+.fm .cmini p { margin-top:12px; color:rgba(255,255,255,.62); font-size:13px; }
+.fm .ctop h1 { font-size:var(--h2s); }
+.fm .ctop p { margin-top:14px; color:var(--ink2); }
+.fm .cmain { display:grid; grid-template-columns:272px minmax(0,1fr); gap:32px; align-items:start; }
+.fm .crail > div { background:#fff; border:1px solid var(--line); border-radius:var(--r-card); padding:22px 24px; }
+.fm .crail > div + div { margin-top:16px; }
+.fm .crail h3 { font-family:var(--fl); font-size:var(--cap); font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); margin-bottom:14px; }
+.fm .cfl { display:flex; flex-direction:column; gap:12px; }
+.fm .cfl label { display:flex; align-items:center; gap:12px; font-size:15px; }
+.fm .cfl .box { width:20px; height:20px; border:1.5px solid var(--line); border-radius:6px; flex:none; background:#fff; }
+.fm .cfl label.on .box { background:var(--dark); border-color:var(--dark); }
+.fm .cfl i { font-style:normal; margin-left:auto; color:var(--mute); font-size:13px; }
+.fm .cbrands { max-height:300px; overflow:hidden; }
+.fm .crail > div.basket { background:var(--deep); color:#fff; border:0; }
+.fm .basket h3 { color:rgba(255,255,255,.6); }
+.fm .basket ul { list-style:none; margin:0 0 18px; padding:0; display:flex; flex-direction:column; gap:12px; }
+.fm .basket li { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:10px; font-size:14px; line-height:1.3; padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,.14); }
+.fm .basket li b { display:block; font-family:var(--fd); font-size:15px; font-weight:700; }
+.fm .basket li small { color:rgba(255,255,255,.62); }
+.fm .basket li span.q { color:rgba(255,255,255,.62); font-size:13px; }
+.fm .basket .btn { width:100%; }
+.fm .basket p { margin-top:12px; color:rgba(255,255,255,.62); font-size:13px; }
+.fm .cres { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:16px; color:var(--mute); }
+.fm .clist { display:flex; flex-direction:column; gap:10px; }
+.fm .crow { display:grid; grid-template-columns:104px minmax(0,1fr) auto; gap:22px; align-items:center; background:#fff; border:1px solid var(--line); border-radius:var(--r-row); padding:16px 22px; }
+.fm .crow .mk { height:34px; display:flex; align-items:center; }
+.fm .crow .mk img { width:auto; height:auto; max-width:104px; max-height:26px; object-fit:contain; opacity:.85; }
+.fm .crow .mk b { font-family:var(--fd); font-size:14px; color:var(--ink2); }
+.fm .crow h3 { font-family:var(--fd); font-size:18px; font-weight:700; letter-spacing:-0.005em; line-height:1.2; }
+.fm .crow p { margin-top:4px; color:var(--mute); font-size:var(--small); }
+.fm .crow .btn { white-space:nowrap; }
+.fm .cmore { margin-top:22px; display:flex; justify-content:center; }
+.fm.m .cwrap { padding:28px 20px 56px; }
+.fm.m .ctop { grid-template-columns:1fr; gap:14px; margin-bottom:22px; }
+.fm.m .cmini { position:static; width:auto; margin:0 0 26px; padding:20px 22px; box-shadow:none; }
+.fm.m .cmini::before { display:none; }
+.fm.m .cwrap { padding-top:22px; }
+.fm.m .ctop h1 { font-size:32px; }
+.fm.m .cmain { grid-template-columns:1fr; gap:20px; }
+.fm.m .crail > div { padding:18px 20px; }
+.fm.m .cbrands { max-height:none; }
+.fm.m .crow { grid-template-columns:72px minmax(0,1fr); gap:14px; padding:14px 16px; }
+.fm.m .crow .btn { grid-column:1 / -1; width:100%; margin-top:6px; }
+.fm.m .crow .mk img { max-width:72px; }
+
+/* Merkkisivu ja tuotesivu (17.11.2026) */
+.fm .crumb { display:flex; gap:10px; align-items:center; color:var(--mute); margin-bottom:18px; }
+.fm .crumb b { color:var(--ink); }
+.fm .bhero { padding:44px var(--gut) 0; }
+.fm .bhero-in { display:grid; grid-template-columns:minmax(0,1fr) 420px; gap:64px; align-items:center; background:var(--paper); border:1px solid var(--line); border-radius:var(--r-panel); padding:44px 48px; }
+.fm .bhero h1 { font-size:var(--h2s); line-height:1.05; }
+.fm .bhero p { margin-top:16px; color:var(--ink2); font-size:var(--lead); }
+.fm .bhero .hctas { margin-top:28px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+.fm .bmark { background:#fff; border:1px solid var(--line); border-radius:var(--r-card); min-height:180px; display:flex; align-items:center; justify-content:center; padding:36px; }
+.fm .bmark img { width:auto; height:auto; max-width:300px; max-height:92px; object-fit:contain; }
+.fm .bmark b { font-family:var(--fd); font-size:34px; color:var(--ink2); }
+.fm .pwrap { padding:44px var(--gut) 0; }
+.fm .pgrid { display:grid; grid-template-columns:minmax(0,1fr) 520px; gap:56px; align-items:start; }
+.fm .pshot { background:#fff; border:1px solid var(--line); border-radius:var(--r-card); display:flex; align-items:center; justify-content:center; padding:40px; }
+.fm .pshot img { width:auto; height:auto; max-height:420px; max-width:100%; object-fit:contain; }
+.fm .pbuy { background:#fff; border:1px solid var(--line); border-radius:var(--r-card); padding:34px 36px; }
+.fm .pbuy .mk { height:30px; margin-bottom:18px; display:flex; }
+.fm .pbuy .mk img { width:auto; height:auto; max-height:28px; max-width:150px; object-fit:contain; }
+.fm .pbuy .mk b { font-family:var(--fd); font-size:17px; color:var(--ink2); }
+.fm .pbuy h1 { font-size:var(--h3); line-height:1.1; }
+.fm .pbuy p.lead { margin-top:14px; color:var(--ink2); }
+.fm .pqty { margin-top:26px; display:flex; gap:12px; align-items:center; }
+.fm .pqty .stepper { display:inline-flex; align-items:center; gap:18px; border:1px solid var(--line); border-radius:999px; padding:10px 20px; font-family:var(--fd); font-weight:700; }
+.fm .pqty .btn { flex:1; }
+.fm .pfacts { margin-top:28px; border-top:1px solid var(--line); }
+.fm .pfacts div { display:grid; grid-template-columns:150px minmax(0,1fr); gap:16px; padding:13px 0; border-bottom:1px solid var(--line); font-size:15px; }
+.fm .pfacts div span:first-child { color:var(--mute); }
+.fm .pask { margin-top:24px; background:var(--paper); border-radius:var(--r-card-in); padding:20px 22px; color:var(--ink2); font-size:15px; }
+.fm .pask b { display:block; font-family:var(--fd); color:var(--ink); margin-bottom:4px; }
+.fm.m .bhero, .fm.m .pwrap { padding:28px 20px 0; }
+.fm.m .bhero-in { grid-template-columns:1fr; gap:28px; padding:26px 22px; border-radius:var(--r-card); }
+.fm.m .bhero h1 { font-size:30px; }
+.fm.m .bmark { min-height:120px; padding:22px; }
+.fm.m .bmark img { max-height:60px; }
+.fm.m .pgrid { grid-template-columns:1fr; gap:24px; }
+.fm.m .pshot { padding:24px; }
+.fm.m .pshot img { max-height:260px; }
+.fm.m .pbuy { padding:24px 22px; }
+.fm.m .pfacts div { grid-template-columns:120px minmax(0,1fr); gap:10px; }
+
+/* Mobiili 390 */
+.fm.m .lnav { padding:16px 20px; gap:12px; }
+.fm.m .lnav ul { display:none; }
+.fm.m .lnav .wb em { font-size:13px; padding-left:10px; }
+.fm.m .lhero { padding:34px 20px 40px; }
+.fm.m .lhero-in { grid-template-columns:1fr; gap:32px; }
+.fm.m .lhero h1 { font-size:34px; }
+.fm.m .lhero p.lead { font-size:16px; }
+.fm.m .lwall { padding:14px; border-radius:var(--r-card); }
+.fm.m .lwall-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.fm.m .lwall-grid span { min-height:62px; padding:10px; }
+.fm.m .lwall .more { flex-direction:column; align-items:flex-start; gap:6px; }
+.fm.m .lsec { padding:56px 20px; }
+.fm.m .lhead { grid-template-columns:1fr; gap:16px; margin-bottom:28px; }
+.fm.m .lsearch { max-width:none; padding:12px 18px; }
+.fm.m .lgrid, .fm.m .lcat, .fm.m .lwhy { grid-template-columns:1fr; }
+.fm.m .lcard { grid-template-columns:72px minmax(0,1fr); gap:14px; padding:16px 18px; }
+.fm.m .lcat .ph img { height:170px; }
+.fm.m .lnum-grid { grid-template-columns:1fr; margin-bottom:32px; }
+.fm.m .lnum-grid > .rw-i, .fm.m .lnum-grid > .rw-i + .rw-i { padding:18px 0; border-right:0; border-top:1px solid var(--line); }
+.fm.m .lnum-grid > .rw-i:first-child { border-top:0; padding-top:0; }
+.fm.m .lcust { grid-template-columns:repeat(2,minmax(0,1fr)); margin:0 -20px; }
+.fm.m .lcust span { height:80px; padding:16px 20px; }
+.fm.m .lcust span:nth-child(5n+1) { border-left:1px solid var(--line); }
+.fm.m .lcust span:nth-child(odd) { border-left:0; }
+.fm.m .lcust span:nth-child(n+3) { border-top:1px solid var(--line); }
+.fm.m .fb2.lv .grid { grid-template-columns:1fr; }
+</style>
+<style media="(max-width:760px)">
+
+/* ===== Finmatec homepage stylesheet: the base for every page (shared by all 4 homepage artboards, unified 16.11.2026) ===== */
+/* Tokens: colour, type, radius, surface, rhythm. Mobile overrides at the bottom. */
+.fm { --ink:#0D0E2B; --ink2:#3A3C5C; --mute:#5F617E; --line:#D9DBE8; --soft:#ECEEF7; --paper:#F5F6FB; --dark:#2415BA; --acc:#03FF6B; --deep:#0D0E2B;
+  --fd:'Exo 2',sans-serif; --fb:'Exo 2',sans-serif; --fl:'Exo 2',sans-serif; --ease:cubic-bezier(.32,.72,0,1);
+  --disp:84px; --h1:64px; --h2:56px; --h2s:44px; --h3:30px; --h4:24px; --lead:18px; --body:16px; --small:14px; --cap:12px;
+  --r-card:28px; --r-card-in:22px; --r-panel:36px; --r-panel-in:28px; --r-row:22px;
+  --tray:rgba(36,21,186,.06); --tray-ring:inset 0 0 0 1px rgba(36,21,186,.10); --halo:0 0 0 6px rgba(36,21,186,.06), 0 0 0 7px rgba(36,21,186,.08);
+  --sec:80px; --gut:72px;
+  width:1440px; background:#fff; color:var(--ink); font-family:var(--fb); font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased; overflow:hidden; }
+
+/* Base */
+.fm * { box-sizing:border-box; }
+.fm p { margin:0; }
+.fm h1, .fm h2, .fm h3 { margin:0; font-family:var(--fd); font-weight:700; letter-spacing:-0.005em; line-height:1; }
+.fm h2 { font-size:var(--h2); line-height:1.02; color:var(--dark); }
+.fm h2.s { font-size:var(--h2s); line-height:1.04; }
+.fm .hl { color:var(--ink); }
+.fm .lead { font-size:var(--lead); color:var(--ink2); }
+.fm a { color:inherit; text-decoration:none; }
+.fm img, .fm video { display:block; width:100%; height:100%; object-fit:cover; }
+.fm a:focus-visible, .fm button:focus-visible { outline:2px solid var(--dark); outline-offset:3px; }
+.fm svg.ic { display:block; flex:none; }
+.sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+
+/* Caps label: eyebrow, field label, card label, table key, quote source. One style. */
+.mono, .eyebrow, .fm .lab, .rw small, .fm .level div small, .st .n, .st.star .badge, .c-quote cite, .fm .sheet td:first-child { font-family:var(--fl); font-size:var(--cap); font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+.eyebrow { display:inline-flex; align-items:center; gap:10px; color:var(--ink2); }
+.eyebrow::before { content:""; width:18px; height:1px; background:var(--dark); }
+.pf .eyebrow, .svc .eyebrow { color:var(--acc); }
+.pf .eyebrow::before, .svc .eyebrow::before { background:var(--acc); }
+
+/* Button: pill + nested arrow ball. Sizes: default 56, .s 48. Styles: .pri, .sec, .ghost; .qk = steel knob, Request a quote only. */
+.btn { display:inline-flex; align-items:center; gap:14px; height:56px; padding:0 8px 0 26px; border-radius:999px; font-weight:600; font-size:16px; transition:transform .5s var(--ease); white-space:nowrap; }
+.btn i { width:40px; height:40px; border-radius:50%; display:grid; place-items:center; flex:none; font-style:normal; }
+.btn i svg { width:18px; height:18px; }
+.btn.s { height:48px; padding:0 6px 0 20px; gap:12px; font-size:15px; }
+.btn.s i { width:36px; height:36px; }
+.btn.s i svg { width:16px; height:16px; }
+.btn.pri { background:var(--dark); color:#fff; }
+.btn.pri i { background:rgba(255,255,255,.16); color:#fff; }
+.btn.sec { background:#fff; color:var(--ink); }
+.btn.sec i { background:var(--dark); color:#fff; }
+.btn.ghost { box-shadow:inset 0 0 0 1.5px currentColor; padding:0 22px 0 26px; gap:10px; }
+.btn.ghost i { width:auto; height:auto; background:none; }
+.btn.qk { box-shadow:0 10px 24px rgba(36,21,186,.28); }
+.btn.qk i { color:#0b0a26; filter:drop-shadow(0 1px 0 rgba(255,255,255,.9)); background:repeating-radial-gradient(circle at 50% 50%,rgba(255,255,255,0) 0 1px,rgba(27,29,43,.05) 1px 2px),conic-gradient(from 25deg,#f6f8fa,#a9b0bc 11%,#eef1f5 24%,#99a1ae 37%,#f3f5f8 50%,#adb4c0 63%,#ebeef2 75%,#a1a9b6 88%,#f6f8fa); box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 0 0 1px rgba(11,10,38,.18),0 2px 5px rgba(11,10,38,.3); }
+
+/* Link row: a whole row is the link, arrow ball on the right. On dark and blue surfaces. */
+.fm .lrow { display:flex; justify-content:space-between; align-items:center; gap:20px; height:88px; padding:0 22px 0 28px; border-radius:var(--r-row); background:rgba(255,255,255,.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,.16); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); color:#fff; transition:background .4s var(--ease); }
+.fm .lrow:hover { background:rgba(255,255,255,.14); }
+.fm .lrow b { display:block; font-family:var(--fd); font-size:22px; font-weight:700; letter-spacing:-0.005em; line-height:1.2; }
+.fm .lrow small { display:block; margin-top:3px; font-size:var(--small); opacity:.75; }
+.fm .lrow i { width:44px; height:44px; border-radius:50%; display:grid; place-items:center; flex:none; background:var(--acc); color:var(--deep); }
+.fm .lrow i svg { width:20px; height:20px; }
+
+/* Chip: small pill link or option. .opt = selectable option in a form. */
+.fm .chip { display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 16px; border-radius:999px; background:var(--soft); color:var(--dark); font-size:var(--small); font-weight:600; white-space:nowrap; }
+.fm .chip svg { width:14px; height:14px; }
+.st.star .chip { background:rgba(255,255,255,.14); color:#fff; }
+.fm .chip.opt { font:inherit; font-size:var(--small); font-weight:600; border:0; background:transparent; color:var(--ink); cursor:pointer; box-shadow:inset 0 0 0 1.5px var(--line); }
+.fm .chip.opt.on { background:var(--dark); color:#fff; box-shadow:none; }
+
+/* Text link */
+.fm .tlink { display:inline-flex; gap:8px; align-items:center; font-size:17px; font-weight:600; border-bottom:1.5px solid currentColor; padding-bottom:3px; color:var(--dark); white-space:nowrap; }
+.fm .tlink svg { width:16px; height:16px; }
+
+/* Surfaces. Card: tray 28 / core 22 (6 px gap). Panel: tray 36 / core 28 (8 px gap, concentric with a 56 px pill). Halo: single surface with a soft ring. */
+.st, .cell { border-radius:var(--r-card); padding:6px; background:var(--tray); box-shadow:var(--tray-ring); }
+.st .core, .cell > .core { border-radius:var(--r-card-in); overflow:hidden; }
+.sheet, .cb .form { border-radius:var(--r-panel); padding:8px; background:var(--tray); box-shadow:var(--tray-ring); display:flex; }
+.sheet .in, .cb .form .in { flex:1; border-radius:var(--r-panel-in); background:#fff; }
+.w2-ph, .w2-cert { border-radius:var(--r-card); box-shadow:var(--halo); }
+.fpz-pan { border-radius:var(--r-panel); box-shadow:var(--halo); background:#fff; padding:8px; }
+
+/* Fields: hairline */
+.fm label.f, .fm label.ta { display:flex; padding:0 2px; border-bottom:1.5px solid var(--line); color:var(--mute); font-size:15px; }
+.fm label.f { height:52px; align-items:center; }
+.fm label.ta { height:auto; min-height:96px; padding-top:14px; align-items:flex-start; }
+.fm label.f input, .fm label.ta textarea { all:unset; width:100%; font:inherit; font-size:15px; color:var(--ink); }
+.fm label.ta textarea { height:100%; min-height:72px; }
+.fm label.f input::placeholder, .fm label.ta textarea::placeholder { color:var(--mute); opacity:1; }
+.fm label.f:focus-within, .fm label.ta:focus-within { border-bottom-color:var(--dark); }
+
+/* Utility bar */
+.util { height:38px; background:var(--deep); color:#cfcfcf; font-size:13px; display:flex; align-items:center; justify-content:space-between; padding:0 var(--gut); }
+.util span { margin-right:28px; }
+.util b { color:#fff; font-weight:600; }
+.util .ext { display:inline-flex; align-items:center; gap:7px; color:#fff; }
+.util .ext svg { width:12px; height:12px; opacity:.8; }
+
+/* Hero and nav */
+.hero { position:relative; height:860px; background:var(--deep); color:#fff; }
+.hero .media { position:absolute; inset:0; }
+.hero .media::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,.05) 30%, rgba(10,10,10,.35) 58%, rgba(10,10,10,.92) 100%); }
+.nav { position:absolute; top:22px; left:56px; right:56px; height:68px; display:flex; align-items:center; gap:40px; padding:0 10px 0 26px; border-radius:999px; background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(255,255,255,.62)); color:var(--ink); box-shadow:inset 0 1px 0 rgba(255,255,255,.95), inset 0 0 0 1px rgba(255,255,255,.55), 0 14px 36px -14px rgba(0,0,0,.45); -webkit-backdrop-filter:blur(22px) saturate(170%); backdrop-filter:blur(22px) saturate(170%); z-index:2; }
+.fm img.logoimg { width:auto; height:30px; object-fit:contain; }
+.nav ul { list-style:none; display:flex; gap:30px; margin:0; padding:0; font-size:15px; font-weight:500; }
+.nav ul li a { display:inline-flex; align-items:center; gap:6px; }
+.nav ul li a svg { width:10px; height:10px; opacity:.6; }
+.nav .btn { margin-left:auto; }
+.fm .nav .mq { display:none; }
+.hero-copy { position:absolute; left:var(--gut); right:var(--gut); bottom:168px; z-index:1; }
+.hero h1 { font-size:var(--h1); line-height:.98; max-width:1180px; color:#fff; }
+.router { position:absolute; left:56px; right:56px; bottom:40px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; z-index:1; }
+
+/* Gains and numbers (open hairline grid) */
+.rw { padding:var(--sec) var(--gut); background:#fff; }
+.rw h2.stmt { max-width:1000px; color:var(--ink); }
+.rw .stmt em { font-style:normal; color:var(--dark); background:linear-gradient(var(--acc),var(--acc)) 0 92%/100% 9px no-repeat; }
+.rwk-grid { margin-top:64px; display:grid; grid-template-columns:repeat(3,1fr); }
+.rwk-grid > .rw-i { padding:34px 40px; border-right:1px solid var(--line); }
+.rwk-grid > .rw-i:nth-child(3n) { border-right:0; padding-right:0; }
+.rwk-grid > .rw-i:nth-child(3n+1) { padding-left:0; }
+.rwk-grid > .rw-i:nth-child(-n+3) { border-bottom:1px solid var(--line); padding-top:8px; }
+.rwk-grid > .rw-i:nth-child(n+4) { padding-bottom:8px; }
+.rw-i { display:flex; align-items:center; gap:20px; }
+.rw-ar { width:72px; height:72px; border-radius:50%; display:grid; place-items:center; background:var(--dark); color:#fff; flex:none; }
+.rw-i.dn .rw-ar { background:var(--acc); color:var(--deep); }
+.rw-ar svg { width:32px; height:32px; }
+.rw small { display:block; margin-bottom:8px; color:var(--ink2); }
+.rw-t b { display:block; font-family:var(--fd); font-weight:700; font-size:34px; line-height:1; color:var(--dark); white-space:nowrap; }
+.rw-num { font-family:var(--fd); font-weight:700; font-size:72px; line-height:.9; letter-spacing:-0.02em; color:var(--dark); flex:none; }
+.rw-num i { font-style:normal; color:var(--acc); }
+.rw-n .rw-t b { font-size:var(--h4); }
+
+/* Logo band */
+.logos { margin:64px calc(-1 * var(--gut)) 0; overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line); -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+.logos .ltrack { display:flex; width:max-content; will-change:transform; }
+.logos .ltrack div { flex:none; width:200px; height:104px; display:grid; place-items:center; padding:20px 26px; border-left:1px solid var(--line); }
+.fm .logos img { width:auto; height:auto; max-width:100%; max-height:52px; object-fit:contain; filter:grayscale(1) brightness(1.08) contrast(2.6); mix-blend-mode:multiply; }
+.fm .logos img[alt="Fazer"], .fm .logos img[alt="Saarioinen"] { max-height:84px; transform:scale(1.35); }
+
+/* Material flow */
+.flow { padding:var(--sec) 0; background:var(--paper); }
+.flow-head { display:grid; grid-template-columns:minmax(0,1fr) 360px; gap:48px; padding:0 var(--gut); align-items:center; }
+.railwrap { margin-top:52px; overflow:hidden; }
+.track { position:relative; display:flex; width:max-content; gap:20px; padding:0 var(--gut); animation:railpan 30s cubic-bezier(.65,0,.35,1) infinite alternate; }
+@keyframes railpan { 0%, 14% { transform:translateX(0); } 86%, 100% { transform:translateX(calc(1440px - 100%)); } }
+.track > .st { flex:none; width:520px; }
+.st { position:relative; }
+.st .core { height:100%; background:#fff; box-shadow:inset 0 1px 1px rgba(255,255,255,.8); }
+.st .ph { position:relative; aspect-ratio:4/3; overflow:hidden; background:var(--deep); }
+.st .ph img { width:100%; height:100%; object-fit:cover; transition:transform 1.2s var(--ease); }
+.st:hover .ph img { transform:scale(1.04); }
+.st .n { position:absolute; top:16px; left:16px; color:#fff; background:rgba(13,14,43,.55); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); padding:7px 11px; border-radius:999px; }
+.st .body { padding:26px 28px 30px; display:grid; gap:12px; align-content:start; }
+.st h3 { font-size:var(--h3); }
+.st p { font-size:var(--body); color:var(--ink2); max-width:44ch; }
+.st .prod { margin-top:6px; display:flex; flex-wrap:wrap; gap:8px; }
+.st.star { background:rgba(36,21,186,.16); }
+.st.star .core { background:var(--dark); color:#fff; box-shadow:none; }
+.st.star h3 { color:#fff; }
+.st.star p { color:rgba(255,255,255,.76); }
+.st.star .badge { position:absolute; top:16px; right:16px; padding:7px 11px; border-radius:999px; background:var(--acc); color:var(--deep); }
+.st.bin .ph { background:linear-gradient(180deg,#f7f9fc 0%,#e9eef5 100%); }
+.st.bin .ph img { object-position:34% 42%; transform:scale(1.55); transform-origin:34% 42%; }
+.st.bin:hover .ph img { transform:scale(1.62); }
+.flow-foot { margin:40px var(--gut) 0; padding-top:28px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; font-size:var(--lead); }
+
+/* 40 kg */
+.kg { display:grid; grid-template-columns:1.15fr 1fr; gap:56px; align-items:center; padding:var(--sec) var(--gut); }
+.kg-num { font-family:var(--fd); font-weight:700; font-size:330px; line-height:.8; letter-spacing:-0.005em; color:var(--dark); }
+.kg-num small { font-size:120px; letter-spacing:-0.02em; color:var(--acc); }
+.kg h2 { margin-top:22px; }
+.kg .lead { margin-top:22px; max-width:520px; }
+
+/* Plate freezing */
+.pf { background:var(--dark); color:#fff; padding:var(--sec) var(--gut); display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:72px; align-items:stretch; }
+.pf h2 { margin-top:20px; color:#fff; }
+.pf .lead { margin-top:24px; color:rgba(255,255,255,.75); }
+.seg { margin-top:32px; display:grid; grid-template-columns:repeat(3,1fr); padding:5px; border-radius:999px; background:rgba(255,255,255,.07); box-shadow:inset 0 0 0 1px rgba(255,255,255,.12); }
+.seg span { text-align:center; padding:14px 0; border-radius:999px; font-size:15px; font-weight:600; color:rgba(255,255,255,.65); }
+.seg span.on { background:var(--acc); color:var(--deep); }
+.level { position:relative; margin-top:34px; display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.level .belt { position:absolute; left:7px; right:0; top:5px; height:4px; border-radius:2px; background:rgba(255,255,255,.1); overflow:hidden; z-index:0; }
+.level .belt::after { content:""; position:absolute; inset:0 -48px 0 0; animation:belt 1.2s linear infinite; background:repeating-linear-gradient(90deg, var(--acc) 0 14px, transparent 14px 24px); }
+@keyframes belt { from { transform:translateX(-24px); } to { transform:translateX(0); } }
+.level > div:not(.belt) { position:relative; z-index:1; padding-top:30px; }
+.level > div:not(.belt)::before { content:""; position:absolute; left:0; top:0; width:14px; height:14px; border-radius:50%; background:var(--dark); box-shadow:inset 0 0 0 3px var(--acc); }
+.level div b { display:block; font-size:17px; margin-top:4px; }
+.fm .level div small { color:rgba(255,255,255,.9); }
+.pf .cap { margin-top:22px; font-size:15px; color:rgba(255,255,255,.6); }
+.pf .ctas { margin-top:36px; display:flex; gap:14px; align-items:center; }
+.pf .btn.ghost { color:#fff; }
+.bezel { padding:8px; border-radius:var(--r-panel); background:rgba(255,255,255,.06); box-shadow:inset 0 0 0 1px rgba(255,255,255,.12); display:flex; }
+.bezel .in { flex:1; min-height:520px; border-radius:var(--r-panel-in); overflow:hidden; position:relative; background:var(--deep) url(media/v5302.jpg) center/cover; }
+.bezel .in video { position:absolute; inset:0; opacity:0; animation:clips 18s infinite; }
+.bezel .in video:nth-of-type(2) { animation-delay:6s; }
+.bezel .in video:nth-of-type(3) { animation-delay:12s; }
+@keyframes clips { 0% { opacity:0; } 4% { opacity:1; } 33% { opacity:1; } 38% { opacity:0; } 100% { opacity:0; } }
+.bezel .tag { position:absolute; z-index:2; left:20px; bottom:20px; display:inline-flex; align-items:center; gap:8px; background:rgba(0,0,0,.5); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); color:#fff; border-radius:999px; padding:8px 14px; font-size:13px; }
+.bezel .tag svg { width:10px; height:10px; }
+
+/* Why choose Finmatec */
+.wv { padding:var(--sec) var(--gut); background:#fff; }
+.wv h3 { font-size:var(--h4); line-height:1.1; color:var(--dark); }
+.wv p { margin:10px 0 0; font-size:var(--body); line-height:1.55; color:var(--ink2); }
+.w2-wrap { margin-top:48px; display:grid; grid-template-columns:4fr 8fr; gap:28px 64px; }
+.w2-ph { min-height:400px; }
+.wv .wph { position:relative; overflow:hidden; color:#fff; }
+.wv .wph img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.wv .wph::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(13,14,43,0) 40%,rgba(13,14,43,.82) 100%); }
+.wv .wph .b { position:absolute; left:32px; right:32px; bottom:30px; z-index:1; }
+.wv .wph h3 { color:#fff; font-size:var(--h3); }
+.wv .wph p { color:rgba(255,255,255,.82); max-width:460px; }
+.w2-grid { display:grid; grid-template-columns:1fr 1fr; }
+.w2-c { padding:32px 36px; display:flex; flex-direction:column; justify-content:center; }
+.w2-c:nth-child(odd) { padding-left:0; border-right:1px solid var(--line); }
+.w2-c:nth-child(even) { padding-right:0; }
+.w2-c:nth-child(-n+2) { border-bottom:1px solid var(--line); }
+.w2-c h3 { white-space:nowrap; }
+.w2-c p { max-width:340px; }
+.w2-cert { margin-top:28px; padding:24px 36px; background:#fff; display:flex; justify-content:space-between; align-items:center; gap:32px; }
+.wv .wc b { display:block; font-family:var(--fd); font-weight:700; font-size:20px; color:var(--dark); }
+.wv .wc span { font-size:15px; color:var(--ink2); }
+
+/* 80 %: existing factories, floor plan */
+.exist { position:relative; background:#fff; padding:0; overflow:hidden; }
+.exist .left { position:relative; z-index:1; width:680px; padding:var(--sec) var(--gut); display:flex; flex-direction:column; justify-content:space-between; gap:48px; }
+.big80 { font-family:var(--fd); font-weight:700; font-size:240px; line-height:.8; letter-spacing:-0.005em; color:var(--dark); }
+.big80 sup { font-size:110px; vertical-align:top; position:relative; top:22px; color:var(--acc); }
+.exist h2 { margin-top:26px; max-width:560px; }
+.exist .lead { margin-top:22px; max-width:560px; }
+.ptitle { display:flex; justify-content:space-between; align-items:baseline; }
+.ptitle b { font-size:22px; letter-spacing:-0.02em; }
+.fpz-pan { margin-top:18px; }
+.fpz-drop { border-radius:var(--r-panel-in); border:1.5px dashed rgba(36,21,186,.32); background:rgba(36,21,186,.03); padding:26px 20px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:6px; }
+.fpz-ic { width:52px; height:52px; border-radius:50%; background:var(--dark); color:#fff; display:grid; place-items:center; margin-bottom:8px; }
+.fpz-drop b { font-family:var(--fd); font-weight:700; font-size:20px; color:var(--ink); }
+.fpz-drop span { font-size:var(--small); color:var(--ink2); }
+.fpz-drop .fpz-ic { color:#fff; }
+.fpz-drop u { color:var(--dark); font-weight:600; text-underline-offset:3px; }
+.fpz-row { display:flex; align-items:center; gap:20px; padding:8px 0 0 20px; }
+.fpz-row .f { flex:1; }
+.fpz-row .btn { flex:none; justify-content:space-between; }
+.exist .planfull { position:absolute; top:0; bottom:0; left:600px; right:56px; z-index:0; background:#fff; color:#141414; }
+.exist .planfull::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,#fff 0%,#fff 10%,rgba(255,255,255,0) 34%); pointer-events:none; }
+.exist .planfull svg.plan { position:absolute; inset:0; width:100% !important; height:100% !important; }
+.plan { font-family:var(--fd); }
+.plan text { fill:currentColor; font-size:11px; }
+.plan .eq { fill:rgba(20,20,20,.05); stroke:currentColor; stroke-width:1.2; }
+.plan .ln { fill:none; stroke:currentColor; stroke-width:1; }
+.plan .thin { stroke-width:.6; opacity:.55; }
+.plan .wall { fill:none; stroke:currentColor; stroke-width:2.2; }
+.plan .lbl { font-size:11px; opacity:.75; }
+.plan * { vector-effect:non-scaling-stroke; }
+.plan .flow { fill:none; stroke:#141414; stroke-width:2; stroke-dasharray:6 6; animation:planflow 1.4s linear infinite; }
+@keyframes planflow { to { stroke-dashoffset:-24; } }
+.plan .mroute { fill:none; stroke:var(--dark); stroke-width:1.4; stroke-dasharray:2 7; opacity:.6; animation:planflow 1.4s linear infinite; }
+.plan .mblk { fill:var(--dark); stroke:none; }
+
+/* Proof: quote and photo */
+.proof { padding:var(--sec) var(--gut); background:#fff; }
+.pbento { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:16px; }
+.cell > .core { position:relative; height:100%; }
+.c-quote { grid-column:span 7; }
+.c-quote .core { background:var(--dark); color:#fff; padding:48px; display:flex; flex-direction:column; justify-content:space-between; gap:40px; min-height:520px; }
+.c-quote .mark { font-family:var(--fd); font-weight:700; font-size:120px; line-height:.5; height:44px; color:var(--acc); }
+.c-quote blockquote { margin:0; font-family:var(--fd); font-weight:600; font-size:40px; line-height:1.12; letter-spacing:-0.02em; color:#fff; }
+.c-quote .qfoot { display:flex; flex-wrap:wrap; gap:20px 32px; align-items:center; justify-content:space-between; }
+.c-quote cite { font-style:normal; color:#C9C6F1; }
+.c-img { grid-column:span 5; }
+.c-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:55% 50%; }
+
+/* Service and spare parts */
+.svc { padding:0 var(--gut); }
+.svc-in { border-radius:var(--r-panel); background:var(--dark); color:#fff; padding:64px; display:grid; grid-template-columns:1fr 1.15fr; gap:72px; align-items:center; }
+.svc h2 { margin-top:18px; color:#fff; }
+.svc-head .lead { margin-top:18px; line-height:1.5; color:rgba(255,255,255,.76); max-width:420px; }
+.svc-links { display:grid; gap:12px; }
+
+/* Engineers: datasheet */
+.eng { padding:var(--sec) var(--gut); display:grid; grid-template-columns:1.1fr 1fr; gap:90px; align-items:center; }
+.eng h2 { margin-top:22px; }
+.eng .lead { margin-top:22px; max-width:520px; }
+.eng .btn { margin-top:34px; }
+.sheet .in { padding:34px 36px; box-shadow:0 1px 0 rgba(0,0,0,.04); }
+.sheet .top { display:flex; justify-content:space-between; align-items:baseline; padding-bottom:22px; border-bottom:1px solid var(--line); }
+.sheet .top b { font-family:var(--fd); font-size:26px; font-weight:700; letter-spacing:-0.005em; }
+.sheet table { width:100%; border-collapse:collapse; margin-top:6px; font-size:15px; }
+.sheet td { padding:13px 0; border-bottom:1px solid var(--soft); }
+.fm .sheet td:first-child { color:var(--mute); width:46%; padding-right:14px; }
+.sheet .dl { margin-top:22px; display:flex; gap:10px; }
+
+/* Contact */
+.cb { padding:var(--sec) var(--gut); display:grid; grid-template-columns:1fr 1.1fr; gap:72px; }
+.cb h2 { font-size:var(--disp); line-height:.92; }
+.cb .lead { margin-top:22px; max-width:480px; }
+.cb .ppl { margin-top:40px; display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:560px; }
+.cb .ppl > div { display:grid; gap:16px; }
+.cb .ppl .av { width:100%; height:300px; border-radius:var(--r-card-in); overflow:hidden; background:var(--soft); }
+.cb .ppl .av img { width:100%; height:100%; object-fit:cover; object-position:50% 20%; display:block; }
+.cb .ppl b { display:block; font-size:17px; }
+.cb .ppl span span { display:block; margin-top:2px; font-size:var(--small); color:var(--mute); }
+.cb .form .in { display:flex; flex-direction:column; padding:34px; }
+.fm .cb .form .lab { color:var(--ink2); }
+.cb .chips { margin-top:12px; display:flex; flex-wrap:wrap; gap:8px; }
+.cb .form .f2 { margin-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:6px 28px; }
+.cb > .form { align-self:start; }
+.cb .form .ta { margin-top:12px; }
+.cb .form .btn { align-self:flex-start; margin-top:20px; justify-content:space-between; }
+
+/* Footer */
+.fb2 { position:relative; padding:60px var(--gut) 56px; overflow:hidden; background:var(--soft); }
+.fb2 > *:not(.sym) { position:relative; z-index:1; }
+.fb2 .sym { position:absolute; z-index:0; right:-140px; top:-170px; height:1000px; width:auto; }
+.fb2 .sym path[fill="#e2e2de"] { fill:#2415BA; fill-opacity:.085; }
+.fb2 .sym path[fill="#d3d3ce"] { fill:#03FF6B; fill-opacity:.15; }
+.fb2 .grid { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:40px; }
+.fb2 p { font-size:15px; color:var(--ink2); max-width:320px; margin-top:0; }
+.fb2 h4 { margin:0 0 14px; font-size:var(--small); font-weight:600; }
+.fb2 ul { list-style:none; margin:0; padding:0; display:grid; gap:9px; font-size:15px; color:var(--ink2); }
+.fb2 .bottom { margin-top:56px; display:flex; justify-content:space-between; font-size:13px; color:var(--mute); }
+.fb2 .bottom span a { margin-left:24px; }
+.fb2 .word { position:relative; margin:40px 0 0; width:auto; height:auto; overflow:visible; }
+.fb2 .word svg { display:block; width:100%; height:auto; fill:var(--dark); }
+
+/* ===== Mobile 390 ===== */
+.fm.m { --disp:52px; --h1:32px; --h2:32px; --h2s:28px; --h3:24px; --h4:21px; --lead:16px; --body:15px; --sec:56px; --gut:20px; --r-panel:28px; --r-panel-in:22px; --r-row:18px; width:390px; font-size:16px; }
+.fm.m .btn:not(.mq) { width:100%; justify-content:space-between; }
+.fm.m .btn.ghost { justify-content:center; }
+.fm.m .chip { height:44px; }
+.fm.m .tlink { min-height:44px; font-size:16px; }
+.fm.m .lrow { height:72px; padding:0 16px 0 20px; }
+.fm.m .lrow b { font-size:18px; }
+.fm.m .lrow small { font-size:13px; }
+.fm.m .lrow i { width:40px; height:40px; }
+.fm.m .lrow i svg { width:18px; height:18px; }
+.fm.m .util { display:none; }
+.fm.m .hero { height:780px; }
+.fm.m .nav { top:14px; left:12px; right:12px; height:58px; padding:0 7px 0 18px; gap:12px; justify-content:space-between; }
+.fm.m .nav img.logoimg { height:24px; }
+.fm.m .nav .btn.mq { display:inline-flex; margin-left:auto; height:44px; padding:0 6px 0 16px; gap:10px; font-size:14px; }
+.fm.m .nav .btn.mq i { width:32px; height:32px; }
+.fm.m .burger { width:44px; height:44px; border-radius:50%; border:0; padding:0; background:var(--dark); display:grid; place-content:center; gap:4px; cursor:pointer; }
+.fm.m .burger span { display:block; width:18px; height:2px; border-radius:1px; background:#fff; }
+.fm.m .hero-copy { bottom:276px; }
+.fm.m .hero h1 { line-height:1.04; max-width:none; }
+.fm.m .router { left:12px; right:12px; bottom:16px; grid-template-columns:1fr; gap:8px; }
+.fm.m .rw h2.stmt { line-height:1.04; }
+.fm.m .rw .stmt em { background-size:100% 6px; }
+.fm.m .rwk-grid { margin-top:28px; grid-template-columns:1fr; }
+.fm.m .rwk-grid > .rw-i { padding:18px 0; border-right:0; border-bottom:1px solid var(--line); gap:16px; }
+.fm.m .rwk-grid > .rw-i:last-child { border-bottom:0; }
+.fm.m .rw-ar { width:52px; height:52px; }
+.fm.m .rw-ar svg { width:24px; height:24px; }
+.fm.m .rw-t b { font-size:24px; white-space:normal; }
+.fm.m .rw-num { font-size:52px; }
+.fm.m .rw-n .rw-t b { font-size:20px; }
+.fm.m .rw small { margin-bottom:6px; }
+.fm.m .logos { margin-top:36px; }
+.fm.m .logos .ltrack div { width:150px; height:80px; padding:16px 20px; }
+.fm.m .flow-head { grid-template-columns:1fr; gap:16px; }
+.fm.m .railwrap { margin-top:32px; }
+.fm.m .track { gap:12px; animation:railpanm 22s cubic-bezier(.65,0,.35,1) infinite alternate; }
+@keyframes railpanm { 0%, 12% { transform:translateX(0); } 88%, 100% { transform:translateX(calc(390px - 100%)); } }
+.fm.m .track > .st { width:300px; }
+.fm.m .st .body { padding:20px 20px 24px; gap:10px; }
+.fm.m .flow-foot { margin-top:32px; flex-direction:column; align-items:flex-start; gap:12px; }
+.fm.m .kg { grid-template-columns:1fr; gap:20px; }
+.fm.m .kg-num { font-size:150px; }
+.fm.m .kg-num small { font-size:56px; }
+.fm.m .pf { grid-template-columns:1fr; gap:32px; }
+.fm.m .seg { margin-top:24px; border-radius:22px; }
+.fm.m .seg span { font-size:13px; line-height:1.15; padding:0 6px; min-height:48px; display:grid; place-items:center; border-radius:18px; }
+.fm.m .level { margin-top:28px; }
+.fm.m .level div b { font-size:var(--small); }
+.fm.m .level div small { font-size:11px; }
+.fm.m .pf .ctas { flex-direction:column; align-items:stretch; gap:10px; }
+.fm.m .bezel .in { min-height:300px; }
+.fm.m .w2-wrap { margin-top:28px; grid-template-columns:1fr; gap:20px; }
+.fm.m .w2-ph { min-height:340px; }
+.fm.m .wv .wph .b { left:22px; right:22px; bottom:22px; }
+.fm.m .w2-grid { grid-template-columns:1fr; }
+.fm.m .w2-c { padding:20px 0; border-right:0 !important; border-bottom:1px solid var(--line); }
+.fm.m .w2-c:last-child { border-bottom:0; }
+.fm.m .w2-c h3 { white-space:normal; }
+.fm.m .w2-cert { margin-top:20px; padding:22px; flex-direction:column; align-items:flex-start; gap:14px; }
+.fm.m .exist { display:flex; flex-direction:column; }
+.fm.m .exist .left { width:auto; padding-bottom:28px; gap:36px; }
+.fm.m .big80 { font-size:120px; }
+.fm.m .big80 sup { font-size:54px; top:10px; }
+.fm.m .fpz-row { flex-direction:column; align-items:stretch; gap:14px; padding:8px 0 0; }
+.fm.m .fpz-row .f { margin:0 14px; }
+.fm.m .fpz-drop { padding:22px 14px; }
+.fm.m .exist .planfull { position:relative; inset:auto; left:auto; right:auto; order:1; height:auto; aspect-ratio:16/9; margin:0 var(--gut) var(--sec); }
+.fm.m .exist .planfull::after { display:none; }
+.fm.m .pbento { grid-template-columns:1fr; gap:12px; }
+.fm.m .pbento > .cell { grid-column:auto; }
+.fm.m .c-quote .core { padding:28px 24px; min-height:0; gap:28px; }
+.fm.m .c-quote .mark { font-size:90px; height:30px; }
+.fm.m .c-quote blockquote { font-size:24px; line-height:1.18; }
+.fm.m .c-img .core { min-height:300px; }
+.fm.m .svc-in { grid-template-columns:1fr; padding:32px 22px 22px; gap:28px; }
+.fm.m .eng { grid-template-columns:1fr; gap:32px; }
+.fm.m .eng > div:last-child { order:-1; }
+.fm.m .sheet .in { padding:22px; }
+.fm.m .sheet .top { flex-direction:column; align-items:flex-start; gap:6px; }
+.fm.m .sheet .top b { font-size:20px; }
+.fm.m .sheet table { table-layout:fixed; }
+.fm.m .sheet td:first-child { width:42%; letter-spacing:.04em; font-size:11px; line-height:1.35; word-break:break-word; }
+.fm.m .sheet .dl { flex-wrap:wrap; }
+.fm.m .cb { grid-template-columns:1fr; gap:32px; }
+.fm.m .cb .ppl { margin-top:28px; gap:12px; }
+.fm.m .cb .ppl > div { align-content:start; gap:12px; }
+.fm.m .cb .ppl .av { height:200px; }
+.fm.m .cb .ppl span span { font-size:13px; }
+.fm.m .cb .form .in { padding:22px; }
+.fm.m .cb .form .f2 { grid-template-columns:1fr; }
+.fm.m .cb .form .btn { align-self:stretch; }
+.fm.m .fb2 { padding:48px var(--gut) 40px; }
+.fm.m .fb2 .sym { right:-220px; top:-80px; height:700px; }
+.fm.m .fb2 .grid { grid-template-columns:1fr 1fr; gap:32px 24px; }
+.fm.m .fb2 .grid > div:first-child { grid-column:span 2; }
+.fm.m .fb2 ul li { min-height:44px; display:flex; align-items:center; }
+.fm.m .fb2 .bottom { margin-top:36px; flex-direction:column; gap:10px; }
+.fm.m .fb2 .bottom span a { margin:0 16px 0 0; display:inline-flex; align-items:center; min-height:44px; }
+.fm.m .fb2 .bottom > span:first-child { display:inline-flex; align-items:center; min-height:44px; }
+.fm.m .fb2 .word { margin-top:32px; width:350px; }
+
+/* ===== Laitevälitys (ui/work/laitevalitys/scripts/laitevalitys_page.py, 17.11.2026) =====
+   Pohja yllä on etusivun elävä tyylitiedosto. Erillinen suomenkielinen osio: oma header ja footer,
+   samat tokenit, napit ja komponentit kuin pääsivustolla. */
+.fm .lutil b { color:#fff; }
+.fm .lnav { gap:28px; position:relative; z-index:3; padding:20px var(--gut); display:flex; align-items:center; background:#fff; border-bottom:1px solid var(--line); }
+.fm .lnav .wb { display:inline-flex; align-items:center; gap:12px; }
+.fm .lnav .wb img { height:26px; width:auto; }
+.fm .lnav .wb em { font-style:normal; font-family:var(--fd); font-size:15px; font-weight:700; letter-spacing:-0.005em; padding-left:12px; border-left:1px solid var(--line); }
+.fm .lnav ul { display:flex; gap:28px; list-style:none; margin:0 auto 0 48px; padding:0; }
+.fm .lnav ul li a { color:var(--ink); text-decoration:none; }
+.fm .lnav .tel { margin-left:auto; display:inline-flex; align-items:center; gap:18px; }
+.fm .lnav .tel b { font-family:var(--fd); font-size:19px; letter-spacing:-0.01em; white-space:nowrap; }
+
+/* Hero: ei valokuvaa. Osion lupaus ja merkkiseinä ovat samassa ruudussa. */
+.fm .lhero { padding:64px var(--gut) 56px; background:var(--paper); border-bottom:1px solid var(--line); }
+.fm .lhero-in { display:grid; grid-template-columns:minmax(0,1fr) 560px; gap:72px; align-items:center; }
+.fm .lhero h1 { font-size:var(--h2); line-height:1.02; letter-spacing:-0.02em; }
+.fm .lhero p.lead { margin-top:22px; max-width:560px; color:var(--ink2); font-size:var(--lead); }
+.fm .lhero .hctas { margin-top:34px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+.fm .lwall { background:#fff; border:1px solid var(--line); border-radius:var(--r-panel); padding:26px; }
+.fm .lwall-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:1px; background:var(--line); border:1px solid var(--line); border-radius:var(--r-card-in); overflow:hidden; }
+.fm .lwall-grid span { background:#fff; min-height:76px; display:flex; align-items:center; justify-content:center; padding:14px; }
+.fm .lwall-grid img { width:auto; height:auto; max-width:100%; max-height:30px; object-fit:contain; opacity:.8; }
+.fm .lwall-grid b { font-family:var(--fd); font-size:15px; font-weight:700; color:var(--ink2); text-align:center; }
+.fm .lwall .more { margin-top:16px; display:flex; justify-content:space-between; align-items:center; gap:16px; color:var(--mute); }
+
+/* Merkkihakemisto: osion tärkein lohko, heti heron alla. */
+.fm .lsec { padding:var(--sec) var(--gut); }
+.fm .lsec.pap { background:var(--paper); }
+.fm .lhead { display:grid; grid-template-columns:minmax(0,1fr) 440px; gap:56px; align-items:end; margin-bottom:40px; }
+.fm .lhead h2 { margin-top:18px; font-size:var(--h2s); }
+.fm .lhead p { color:var(--ink2); }
+.fm .lfilter { display:flex; gap:18px; align-items:center; flex-wrap:wrap; margin-bottom:26px; }
+.fm .lsearch { flex:1 1 300px; max-width:400px; display:flex; align-items:center; gap:12px; background:#fff; border:1px solid var(--line); border-radius:999px; padding:14px 22px; color:var(--mute); }
+.fm .lsearch svg { flex:none; }
+.fm .lgrid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:16px; }
+.fm .lcard { display:grid; grid-template-columns:92px minmax(0,1fr); gap:20px; align-items:center; background:#fff; border:1px solid var(--line); border-radius:var(--r-row); padding:20px 24px; text-decoration:none; color:inherit; }
+.fm .lcard .mark { height:44px; display:flex; align-items:center; justify-content:center; }
+.fm .lcard .mark img { width:auto; height:auto; max-width:92px; max-height:36px; object-fit:contain; opacity:.85; }
+.fm .lcard .mark b { font-family:var(--fd); font-size:16px; color:var(--ink2); text-align:center; line-height:1.15; }
+.fm .lcard h3 { font-family:var(--fd); font-size:19px; font-weight:700; letter-spacing:-0.005em; line-height:1.2; }
+.fm .lcard h3 i { font-style:normal; margin-left:10px; color:var(--mute); font-size:12px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; }
+.fm .lcard p { margin-top:5px; color:var(--ink2); font-size:var(--small); line-height:1.45; }
+
+/* Kolme tuoteryhmää: nykysivuston omat tuotekuvat valkoisella. */
+.fm .lcat { display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:24px; }
+.fm .lcat .cell { background:#fff; border:1px solid var(--line); border-radius:var(--r-card); overflow:hidden; display:flex; flex-direction:column; text-decoration:none; color:inherit; }
+.fm .lcat .ph { background:#fff; border-bottom:1px solid var(--line); display:flex; align-items:center; justify-content:center; padding:26px; }
+.fm .lcat .ph img { height:240px; width:auto; max-width:100%; object-fit:contain; }
+.fm .lcat .bd { padding:26px 28px 28px; display:flex; flex-direction:column; gap:12px; flex:1; }
+.fm .lcat h3 { font-size:var(--h4); }
+.fm .lcat p { color:var(--ink2); }
+.fm .lcat .n { margin-top:auto; color:var(--mute); }
+
+/* Miksi Finmatec: etusivun avoin numerorivi ja kolme perustelua. */
+.fm .lnum-grid { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); margin-bottom:48px; }
+.fm .lnum-grid > .rw-i { display:block; min-width:0; padding:4px 32px 4px 0; border-right:1px solid var(--line); }
+.fm .lnum-grid > .rw-i + .rw-i { padding-left:32px; }
+.fm .lnum-grid > .rw-i:last-child { border-right:0; }
+.fm .lnum-grid .rw-num { display:block; margin-bottom:12px; font-size:60px; }
+.fm .lnum-grid .rw-t b { display:block; font-family:var(--fd); font-size:19px; font-weight:700; letter-spacing:-0.005em; line-height:1.2; }
+.fm .lnum-grid .rw-t small { display:block; margin-bottom:5px; color:var(--ink2); }
+.fm .lwhy { display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:24px; }
+.fm .lwhy > div { background:#fff; border:1px solid var(--line); border-radius:var(--r-card); padding:28px; }
+.fm .lwhy h3 { font-size:var(--h4); margin-bottom:10px; }
+.fm .lwhy p { color:var(--ink2); }
+
+/* Asiakkaat: sama logokohtelu kuin pääsivuston logonauhassa (Olli 17.11., kommentti f03edef9):
+   hiusviivasolut 104 px, harmaasävy ja multiply, logon enimmäiskorkeus 52 px. Ruudukko, jotta
+   kaikki kymmenen näkyvät kerralla. */
+.fm .lcust { display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); margin:0 calc(-1 * var(--gut)); border-top:1px solid var(--line); border-bottom:1px solid var(--line); }
+.fm .lcust span { height:104px; display:grid; place-items:center; padding:20px 26px; border-left:1px solid var(--line); }
+.fm .lcust span:nth-child(5n+1) { border-left:0; }
+.fm .lcust span:nth-child(n+6) { border-top:1px solid var(--line); }
+.fm .lcust img { width:auto; height:auto; max-width:100%; max-height:52px; object-fit:contain; filter:grayscale(1) contrast(1.05); opacity:.78; mix-blend-mode:multiply; }
+
+/* Tuotekatalogi ja tarjouskori (17.11.2026). Woo-katalogi: tuote on pääasia, ryhmä ja merkki suodattimia. */
+.fm .cwrap { padding:40px var(--gut) var(--sec); }
+.fm .cwrap { position:relative; }
+.fm .ctop { display:grid; grid-template-columns:minmax(0,1fr) 440px; gap:56px; align-items:end; margin-bottom:34px; }
+.fm .ctop .lsearch { margin-top:26px; }
+.fm .lnav .btn .cnt { font-style:normal; margin-left:8px; min-width:22px; height:22px; padding:0 7px; border-radius:999px; background:var(--acc); color:var(--ink); font-size:13px; font-weight:800; display:inline-grid; place-items:center; }
+/* Tarjouspyyntö on korin paikalla: headerin napin alla aukeava paneeli, ei suodatinpalkissa (Olli 17.11., kommentti 6bc928de) */
+.fm .cmini { position:absolute; right:var(--gut); top:10px; width:396px; z-index:6; background:var(--deep); color:#fff; border-radius:var(--r-card); padding:26px 28px; box-shadow:0 26px 60px rgba(13,14,43,.24); }
+.fm .cmini::before { content:""; position:absolute; top:-8px; right:56px; width:18px; height:18px; background:var(--deep); transform:rotate(45deg); border-radius:3px; }
+.fm .cmini h3 { font-family:var(--fl); font-size:var(--cap); font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:rgba(255,255,255,.6); margin-bottom:16px; }
+.fm .cmini ul { list-style:none; margin:0 0 20px; padding:0; display:flex; flex-direction:column; gap:12px; }
+.fm .cmini li { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:10px; font-size:14px; line-height:1.3; padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,.14); }
+.fm .cmini li b { display:block; font-family:var(--fd); font-size:15px; font-weight:700; }
+.fm .cmini li small, .fm .cmini li span.q { color:rgba(255,255,255,.62); }
+.fm .cmini li span.q { font-size:13px; }
+.fm .cmini .btn { width:100%; }
+.fm .cmini p { margin-top:12px; color:rgba(255,255,255,.62); font-size:13px; }
+.fm .ctop h1 { font-size:var(--h2s); }
+.fm .ctop p { margin-top:14px; color:var(--ink2); }
+.fm .cmain { display:grid; grid-template-columns:272px minmax(0,1fr); gap:32px; align-items:start; }
+.fm .crail > div { background:#fff; border:1px solid var(--line); border-radius:var(--r-card); padding:22px 24px; }
+.fm .crail > div + div { margin-top:16px; }
+.fm .crail h3 { font-family:var(--fl); font-size:var(--cap); font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--mute); margin-bottom:14px; }
+.fm .cfl { display:flex; flex-direction:column; gap:12px; }
+.fm .cfl label { display:flex; align-items:center; gap:12px; font-size:15px; }
+.fm .cfl .box { width:20px; height:20px; border:1.5px solid var(--line); border-radius:6px; flex:none; background:#fff; }
+.fm .cfl label.on .box { background:var(--dark); border-color:var(--dark); }
+.fm .cfl i { font-style:normal; margin-left:auto; color:var(--mute); font-size:13px; }
+.fm .cbrands { max-height:300px; overflow:hidden; }
+.fm .crail > div.basket { background:var(--deep); color:#fff; border:0; }
+.fm .basket h3 { color:rgba(255,255,255,.6); }
+.fm .basket ul { list-style:none; margin:0 0 18px; padding:0; display:flex; flex-direction:column; gap:12px; }
+.fm .basket li { display:grid; grid-template-columns:minmax(0,1fr) auto; gap:10px; font-size:14px; line-height:1.3; padding-bottom:12px; border-bottom:1px solid rgba(255,255,255,.14); }
+.fm .basket li b { display:block; font-family:var(--fd); font-size:15px; font-weight:700; }
+.fm .basket li small { color:rgba(255,255,255,.62); }
+.fm .basket li span.q { color:rgba(255,255,255,.62); font-size:13px; }
+.fm .basket .btn { width:100%; }
+.fm .basket p { margin-top:12px; color:rgba(255,255,255,.62); font-size:13px; }
+.fm .cres { display:flex; align-items:center; justify-content:space-between; gap:16px; margin-bottom:16px; color:var(--mute); }
+.fm .clist { display:flex; flex-direction:column; gap:10px; }
+.fm .crow { display:grid; grid-template-columns:104px minmax(0,1fr) auto; gap:22px; align-items:center; background:#fff; border:1px solid var(--line); border-radius:var(--r-row); padding:16px 22px; }
+.fm .crow .mk { height:34px; display:flex; align-items:center; }
+.fm .crow .mk img { width:auto; height:auto; max-width:104px; max-height:26px; object-fit:contain; opacity:.85; }
+.fm .crow .mk b { font-family:var(--fd); font-size:14px; color:var(--ink2); }
+.fm .crow h3 { font-family:var(--fd); font-size:18px; font-weight:700; letter-spacing:-0.005em; line-height:1.2; }
+.fm .crow p { margin-top:4px; color:var(--mute); font-size:var(--small); }
+.fm .crow .btn { white-space:nowrap; }
+.fm .cmore { margin-top:22px; display:flex; justify-content:center; }
+.fm.m .cwrap { padding:28px 20px 56px; }
+.fm.m .ctop { grid-template-columns:1fr; gap:14px; margin-bottom:22px; }
+.fm.m .cmini { position:static; width:auto; margin:0 0 26px; padding:20px 22px; box-shadow:none; }
+.fm.m .cmini::before { display:none; }
+.fm.m .cwrap { padding-top:22px; }
+.fm.m .ctop h1 { font-size:32px; }
+.fm.m .cmain { grid-template-columns:1fr; gap:20px; }
+.fm.m .crail > div { padding:18px 20px; }
+.fm.m .cbrands { max-height:none; }
+.fm.m .crow { grid-template-columns:72px minmax(0,1fr); gap:14px; padding:14px 16px; }
+.fm.m .crow .btn { grid-column:1 / -1; width:100%; margin-top:6px; }
+.fm.m .crow .mk img { max-width:72px; }
+
+/* Merkkisivu ja tuotesivu (17.11.2026) */
+.fm .crumb { display:flex; gap:10px; align-items:center; color:var(--mute); margin-bottom:18px; }
+.fm .crumb b { color:var(--ink); }
+.fm .bhero { padding:44px var(--gut) 0; }
+.fm .bhero-in { display:grid; grid-template-columns:minmax(0,1fr) 420px; gap:64px; align-items:center; background:var(--paper); border:1px solid var(--line); border-radius:var(--r-panel); padding:44px 48px; }
+.fm .bhero h1 { font-size:var(--h2s); line-height:1.05; }
+.fm .bhero p { margin-top:16px; color:var(--ink2); font-size:var(--lead); }
+.fm .bhero .hctas { margin-top:28px; display:flex; gap:14px; flex-wrap:wrap; align-items:center; }
+.fm .bmark { background:#fff; border:1px solid var(--line); border-radius:var(--r-card); min-height:180px; display:flex; align-items:center; justify-content:center; padding:36px; }
+.fm .bmark img { width:auto; height:auto; max-width:300px; max-height:92px; object-fit:contain; }
+.fm .bmark b { font-family:var(--fd); font-size:34px; color:var(--ink2); }
+.fm .pwrap { padding:44px var(--gut) 0; }
+.fm .pgrid { display:grid; grid-template-columns:minmax(0,1fr) 520px; gap:56px; align-items:start; }
+.fm .pshot { background:#fff; border:1px solid var(--line); border-radius:var(--r-card); display:flex; align-items:center; justify-content:center; padding:40px; }
+.fm .pshot img { width:auto; height:auto; max-height:420px; max-width:100%; object-fit:contain; }
+.fm .pbuy { background:#fff; border:1px solid var(--line); border-radius:var(--r-card); padding:34px 36px; }
+.fm .pbuy .mk { height:30px; margin-bottom:18px; display:flex; }
+.fm .pbuy .mk img { width:auto; height:auto; max-height:28px; max-width:150px; object-fit:contain; }
+.fm .pbuy .mk b { font-family:var(--fd); font-size:17px; color:var(--ink2); }
+.fm .pbuy h1 { font-size:var(--h3); line-height:1.1; }
+.fm .pbuy p.lead { margin-top:14px; color:var(--ink2); }
+.fm .pqty { margin-top:26px; display:flex; gap:12px; align-items:center; }
+.fm .pqty .stepper { display:inline-flex; align-items:center; gap:18px; border:1px solid var(--line); border-radius:999px; padding:10px 20px; font-family:var(--fd); font-weight:700; }
+.fm .pqty .btn { flex:1; }
+.fm .pfacts { margin-top:28px; border-top:1px solid var(--line); }
+.fm .pfacts div { display:grid; grid-template-columns:150px minmax(0,1fr); gap:16px; padding:13px 0; border-bottom:1px solid var(--line); font-size:15px; }
+.fm .pfacts div span:first-child { color:var(--mute); }
+.fm .pask { margin-top:24px; background:var(--paper); border-radius:var(--r-card-in); padding:20px 22px; color:var(--ink2); font-size:15px; }
+.fm .pask b { display:block; font-family:var(--fd); color:var(--ink); margin-bottom:4px; }
+.fm.m .bhero, .fm.m .pwrap { padding:28px 20px 0; }
+.fm.m .bhero-in { grid-template-columns:1fr; gap:28px; padding:26px 22px; border-radius:var(--r-card); }
+.fm.m .bhero h1 { font-size:30px; }
+.fm.m .bmark { min-height:120px; padding:22px; }
+.fm.m .bmark img { max-height:60px; }
+.fm.m .pgrid { grid-template-columns:1fr; gap:24px; }
+.fm.m .pshot { padding:24px; }
+.fm.m .pshot img { max-height:260px; }
+.fm.m .pbuy { padding:24px 22px; }
+.fm.m .pfacts div { grid-template-columns:120px minmax(0,1fr); gap:10px; }
+
+/* Mobiili 390 */
+.fm.m .lnav { padding:16px 20px; gap:12px; }
+.fm.m .lnav ul { display:none; }
+.fm.m .lnav .wb em { font-size:13px; padding-left:10px; }
+.fm.m .lhero { padding:34px 20px 40px; }
+.fm.m .lhero-in { grid-template-columns:1fr; gap:32px; }
+.fm.m .lhero h1 { font-size:34px; }
+.fm.m .lhero p.lead { font-size:16px; }
+.fm.m .lwall { padding:14px; border-radius:var(--r-card); }
+.fm.m .lwall-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.fm.m .lwall-grid span { min-height:62px; padding:10px; }
+.fm.m .lwall .more { flex-direction:column; align-items:flex-start; gap:6px; }
+.fm.m .lsec { padding:56px 20px; }
+.fm.m .lhead { grid-template-columns:1fr; gap:16px; margin-bottom:28px; }
+.fm.m .lsearch { max-width:none; padding:12px 18px; }
+.fm.m .lgrid, .fm.m .lcat, .fm.m .lwhy { grid-template-columns:1fr; }
+.fm.m .lcard { grid-template-columns:72px minmax(0,1fr); gap:14px; padding:16px 18px; }
+.fm.m .lcat .ph img { height:170px; }
+.fm.m .lnum-grid { grid-template-columns:1fr; margin-bottom:32px; }
+.fm.m .lnum-grid > .rw-i, .fm.m .lnum-grid > .rw-i + .rw-i { padding:18px 0; border-right:0; border-top:1px solid var(--line); }
+.fm.m .lnum-grid > .rw-i:first-child { border-top:0; padding-top:0; }
+.fm.m .lcust { grid-template-columns:repeat(2,minmax(0,1fr)); margin:0 -20px; }
+.fm.m .lcust span { height:80px; padding:16px 20px; }
+.fm.m .lcust span:nth-child(5n+1) { border-left:1px solid var(--line); }
+.fm.m .lcust span:nth-child(odd) { border-left:0; }
+.fm.m .lcust span:nth-child(n+3) { border-top:1px solid var(--line); }
+.fm.m .fb2.lv .grid { grid-template-columns:1fr; }
+</style>
+<style>
+html,body{margin:0;background:#fff}
+body{overflow-x:hidden}
+.fm{margin:0 auto;transform-origin:top left}
+.fm .burger{display:none}
+.fm.m .nav ul,.fm.m .nav .btn{display:none}
+.fm.m .burger{display:grid}
+.fm{overflow:clip}
+.fm.pin .track,.fm.nopin .track{animation:none}
+.fm.pin .track{will-change:transform}
+.fm.pin .railwrap{position:sticky}
+.fm.nopin .railwrap{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.fm.nopin .railwrap::-webkit-scrollbar{display:none}
+.fm.nopin .track > .st{scroll-snap-align:center}
+</style>
+</head>
+<body>
+<template id="td"><div class="fm">
+  <div class="util lutil"><div><span>Laitev&auml;litys: edustamamme merkit Suomessa</span><span>Varasto Vaasassa</span></div><div><a class="ext" href="#">Finmatec.fi: elintarviketeollisuuden ratkaisut (EN)</a></div></div>
+<nav class="nav lnav"><span class="wb"><img loading="lazy" decoding="async" class="logoimg" src="media/finmatec-logo.svg" alt="Finmatec"><em>Laitev&auml;litys</em></span><ul><li><a href="#tuotteet">Tuotteet</a></li><li><a href="#merkit">Merkit</a></li><li><a href="#miksi">Miksi Finmatec</a></li><li><a href="#yhteys">Yhteystiedot</a></li></ul><span class="tel"><b>+358&nbsp;500&nbsp;845&nbsp;583</b><a class="btn pri qk s" href="#kori"><i><svg class="ic" width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h2l1.2 7.2a1 1 0 0 0 1 .8h5.4a1 1 0 0 0 1-.8L13.5 6H5"></path><circle cx="6.5" cy="13" r="1"></circle><circle cx="12" cy="13" r="1"></circle></svg></i> Tarjouspyynt&ouml; <em class="cnt">3</em></a></span></nav>
+  <!-- 1 Hero: ostaja tietää jo mitä hakee, joten lupaus ja merkkiseinä ovat samassa ruudussa.
+       Ei valokuvaa: osion sisältö on luettelo, ei tarina (IA luku 9). -->
+  <section class="lhero">
+    <div class="lhero-in">
+      <div>
+        <span class="eyebrow">Laitev&auml;litys</span>
+        <h1>Teurastamo- ja leikkaamotarvikkeet 22 merkilt&auml;, varastosta Vaasasta.</h1>
+        <p class="lead">Finmatec edustaa Suomessa ulkomaisia valmistajia ja toimittaa ty&ouml;kalut, tarvikkeet ja laitteet liha-, siipikarja-, kala-, lemmikkiruoka-, valmisruoka- ja leipomotuotantoon.</p>
+        <div class="hctas">
+          <a class="btn pri qk" href="tel:+358500845583">Soita +358&nbsp;500&nbsp;845&nbsp;583 <i><svg class="ic" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a>
+          <a class="btn ghost" href="#">Lataa tuotevalikoima (PDF) <svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8M4.5 7 8 10.5 11.5 7M3 13.5h10"></path></svg></a>
+        </div>
+      </div>
+      <div class="lwall">
+        <div class="lwall-grid"><span><img loading="lazy" decoding="async" src="media/logot/efa-mono.svg" alt="EFA"></span><span><img loading="lazy" decoding="async" src="media/logot/giesser-mono.svg" alt="Giesser"></span><span><img loading="lazy" decoding="async" src="media/logot/morakniv-mono.svg" alt="Morakniv"></span><span><img loading="lazy" decoding="async" src="media/logot/knecht-mono.svg" alt="KNECHT"></span><span><img loading="lazy" decoding="async" src="media/logot/steen-mono.svg" alt="STEEN"></span><span><img loading="lazy" decoding="async" src="media/logot/nock-mono.svg" alt="NOCK"></span><span><img loading="lazy" decoding="async" src="media/logot/brokelmann-mono.svg" alt="Brökelmann"></span><span><img loading="lazy" decoding="async" src="media/logot/hoecker-mono.svg" alt="Höcker"></span><span><img loading="lazy" decoding="async" src="media/logot/termet-mono.svg" alt="Termet"></span><span><img loading="lazy" decoding="async" src="media/logot/syspal-mono.svg" alt="SYSPAL"></span><span><img loading="lazy" decoding="async" src="media/logot/manulatex-mono.svg" alt="Manulatex"></span><span><img loading="lazy" decoding="async" src="media/logot/exos-mono.svg" alt="EXOS"></span></div>
+        <div class="more mono"><span>22 merkki&auml;, yksi yhteyshenkil&ouml;</span><a class="tlink" href="#merkit">Koko merkkihakemisto</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 Merkkihakemisto: hakemisto ensin, perustelut vasta sen jälkeen (IA luku 9).
+       Ostaja hakee merkin nimellä, joten merkki on jokaisen kortin otsikko. -->
+  <section class="lsec pap" id="merkit">
+    <div class="lhead">
+      <div><span class="eyebrow">Merkit</span><h2>Kaikki edustamamme merkit yhdell&auml; sivulla.</h2></div>
+      <p>L&ouml;yd&auml;t merkin nimell&auml; tai sen mukaan, mit&auml; se valmistaa. Jokaisella merkill&auml; on oma sivunsa, jolla ovat mallitunnukset ja yhteydenotto.</p>
+    </div>
+    <div class="lfilter"><div class="lsearch"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.5"></circle><path d="M10.5 10.5 14 14"></path></svg><span>Hae merkill&auml; tai tuotteella</span></div><div class="chips" role="group" aria-label="Tuoteryhm&auml;"><button type="button" class="chip opt on" aria-pressed="true">Kaikki 22</button><button type="button" class="chip opt" aria-pressed="false">Ty&ouml;kalut ja tarvikkeet 17</button><button type="button" class="chip opt" aria-pressed="false">Laitteet 7</button></div></div>
+    <div class="lgrid"><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/efa-mono.svg" alt=""></span><div><h3>EFA</h3><p>Sahat, nylkyveitset sekä trimmaus- ja leikkuutyökalut</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/giesser-mono.svg" alt=""></span><div><h3>Giesser</h3><p>Veitset ja teroitusvälineet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/morakniv-mono.svg" alt=""></span><div><h3>Morakniv</h3><p>Veitset, aiemmin Frosts Mora</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/knecht-mono.svg" alt=""></span><div><h3>KNECHT</h3><p>Teroitus- ja hiontakoneet</p></div></a><a class="lcard" href="#"><span class="mark"><b>ZAHND</b></span><div><h3>ZAHND</h3><p>Teroituskoneet EVO4, FP02 ja Z200, KNECHTin valikoimaa</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/mado-mono.svg" alt=""></span><div><h3>MADO</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/wiegand-mono.svg" alt=""></span><div><h3>Wiegand</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/bobet-materiel-mono.svg" alt=""></span><div><h3>Bobet matériel<i>Ranska</i></h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/tmp-mono.svg" alt=""></span><div><h3>tmp</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/sharpymax-mono.svg" alt=""></span><div><h3>Sharpymax</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/manulatex-mono.svg" alt=""></span><div><h3>Manulatex<i>Ranska</i></h3><p>Teräsverkkokäsineet, PPE-luokka III</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/brauer-mono.svg" alt=""></span><div><h3>Brauer</h3><p>Lämpötulostuspäät merkintään</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/termet-mono.svg" alt=""></span><div><h3>Termet</h3><p>Hygienialaitteet ja sterilointi</p></div></a><a class="lcard" href="#"><span class="mark"><b>Duram</b></span><div><h3>Duram<i>Israel</i></h3><p>Kynimäsormet siipikarjalle</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/exos-mono.svg" alt=""></span><div><h3>EXOS<i>Ruotsi</i></h3><p>Kalojen ruodonpoistolaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/nock-mono.svg" alt=""></span><div><h3>NOCK<i>Saksa</i></h3><p>Nahonta- ja kalvokuorintakoneet, jäähiutalekoneet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/steen-mono.svg" alt=""></span><div><h3>STEEN<i>Belgia</i></h3><p>Nylkemiskoneet ST600K, ST700K ja ST111K, kylkiluunleikkuri ST350</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/syspal-mono.svg" alt=""></span><div><h3>SYSPAL<i>Iso-Britannia</i></h3><p>Mollasekoittimet, DIN9797</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/omet-foodtech-mono.svg" alt=""></span><div><h3>Omet Foodtech<i>Italia</i></h3><p>Lihamyllyt ja sekoittimet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/brokelmann-mono.svg" alt=""></span><div><h3>Brökelmann<i>Saksa</i></h3><p>Mollat ja astiat, nostimet, savustusvaunut, pesulaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/wamma-mono.svg" alt=""></span><div><h3>WAMMA<i>Puola</i></h3><p>Koukut, levittimet ja ripustimet, teurastuslinjat</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/hoecker-mono.svg" alt=""></span><div><h3>Höcker<i>Saksa</i></h3><p>Hygienialaitteet, veitsien sterilointi, hygieniasulut</p></div></a></div>
+  </section>
+
+  <!-- 3 Kolme tuoteryhmää: kantavat yleisnimihaut (teurastamotarvikkeet, veitset, reikälevyt).
+       Kuvat ovat nykysivuston omia tuotekuvia valkoisella taustalla. -->
+  <section class="lsec" id="ryhmat">
+    <div class="lhead">
+      <div><span class="eyebrow">Tuoteryhm&auml;t</span><h2>Ty&ouml;kalut ja laitteet samasta paikasta.</h2></div>
+      <p>Sama talo toimittaa veitset ja ter&auml;t p&auml;ivitt&auml;iseen k&auml;ytt&ouml;&ouml;n ja kokonaiset koneet linjalle.</p>
+    </div>
+    <div class="lcat"><a class="cell" href="#"><span class="ph"><img loading="lazy" decoding="async" src="media/knecht.jpg" alt="KNECHT Fred-E, teroituskone"></span><span class="bd"><h3>Työkalut ja tarvikkeet</h3><p>Veitset, teroituskoneet, teurastustyökalut ja henkilönsuojaimet.</p><span class="n mono">17 merkki&auml;</span></span></a><a class="cell" href="#"><span class="ph"><img loading="lazy" decoding="async" src="media/nock.jpg" alt="NOCK, kalvokuorintakone"></span><span class="bd"><h3>Laitteet</h3><p>Nahonta-, nylkemis- ja sekoituskoneet sekä hygienia- ja materiaalinkäsittelylaitteet.</p><span class="n mono">7 merkki&auml;</span></span></a></div>
+  </section>
+
+  <!-- 4 Miksi Finmatec: Finmatecin oma perustelulista (fakta 147) ja varasto Vaasassa (fakta 148).
+       Ei toimitusaikalupausta ennen kuin Finmatec vahvistaa luvun (avoin kysymys). -->
+  <section class="lsec pap" id="miksi">
+    <div class="lhead">
+      <div><span class="eyebrow">Miksi Finmatec</span><h2>Varasto Vaasassa ja ihminen, joka vastaa.</h2></div>
+      <p>Edustus on osa samaa taloa, joka suunnittelee ja rakentaa tuotantolinjoja. Sama osaaminen on takana, kun valitaan ter&auml; tai kokonainen kone.</p>
+    </div>
+    <div class="lnum-grid"><div class="rw-i rw-n"><span class="rw-num">22</span><span class="rw-t"><small class="mono">Ty&ouml;kaluista koneisiin</small><b>Edustettua merkki&auml;</b></span></div><div class="rw-i rw-n"><span class="rw-num">6</span><span class="rw-t"><small class="mono">Liha, kala, lemmikkiruoka, valmisruoka, leipomo ja sivutuotteet</small><b>Toimialaa</b></span></div><div class="rw-i rw-n"><span class="rw-num">1</span><span class="rw-t"><small class="mono">Tuotep&auml;&auml;llikk&ouml;, joka tuntee koneet</small><b>Yhteyshenkil&ouml;</b></span></div></div>
+    <div class="lwhy">
+      <div><h3>Varasto Vaasassa</h3><p>Kuluvat osat ja ty&ouml;kalut ovat omassa varastossa, eiv&auml;t valmistajan tehtaalla Keski-Euroopassa.</p></div>
+      <div><h3>Tuotep&auml;&auml;llikk&ouml;, ei vaihde</h3><p>Sama ihminen hoitaa ty&ouml;kalut, tarvikkeet ja varaosat, joten kysymykseen vastaa se, joka tuntee koneet.</p></div>
+      <div><h3>Konetoimittajan silmin</h3><p>Finmatec rakentaa tuotantolinjoja, joten edustettu tuote valitaan sen mukaan, miten se toimii linjassa.</p></div>
+    </div>
+  </section>
+
+  <!-- 5 Asiakkaat: Tradingin oma 10 logon rivi, sama kuin nykysivuston suomenkielisillä sivuilla (fakta 459).
+       Julkaisulupa on avoin 80, logot ovat jo nyt julkisia asiakkaan omalla sivustolla. -->
+  <section class="lsec">
+    <div class="lhead">
+      <div><span class="eyebrow">Asiakkaat</span><h2>Suomalaiset teurastamot, leikkaamot ja lemmikkiruokatehtaat.</h2></div>
+      <p>Samat talot ostavat meilt&auml; sek&auml; kuluvat osat ett&auml; kokonaisia koneita.</p>
+    </div>
+    <div class="lcust"><span><img loading="lazy" decoding="async" src="media/as-snellman.jpg" alt="Snellman"></span><span><img loading="lazy" decoding="async" src="media/as-hkfoods.jpg" alt="HKFoods"></span><span><img loading="lazy" decoding="async" src="media/as-mush.jpg" alt="Mush"></span><span><img loading="lazy" decoding="async" src="media/as-atria.png" alt="Atria"></span><span><img loading="lazy" decoding="async" src="media/as-lansikalkkuna.png" alt="Länsi-Kalkkuna"></span><span><img loading="lazy" decoding="async" src="media/as-hietanen.png" alt="Liha Hietanen"></span><span><img loading="lazy" decoding="async" src="media/as-ronka.jpg" alt="Veljekset Rönkä"></span><span><img loading="lazy" decoding="async" src="media/as-kalaneuvos.png" alt="Kalaneuvos"></span><span><img loading="lazy" decoding="async" src="media/as-musti.png" alt="Musti Group"></span><span><img loading="lazy" decoding="async" src="media/as-leroy.png" alt="Lerøy Finland"></span></div>
+  </section>
+
+  <!-- 6 Yhteydenotto: puhelu on ykkönen (persoonakortti P4), lomake kakkonen. Merkki ja tuote omana kenttänään. -->
+  <section class="cb lv" id="yhteys">
+    <div><h2>Kerro, mit&auml; tarvitset.</h2>
+      <p class="lead">Soita tai kirjoita. Kerro merkki ja tuote, niin saat tiedon saatavuudesta ja toimituksesta.</p>
+      <div class="ppl"><div><span class="av"><img loading="lazy" decoding="async" src="media/teemu.jpg" alt="Teemu Mattila"></span><span><b>Teemu Mattila</b><span>Tuotep&auml;&auml;llikk&ouml;, ty&ouml;kalut, tarvikkeet ja varaosat &#183; +358&nbsp;500&nbsp;845&nbsp;583</span></span></div></div>
+      <p style="margin-top:28px">Oy Finmatec Ab, Mottisenkatu 3, 67100 Kokkola<br>teemu.mattila@finmatec.fi</p>
+    </div>
+    <div class="form"><div class="in">
+      <span class="lab" id="req-l">Mit&auml; etsit?</span>
+      <div class="chips" role="group" aria-labelledby="req-l"><button type="button" class="chip opt on" aria-pressed="true">Ty&ouml;kalut ja tarvikkeet</button><button type="button" class="chip opt" aria-pressed="false">Varaosat</button><button type="button" class="chip opt" aria-pressed="false">Laite tai kone</button><button type="button" class="chip opt" aria-pressed="false">Jotain muuta</button></div>
+      <div class="f2"><label class="f"><span class="sr">Yritys</span><input type="text" name="org" placeholder="Yritys" autocomplete="organization"></label><label class="f"><span class="sr">Nimi</span><input type="text" name="name" placeholder="Nimi" autocomplete="name"></label><label class="f"><span class="sr">S&auml;hk&ouml;posti</span><input type="email" name="work-email" placeholder="S&auml;hk&ouml;posti" autocomplete="email"></label><label class="f"><span class="sr">Puhelin</span><input type="tel" name="phone" placeholder="Puhelin" autocomplete="tel"></label></div>
+      <label class="ta"><span class="sr">Merkki ja tuote</span><textarea name="details" placeholder="Merkki ja tuote, esimerkiksi reik&auml;levy 130 mm"></textarea></label>
+      <a class="btn pri qk" href="#">L&auml;het&auml; pyynt&ouml; <i><svg class="ic" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a>
+    </div></div>
+  </section>
+
+  <!-- 7 Footer: oma, kevyt. Linkki pääsivustolle on nimetty kohteen mukaan, ei kielen mukaan (päätös 53). -->
+  <footer class="fb2 lv">
+    <div class="grid">
+      <div><img loading="lazy" decoding="async" class="logoimg" src="media/finmatec-logo.svg" alt="Finmatec" style="height:34px;margin-bottom:18px">
+        <p>Edustamiemme merkkien ty&ouml;kalut, tarvikkeet, varaosat ja laitteet Suomessa. Varasto Vaasassa.</p>
+        <p style="margin-top:14px">Oy Finmatec Ab<br>Mottisenkatu 3, 67100 Kokkola<br>+358&nbsp;500&nbsp;845&nbsp;583 &#183; teemu.mattila@finmatec.fi</p>
+      </div>
+      <div><h4>T&auml;ll&auml; sivulla</h4><ul><li><a href="#tuotteet">Tuotteet</a></li><li><a href="#merkit">Merkit</a></li><li><a href="#miksi">Miksi Finmatec</a></li><li><a href="#yhteys">Yhteystiedot</a></li></ul></div>
+      <div><h4>Finmatec</h4><ul><li><a href="#">Finmatec.fi: elintarviketeollisuuden ratkaisut</a></li><li><a href="#">Omien koneiden varaosat ja huolto</a></li><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li></ul></div>
+    </div>
+    <div class="bottom"><span>&#169; 2026 Oy Finmatec Ab</span><span><a href="#">Tietosuoja</a></span></div>
+    <div class="word"><svg viewBox="181 43 548 83" role="img" aria-label="Finmatec"><path fill-rule="evenodd" d="M705.38,124.38 L700.88,124.41 L699.12,124.08 L694.25,123.85 L688.88,122.66 L685.75,121.67 L681.62,119.71 L678.38,117.64 L675.79,115.50 L671.38,110.58 L668.12,104.76 L666.05,98.62 L665.10,94.00 L664.46,88.25 L664.45,81.75 L664.78,80.25 L665.16,75.62 L666.14,71.38 L667.28,68.00 L669.13,64.00 L671.18,60.50 L673.23,57.75 L677.65,53.25 L680.50,51.10 L683.88,49.15 L688.38,47.16 L691.62,46.16 L697.62,45.04 L701.00,44.80 L706.25,44.82 L711.50,45.28 L715.62,46.08 L722.50,48.22 L726.12,50.06 L726.58,50.50 L726.72,51.00 L723.68,60.12 L722.59,63.00 L722.00,63.69 L720.75,63.78 L717.02,62.12 L713.88,61.12 L708.50,60.07 L701.62,59.92 L699.25,60.13 L695.75,61.04 L693.25,62.07 L691.38,63.20 L690.00,64.26 L687.38,66.95 L685.07,70.50 L684.04,72.88 L683.13,75.75 L682.44,80.50 L682.17,84.12 L682.44,88.38 L683.14,93.12 L684.11,96.62 L686.17,100.62 L688.29,103.25 L691.00,105.62 L694.88,107.69 L698.00,108.66 L703.12,109.17 L707.12,109.17 L711.38,108.77 L716.38,107.74 L719.25,106.80 L722.62,105.30 L723.25,105.31 L723.71,105.75 L727.71,117.38 L727.80,118.12 L727.50,118.79 L726.29,119.62 L724.12,120.62 L717.88,122.64 L712.00,123.80 L706.88,124.10ZM198.62,122.81 L183.50,122.81 L182.25,122.00 L182.25,47.12 L184.00,46.51 L232.62,46.51 L233.42,48.25 L233.42,59.75 L232.88,60.78 L201.00,60.78 L199.61,61.51 L199.61,76.88 L229.14,76.88 L229.72,78.12 L229.72,89.62 L229.38,90.98 L228.25,91.40 L201.12,91.40 L199.61,91.88 L199.61,121.75ZM262.00,122.79 L247.00,122.79 L245.65,122.00 L245.65,48.62 L245.74,47.00 L246.38,46.47 L261.62,46.47 L262.73,47.38 L262.73,121.62ZM344.75,122.88 L332.88,122.88 L331.50,122.36 L312.68,92.38 L302.80,79.25 L298.00,73.98 L297.39,75.12 L297.39,122.12 L295.75,122.87 L282.00,122.87 L280.53,122.38 L280.53,48.25 L280.96,46.59 L292.88,46.59 L294.99,47.25 L301.62,54.35 L309.74,64.50 L328.38,90.37 L329.06,89.12 L329.06,47.11 L330.25,46.43 L344.75,46.43 L345.90,46.88 L345.90,121.62 L345.75,122.57ZM444.75,122.88 L432.00,122.88 L430.83,122.12 L428.81,79.88 L427.75,74.08 L426.95,74.50 L410.65,112.50 L409.25,113.06 L400.00,113.06 L398.12,112.19 L381.25,73.71 L380.06,80.75 L378.35,122.12 L376.88,122.73 L362.13,122.73 L362.13,109.88 L364.16,79.25 L366.17,57.50 L367.93,46.88 L369.12,46.41 L382.75,46.41 L384.38,47.26 L391.63,61.62 L404.75,90.90 L405.74,90.12 L416.24,65.62 L425.28,47.25 L427.12,46.64 L441.00,46.64 L441.65,48.50 L443.71,66.38 L446.96,108.75 L446.96,122.12 L446.62,122.76ZM530.88,122.76 L514.25,122.76 L508.76,107.38 L506.75,106.47 L479.00,106.47 L478.04,107.38 L472.50,122.60 L455.45,122.60 L460.14,108.25 L471.18,79.12 L480.23,57.75 L485.75,46.57 L500.75,46.57 L502.51,47.88 L513.70,73.12 L521.72,93.38 L531.71,120.88 L531.92,122.38ZM565.75,122.88 L551.12,122.88 L549.83,122.38 L549.83,62.00 L548.12,60.96 L527.25,60.96 L526.80,59.75 L526.80,48.12 L527.50,46.48 L588.62,46.48 L589.80,47.00 L589.80,59.75 L589.38,60.99 L568.00,60.99 L566.95,61.75 L566.95,121.62 L566.62,122.56ZM653.75,122.69 L601.09,122.69 L601.09,48.25 L601.50,46.51 L650.50,46.51 L652.28,47.00 L652.28,59.62 L651.75,60.82 L619.62,60.82 L618.31,61.38 L618.31,75.88 L648.12,75.88 L648.70,77.12 L648.70,88.62 L648.38,89.58 L647.25,90.00 L618.50,90.00 L618.06,91.12 L618.06,106.75 L618.44,108.00 L619.62,108.50 L654.25,108.50 L654.88,109.88 L654.88,121.75ZM503.23,92.78 L503.88,91.62 L502.81,88.38 L494.83,67.25 L493.25,64.78 L485.07,85.12 L482.88,92.20 L484.12,92.78Z"></path></svg></div>
+  </footer>
+
+</div></template>
+<template id="tm"><div class="fm m">
+<nav class="nav lnav"><span class="wb"><img loading="lazy" decoding="async" class="logoimg" src="media/finmatec-logo.svg" alt="Finmatec"><em>Laitev&auml;litys</em></span><a class="btn pri qk mq" href="#kori"><i><svg class="ic" width="17" height="17" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.7" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M2 3h2l1.2 7.2a1 1 0 0 0 1 .8h5.4a1 1 0 0 0 1-.8L13.5 6H5"></path><circle cx="6.5" cy="13" r="1"></circle><circle cx="12" cy="13" r="1"></circle></svg></i><em class="cnt">3</em></a><button class="burger" type="button" aria-label="Open menu"><span></span><span></span><span></span></button></button></nav>
+  <!-- 1 Hero: ostaja tietää jo mitä hakee, joten lupaus ja merkkiseinä ovat samassa ruudussa.
+       Ei valokuvaa: osion sisältö on luettelo, ei tarina (IA luku 9). -->
+  <section class="lhero">
+    <div class="lhero-in">
+      <div>
+        <span class="eyebrow">Laitev&auml;litys</span>
+        <h1>Teurastamo- ja leikkaamotarvikkeet 22 merkilt&auml;, varastosta Vaasasta.</h1>
+        <p class="lead">Finmatec edustaa Suomessa ulkomaisia valmistajia ja toimittaa ty&ouml;kalut, tarvikkeet ja laitteet liha-, siipikarja-, kala-, lemmikkiruoka-, valmisruoka- ja leipomotuotantoon.</p>
+        <div class="hctas">
+          <a class="btn pri qk" href="tel:+358500845583">Soita +358&nbsp;500&nbsp;845&nbsp;583 <i><svg class="ic" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a>
+          <a class="btn ghost" href="#">Lataa tuotevalikoima (PDF) <svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M8 2v8M4.5 7 8 10.5 11.5 7M3 13.5h10"></path></svg></a>
+        </div>
+      </div>
+      <div class="lwall">
+        <div class="lwall-grid"><span><img loading="lazy" decoding="async" src="media/logot/efa-mono.svg" alt="EFA"></span><span><img loading="lazy" decoding="async" src="media/logot/giesser-mono.svg" alt="Giesser"></span><span><img loading="lazy" decoding="async" src="media/logot/morakniv-mono.svg" alt="Morakniv"></span><span><img loading="lazy" decoding="async" src="media/logot/knecht-mono.svg" alt="KNECHT"></span><span><img loading="lazy" decoding="async" src="media/logot/steen-mono.svg" alt="STEEN"></span><span><img loading="lazy" decoding="async" src="media/logot/nock-mono.svg" alt="NOCK"></span><span><img loading="lazy" decoding="async" src="media/logot/brokelmann-mono.svg" alt="Brökelmann"></span><span><img loading="lazy" decoding="async" src="media/logot/hoecker-mono.svg" alt="Höcker"></span><span><img loading="lazy" decoding="async" src="media/logot/termet-mono.svg" alt="Termet"></span><span><img loading="lazy" decoding="async" src="media/logot/syspal-mono.svg" alt="SYSPAL"></span><span><img loading="lazy" decoding="async" src="media/logot/manulatex-mono.svg" alt="Manulatex"></span><span><img loading="lazy" decoding="async" src="media/logot/exos-mono.svg" alt="EXOS"></span></div>
+        <div class="more mono"><span>22 merkki&auml;, yksi yhteyshenkil&ouml;</span><a class="tlink" href="#merkit">Koko merkkihakemisto</a></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- 2 Merkkihakemisto: hakemisto ensin, perustelut vasta sen jälkeen (IA luku 9).
+       Ostaja hakee merkin nimellä, joten merkki on jokaisen kortin otsikko. -->
+  <section class="lsec pap" id="merkit">
+    <div class="lhead">
+      <div><span class="eyebrow">Merkit</span><h2>Kaikki edustamamme merkit yhdell&auml; sivulla.</h2></div>
+      <p>L&ouml;yd&auml;t merkin nimell&auml; tai sen mukaan, mit&auml; se valmistaa. Jokaisella merkill&auml; on oma sivunsa, jolla ovat mallitunnukset ja yhteydenotto.</p>
+    </div>
+    <div class="lfilter"><div class="lsearch"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" aria-hidden="true"><circle cx="7" cy="7" r="4.5"></circle><path d="M10.5 10.5 14 14"></path></svg><span>Hae merkill&auml; tai tuotteella</span></div><div class="chips" role="group" aria-label="Tuoteryhm&auml;"><button type="button" class="chip opt on" aria-pressed="true">Kaikki 22</button><button type="button" class="chip opt" aria-pressed="false">Ty&ouml;kalut ja tarvikkeet 17</button><button type="button" class="chip opt" aria-pressed="false">Laitteet 7</button></div></div>
+    <div class="lgrid"><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/efa-mono.svg" alt=""></span><div><h3>EFA</h3><p>Sahat, nylkyveitset sekä trimmaus- ja leikkuutyökalut</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/giesser-mono.svg" alt=""></span><div><h3>Giesser</h3><p>Veitset ja teroitusvälineet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/morakniv-mono.svg" alt=""></span><div><h3>Morakniv</h3><p>Veitset, aiemmin Frosts Mora</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/knecht-mono.svg" alt=""></span><div><h3>KNECHT</h3><p>Teroitus- ja hiontakoneet</p></div></a><a class="lcard" href="#"><span class="mark"><b>ZAHND</b></span><div><h3>ZAHND</h3><p>Teroituskoneet EVO4, FP02 ja Z200, KNECHTin valikoimaa</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/mado-mono.svg" alt=""></span><div><h3>MADO</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/wiegand-mono.svg" alt=""></span><div><h3>Wiegand</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/bobet-materiel-mono.svg" alt=""></span><div><h3>Bobet matériel<i>Ranska</i></h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/tmp-mono.svg" alt=""></span><div><h3>tmp</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/sharpymax-mono.svg" alt=""></span><div><h3>Sharpymax</h3><p>Teroitus- ja hiontalaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/manulatex-mono.svg" alt=""></span><div><h3>Manulatex<i>Ranska</i></h3><p>Teräsverkkokäsineet, PPE-luokka III</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/brauer-mono.svg" alt=""></span><div><h3>Brauer</h3><p>Lämpötulostuspäät merkintään</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/termet-mono.svg" alt=""></span><div><h3>Termet</h3><p>Hygienialaitteet ja sterilointi</p></div></a><a class="lcard" href="#"><span class="mark"><b>Duram</b></span><div><h3>Duram<i>Israel</i></h3><p>Kynimäsormet siipikarjalle</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/exos-mono.svg" alt=""></span><div><h3>EXOS<i>Ruotsi</i></h3><p>Kalojen ruodonpoistolaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/nock-mono.svg" alt=""></span><div><h3>NOCK<i>Saksa</i></h3><p>Nahonta- ja kalvokuorintakoneet, jäähiutalekoneet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/steen-mono.svg" alt=""></span><div><h3>STEEN<i>Belgia</i></h3><p>Nylkemiskoneet ST600K, ST700K ja ST111K, kylkiluunleikkuri ST350</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/syspal-mono.svg" alt=""></span><div><h3>SYSPAL<i>Iso-Britannia</i></h3><p>Mollasekoittimet, DIN9797</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/omet-foodtech-mono.svg" alt=""></span><div><h3>Omet Foodtech<i>Italia</i></h3><p>Lihamyllyt ja sekoittimet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/brokelmann-mono.svg" alt=""></span><div><h3>Brökelmann<i>Saksa</i></h3><p>Mollat ja astiat, nostimet, savustusvaunut, pesulaitteet</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/wamma-mono.svg" alt=""></span><div><h3>WAMMA<i>Puola</i></h3><p>Koukut, levittimet ja ripustimet, teurastuslinjat</p></div></a><a class="lcard" href="#"><span class="mark"><img loading="lazy" decoding="async" src="media/logot/hoecker-mono.svg" alt=""></span><div><h3>Höcker<i>Saksa</i></h3><p>Hygienialaitteet, veitsien sterilointi, hygieniasulut</p></div></a></div>
+  </section>
+
+  <!-- 3 Kolme tuoteryhmää: kantavat yleisnimihaut (teurastamotarvikkeet, veitset, reikälevyt).
+       Kuvat ovat nykysivuston omia tuotekuvia valkoisella taustalla. -->
+  <section class="lsec" id="ryhmat">
+    <div class="lhead">
+      <div><span class="eyebrow">Tuoteryhm&auml;t</span><h2>Ty&ouml;kalut ja laitteet samasta paikasta.</h2></div>
+      <p>Sama talo toimittaa veitset ja ter&auml;t p&auml;ivitt&auml;iseen k&auml;ytt&ouml;&ouml;n ja kokonaiset koneet linjalle.</p>
+    </div>
+    <div class="lcat"><a class="cell" href="#"><span class="ph"><img loading="lazy" decoding="async" src="media/knecht.jpg" alt="KNECHT Fred-E, teroituskone"></span><span class="bd"><h3>Työkalut ja tarvikkeet</h3><p>Veitset, teroituskoneet, teurastustyökalut ja henkilönsuojaimet.</p><span class="n mono">17 merkki&auml;</span></span></a><a class="cell" href="#"><span class="ph"><img loading="lazy" decoding="async" src="media/nock.jpg" alt="NOCK, kalvokuorintakone"></span><span class="bd"><h3>Laitteet</h3><p>Nahonta-, nylkemis- ja sekoituskoneet sekä hygienia- ja materiaalinkäsittelylaitteet.</p><span class="n mono">7 merkki&auml;</span></span></a></div>
+  </section>
+
+  <!-- 4 Miksi Finmatec: Finmatecin oma perustelulista (fakta 147) ja varasto Vaasassa (fakta 148).
+       Ei toimitusaikalupausta ennen kuin Finmatec vahvistaa luvun (avoin kysymys). -->
+  <section class="lsec pap" id="miksi">
+    <div class="lhead">
+      <div><span class="eyebrow">Miksi Finmatec</span><h2>Varasto Vaasassa ja ihminen, joka vastaa.</h2></div>
+      <p>Edustus on osa samaa taloa, joka suunnittelee ja rakentaa tuotantolinjoja. Sama osaaminen on takana, kun valitaan ter&auml; tai kokonainen kone.</p>
+    </div>
+    <div class="lnum-grid"><div class="rw-i rw-n"><span class="rw-num">22</span><span class="rw-t"><small class="mono">Ty&ouml;kaluista koneisiin</small><b>Edustettua merkki&auml;</b></span></div><div class="rw-i rw-n"><span class="rw-num">6</span><span class="rw-t"><small class="mono">Liha, kala, lemmikkiruoka, valmisruoka, leipomo ja sivutuotteet</small><b>Toimialaa</b></span></div><div class="rw-i rw-n"><span class="rw-num">1</span><span class="rw-t"><small class="mono">Tuotep&auml;&auml;llikk&ouml;, joka tuntee koneet</small><b>Yhteyshenkil&ouml;</b></span></div></div>
+    <div class="lwhy">
+      <div><h3>Varasto Vaasassa</h3><p>Kuluvat osat ja ty&ouml;kalut ovat omassa varastossa, eiv&auml;t valmistajan tehtaalla Keski-Euroopassa.</p></div>
+      <div><h3>Tuotep&auml;&auml;llikk&ouml;, ei vaihde</h3><p>Sama ihminen hoitaa ty&ouml;kalut, tarvikkeet ja varaosat, joten kysymykseen vastaa se, joka tuntee koneet.</p></div>
+      <div><h3>Konetoimittajan silmin</h3><p>Finmatec rakentaa tuotantolinjoja, joten edustettu tuote valitaan sen mukaan, miten se toimii linjassa.</p></div>
+    </div>
+  </section>
+
+  <!-- 5 Asiakkaat: Tradingin oma 10 logon rivi, sama kuin nykysivuston suomenkielisillä sivuilla (fakta 459).
+       Julkaisulupa on avoin 80, logot ovat jo nyt julkisia asiakkaan omalla sivustolla. -->
+  <section class="lsec">
+    <div class="lhead">
+      <div><span class="eyebrow">Asiakkaat</span><h2>Suomalaiset teurastamot, leikkaamot ja lemmikkiruokatehtaat.</h2></div>
+      <p>Samat talot ostavat meilt&auml; sek&auml; kuluvat osat ett&auml; kokonaisia koneita.</p>
+    </div>
+    <div class="lcust"><span><img loading="lazy" decoding="async" src="media/as-snellman.jpg" alt="Snellman"></span><span><img loading="lazy" decoding="async" src="media/as-hkfoods.jpg" alt="HKFoods"></span><span><img loading="lazy" decoding="async" src="media/as-mush.jpg" alt="Mush"></span><span><img loading="lazy" decoding="async" src="media/as-atria.png" alt="Atria"></span><span><img loading="lazy" decoding="async" src="media/as-lansikalkkuna.png" alt="Länsi-Kalkkuna"></span><span><img loading="lazy" decoding="async" src="media/as-hietanen.png" alt="Liha Hietanen"></span><span><img loading="lazy" decoding="async" src="media/as-ronka.jpg" alt="Veljekset Rönkä"></span><span><img loading="lazy" decoding="async" src="media/as-kalaneuvos.png" alt="Kalaneuvos"></span><span><img loading="lazy" decoding="async" src="media/as-musti.png" alt="Musti Group"></span><span><img loading="lazy" decoding="async" src="media/as-leroy.png" alt="Lerøy Finland"></span></div>
+  </section>
+
+  <!-- 6 Yhteydenotto: puhelu on ykkönen (persoonakortti P4), lomake kakkonen. Merkki ja tuote omana kenttänään. -->
+  <section class="cb lv" id="yhteys">
+    <div><h2>Kerro, mit&auml; tarvitset.</h2>
+      <p class="lead">Soita tai kirjoita. Kerro merkki ja tuote, niin saat tiedon saatavuudesta ja toimituksesta.</p>
+      <div class="ppl"><div><span class="av"><img loading="lazy" decoding="async" src="media/teemu.jpg" alt="Teemu Mattila"></span><span><b>Teemu Mattila</b><span>Tuotep&auml;&auml;llikk&ouml;, ty&ouml;kalut, tarvikkeet ja varaosat &#183; +358&nbsp;500&nbsp;845&nbsp;583</span></span></div></div>
+      <p style="margin-top:28px">Oy Finmatec Ab, Mottisenkatu 3, 67100 Kokkola<br>teemu.mattila@finmatec.fi</p>
+    </div>
+    <div class="form"><div class="in">
+      <span class="lab" id="req-l">Mit&auml; etsit?</span>
+      <div class="chips" role="group" aria-labelledby="req-l"><button type="button" class="chip opt on" aria-pressed="true">Ty&ouml;kalut ja tarvikkeet</button><button type="button" class="chip opt" aria-pressed="false">Varaosat</button><button type="button" class="chip opt" aria-pressed="false">Laite tai kone</button><button type="button" class="chip opt" aria-pressed="false">Jotain muuta</button></div>
+      <div class="f2"><label class="f"><span class="sr">Yritys</span><input type="text" name="org" placeholder="Yritys" autocomplete="organization"></label><label class="f"><span class="sr">Nimi</span><input type="text" name="name" placeholder="Nimi" autocomplete="name"></label><label class="f"><span class="sr">S&auml;hk&ouml;posti</span><input type="email" name="work-email" placeholder="S&auml;hk&ouml;posti" autocomplete="email"></label><label class="f"><span class="sr">Puhelin</span><input type="tel" name="phone" placeholder="Puhelin" autocomplete="tel"></label></div>
+      <label class="ta"><span class="sr">Merkki ja tuote</span><textarea name="details" placeholder="Merkki ja tuote, esimerkiksi reik&auml;levy 130 mm"></textarea></label>
+      <a class="btn pri qk" href="#">L&auml;het&auml; pyynt&ouml; <i><svg class="ic" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a>
+    </div></div>
+  </section>
+
+  <!-- 7 Footer: oma, kevyt. Linkki pääsivustolle on nimetty kohteen mukaan, ei kielen mukaan (päätös 53). -->
+  <footer class="fb2 lv">
+    <div class="grid">
+      <div><img loading="lazy" decoding="async" class="logoimg" src="media/finmatec-logo.svg" alt="Finmatec" style="height:34px;margin-bottom:18px">
+        <p>Edustamiemme merkkien ty&ouml;kalut, tarvikkeet, varaosat ja laitteet Suomessa. Varasto Vaasassa.</p>
+        <p style="margin-top:14px">Oy Finmatec Ab<br>Mottisenkatu 3, 67100 Kokkola<br>+358&nbsp;500&nbsp;845&nbsp;583 &#183; teemu.mattila@finmatec.fi</p>
+      </div>
+      <div><h4>T&auml;ll&auml; sivulla</h4><ul><li><a href="#tuotteet">Tuotteet</a></li><li><a href="#merkit">Merkit</a></li><li><a href="#miksi">Miksi Finmatec</a></li><li><a href="#yhteys">Yhteystiedot</a></li></ul></div>
+      <div><h4>Finmatec</h4><ul><li><a href="#">Finmatec.fi: elintarviketeollisuuden ratkaisut</a></li><li><a href="#">Omien koneiden varaosat ja huolto</a></li><li><a href="#">Instagram</a></li><li><a href="#">Facebook</a></li></ul></div>
+    </div>
+    <div class="bottom"><span>&#169; 2026 Oy Finmatec Ab</span><span><a href="#">Tietosuoja</a></span></div>
+    <div class="word"><svg viewBox="181 43 548 83" role="img" aria-label="Finmatec"><path fill-rule="evenodd" d="M705.38,124.38 L700.88,124.41 L699.12,124.08 L694.25,123.85 L688.88,122.66 L685.75,121.67 L681.62,119.71 L678.38,117.64 L675.79,115.50 L671.38,110.58 L668.12,104.76 L666.05,98.62 L665.10,94.00 L664.46,88.25 L664.45,81.75 L664.78,80.25 L665.16,75.62 L666.14,71.38 L667.28,68.00 L669.13,64.00 L671.18,60.50 L673.23,57.75 L677.65,53.25 L680.50,51.10 L683.88,49.15 L688.38,47.16 L691.62,46.16 L697.62,45.04 L701.00,44.80 L706.25,44.82 L711.50,45.28 L715.62,46.08 L722.50,48.22 L726.12,50.06 L726.58,50.50 L726.72,51.00 L723.68,60.12 L722.59,63.00 L722.00,63.69 L720.75,63.78 L717.02,62.12 L713.88,61.12 L708.50,60.07 L701.62,59.92 L699.25,60.13 L695.75,61.04 L693.25,62.07 L691.38,63.20 L690.00,64.26 L687.38,66.95 L685.07,70.50 L684.04,72.88 L683.13,75.75 L682.44,80.50 L682.17,84.12 L682.44,88.38 L683.14,93.12 L684.11,96.62 L686.17,100.62 L688.29,103.25 L691.00,105.62 L694.88,107.69 L698.00,108.66 L703.12,109.17 L707.12,109.17 L711.38,108.77 L716.38,107.74 L719.25,106.80 L722.62,105.30 L723.25,105.31 L723.71,105.75 L727.71,117.38 L727.80,118.12 L727.50,118.79 L726.29,119.62 L724.12,120.62 L717.88,122.64 L712.00,123.80 L706.88,124.10ZM198.62,122.81 L183.50,122.81 L182.25,122.00 L182.25,47.12 L184.00,46.51 L232.62,46.51 L233.42,48.25 L233.42,59.75 L232.88,60.78 L201.00,60.78 L199.61,61.51 L199.61,76.88 L229.14,76.88 L229.72,78.12 L229.72,89.62 L229.38,90.98 L228.25,91.40 L201.12,91.40 L199.61,91.88 L199.61,121.75ZM262.00,122.79 L247.00,122.79 L245.65,122.00 L245.65,48.62 L245.74,47.00 L246.38,46.47 L261.62,46.47 L262.73,47.38 L262.73,121.62ZM344.75,122.88 L332.88,122.88 L331.50,122.36 L312.68,92.38 L302.80,79.25 L298.00,73.98 L297.39,75.12 L297.39,122.12 L295.75,122.87 L282.00,122.87 L280.53,122.38 L280.53,48.25 L280.96,46.59 L292.88,46.59 L294.99,47.25 L301.62,54.35 L309.74,64.50 L328.38,90.37 L329.06,89.12 L329.06,47.11 L330.25,46.43 L344.75,46.43 L345.90,46.88 L345.90,121.62 L345.75,122.57ZM444.75,122.88 L432.00,122.88 L430.83,122.12 L428.81,79.88 L427.75,74.08 L426.95,74.50 L410.65,112.50 L409.25,113.06 L400.00,113.06 L398.12,112.19 L381.25,73.71 L380.06,80.75 L378.35,122.12 L376.88,122.73 L362.13,122.73 L362.13,109.88 L364.16,79.25 L366.17,57.50 L367.93,46.88 L369.12,46.41 L382.75,46.41 L384.38,47.26 L391.63,61.62 L404.75,90.90 L405.74,90.12 L416.24,65.62 L425.28,47.25 L427.12,46.64 L441.00,46.64 L441.65,48.50 L443.71,66.38 L446.96,108.75 L446.96,122.12 L446.62,122.76ZM530.88,122.76 L514.25,122.76 L508.76,107.38 L506.75,106.47 L479.00,106.47 L478.04,107.38 L472.50,122.60 L455.45,122.60 L460.14,108.25 L471.18,79.12 L480.23,57.75 L485.75,46.57 L500.75,46.57 L502.51,47.88 L513.70,73.12 L521.72,93.38 L531.71,120.88 L531.92,122.38ZM565.75,122.88 L551.12,122.88 L549.83,122.38 L549.83,62.00 L548.12,60.96 L527.25,60.96 L526.80,59.75 L526.80,48.12 L527.50,46.48 L588.62,46.48 L589.80,47.00 L589.80,59.75 L589.38,60.99 L568.00,60.99 L566.95,61.75 L566.95,121.62 L566.62,122.56ZM653.75,122.69 L601.09,122.69 L601.09,48.25 L601.50,46.51 L650.50,46.51 L652.28,47.00 L652.28,59.62 L651.75,60.82 L619.62,60.82 L618.31,61.38 L618.31,75.88 L648.12,75.88 L648.70,77.12 L648.70,88.62 L648.38,89.58 L647.25,90.00 L618.50,90.00 L618.06,91.12 L618.06,106.75 L618.44,108.00 L619.62,108.50 L654.25,108.50 L654.88,109.88 L654.88,121.75ZM503.23,92.78 L503.88,91.62 L502.81,88.38 L494.83,67.25 L493.25,64.78 L485.07,85.12 L482.88,92.20 L484.12,92.78Z"></path></svg></div>
+  </footer>
+
+</div></template>
+<script>
+(function(){
+  var m=document.documentElement.clientWidth<=760, t=document.getElementById(m?'tm':'td');
+  document.body.insertBefore(t.content.cloneNode(true), t);
+  var was=m; window.addEventListener('resize',function(){ var n=document.documentElement.clientWidth<=760; if(n!==was) location.reload(); });
+})();
+window.DCLogic=function(){};
+(function(){
+  var fm=document.querySelector('.fm');
+  function fit(){
+    var w=document.documentElement.clientWidth, m=w<=760;
+    fm.classList.toggle('m',m);
+    /* fill the window: scale the 1440 layout below 1440, let it flow up to 1920, scale the 1920 layout above that */
+    var z, fw='';
+    if(m){ z=w/390; }
+    else if(w<=1440){ fw='1440px'; z=w/1440; }
+    else if(w<=1920){ fw=w+'px'; z=1; }
+    else { fw='1920px'; z=w/1920; }
+    fm.style.width=fw;
+    fm.style.zoom=z;
+  }
+  /* flow: pinned horizontal scroll on desktop, like the Every Kilo v1 chain */
+  var pw=fm.querySelector('.pinwrap'), rw=pw&&pw.querySelector('.railwrap'), tr=rw&&rw.querySelector('.track');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches, on=false, cur=0, dist=0, mt=0, rh=0;
+  function setup(){
+    if(!pw) return;
+    on=!fm.classList.contains('m') && !reduce;
+    fm.classList.toggle('pin',on); fm.classList.toggle('nopin',!on);
+    pw.style.height=''; rw.style.top=''; tr.style.transform=''; cur=0;
+    if(!on) return;
+    var z=parseFloat(fm.style.zoom)||1;
+    dist=Math.max(0,tr.scrollWidth-rw.clientWidth);
+    mt=parseFloat(getComputedStyle(rw).marginTop)||0; rh=rw.offsetHeight;
+    rw.style.top=Math.max(0,(window.innerHeight/z-rh)/2)+'px';
+    pw.style.height=(mt+rh+dist)+'px';
+  }
+  function target(){
+    var a=pw.getBoundingClientRect(), b=rw.getBoundingClientRect(), k=a.height/pw.offsetHeight||1;
+    var off=(b.top-a.top)/k-mt; return dist? Math.min(1,Math.max(0,off/dist))*dist : 0;
+  }
+  (function loop(){ if(on){ var t=target(); cur+= (t-cur)*0.14; if(Math.abs(t-cur)<.2) cur=t; tr.style.transform='translate3d('+(-cur)+'px,0,0)'; } requestAnimationFrame(loop); })();
+  window.addEventListener('resize',function(){fit();setup();}); fit(); setup();
+  window.addEventListener('load',setup);
+  /* films: hero only on desktop (mobile keeps the poster), others load when they come near */
+  function startVid(v){ if(!v.getAttribute('src')){ v.src=v.getAttribute('data-src'); } v.muted=true; var p=v.play(); if(p&&p.catch)p.catch(function(){}); }
+  var vids=[].slice.call(document.querySelectorAll('video[data-src]'));
+  var io=('IntersectionObserver' in window)? new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ startVid(e.target); io.unobserve(e.target); } }); },{rootMargin:'400px 0px'}) : null;
+  vids.forEach(function(v){
+    if(v.hasAttribute('data-desktop') && fm.classList.contains('m')) return;
+    if(reduce && !v.hasAttribute('data-desktop')) { if(io) io.observe(v); else startVid(v); return; }
+    if(io) io.observe(v); else startVid(v);
+  });
+  var el=document.getElementById('ltrack');
+  if(el && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    (function step(){var half=el.scrollWidth/2;if(half>0)el.style.transform='translateX('+(-((Date.now()/1000*45)%half))+'px)';requestAnimationFrame(step);})();
+  }
+})();
+document.querySelectorAll('.bezel video:not([loop])').forEach(function (v) {
+  function again() { if (!v.getAttribute('src')) return; v.currentTime = 0; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+  v.addEventListener('animationstart', again); v.addEventListener('animationiteration', again);
+});
+(function(){if(document.querySelector(".fm").classList.contains("m"))return;
+class Component extends DCLogic {
+  renderVals() {
+    if (!this.vidRef) this.vidRef = (el) => { if (el) { el.muted = true; el.defaultMuted = true; el.setAttribute('muted', ''); if (!el.loop && !el.__once) { el.__once = true; const again = () => { el.currentTime = 0; const q = el.play(); if (q && q.catch) q.catch(() => {}); }; el.addEventListener('animationstart', again); el.addEventListener('animationiteration', again); } const p = el.play(); if (p && p.catch) p.catch(() => {}); } };
+    if (!this.logoRef) this.logoRef = (el) => {
+      if (!el || el.__marquee) return;
+      el.__marquee = true;
+      const speed = 45; // px per second
+      const step = () => {
+        if (!el.isConnected) return;
+        const half = el.scrollWidth / 2;
+        if (half > 0) el.style.transform = 'translateX(' + (-((Date.now() / 1000 * speed) % half)) + 'px)';
+        requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    return { vidRef: this.vidRef, logoRef: this.logoRef };
+  }
+}
+var v=new Component().renderVals()||{};
+document.querySelectorAll('[data-part="0"][data-ref]').forEach(function(el){var f=v[el.getAttribute("data-ref")];if(typeof f==="function")f(el);});
+})();
+(function(){if(!document.querySelector(".fm").classList.contains("m"))return;
+class Component extends DCLogic {
+  renderVals() {
+    if (!this.vidRef) this.vidRef = (el) => { if (el) { el.muted = true; el.defaultMuted = true; el.setAttribute('muted', ''); if (!el.loop && !el.__once) { el.__once = true; const again = () => { el.currentTime = 0; const q = el.play(); if (q && q.catch) q.catch(() => {}); }; el.addEventListener('animationstart', again); el.addEventListener('animationiteration', again); } const p = el.play(); if (p && p.catch) p.catch(() => {}); } };
+    if (!this.logoRef) this.logoRef = (el) => {
+      if (!el || el.__marquee) return;
+      el.__marquee = true;
+      const speed = 45; // px per second
+      const step = () => {
+        if (!el.isConnected) return;
+        const half = el.scrollWidth / 2;
+        if (half > 0) el.style.transform = 'translateX(' + (-((Date.now() / 1000 * speed) % half)) + 'px)';
+        requestAnimationFrame(step);
+      };
+      requestAnimationFrame(step);
+    };
+    return { vidRef: this.vidRef, logoRef: this.logoRef };
+  }
+}
+var v=new Component().renderVals()||{};
+document.querySelectorAll('[data-part="100"][data-ref]').forEach(function(el){var f=v[el.getAttribute("data-ref")];if(typeof f==="function")f(el);});
+})();
+</script>
+<script>
+/* Proto navigation: dropdowns on desktop, full-screen menu on mobile.
+   Menu structure from the canvas artboard Navigaatio.dc.html (main site, EN). Pages not in the proto are shown without a link. */
+(function(){
+  var MENU=[
+    /* [label, items, hub]: the hub (overview page) heads the panel as its own link, set apart from the items (Olli 17.11.) */
+    ['Food Processing',[['Meat Processing',''],['Poultry Processing',''],['Pet Food Processing','pet-food.html']],null],
+    ['Products',[['Plate Freezing Systems','plate-freezing.html'],['BinStacker',''],['Titan Series','titan.html'],['Finmatec Mixers','mixers.html'],['Screw Conveyors',''],['Belt Conveyors',''],['Silos, Bins & Hoppers','']],['All products','products.html']],
+    ['Service & Spare Parts',[['Spare Parts','spare-parts.html'],['Service & support','service.html'],['Upgrades & retrofits','service.html#upgrades']],null],
+    ['References','references.html'],
+    ['Resources',[['Engineering Resources',''],['Guides','']],null],
+    ['About',[['How We Deliver','how-we-deliver.html'],['Safety & Hygiene','safety.html'],['News','news.html'],['Join our team','join.html']],['About Finmatec','about.html']]
+  ];
+  if(window.FM_HUBS) MENU.forEach(function(m){ if(window.FM_HUBS[m[0]]) m[2]=window.FM_HUBS[m[0]]; });
+  var here=(location.pathname.split('/').pop()||'index.html');
+  function esc(s){return s.replace(/&/g,'&amp;');}
+  function hub(h){ return h ? '<a class="hub" href="'+h[1]+'"'+(h[1]===here?' aria-current="page"':'')+'>'+esc(h[0])+' <span aria-hidden="true">&rarr;</span></a>' : ''; }
+  function item(l){ return l[1] ? '<a href="'+l[1]+'"'+(l[1]===here?' aria-current="page"':'')+'>'+esc(l[0])+'</a>' : '<span class="off">'+esc(l[0])+'</span>'; }
+  var css='.pnav-dd{position:absolute;top:calc(100% + 14px);left:-18px;min-width:250px;padding:10px;border-radius:22px;background:#fff;box-shadow:0 0 0 1px rgba(36,21,186,.10),0 24px 48px -18px rgba(13,14,43,.28);display:none;z-index:50}'
+   +'.pnav-li{position:relative}.pnav-li.open .pnav-dd{display:flex;flex-direction:column;align-items:stretch;gap:0}.pnav-li>a,.pnav-li>span.pl{cursor:pointer}'
+   +'.fm .nav .pnav-dd a,.fm .nav .pnav-dd .off{display:block!important;width:auto!important;height:auto!important;margin:0!important;border:0;background:none;box-shadow:none;text-transform:none;letter-spacing:0;padding:11px 14px;border-radius:14px;font-size:15px;font-weight:500;line-height:1.3;color:#0D0E2B;text-decoration:none;white-space:nowrap}'
+   +'.fm .nav .pnav-dd a:hover,.fm .nav .pnav-dd a[aria-current]{background:#ECEEF7;color:#2415BA}.fm .nav .pnav-dd .off{color:#9a9cb3;cursor:default}.fm .nav .pnav-dd a::before{content:none}'
+   +'.fm .nav .pnav-dd a.hub{font-weight:700;color:#2415BA;margin-bottom:8px!important;position:relative}.fm .nav .pnav-dd a.hub::after{content:"";position:absolute;left:14px;right:14px;bottom:-5px;height:1px;background:#D9DBE8}'
+   +'.pnav-m a.hub{color:#2415BA}.pnav-m .solo{margin-top:18px}'
+   +'.pnav-m{position:fixed;inset:0;z-index:1000;background:#fff;overflow:auto;padding:22px 20px 40px;font-family:"Exo 2",sans-serif;display:none}'
+   +'.pnav-m.open{display:block}.pnav-m .top{display:flex;justify-content:space-between;align-items:center;margin-bottom:18px}'
+   +'.pnav-m .top img{height:28px}.pnav-m .x{width:44px;height:44px;border-radius:50%;border:0;background:#2415BA;color:#fff;font-size:22px;line-height:1}'
+   +'.pnav-m h4{margin:22px 0 6px;font-size:12px;font-weight:700;letter-spacing:.12em;text-transform:uppercase;color:#5F617E}'
+   +'.pnav-m a,.pnav-m .off{display:block;padding:12px 0;border-bottom:1px solid #ECEEF7;font-size:18px;font-weight:600;color:#0D0E2B;text-decoration:none}'
+   +'.pnav-m .top a{border:0;padding:0}.pnav-m a[aria-current]{color:#2415BA}.pnav-m .off{color:#9a9cb3;font-weight:500}'
+   +'.pnav-m .q{display:flex;justify-content:center;margin-top:28px;padding:16px;border-radius:999px;background:#2415BA;color:#fff;border:0}';
+  var st=document.createElement('style'); st.textContent=css; document.head.appendChild(st);
+  function key(t){return t.replace(/[▾\s]+$/,'').replace(/\s+/g,' ').trim().toLowerCase();}
+  var byKey={}; MENU.forEach(function(m){byKey[m[0].toLowerCase()]=m;});
+  /* full-bleed photo hero fills the window, util bar and nav included, so its CTAs stay above the fold (Olli 17.11.) */
+  (function(){
+    var fm=document.querySelector('.fm'), hero=fm&&fm.querySelector('section.hero');
+    if(!hero) return;
+    var base=parseFloat(getComputedStyle(hero).height)||0; if(base<600) return;
+    function fold(){
+      var z=parseFloat(fm.style.zoom)||1, m=fm.classList.contains('m');
+      var h=window.innerHeight/z-(m?16:24), lo=m?560:620, hi=m?900:1100; /* the next section peeks in */
+      hero.style.height=Math.round(Math.max(lo,Math.min(hi,h)))+'px';
+    }
+    fold(); window.addEventListener('resize',function(){requestAnimationFrame(fold);}); window.addEventListener('load',fold);
+  })();
+  var nav=document.querySelector('.fm .nav'); if(!nav || document.querySelector('.fm.ww')) return; /* WWTP is its own site with its own menu */
+  var lis=[].slice.call(nav.querySelectorAll('ul > li'));
+  lis.forEach(function(li){
+    var m=byKey[key(li.textContent)]; if(!m) return;
+    li.classList.add('pnav-li');
+    if(typeof m[1]==='string'){ var a=li.querySelector('a'); if(a) a.setAttribute('href',m[1]); else li.innerHTML='<a href="'+m[1]+'">'+li.innerHTML+'</a>'; return; }
+    var dd=document.createElement('div'); dd.className='pnav-dd'; dd.innerHTML=hub(m[2])+m[1].map(item).join(''); li.appendChild(dd);
+    var trig=li.querySelector('a')||li; if(trig.tagName==='A') trig.setAttribute('href','#');
+    trig.setAttribute('aria-haspopup','true'); trig.setAttribute('aria-expanded','false');
+    trig.addEventListener('click',function(e){ if(e.target.closest('.pnav-dd')) return; e.preventDefault(); var o=!li.classList.contains('open'); lis.forEach(function(x){x.classList.remove('open');}); li.classList.toggle('open',o); trig.setAttribute('aria-expanded',o?'true':'false'); });
+  });
+  document.addEventListener('click',function(e){ if(!e.target.closest('.pnav-li')) lis.forEach(function(x){x.classList.remove('open');}); });
+  document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ lis.forEach(function(x){x.classList.remove('open');}); mm.classList.remove('open'); }});
+  /* mobile menu */
+  var logo=nav.querySelector('img.logoimg'), mm=document.createElement('div'); mm.className='pnav-m'; mm.setAttribute('role','dialog'); mm.setAttribute('aria-label','Menu');
+  mm.innerHTML='<div class="top"><a href="index.html"><img src="'+(logo?logo.getAttribute('src'):'')+'" alt="Finmatec"></a><button class="x" aria-label="Close menu">&times;</button></div>'
+    +MENU.map(function(m){ return typeof m[1]==='string' ? '<div class="solo">'+item(m)+'</div>' : '<h4>'+esc(m[0])+'</h4>'+hub(m[2])+m[1].map(item).join(''); }).join('')
+    +'<a class="q" href="contact.html">Request a quote</a>';
+  document.body.appendChild(mm);
+  mm.querySelector('.x').addEventListener('click',function(){mm.classList.remove('open');});
+  [].slice.call(document.querySelectorAll('.fm .burger')).forEach(function(b){ b.addEventListener('click',function(e){e.preventDefault(); mm.classList.add('open');}); });
+})();
+/* Proto forms and links (Olli 17.11.): option chips select, a topic/product in the link preselects the form,
+   send buttons check the email and confirm, drop zones open a file picker, and links without a target do nothing. */
+(function(){
+  var fm=document.querySelector('.fm'); if(!fm) return;
+  var st=document.createElement('style');
+  st.textContent='.fm a[href="#"]:not([aria-haspopup]){cursor:default}'
+    +'.fm .pf-err{border-bottom-color:#d93a3a!important}.fm .pf-sent{margin-top:14px;font-size:15px;font-weight:600;color:#2415BA}'
+    +'.fm .fpz-drop{cursor:pointer}.fm .fpz-drop.has b{color:#2415BA}';
+  document.head.appendChild(st);
+  /* option chips: one choice per group */
+  fm.addEventListener('click',function(e){
+    var c=e.target.closest('button.chip.opt'); if(!c) return;
+    var g=c.closest('.chips')||c.parentNode;
+    [].forEach.call(g.querySelectorAll('button.chip.opt'),function(b){ var on=b===c; b.classList.toggle('on',on); b.setAttribute('aria-pressed',on?'true':'false'); });
+  });
+  /* topic and product from the link: #contact?topic=technical&product=CMX%203000 or contact.html?topic=... */
+  function params(){
+    var q=location.search.slice(1); var h=location.hash; if(h.indexOf('?')>-1) q=(q?q+'&':'')+h.split('?')[1];
+    var o={}; q.split('&').forEach(function(kv){ if(!kv) return; var p=kv.split('='); o[decodeURIComponent(p[0])]=decodeURIComponent((p[1]||'').replace(/\+/g,' ')); }); return o;
+  }
+  var TOPIC={technical:/technical/i, budget:/budget/i, service:/service|something/i, business:/business/i, project:/new project/i};
+  function preselect(){
+    var p=params(), form=(document.getElementById('contact')||fm).querySelector('.form, form');
+    if(!form) return;
+    if(p.topic && TOPIC[p.topic]){
+      var cs=[].slice.call(form.querySelectorAll('button.chip.opt')), hit=cs.filter(function(b){return TOPIC[p.topic].test(b.textContent);})[0];
+      if(hit) hit.click();
+    }
+    if(p.product){
+      var inp=[].slice.call(form.querySelectorAll('input')).filter(function(i){return /product|machine|mixer/i.test((i.name||'')+' '+(i.placeholder||'')+' '+(i.value||''));})[0];
+      if(inp) inp.value=(/mixers?/i.test(inp.value)&&!/mixer/i.test(p.product)?inp.value+', ':'')+p.product;
+    }
+    var anchor=location.hash.split('?')[0];
+    if(anchor.length>1){ var t=document.getElementById(anchor.slice(1)); if(t) setTimeout(function(){ t.scrollIntoView(); },60); }
+  }
+  preselect(); window.addEventListener('hashchange',preselect);
+  /* send buttons inside a form */
+  fm.addEventListener('click',function(e){
+    var b=e.target.closest('a.btn, button.btn'); if(!b) return;
+    var f=b.closest('.form, form, .rform, .fpz-pan, .cb'); if(!f || b.closest('.chips')) return;
+    if(b.getAttribute('href') && b.getAttribute('href')!=='#' && !b.closest('.form, form, .rform, .fpz-pan')) return;
+    e.preventDefault();
+    var mail=[].slice.call(f.querySelectorAll('input[type=email], input[name*=mail], input[placeholder*=mail i]'))[0];
+    if(mail && !/.+@.+\..+/.test(mail.value)){ var l=mail.closest('label')||mail; l.classList.add('pf-err'); mail.focus(); mail.addEventListener('input',function(){ l.classList.remove('pf-err'); },{once:true}); return; }
+    if(b.dataset.sent) return; b.dataset.sent='1';
+    var lab=b.firstChild&&b.firstChild.nodeType===3?b.firstChild:null; if(lab) lab.nodeValue='Sent ';
+    var msg=document.createElement('p'); msg.className='pf-sent'; msg.textContent='Thank you. We have received your message and will get back to you.';
+    b.parentNode.insertBefore(msg,b.nextSibling);
+  },true);
+  /* drop zones open a file picker and show the chosen file */
+  [].forEach.call(fm.querySelectorAll('.fpz-drop'),function(d){
+    var i=document.createElement('input'); i.type='file'; i.multiple=true; i.style.display='none'; d.appendChild(i);
+    d.addEventListener('click',function(e){ if(e.target!==i) i.click(); });
+    i.addEventListener('change',function(){ if(!i.files.length) return; var b=d.querySelector('b'); if(b) b.textContent=i.files.length===1?i.files[0].name:i.files.length+' files added'; d.classList.add('has'); });
+  });
+  /* links without a target in the proto stay put instead of jumping to the top */
+  document.addEventListener('click',function(e){ var a=e.target.closest('a[href="#"]'); if(a && !a.hasAttribute('aria-haspopup')) e.preventDefault(); });
+})();
+</script>
+</body>
+</html>
