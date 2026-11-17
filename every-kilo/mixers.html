@@ -857,7 +857,12 @@
 @media (max-width:560px){.iso-plate{padding:48px 12px 70px}.iso-plate-corner[data-corner="hint"]{bottom:18px}}
 @media (prefers-reduced-motion:reduce){.iso-line[data-flow],.iso-dots circle[data-pulse]{animation:none}}
 .m3d{padding:var(--sec) var(--gut);background:#fff}
-.m3d .m3d-b{margin-top:40px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:56px;align-items:center}
+.m3d .m3d-b{margin-top:40px}
+.m3d .leads{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.m3d .leads path{fill:none;stroke:var(--mute);stroke-width:1;vector-effect:non-scaling-stroke}
+.m3d .call{position:absolute;font-size:var(--small);line-height:1.45;color:var(--ink2)}
+.m3d .call b{display:block;margin-bottom:2px;font-size:var(--body);font-weight:600;color:var(--ink)}
+.m3d .call a{display:inline-flex;margin-top:6px;font-size:var(--small);font-weight:600;color:var(--dark);border-bottom:1.5px solid currentColor}
 .m3d .fig{position:relative}
 .m3d .fig svg{display:block;width:100%;height:auto}
 .m3d .pin{position:absolute;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:0 0 0 1px var(--line),0 6px 16px rgba(13,14,43,.10);font-family:var(--fl);font-size:var(--cap);font-weight:700;letter-spacing:.12em;color:var(--dark)}
@@ -872,7 +877,7 @@
 .fm.m .m3d .m3d-b{margin-top:28px;display:block}
 .fm.m .m3d .fig{margin:0 calc(var(--gut) * -1);overflow:hidden}
 .fm.m .m3d .pin{width:36px;height:36px}
-.fm.m .fm.m .m3d .legend{margin-top:16px}
+.fm.m .m3d .legend{margin-top:16px}
 .fm.m .m3d .legend li{padding:14px 0}
 .fm.m .m3d .legend li{grid-template-columns:36px 1fr;gap:12px}
 .fm.m .m3d .legend i{width:36px;height:36px}
@@ -971,13 +976,6 @@
 
 /* ===== Product family page: mobile 390 ===== */
 
-.m3d .m3d-b{margin-top:40px}
-.m3d .leads{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
-.m3d .leads path{fill:none;stroke:var(--mute);stroke-width:1;vector-effect:non-scaling-stroke}
-.m3d .call{position:absolute;font-size:var(--small);line-height:1.45;color:var(--ink2)}
-.m3d .call b{display:block;margin-bottom:2px;font-size:var(--body);font-weight:600;color:var(--ink)}
-.m3d .call a{display:inline-flex;margin-top:6px;font-size:var(--small);font-weight:600;color:var(--dark);border-bottom:1.5px solid currentColor}
-.fm.m .m3d .legend{margin-top:16px}
 </style>
 <style media="(max-width:760px)">
 /* ===== Finmatec homepage stylesheet: the base for every page (shared by all 4 homepage artboards, unified 16.11.2026) ===== */
@@ -1828,7 +1826,12 @@
 @media (max-width:560px){.iso-plate{padding:48px 12px 70px}.iso-plate-corner[data-corner="hint"]{bottom:18px}}
 @media (prefers-reduced-motion:reduce){.iso-line[data-flow],.iso-dots circle[data-pulse]{animation:none}}
 .m3d{padding:var(--sec) var(--gut);background:#fff}
-.m3d .m3d-b{margin-top:40px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:56px;align-items:center}
+.m3d .m3d-b{margin-top:40px}
+.m3d .leads{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
+.m3d .leads path{fill:none;stroke:var(--mute);stroke-width:1;vector-effect:non-scaling-stroke}
+.m3d .call{position:absolute;font-size:var(--small);line-height:1.45;color:var(--ink2)}
+.m3d .call b{display:block;margin-bottom:2px;font-size:var(--body);font-weight:600;color:var(--ink)}
+.m3d .call a{display:inline-flex;margin-top:6px;font-size:var(--small);font-weight:600;color:var(--dark);border-bottom:1.5px solid currentColor}
 .m3d .fig{position:relative}
 .m3d .fig svg{display:block;width:100%;height:auto}
 .m3d .pin{position:absolute;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:0 0 0 1px var(--line),0 6px 16px rgba(13,14,43,.10);font-family:var(--fl);font-size:var(--cap);font-weight:700;letter-spacing:.12em;color:var(--dark)}
@@ -1843,7 +1846,7 @@
 .fm.m .m3d .m3d-b{margin-top:28px;display:block}
 .fm.m .m3d .fig{margin:0 calc(var(--gut) * -1);overflow:hidden}
 .fm.m .m3d .pin{width:36px;height:36px}
-.fm.m .fm.m .m3d .legend{margin-top:16px}
+.fm.m .m3d .legend{margin-top:16px}
 .fm.m .m3d .legend li{padding:14px 0}
 .fm.m .m3d .legend li{grid-template-columns:36px 1fr;gap:12px}
 .fm.m .m3d .legend i{width:36px;height:36px}
@@ -1942,13 +1945,6 @@
 
 /* ===== Product family page: mobile 390 ===== */
 
-.m3d .m3d-b{margin-top:40px}
-.m3d .leads{position:absolute;inset:0;width:100%;height:100%;pointer-events:none;overflow:visible}
-.m3d .leads path{fill:none;stroke:var(--mute);stroke-width:1;vector-effect:non-scaling-stroke}
-.m3d .call{position:absolute;font-size:var(--small);line-height:1.45;color:var(--ink2)}
-.m3d .call b{display:block;margin-bottom:2px;font-size:var(--body);font-weight:600;color:var(--ink)}
-.m3d .call a{display:inline-flex;margin-top:6px;font-size:var(--small);font-weight:600;color:var(--dark);border-bottom:1.5px solid currentColor}
-.fm.m .m3d .legend{margin-top:16px}
 
 
 /* ===== Finmatec homepage stylesheet: the base for every page (shared by all 4 homepage artboards, unified 16.11.2026) ===== */
@@ -2028,6 +2024,8 @@
 
 /* ===== Product family page: mobile 390 ===== */
 
+.m3d .m3d-b{margin-top:40px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:56px;align-items:center}
+.fm.m .fm.m .m3d .legend{margin-top:16px}
 </style>
 <style>
 html,body{margin:0;background:#fff}
@@ -2063,7 +2061,8 @@ body{overflow-x:hidden}
         <div class="ph-keys"><div><b>30<i>+</i></b><span class="mono">Years of mixer design</span></div><div><b>8</b><span class="mono">Sizes in 3 series</span></div><div><b>5&nbsp;500<small> l</small></b><span class="mono">Largest size</span></div></div>
         <div class="ph-ctas"><a class="btn ghost" href="#mixers">Find your mixer <i><svg class="ic" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a></div>
       </div>
-      <div class="ph-shot"><div class="in"><img loading="lazy" decoding="async" src="media/k7.jpg" alt="Finmatec mixer with pneumatic discharge hatches, fed by an inclined conveyor"><span class="tag">Finmatec mixer in a customer line</span></div></div>
+      <!-- Olli 17.11.: hero-kuvaksi k9, jossa sekoitin on pääosassa (k7:ssä kuljetin vei kuvan) -->
+      <div class="ph-shot"><div class="in"><img loading="lazy" decoding="async" src="media/k9.jpg" alt="Finmatec mixer with service platform and stairs in a food plant" style="object-position:50% 80%"><span class="tag">Finmatec mixer in a customer line</span></div></div>
     </div>
   </section>
   <!-- 2 Pikareitti: ankkuripalkki (uusi) -->
@@ -2225,7 +2224,8 @@ body{overflow-x:hidden}
         <div class="ph-keys"><div><b>30<i>+</i></b><span class="mono">Years of mixer design</span></div><div><b>8</b><span class="mono">Sizes in 3 series</span></div><div><b>5&nbsp;500<small> l</small></b><span class="mono">Largest size</span></div></div>
         <div class="ph-ctas"><a class="btn ghost" href="#mixers">Find your mixer <i><svg class="ic" width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a></div>
       </div>
-      <div class="ph-shot"><div class="in"><img loading="lazy" decoding="async" src="media/k7.jpg" alt="Finmatec mixer with pneumatic discharge hatches, fed by an inclined conveyor"><span class="tag">Finmatec mixer in a customer line</span></div></div>
+      <!-- Olli 17.11.: hero-kuvaksi k9, jossa sekoitin on pääosassa (k7:ssä kuljetin vei kuvan) -->
+      <div class="ph-shot"><div class="in"><img loading="lazy" decoding="async" src="media/k9.jpg" alt="Finmatec mixer with service platform and stairs in a food plant" style="object-position:50% 80%"><span class="tag">Finmatec mixer in a customer line</span></div></div>
     </div>
   </section>
   <!-- 2 Pikareitti mobiilissa: yksi painike, osiot listana -->
