@@ -93,7 +93,7 @@
 .fm label.f:focus-within, .fm label.ta:focus-within { border-bottom-color:var(--dark); }
 
 /* Utility bar */
-.util { height:38px; background:var(--deep); color:#cfcfcf; font-size:13px; display:flex; align-items:center; justify-content:space-between; padding:0 var(--gut); }
+.util { height:38px; background:var(--dark); color:rgba(255,255,255,.78); font-size:13px; display:flex; align-items:center; justify-content:space-between; padding:0 var(--gut); }
 .util span { margin-right:28px; }
 .util b { color:#fff; font-weight:600; }
 .util .ext { display:inline-flex; align-items:center; gap:7px; color:#fff; }
@@ -857,18 +857,23 @@
 @media (max-width:560px){.iso-plate{padding:48px 12px 70px}.iso-plate-corner[data-corner="hint"]{bottom:18px}}
 @media (prefers-reduced-motion:reduce){.iso-line[data-flow],.iso-dots circle[data-pulse]{animation:none}}
 .m3d{padding:var(--sec) var(--gut);background:#fff}
-.m3d .fig{position:relative;margin-top:40px}
+.m3d .m3d-b{margin-top:40px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:56px;align-items:center}
+.m3d .fig{position:relative}
 .m3d .fig svg{display:block;width:100%;height:auto}
 .m3d .pin{position:absolute;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:0 0 0 1px var(--line),0 6px 16px rgba(13,14,43,.10);font-family:var(--fl);font-size:var(--cap);font-weight:700;letter-spacing:.12em;color:var(--dark)}
-.m3d .legend{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;border-top:1px solid var(--line);padding-top:24px}
+.m3d .legend{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.m3d .legend li{padding:22px 0;border-top:1px solid var(--line)}
+.m3d .legend li:last-child{border-bottom:1px solid var(--line)}
 .m3d .legend li{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
 .m3d .legend i{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--soft);font-style:normal;font-family:var(--fl);font-size:var(--cap);font-weight:700;letter-spacing:.12em;color:var(--dark)}
 .m3d .legend p{font-size:var(--body);line-height:1.5;color:var(--ink2)}
 .m3d .legend b{display:block;font-weight:600;color:var(--ink)}
 .m3d .legend a{display:inline-flex;margin-top:8px;font-size:var(--body);font-weight:600;color:var(--dark);border-bottom:1.5px solid currentColor}
-.fm.m .m3d .fig{margin:28px calc(var(--gut) * -1) 0}
+.fm.m .m3d .m3d-b{margin-top:28px;display:block}
+.fm.m .m3d .fig{margin:0 calc(var(--gut) * -1);overflow:hidden}
 .fm.m .m3d .pin{width:36px;height:36px}
-.fm.m .fm.m .m3d .legend{grid-template-columns:1fr;gap:18px;margin-top:20px}
+.fm.m .fm.m .m3d .legend{margin-top:16px}
+.fm.m .m3d .legend li{padding:14px 0}
 .fm.m .m3d .legend li{grid-template-columns:36px 1fr;gap:12px}
 .fm.m .m3d .legend i{width:36px;height:36px}
 .fm.m .m3d .legend p,.fm.m .m3d .legend a{font-size:var(--small)}
@@ -966,15 +971,6 @@
 
 /* ===== Product family page: mobile 390 ===== */
 
-.m3d .m3d-b{margin-top:40px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:56px;align-items:center}
-.m3d .fig{position:relative}
-.m3d .legend{list-style:none;margin:0;padding:0;display:grid;gap:0}
-.m3d .legend li{padding:22px 0;border-top:1px solid var(--line)}
-.m3d .legend li:last-child{border-bottom:1px solid var(--line)}
-.fm.m .m3d .m3d-b{margin-top:28px;display:block}
-.fm.m .m3d .fig{margin:0 calc(var(--gut) * -1);overflow:hidden}
-.fm.m .fm.m .m3d .legend{margin-top:16px}
-.fm.m .m3d .legend li{padding:14px 0}
 </style>
 <style media="(max-width:760px)">
 /* ===== Finmatec homepage stylesheet: the base for every page (shared by all 4 homepage artboards, unified 16.11.2026) ===== */
@@ -1061,7 +1057,7 @@
 .fm label.f:focus-within, .fm label.ta:focus-within { border-bottom-color:var(--dark); }
 
 /* Utility bar */
-.util { height:38px; background:var(--deep); color:#cfcfcf; font-size:13px; display:flex; align-items:center; justify-content:space-between; padding:0 var(--gut); }
+.util { height:38px; background:var(--dark); color:rgba(255,255,255,.78); font-size:13px; display:flex; align-items:center; justify-content:space-between; padding:0 var(--gut); }
 .util span { margin-right:28px; }
 .util b { color:#fff; font-weight:600; }
 .util .ext { display:inline-flex; align-items:center; gap:7px; color:#fff; }
@@ -1825,18 +1821,23 @@
 @media (max-width:560px){.iso-plate{padding:48px 12px 70px}.iso-plate-corner[data-corner="hint"]{bottom:18px}}
 @media (prefers-reduced-motion:reduce){.iso-line[data-flow],.iso-dots circle[data-pulse]{animation:none}}
 .m3d{padding:var(--sec) var(--gut);background:#fff}
-.m3d .fig{position:relative;margin-top:40px}
+.m3d .m3d-b{margin-top:40px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:56px;align-items:center}
+.m3d .fig{position:relative}
 .m3d .fig svg{display:block;width:100%;height:auto}
 .m3d .pin{position:absolute;transform:translate(-50%,-50%);width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:#fff;box-shadow:0 0 0 1px var(--line),0 6px 16px rgba(13,14,43,.10);font-family:var(--fl);font-size:var(--cap);font-weight:700;letter-spacing:.12em;color:var(--dark)}
-.m3d .legend{list-style:none;margin:28px 0 0;padding:0;display:grid;grid-template-columns:repeat(3,1fr);gap:32px;border-top:1px solid var(--line);padding-top:24px}
+.m3d .legend{list-style:none;margin:0;padding:0;display:grid;gap:0}
+.m3d .legend li{padding:22px 0;border-top:1px solid var(--line)}
+.m3d .legend li:last-child{border-bottom:1px solid var(--line)}
 .m3d .legend li{display:grid;grid-template-columns:44px 1fr;gap:16px;align-items:start}
 .m3d .legend i{width:44px;height:44px;border-radius:50%;display:grid;place-items:center;background:var(--soft);font-style:normal;font-family:var(--fl);font-size:var(--cap);font-weight:700;letter-spacing:.12em;color:var(--dark)}
 .m3d .legend p{font-size:var(--body);line-height:1.5;color:var(--ink2)}
 .m3d .legend b{display:block;font-weight:600;color:var(--ink)}
 .m3d .legend a{display:inline-flex;margin-top:8px;font-size:var(--body);font-weight:600;color:var(--dark);border-bottom:1.5px solid currentColor}
-.fm.m .m3d .fig{margin:28px calc(var(--gut) * -1) 0}
+.fm.m .m3d .m3d-b{margin-top:28px;display:block}
+.fm.m .m3d .fig{margin:0 calc(var(--gut) * -1);overflow:hidden}
 .fm.m .m3d .pin{width:36px;height:36px}
-.fm.m .fm.m .m3d .legend{grid-template-columns:1fr;gap:18px;margin-top:20px}
+.fm.m .fm.m .m3d .legend{margin-top:16px}
+.fm.m .m3d .legend li{padding:14px 0}
 .fm.m .m3d .legend li{grid-template-columns:36px 1fr;gap:12px}
 .fm.m .m3d .legend i{width:36px;height:36px}
 .fm.m .m3d .legend p,.fm.m .m3d .legend a{font-size:var(--small)}
@@ -1934,15 +1935,6 @@
 
 /* ===== Product family page: mobile 390 ===== */
 
-.m3d .m3d-b{margin-top:40px;display:grid;grid-template-columns:minmax(0,1fr) 300px;gap:56px;align-items:center}
-.m3d .fig{position:relative}
-.m3d .legend{list-style:none;margin:0;padding:0;display:grid;gap:0}
-.m3d .legend li{padding:22px 0;border-top:1px solid var(--line)}
-.m3d .legend li:last-child{border-bottom:1px solid var(--line)}
-.fm.m .m3d .m3d-b{margin-top:28px;display:block}
-.fm.m .m3d .fig{margin:0 calc(var(--gut) * -1);overflow:hidden}
-.fm.m .fm.m .m3d .legend{margin-top:16px}
-.fm.m .m3d .legend li{padding:14px 0}
 
 
 /* ===== Finmatec homepage stylesheet: the base for every page (shared by all 4 homepage artboards, unified 16.11.2026) ===== */
@@ -2042,7 +2034,7 @@ body{overflow-x:hidden}
 <body>
 <template id="td"><div class="fm">
   <div class="util">
-    <div><span>Spare parts: <a href="mailto:varaosat@finmatec.fi"><b>varaosat@finmatec.fi</b></a></span><span><a href="#">Service hotline</a></span></div>
+    <div><span>Spare parts: <a href="mailto:varaosat@finmatec.fi"><b>varaosat@finmatec.fi</b></a></span><span>Service hotline: <a href="tel:+358400862694"><b>+358 40 086 2694</b></a></span></div>
     <div><a class="ext" href="#">Trading Partners in Finland <svg class="ic" width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"></path></svg></a></div>
   </div>
   <!-- 1 Kutsu ja halu: tuotehero (uusi) -->
