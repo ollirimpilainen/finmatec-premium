@@ -440,7 +440,9 @@
 .fm .shead h2 { margin-top:18px; }
 .fm .shead .lead { display:grid; gap:14px; justify-items:start; }
 .nav ul li.on a { color:var(--dark); font-weight:600; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:9px; }
-.hero.ref .media::after, .hero.story .media::after { background:linear-gradient(180deg, rgba(13,14,43,.55) 0%, rgba(13,14,43,.18) 24%, rgba(13,14,43,.5) 50%, rgba(13,14,43,.94) 100%); }
+.hero.story .media::after { background:linear-gradient(180deg, rgba(13,14,43,.55) 0%, rgba(13,14,43,.18) 24%, rgba(13,14,43,.5) 50%, rgba(13,14,43,.94) 100%); }
+/* References hero: photo in natural colour; neutral dark fade only below the middle, behind the text (Olli 17.11.2026). Stops in %, the proto stretches the hero to the window. */
+.hero.ref .media::after { background:linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0) 46%, rgba(10,10,10,.55) 68%, rgba(10,10,10,.9) 100%); }
 .fm .note { margin-top:24px; display:flex; gap:14px; align-items:center; font-size:var(--small); color:var(--ink2); }
 
 /* Hero: references */
@@ -495,7 +497,11 @@
 .rc .bd { flex:1; display:flex; flex-direction:column; gap:10px; padding:24px 26px 28px; }
 .rc .meta { color:var(--ink2); }
 .rc h3 { font-size:var(--h4); line-height:1.15; color:var(--dark); }
-.rc .tlink { margin-top:auto; align-self:flex-start; font-size:var(--body); }
+.rc .bd p { font-size:var(--body); line-height:1.5; color:var(--ink2); }
+.rc .lg { position:relative; }
+.rc .go { position:absolute; top:14px; right:14px; width:44px; height:44px; border-radius:50%; display:grid; place-items:center; background:var(--acc); color:var(--deep); }
+.rc .go svg { width:20px; height:20px; }
+.rc.has h3 { text-decoration:underline; text-decoration-thickness:1.5px; text-underline-offset:5px; }
 .rc .bd h3 + .tlink { margin-top:auto; padding-top:0; }
 .rc .bd { min-height:140px; }
 
@@ -675,7 +681,8 @@
 .fm.m .rc .lg img[alt="Snellman"], .fm.m .rc .lg img[alt="Leo Group"] { max-height:56px; }
 .fm.m .rc .bd { min-height:0; padding:16px 16px 14px; gap:6px; }
 .fm.m .rc h3 { font-size:19px; }
-.fm.m .rc .tlink { margin-top:6px; min-height:36px; font-size:15px; }
+.fm.m .rc .bd p { font-size:var(--small); }
+.fm.m .rc .go { top:auto; right:auto; bottom:10px; left:10px; width:40px; height:40px; }
 .fm.m .sp { gap:16px; }
 .fm.m .sp .shead { margin-bottom:12px; }
 .fm.m .spp { grid-template-columns:1fr; padding:12px 12px 22px; gap:22px; border-radius:var(--r-panel); }
@@ -1549,12 +1556,20 @@
 /* ===== Mobile 390 ===== */
 
 /* ===== References page and customer story (ui/work/references/scripts/references_page.py, 17.11.2026). Base above = live homepage stylesheet. ===== */
+.hero.story .media::after { background:linear-gradient(180deg, rgba(13,14,43,.55) 0%, rgba(13,14,43,.18) 24%, rgba(13,14,43,.5) 50%, rgba(13,14,43,.94) 100%); }
+/* References hero: photo in natural colour; neutral dark fade only below the middle, behind the text (Olli 17.11.2026). Stops in %, the proto stretches the hero to the window. */
+.hero.ref .media::after { background:linear-gradient(180deg, rgba(10,10,10,0) 0%, rgba(10,10,10,0) 46%, rgba(10,10,10,.55) 68%, rgba(10,10,10,.9) 100%); }
 
 /* Hero: references */
 
 /* StoryCard: photo, meta, result-led title, facts. Whole card is the link (arrow ball). Text styles: cap, h3/h4, body. */
 
 /* ReferenceCard: logo panel, solution (and country), customer, text link. Text styles: cap, h4, link. */
+.rc .bd p { font-size:var(--body); line-height:1.5; color:var(--ink2); }
+.rc .lg { position:relative; }
+.rc .go { position:absolute; top:14px; right:14px; width:44px; height:44px; border-radius:50%; display:grid; place-items:center; background:var(--acc); color:var(--deep); }
+.rc .go svg { width:20px; height:20px; }
+.rc.has h3 { text-decoration:underline; text-decoration-thickness:1.5px; text-underline-offset:5px; }
 
 /* SolutionProof panel: media + content. Text styles in the content: cap (eyebrow, fact labels), h3 (statement), number (fact). */
 
@@ -1577,6 +1592,8 @@
 /* More references */
 
 /* ===== mobile ===== */
+.fm.m .rc .bd p { font-size:var(--small); }
+.fm.m .rc .go { top:auto; right:auto; bottom:10px; left:10px; width:40px; height:40px; }
 </style>
 <style>
 html,body{margin:0;background:#fff}
@@ -1686,7 +1703,7 @@ body{overflow-x:hidden}
   <!-- 6 More references: ReferenceCards -->
   <section class="more">
     <div class="shead"><div><span class="eyebrow">More references</span><h2>Other plants, other lines.</h2></div><div class="lead"><a class="tlink" href="references.html">All references <svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a></div></div>
-    <div class="rc-grid three"><a class="cell rc" href="#"><div class="core"><div class="lg"><img loading="lazy" decoding="async" src="media/blob/8e63ea242ac7b2b3628cb0a59a13b540.png" alt="Atria"></div><div class="bd"><span class="mono meta">BinStacker</span><h3>Atria</h3><span class="tlink">Read the reference <svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span></div></div></a><a class="cell rc" href="#"><div class="core"><div class="lg"><img loading="lazy" decoding="async" src="media/logos/1c44fe89610bdf27e7e239529df660c2.jpg" alt="Bonduelle"></div><div class="bd"><span class="mono meta">Plate Freezing Systems</span><h3>Bonduelle</h3><span class="tlink">Read the reference <svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span></div></div></a><a class="cell rc" href="#"><div class="core"><div class="lg"><img loading="lazy" decoding="async" src="media/logos/3c9964ff3a94c0fa3ca143f838d4f995.jpg" alt="Leo Group"></div><div class="bd"><span class="mono meta">Plate Freezing Systems</span><h3>Leo Group</h3><span class="tlink">Read the reference <svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span></div></div></a></div>
+    <div class="rc-grid three"><div class="cell rc"><div class="core"><div class="lg"><img loading="lazy" decoding="async" src="media/blob/8e63ea242ac7b2b3628cb0a59a13b540.png" alt="Atria"></div><div class="bd"><span class="mono meta">BinStacker</span><h3>Atria</h3><p>BinStacker automated high storage for 200&nbsp;l bins, delivered by Finmatec.</p></div></div></div><div class="cell rc"><div class="core"><div class="lg"><img loading="lazy" decoding="async" src="media/logos/1c44fe89610bdf27e7e239529df660c2.jpg" alt="Bonduelle"></div><div class="bd"><span class="mono meta">Plate Freezing Systems</span><h3>Bonduelle</h3><p>Plate freezing automation delivered by Finmatec.</p></div></div></div><div class="cell rc"><div class="core"><div class="lg"><img loading="lazy" decoding="async" src="media/logos/3c9964ff3a94c0fa3ca143f838d4f995.jpg" alt="Leo Group"></div><div class="bd"><span class="mono meta">Plate Freezing Systems</span><h3>Leo Group</h3><p>Plate freezing automation delivered by Finmatec.</p></div></div></div></div>
   </section>
 
   <!-- 6 Contact (homepage .cb) -->
@@ -1799,7 +1816,7 @@ body{overflow-x:hidden}
   <!-- 6 More references: ReferenceCards -->
   <section class="more">
     <div class="shead"><div><span class="eyebrow">More references</span><h2>Other plants, other lines.</h2></div><div class="lead"><a class="tlink" href="references.html">All references <svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a></div></div>
-    <div class="rc-grid three"><a class="cell rc" href="#"><div class="core"><div class="lg"><img loading="lazy" decoding="async" src="media/blob/8e63ea242ac7b2b3628cb0a59a13b540.png" alt="Atria"></div><div class="bd"><span class="mono meta">BinStacker</span><h3>Atria</h3><span class="tlink">Read the reference <svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span></div></div></a><a class="cell rc" href="#"><div class="core"><div class="lg"><img loading="lazy" decoding="async" src="media/logos/1c44fe89610bdf27e7e239529df660c2.jpg" alt="Bonduelle"></div><div class="bd"><span class="mono meta">Plate Freezing Systems</span><h3>Bonduelle</h3><span class="tlink">Read the reference <svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span></div></div></a><a class="cell rc" href="#"><div class="core"><div class="lg"><img loading="lazy" decoding="async" src="media/logos/3c9964ff3a94c0fa3ca143f838d4f995.jpg" alt="Leo Group"></div><div class="bd"><span class="mono meta">Plate Freezing Systems</span><h3>Leo Group</h3><span class="tlink">Read the reference <svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span></div></div></a></div>
+    <div class="rc-grid three"><div class="cell rc"><div class="core"><div class="lg"><img loading="lazy" decoding="async" src="media/blob/8e63ea242ac7b2b3628cb0a59a13b540.png" alt="Atria"></div><div class="bd"><span class="mono meta">BinStacker</span><h3>Atria</h3><p>BinStacker automated high storage for 200&nbsp;l bins, delivered by Finmatec.</p></div></div></div><div class="cell rc"><div class="core"><div class="lg"><img loading="lazy" decoding="async" src="media/logos/1c44fe89610bdf27e7e239529df660c2.jpg" alt="Bonduelle"></div><div class="bd"><span class="mono meta">Plate Freezing Systems</span><h3>Bonduelle</h3><p>Plate freezing automation delivered by Finmatec.</p></div></div></div><div class="cell rc"><div class="core"><div class="lg"><img loading="lazy" decoding="async" src="media/logos/3c9964ff3a94c0fa3ca143f838d4f995.jpg" alt="Leo Group"></div><div class="bd"><span class="mono meta">Plate Freezing Systems</span><h3>Leo Group</h3><p>Plate freezing automation delivered by Finmatec.</p></div></div></div></div>
   </section>
 
   <!-- 6 Contact (homepage .cb) -->
