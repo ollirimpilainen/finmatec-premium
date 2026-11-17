@@ -9,6 +9,7 @@
 <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
 <link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400..800&amp;display=swap">
 <style media="(min-width:761px)">
+
 /* ===== Finmatec homepage stylesheet: the base for every page (shared by all 4 homepage artboards, unified 16.11.2026) ===== */
 /* Tokens: colour, type, radius, surface, rhythm. Mobile overrides at the bottom. */
 .fm { --ink:#0D0E2B; --ink2:#3A3C5C; --mute:#5F617E; --line:#D9DBE8; --soft:#ECEEF7; --paper:#F5F6FB; --dark:#2415BA; --acc:#03FF6B; --deep:#0D0E2B;
@@ -18,6 +19,7 @@
   --tray:rgba(36,21,186,.06); --tray-ring:inset 0 0 0 1px rgba(36,21,186,.10); --halo:0 0 0 6px rgba(36,21,186,.06), 0 0 0 7px rgba(36,21,186,.08);
   --sec:80px; --gut:72px;
   width:1440px; background:#fff; color:var(--ink); font-family:var(--fb); font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased; overflow:hidden; }
+
 /* Base */
 .fm * { box-sizing:border-box; }
 .fm p { margin:0; }
@@ -31,12 +33,14 @@
 .fm a:focus-visible, .fm button:focus-visible { outline:2px solid var(--dark); outline-offset:3px; }
 .fm svg.ic { display:block; flex:none; }
 .sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+
 /* Caps label: eyebrow, field label, card label, table key, quote source. One style. */
 .mono, .eyebrow, .fm .lab, .rw small, .fm .level div small, .st .n, .st.star .badge, .c-quote cite, .fm .sheet td:first-child { font-family:var(--fl); font-size:var(--cap); font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
 .eyebrow { display:inline-flex; align-items:center; gap:10px; color:var(--ink2); }
 .eyebrow::before { content:""; width:18px; height:1px; background:var(--dark); }
 .pf .eyebrow, .svc .eyebrow { color:var(--acc); }
 .pf .eyebrow::before, .svc .eyebrow::before { background:var(--acc); }
+
 /* Button: pill + nested arrow ball. Sizes: default 56, .s 48. Styles: .pri, .sec, .ghost; .qk = steel knob, Request a quote only. */
 .btn { display:inline-flex; align-items:center; gap:14px; height:56px; padding:0 8px 0 26px; border-radius:999px; font-weight:600; font-size:16px; transition:transform .5s var(--ease); white-space:nowrap; }
 .btn i { width:40px; height:40px; border-radius:50%; display:grid; place-items:center; flex:none; font-style:normal; }
@@ -52,6 +56,7 @@
 .btn.ghost i { width:auto; height:auto; background:none; }
 .btn.qk { box-shadow:0 10px 24px rgba(36,21,186,.28); }
 .btn.qk i { color:#0b0a26; filter:drop-shadow(0 1px 0 rgba(255,255,255,.9)); background:repeating-radial-gradient(circle at 50% 50%,rgba(255,255,255,0) 0 1px,rgba(27,29,43,.05) 1px 2px),conic-gradient(from 25deg,#f6f8fa,#a9b0bc 11%,#eef1f5 24%,#99a1ae 37%,#f3f5f8 50%,#adb4c0 63%,#ebeef2 75%,#a1a9b6 88%,#f6f8fa); box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 0 0 1px rgba(11,10,38,.18),0 2px 5px rgba(11,10,38,.3); }
+
 /* Link row: a whole row is the link, arrow ball on the right. On dark and blue surfaces. */
 .fm .lrow { display:flex; justify-content:space-between; align-items:center; gap:20px; height:88px; padding:0 22px 0 28px; border-radius:var(--r-row); background:rgba(255,255,255,.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,.16); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); color:#fff; transition:background .4s var(--ease); }
 .fm .lrow:hover { background:rgba(255,255,255,.14); }
@@ -59,15 +64,18 @@
 .fm .lrow small { display:block; margin-top:3px; font-size:var(--small); opacity:.75; }
 .fm .lrow i { width:44px; height:44px; border-radius:50%; display:grid; place-items:center; flex:none; background:var(--acc); color:var(--deep); }
 .fm .lrow i svg { width:20px; height:20px; }
+
 /* Chip: small pill link or option. .opt = selectable option in a form. */
 .fm .chip { display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 16px; border-radius:999px; background:var(--soft); color:var(--dark); font-size:var(--small); font-weight:600; white-space:nowrap; }
 .fm .chip svg { width:14px; height:14px; }
 .st.star .chip { background:rgba(255,255,255,.14); color:#fff; }
 .fm .chip.opt { font:inherit; font-size:var(--small); font-weight:600; border:0; background:transparent; color:var(--ink); cursor:pointer; box-shadow:inset 0 0 0 1.5px var(--line); }
 .fm .chip.opt.on { background:var(--dark); color:#fff; box-shadow:none; }
+
 /* Text link */
 .fm .tlink { display:inline-flex; gap:8px; align-items:center; font-size:17px; font-weight:600; border-bottom:1.5px solid currentColor; padding-bottom:3px; color:var(--dark); white-space:nowrap; }
 .fm .tlink svg { width:16px; height:16px; }
+
 /* Surfaces. Card: tray 28 / core 22 (6 px gap). Panel: tray 36 / core 28 (8 px gap, concentric with a 56 px pill). Halo: single surface with a soft ring. */
 .st, .cell { border-radius:var(--r-card); padding:6px; background:var(--tray); box-shadow:var(--tray-ring); }
 .st .core, .cell > .core { border-radius:var(--r-card-in); overflow:hidden; }
@@ -75,6 +83,7 @@
 .sheet .in, .cb .form .in { flex:1; border-radius:var(--r-panel-in); background:#fff; }
 .w2-ph, .w2-cert { border-radius:var(--r-card); box-shadow:var(--halo); }
 .fpz-pan { border-radius:var(--r-panel); box-shadow:var(--halo); background:#fff; padding:8px; }
+
 /* Fields: hairline */
 .fm label.f, .fm label.ta { display:flex; padding:0 2px; border-bottom:1.5px solid var(--line); color:var(--mute); font-size:15px; }
 .fm label.f { height:52px; align-items:center; }
@@ -83,12 +92,14 @@
 .fm label.ta textarea { height:100%; min-height:72px; }
 .fm label.f input::placeholder, .fm label.ta textarea::placeholder { color:var(--mute); opacity:1; }
 .fm label.f:focus-within, .fm label.ta:focus-within { border-bottom-color:var(--dark); }
+
 /* Utility bar */
 .util { height:38px; background:var(--deep); color:#cfcfcf; font-size:13px; display:flex; align-items:center; justify-content:space-between; padding:0 var(--gut); }
 .util span { margin-right:28px; }
 .util b { color:#fff; font-weight:600; }
 .util .ext { display:inline-flex; align-items:center; gap:7px; color:#fff; }
 .util .ext svg { width:12px; height:12px; opacity:.8; }
+
 /* Hero and nav */
 .hero { position:relative; height:860px; background:var(--deep); color:#fff; }
 .hero .media { position:absolute; inset:0; }
@@ -103,6 +114,7 @@
 .hero-copy { position:absolute; left:var(--gut); right:var(--gut); bottom:168px; z-index:1; }
 .hero h1 { font-size:var(--h1); line-height:.98; max-width:1180px; color:#fff; }
 .router { position:absolute; left:56px; right:56px; bottom:40px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; z-index:1; }
+
 /* Gains and numbers (open hairline grid) */
 .rw { padding:var(--sec) var(--gut); background:#fff; }
 .rw h2.stmt { max-width:1000px; color:var(--ink); }
@@ -122,12 +134,14 @@
 .rw-num { font-family:var(--fd); font-weight:700; font-size:72px; line-height:.9; letter-spacing:-0.02em; color:var(--dark); flex:none; }
 .rw-num i { font-style:normal; color:var(--acc); }
 .rw-n .rw-t b { font-size:var(--h4); }
+
 /* Logo band */
 .logos { margin:64px calc(-1 * var(--gut)) 0; overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line); -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
 .logos .ltrack { display:flex; width:max-content; will-change:transform; }
 .logos .ltrack div { flex:none; width:200px; height:104px; display:grid; place-items:center; padding:20px 26px; border-left:1px solid var(--line); }
 .fm .logos img { width:auto; height:auto; max-width:100%; max-height:52px; object-fit:contain; filter:grayscale(1) brightness(1.08) contrast(2.6); mix-blend-mode:multiply; }
 .fm .logos img[alt="Fazer"], .fm .logos img[alt="Saarioinen"] { max-height:84px; transform:scale(1.35); }
+
 /* Material flow */
 .flow { padding:var(--sec) 0; background:var(--paper); }
 .flow-head { display:grid; grid-template-columns:minmax(0,1fr) 360px; gap:48px; padding:0 var(--gut); align-items:center; }
@@ -154,12 +168,14 @@
 .st.bin .ph img { object-position:34% 42%; transform:scale(1.55); transform-origin:34% 42%; }
 .st.bin:hover .ph img { transform:scale(1.62); }
 .flow-foot { margin:40px var(--gut) 0; padding-top:28px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; font-size:var(--lead); }
+
 /* 40 kg */
 .kg { display:grid; grid-template-columns:1.15fr 1fr; gap:56px; align-items:center; padding:var(--sec) var(--gut); }
 .kg-num { font-family:var(--fd); font-weight:700; font-size:330px; line-height:.8; letter-spacing:-0.005em; color:var(--dark); }
 .kg-num small { font-size:120px; letter-spacing:-0.02em; color:var(--acc); }
 .kg h2 { margin-top:22px; }
 .kg .lead { margin-top:22px; max-width:520px; }
+
 /* Plate freezing */
 .pf { background:var(--dark); color:#fff; padding:var(--sec) var(--gut); display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:72px; align-items:stretch; }
 .pf h2 { margin-top:20px; color:#fff; }
@@ -186,6 +202,7 @@
 @keyframes clips { 0% { opacity:0; } 4% { opacity:1; } 33% { opacity:1; } 38% { opacity:0; } 100% { opacity:0; } }
 .bezel .tag { position:absolute; z-index:2; left:20px; bottom:20px; display:inline-flex; align-items:center; gap:8px; background:rgba(0,0,0,.5); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); color:#fff; border-radius:999px; padding:8px 14px; font-size:13px; }
 .bezel .tag svg { width:10px; height:10px; }
+
 /* Why choose Finmatec */
 .wv { padding:var(--sec) var(--gut); background:#fff; }
 .wv h3 { font-size:var(--h4); line-height:1.1; color:var(--dark); }
@@ -208,6 +225,7 @@
 .w2-cert { margin-top:28px; padding:24px 36px; background:#fff; display:flex; justify-content:space-between; align-items:center; gap:32px; }
 .wv .wc b { display:block; font-family:var(--fd); font-weight:700; font-size:20px; color:var(--dark); }
 .wv .wc span { font-size:15px; color:var(--ink2); }
+
 /* 80 %: existing factories, floor plan */
 .exist { position:relative; background:#fff; padding:0; overflow:hidden; }
 .exist .left { position:relative; z-index:1; width:680px; padding:var(--sec) var(--gut); display:flex; flex-direction:column; justify-content:space-between; gap:48px; }
@@ -242,6 +260,7 @@
 @keyframes planflow { to { stroke-dashoffset:-24; } }
 .plan .mroute { fill:none; stroke:var(--dark); stroke-width:1.4; stroke-dasharray:2 7; opacity:.6; animation:planflow 1.4s linear infinite; }
 .plan .mblk { fill:var(--dark); stroke:none; }
+
 /* Proof: quote and photo */
 .proof { padding:var(--sec) var(--gut); background:#fff; }
 .pbento { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:16px; }
@@ -254,12 +273,14 @@
 .c-quote cite { font-style:normal; color:#C9C6F1; }
 .c-img { grid-column:span 5; }
 .c-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:55% 50%; }
+
 /* Service and spare parts */
 .svc { padding:0 var(--gut); }
 .svc-in { border-radius:var(--r-panel); background:var(--dark); color:#fff; padding:64px; display:grid; grid-template-columns:1fr 1.15fr; gap:72px; align-items:center; }
 .svc h2 { margin-top:18px; color:#fff; }
 .svc-head .lead { margin-top:18px; line-height:1.5; color:rgba(255,255,255,.76); max-width:420px; }
 .svc-links { display:grid; gap:12px; }
+
 /* Engineers: datasheet */
 .eng { padding:var(--sec) var(--gut); display:grid; grid-template-columns:1.1fr 1fr; gap:90px; align-items:center; }
 .eng h2 { margin-top:22px; }
@@ -272,6 +293,7 @@
 .sheet td { padding:13px 0; border-bottom:1px solid var(--soft); }
 .fm .sheet td:first-child { color:var(--mute); width:46%; padding-right:14px; }
 .sheet .dl { margin-top:22px; display:flex; gap:10px; }
+
 /* Contact */
 .cb { padding:var(--sec) var(--gut); display:grid; grid-template-columns:1fr 1.1fr; gap:72px; }
 .cb h2 { font-size:var(--disp); line-height:.92; }
@@ -289,6 +311,7 @@
 .cb > .form { align-self:start; }
 .cb .form .ta { margin-top:12px; }
 .cb .form .btn { align-self:flex-start; margin-top:20px; justify-content:space-between; }
+
 /* Footer */
 .fb2 { position:relative; padding:60px var(--gut) 56px; overflow:hidden; background:var(--soft); }
 .fb2 > *:not(.sym) { position:relative; z-index:1; }
@@ -303,6 +326,7 @@
 .fb2 .bottom span a { margin-left:24px; }
 .fb2 .word { position:relative; margin:40px 0 0; width:auto; height:auto; overflow:visible; }
 .fb2 .word svg { display:block; width:100%; height:auto; fill:var(--dark); }
+
 /* ===== Mobile 390 ===== */
 .fm.m { --disp:52px; --h1:32px; --h2:32px; --h2s:28px; --h3:24px; --h4:21px; --lead:16px; --body:15px; --sec:56px; --gut:20px; --r-panel:28px; --r-panel-in:22px; --r-row:18px; width:390px; font-size:16px; }
 .fm.m .btn:not(.mq) { width:100%; justify-content:space-between; }
@@ -405,6 +429,7 @@
 .fm.m .fb2 .bottom span a { margin:0 16px 0 0; display:inline-flex; align-items:center; min-height:44px; }
 .fm.m .fb2 .bottom > span:first-child { display:inline-flex; align-items:center; min-height:44px; }
 .fm.m .fb2 .word { margin-top:32px; width:350px; }
+
 /* ===== References page and customer story (ui/work/references/scripts/references_page.py, 17.11.2026). Base above = live homepage stylesheet. ===== */
 .fm .tbc { display:inline-flex; align-items:center; height:28px; padding:0 12px; border-radius:999px; border:1.5px dashed rgba(36,21,186,.32); font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--dark); white-space:nowrap; }
 .fm .tbc.on-dark { border-color:rgba(255,255,255,.4); color:#fff; }
@@ -417,10 +442,12 @@
 .nav ul li.on a { color:var(--dark); font-weight:600; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:9px; }
 .hero.ref .media::after, .hero.story .media::after { background:linear-gradient(180deg, rgba(13,14,43,.55) 0%, rgba(13,14,43,.18) 24%, rgba(13,14,43,.5) 50%, rgba(13,14,43,.94) 100%); }
 .fm .note { margin-top:24px; display:flex; gap:14px; align-items:center; font-size:var(--small); color:var(--ink2); }
+
 /* Hero: references */
 .hero.ref { height:700px; }
 .hero.ref .hero-copy { bottom:80px; }
 .hero.ref .hero-copy p { margin-top:22px; max-width:640px; font-size:var(--lead); color:rgba(255,255,255,.82); }
+
 /* StoryCard: photo, meta, result-led title, facts. Whole card is the link (arrow ball). Text styles: cap, h3/h4, body. */
 .rs { padding:var(--sec) var(--gut); background:#fff; }
 .rs-grid { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:16px; }
@@ -447,6 +474,7 @@
 .sc .facts small { display:block; margin-bottom:6px; color:var(--mute); }
 .sc .facts span { font-size:var(--body); font-weight:600; color:var(--ink); }
 .sc .bd .tbc { align-self:flex-start; margin-top:auto; }
+
 /* ReferenceCard: logo panel, solution (and country), customer, text link. Text styles: cap, h4, link. */
 .rcs { padding:var(--sec) var(--gut); background:var(--paper); }
 .rc-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
@@ -470,6 +498,7 @@
 .rc .tlink { margin-top:auto; align-self:flex-start; font-size:var(--body); }
 .rc .bd h3 + .tlink { margin-top:auto; padding-top:0; }
 .rc .bd { min-height:140px; }
+
 /* SolutionProof panel: media + content. Text styles in the content: cap (eyebrow, fact labels), h3 (statement), number (fact). */
 .sp { padding:var(--sec) var(--gut); background:#fff; display:grid; gap:24px; }
 .sp .shead { margin-bottom:24px; }
@@ -507,6 +536,7 @@
 .fm .spl img[alt="SFZ Ulm"] { max-height:60px; transform:scale(1.25); }
 .fm .spl img[alt="Leo Group"] { transform:scale(1.2); }
 .fm .spl img[alt="Snellman"] { max-height:56px; }
+
 /* ReferenceIndex: groups by solution, editorial rows. Group head: h3, cap, text link. Row: h4, body, cap. */
 .rx { padding:var(--sec) var(--gut); background:var(--paper); }
 .rx-g { display:grid; grid-template-columns:360px minmax(0,1fr); gap:48px; padding:44px 0 48px; border-top:1px solid var(--line); }
@@ -526,6 +556,7 @@
 .rx-row.has .n b { color:var(--dark); }
 .rx-row.has:hover .n b { text-decoration:underline; text-underline-offset:5px; }
 .rx-rows .note { margin-top:18px; }
+
 /* ReferenceList: filters + table. Text styles: cap (labels), body 600 (customer), body. */
 .rl { padding:var(--sec) var(--gut); background:var(--paper); }
 .rl-f { display:grid; gap:12px; margin-bottom:28px; }
@@ -548,6 +579,7 @@
 .rl-t tr.has:hover td { background:rgba(36,21,186,.03); }
 .rl-foot { margin-top:24px; display:flex; justify-content:space-between; align-items:center; gap:24px; font-size:var(--small); color:var(--ink2); }
 .rl-foot .note { margin-top:0; }
+
 /* Trusted by: numbers + static logo grid */
 .tb { padding:var(--sec) var(--gut); background:#fff; }
 .tb h2.stmt { max-width:1000px; color:var(--ink); }
@@ -560,6 +592,7 @@
 .lgrid > div { height:120px; display:grid; place-items:center; padding:22px 24px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); }
 .fm .lgrid img { width:auto; height:auto; max-width:100%; max-height:52px; object-fit:contain; filter:grayscale(1) brightness(1.08) contrast(2.6); mix-blend-mode:multiply; }
 .fm .lgrid img[alt="Fazer"], .fm .lgrid img[alt="Saarioinen"] { max-height:84px; transform:scale(1.35); }
+
 /* Visit panel = homepage service panel */
 .rv { padding:0 var(--gut) var(--sec); }
 .rv .svc-in { grid-template-columns:1fr 1.15fr; }
@@ -567,6 +600,7 @@
 .rv .eyebrow { color:var(--acc); }
 .rv .eyebrow::before { background:var(--acc); }
 .rv .svc-head .tbc { margin-top:24px; }
+
 /* Customer story: hero */
 .hero.story { height:880px; }
 .hero.story .hero-copy { bottom:196px; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:48px; align-items:end; }
@@ -579,6 +613,7 @@
 .smeta > div + div { box-shadow:inset 1px 0 0 rgba(255,255,255,.16); }
 .smeta small { color:rgba(255,255,255,.7); }
 .smeta b { font-size:17px; font-weight:600; color:#fff; }
+
 /* CaseSummary: big numbers + summary panel. Text styles: cap, body (+ section h2 and numbers outside the panel). */
 .gl { padding:var(--sec) var(--gut); display:grid; grid-template-columns:440px minmax(0,1fr); gap:72px; align-items:start; }
 .gl h2 { margin-top:18px; }
@@ -591,6 +626,7 @@
 .sum dl > div + div { border-top:1px solid var(--line); }
 .sum dt { color:var(--mute); }
 .sum dd { margin:0; font-size:var(--body); color:var(--ink); display:grid; gap:10px; justify-items:start; }
+
 /* In / out */
 .io { padding:var(--sec) var(--gut); background:var(--paper); }
 .io-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
@@ -601,12 +637,15 @@
 .io-txt > div:first-child { padding-left:0; border-left:0; }
 .io-txt h3 { font-size:var(--h4); line-height:1.1; color:var(--dark); }
 .io-txt p { font-size:var(--body); color:var(--ink2); }
+
 /* Quote with product image */
 .c-img.prod .core { background:#fff; }
 .c-img.prod img { object-fit:contain; padding:36px; }
+
 /* More references */
 .more { padding:var(--sec) var(--gut); background:var(--paper); }
 .more .rs-grid { margin-top:0; }
+
 /* ===== mobile ===== */
 .fm.m .shead { grid-template-columns:1fr; gap:16px; margin-bottom:28px; }
 .fm.m .note { flex-direction:column; align-items:flex-start; gap:10px; }
@@ -708,8 +747,10 @@
 .fm.m .io-txt { margin-top:28px; grid-template-columns:1fr; }
 .fm.m .io-txt > div { padding:20px 0; border-left:0; border-top:1px solid var(--line); }
 .fm.m .io-txt > div:first-child { border-top:0; padding-top:0; }
-.fm.m .c-img.prod .core { min-height:260px; }</style>
+.fm.m .c-img.prod .core { min-height:260px; }
+</style>
 <style media="(max-width:760px)">
+
 /* ===== Finmatec homepage stylesheet: the base for every page (shared by all 4 homepage artboards, unified 16.11.2026) ===== */
 /* Tokens: colour, type, radius, surface, rhythm. Mobile overrides at the bottom. */
 .fm { --ink:#0D0E2B; --ink2:#3A3C5C; --mute:#5F617E; --line:#D9DBE8; --soft:#ECEEF7; --paper:#F5F6FB; --dark:#2415BA; --acc:#03FF6B; --deep:#0D0E2B;
@@ -719,6 +760,7 @@
   --tray:rgba(36,21,186,.06); --tray-ring:inset 0 0 0 1px rgba(36,21,186,.10); --halo:0 0 0 6px rgba(36,21,186,.06), 0 0 0 7px rgba(36,21,186,.08);
   --sec:80px; --gut:72px;
   width:1440px; background:#fff; color:var(--ink); font-family:var(--fb); font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased; overflow:hidden; }
+
 /* Base */
 .fm * { box-sizing:border-box; }
 .fm p { margin:0; }
@@ -732,12 +774,14 @@
 .fm a:focus-visible, .fm button:focus-visible { outline:2px solid var(--dark); outline-offset:3px; }
 .fm svg.ic { display:block; flex:none; }
 .sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+
 /* Caps label: eyebrow, field label, card label, table key, quote source. One style. */
 .mono, .eyebrow, .fm .lab, .rw small, .fm .level div small, .st .n, .st.star .badge, .c-quote cite, .fm .sheet td:first-child { font-family:var(--fl); font-size:var(--cap); font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
 .eyebrow { display:inline-flex; align-items:center; gap:10px; color:var(--ink2); }
 .eyebrow::before { content:""; width:18px; height:1px; background:var(--dark); }
 .pf .eyebrow, .svc .eyebrow { color:var(--acc); }
 .pf .eyebrow::before, .svc .eyebrow::before { background:var(--acc); }
+
 /* Button: pill + nested arrow ball. Sizes: default 56, .s 48. Styles: .pri, .sec, .ghost; .qk = steel knob, Request a quote only. */
 .btn { display:inline-flex; align-items:center; gap:14px; height:56px; padding:0 8px 0 26px; border-radius:999px; font-weight:600; font-size:16px; transition:transform .5s var(--ease); white-space:nowrap; }
 .btn i { width:40px; height:40px; border-radius:50%; display:grid; place-items:center; flex:none; font-style:normal; }
@@ -753,6 +797,7 @@
 .btn.ghost i { width:auto; height:auto; background:none; }
 .btn.qk { box-shadow:0 10px 24px rgba(36,21,186,.28); }
 .btn.qk i { color:#0b0a26; filter:drop-shadow(0 1px 0 rgba(255,255,255,.9)); background:repeating-radial-gradient(circle at 50% 50%,rgba(255,255,255,0) 0 1px,rgba(27,29,43,.05) 1px 2px),conic-gradient(from 25deg,#f6f8fa,#a9b0bc 11%,#eef1f5 24%,#99a1ae 37%,#f3f5f8 50%,#adb4c0 63%,#ebeef2 75%,#a1a9b6 88%,#f6f8fa); box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 0 0 1px rgba(11,10,38,.18),0 2px 5px rgba(11,10,38,.3); }
+
 /* Link row: a whole row is the link, arrow ball on the right. On dark and blue surfaces. */
 .fm .lrow { display:flex; justify-content:space-between; align-items:center; gap:20px; height:88px; padding:0 22px 0 28px; border-radius:var(--r-row); background:rgba(255,255,255,.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,.16); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); color:#fff; transition:background .4s var(--ease); }
 .fm .lrow:hover { background:rgba(255,255,255,.14); }
@@ -760,15 +805,18 @@
 .fm .lrow small { display:block; margin-top:3px; font-size:var(--small); opacity:.75; }
 .fm .lrow i { width:44px; height:44px; border-radius:50%; display:grid; place-items:center; flex:none; background:var(--acc); color:var(--deep); }
 .fm .lrow i svg { width:20px; height:20px; }
+
 /* Chip: small pill link or option. .opt = selectable option in a form. */
 .fm .chip { display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 16px; border-radius:999px; background:var(--soft); color:var(--dark); font-size:var(--small); font-weight:600; white-space:nowrap; }
 .fm .chip svg { width:14px; height:14px; }
 .st.star .chip { background:rgba(255,255,255,.14); color:#fff; }
 .fm .chip.opt { font:inherit; font-size:var(--small); font-weight:600; border:0; background:transparent; color:var(--ink); cursor:pointer; box-shadow:inset 0 0 0 1.5px var(--line); }
 .fm .chip.opt.on { background:var(--dark); color:#fff; box-shadow:none; }
+
 /* Text link */
 .fm .tlink { display:inline-flex; gap:8px; align-items:center; font-size:17px; font-weight:600; border-bottom:1.5px solid currentColor; padding-bottom:3px; color:var(--dark); white-space:nowrap; }
 .fm .tlink svg { width:16px; height:16px; }
+
 /* Surfaces. Card: tray 28 / core 22 (6 px gap). Panel: tray 36 / core 28 (8 px gap, concentric with a 56 px pill). Halo: single surface with a soft ring. */
 .st, .cell { border-radius:var(--r-card); padding:6px; background:var(--tray); box-shadow:var(--tray-ring); }
 .st .core, .cell > .core { border-radius:var(--r-card-in); overflow:hidden; }
@@ -776,6 +824,7 @@
 .sheet .in, .cb .form .in { flex:1; border-radius:var(--r-panel-in); background:#fff; }
 .w2-ph, .w2-cert { border-radius:var(--r-card); box-shadow:var(--halo); }
 .fpz-pan { border-radius:var(--r-panel); box-shadow:var(--halo); background:#fff; padding:8px; }
+
 /* Fields: hairline */
 .fm label.f, .fm label.ta { display:flex; padding:0 2px; border-bottom:1.5px solid var(--line); color:var(--mute); font-size:15px; }
 .fm label.f { height:52px; align-items:center; }
@@ -784,12 +833,14 @@
 .fm label.ta textarea { height:100%; min-height:72px; }
 .fm label.f input::placeholder, .fm label.ta textarea::placeholder { color:var(--mute); opacity:1; }
 .fm label.f:focus-within, .fm label.ta:focus-within { border-bottom-color:var(--dark); }
+
 /* Utility bar */
 .util { height:38px; background:var(--deep); color:#cfcfcf; font-size:13px; display:flex; align-items:center; justify-content:space-between; padding:0 var(--gut); }
 .util span { margin-right:28px; }
 .util b { color:#fff; font-weight:600; }
 .util .ext { display:inline-flex; align-items:center; gap:7px; color:#fff; }
 .util .ext svg { width:12px; height:12px; opacity:.8; }
+
 /* Hero and nav */
 .hero { position:relative; height:860px; background:var(--deep); color:#fff; }
 .hero .media { position:absolute; inset:0; }
@@ -804,6 +855,7 @@
 .hero-copy { position:absolute; left:var(--gut); right:var(--gut); bottom:168px; z-index:1; }
 .hero h1 { font-size:var(--h1); line-height:.98; max-width:1180px; color:#fff; }
 .router { position:absolute; left:56px; right:56px; bottom:40px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; z-index:1; }
+
 /* Gains and numbers (open hairline grid) */
 .rw { padding:var(--sec) var(--gut); background:#fff; }
 .rw h2.stmt { max-width:1000px; color:var(--ink); }
@@ -823,12 +875,14 @@
 .rw-num { font-family:var(--fd); font-weight:700; font-size:72px; line-height:.9; letter-spacing:-0.02em; color:var(--dark); flex:none; }
 .rw-num i { font-style:normal; color:var(--acc); }
 .rw-n .rw-t b { font-size:var(--h4); }
+
 /* Logo band */
 .logos { margin:64px calc(-1 * var(--gut)) 0; overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line); -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
 .logos .ltrack { display:flex; width:max-content; will-change:transform; }
 .logos .ltrack div { flex:none; width:200px; height:104px; display:grid; place-items:center; padding:20px 26px; border-left:1px solid var(--line); }
 .fm .logos img { width:auto; height:auto; max-width:100%; max-height:52px; object-fit:contain; filter:grayscale(1) brightness(1.08) contrast(2.6); mix-blend-mode:multiply; }
 .fm .logos img[alt="Fazer"], .fm .logos img[alt="Saarioinen"] { max-height:84px; transform:scale(1.35); }
+
 /* Material flow */
 .flow { padding:var(--sec) 0; background:var(--paper); }
 .flow-head { display:grid; grid-template-columns:minmax(0,1fr) 360px; gap:48px; padding:0 var(--gut); align-items:center; }
@@ -855,12 +909,14 @@
 .st.bin .ph img { object-position:34% 42%; transform:scale(1.55); transform-origin:34% 42%; }
 .st.bin:hover .ph img { transform:scale(1.62); }
 .flow-foot { margin:40px var(--gut) 0; padding-top:28px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; font-size:var(--lead); }
+
 /* 40 kg */
 .kg { display:grid; grid-template-columns:1.15fr 1fr; gap:56px; align-items:center; padding:var(--sec) var(--gut); }
 .kg-num { font-family:var(--fd); font-weight:700; font-size:330px; line-height:.8; letter-spacing:-0.005em; color:var(--dark); }
 .kg-num small { font-size:120px; letter-spacing:-0.02em; color:var(--acc); }
 .kg h2 { margin-top:22px; }
 .kg .lead { margin-top:22px; max-width:520px; }
+
 /* Plate freezing */
 .pf { background:var(--dark); color:#fff; padding:var(--sec) var(--gut); display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:72px; align-items:stretch; }
 .pf h2 { margin-top:20px; color:#fff; }
@@ -887,6 +943,7 @@
 @keyframes clips { 0% { opacity:0; } 4% { opacity:1; } 33% { opacity:1; } 38% { opacity:0; } 100% { opacity:0; } }
 .bezel .tag { position:absolute; z-index:2; left:20px; bottom:20px; display:inline-flex; align-items:center; gap:8px; background:rgba(0,0,0,.5); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); color:#fff; border-radius:999px; padding:8px 14px; font-size:13px; }
 .bezel .tag svg { width:10px; height:10px; }
+
 /* Why choose Finmatec */
 .wv { padding:var(--sec) var(--gut); background:#fff; }
 .wv h3 { font-size:var(--h4); line-height:1.1; color:var(--dark); }
@@ -909,6 +966,7 @@
 .w2-cert { margin-top:28px; padding:24px 36px; background:#fff; display:flex; justify-content:space-between; align-items:center; gap:32px; }
 .wv .wc b { display:block; font-family:var(--fd); font-weight:700; font-size:20px; color:var(--dark); }
 .wv .wc span { font-size:15px; color:var(--ink2); }
+
 /* 80 %: existing factories, floor plan */
 .exist { position:relative; background:#fff; padding:0; overflow:hidden; }
 .exist .left { position:relative; z-index:1; width:680px; padding:var(--sec) var(--gut); display:flex; flex-direction:column; justify-content:space-between; gap:48px; }
@@ -943,6 +1001,7 @@
 @keyframes planflow { to { stroke-dashoffset:-24; } }
 .plan .mroute { fill:none; stroke:var(--dark); stroke-width:1.4; stroke-dasharray:2 7; opacity:.6; animation:planflow 1.4s linear infinite; }
 .plan .mblk { fill:var(--dark); stroke:none; }
+
 /* Proof: quote and photo */
 .proof { padding:var(--sec) var(--gut); background:#fff; }
 .pbento { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:16px; }
@@ -955,12 +1014,14 @@
 .c-quote cite { font-style:normal; color:#C9C6F1; }
 .c-img { grid-column:span 5; }
 .c-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:55% 50%; }
+
 /* Service and spare parts */
 .svc { padding:0 var(--gut); }
 .svc-in { border-radius:var(--r-panel); background:var(--dark); color:#fff; padding:64px; display:grid; grid-template-columns:1fr 1.15fr; gap:72px; align-items:center; }
 .svc h2 { margin-top:18px; color:#fff; }
 .svc-head .lead { margin-top:18px; line-height:1.5; color:rgba(255,255,255,.76); max-width:420px; }
 .svc-links { display:grid; gap:12px; }
+
 /* Engineers: datasheet */
 .eng { padding:var(--sec) var(--gut); display:grid; grid-template-columns:1.1fr 1fr; gap:90px; align-items:center; }
 .eng h2 { margin-top:22px; }
@@ -973,6 +1034,7 @@
 .sheet td { padding:13px 0; border-bottom:1px solid var(--soft); }
 .fm .sheet td:first-child { color:var(--mute); width:46%; padding-right:14px; }
 .sheet .dl { margin-top:22px; display:flex; gap:10px; }
+
 /* Contact */
 .cb { padding:var(--sec) var(--gut); display:grid; grid-template-columns:1fr 1.1fr; gap:72px; }
 .cb h2 { font-size:var(--disp); line-height:.92; }
@@ -990,6 +1052,7 @@
 .cb > .form { align-self:start; }
 .cb .form .ta { margin-top:12px; }
 .cb .form .btn { align-self:flex-start; margin-top:20px; justify-content:space-between; }
+
 /* Footer */
 .fb2 { position:relative; padding:60px var(--gut) 56px; overflow:hidden; background:var(--soft); }
 .fb2 > *:not(.sym) { position:relative; z-index:1; }
@@ -1004,6 +1067,7 @@
 .fb2 .bottom span a { margin-left:24px; }
 .fb2 .word { position:relative; margin:40px 0 0; width:auto; height:auto; overflow:visible; }
 .fb2 .word svg { display:block; width:100%; height:auto; fill:var(--dark); }
+
 /* ===== Mobile 390 ===== */
 .fm.m { --disp:52px; --h1:32px; --h2:32px; --h2s:28px; --h3:24px; --h4:21px; --lead:16px; --body:15px; --sec:56px; --gut:20px; --r-panel:28px; --r-panel-in:22px; --r-row:18px; width:390px; font-size:16px; }
 .fm.m .btn:not(.mq) { width:100%; justify-content:space-between; }
@@ -1106,6 +1170,7 @@
 .fm.m .fb2 .bottom span a { margin:0 16px 0 0; display:inline-flex; align-items:center; min-height:44px; }
 .fm.m .fb2 .bottom > span:first-child { display:inline-flex; align-items:center; min-height:44px; }
 .fm.m .fb2 .word { margin-top:32px; width:350px; }
+
 /* ===== References page and customer story (ui/work/references/scripts/references_page.py, 17.11.2026). Base above = live homepage stylesheet. ===== */
 .fm .tbc { display:inline-flex; align-items:center; height:28px; padding:0 12px; border-radius:999px; border:1.5px dashed rgba(36,21,186,.32); font-size:11px; font-weight:700; letter-spacing:.1em; text-transform:uppercase; color:var(--dark); white-space:nowrap; }
 .fm .tbc.on-dark { border-color:rgba(255,255,255,.4); color:#fff; }
@@ -1118,10 +1183,12 @@
 .nav ul li.on a { color:var(--dark); font-weight:600; text-decoration:underline; text-decoration-thickness:2px; text-underline-offset:9px; }
 .hero.ref .media::after, .hero.story .media::after { background:linear-gradient(180deg, rgba(13,14,43,.55) 0%, rgba(13,14,43,.18) 24%, rgba(13,14,43,.5) 50%, rgba(13,14,43,.94) 100%); }
 .fm .note { margin-top:24px; display:flex; gap:14px; align-items:center; font-size:var(--small); color:var(--ink2); }
+
 /* Hero: references */
 .hero.ref { height:700px; }
 .hero.ref .hero-copy { bottom:80px; }
 .hero.ref .hero-copy p { margin-top:22px; max-width:640px; font-size:var(--lead); color:rgba(255,255,255,.82); }
+
 /* StoryCard: photo, meta, result-led title, facts. Whole card is the link (arrow ball). Text styles: cap, h3/h4, body. */
 .rs { padding:var(--sec) var(--gut); background:#fff; }
 .rs-grid { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:16px; }
@@ -1148,6 +1215,7 @@
 .sc .facts small { display:block; margin-bottom:6px; color:var(--mute); }
 .sc .facts span { font-size:var(--body); font-weight:600; color:var(--ink); }
 .sc .bd .tbc { align-self:flex-start; margin-top:auto; }
+
 /* ReferenceCard: logo panel, solution (and country), customer, text link. Text styles: cap, h4, link. */
 .rcs { padding:var(--sec) var(--gut); background:var(--paper); }
 .rc-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
@@ -1171,6 +1239,7 @@
 .rc .tlink { margin-top:auto; align-self:flex-start; font-size:var(--body); }
 .rc .bd h3 + .tlink { margin-top:auto; padding-top:0; }
 .rc .bd { min-height:140px; }
+
 /* SolutionProof panel: media + content. Text styles in the content: cap (eyebrow, fact labels), h3 (statement), number (fact). */
 .sp { padding:var(--sec) var(--gut); background:#fff; display:grid; gap:24px; }
 .sp .shead { margin-bottom:24px; }
@@ -1208,6 +1277,7 @@
 .fm .spl img[alt="SFZ Ulm"] { max-height:60px; transform:scale(1.25); }
 .fm .spl img[alt="Leo Group"] { transform:scale(1.2); }
 .fm .spl img[alt="Snellman"] { max-height:56px; }
+
 /* ReferenceIndex: groups by solution, editorial rows. Group head: h3, cap, text link. Row: h4, body, cap. */
 .rx { padding:var(--sec) var(--gut); background:var(--paper); }
 .rx-g { display:grid; grid-template-columns:360px minmax(0,1fr); gap:48px; padding:44px 0 48px; border-top:1px solid var(--line); }
@@ -1227,6 +1297,7 @@
 .rx-row.has .n b { color:var(--dark); }
 .rx-row.has:hover .n b { text-decoration:underline; text-underline-offset:5px; }
 .rx-rows .note { margin-top:18px; }
+
 /* ReferenceList: filters + table. Text styles: cap (labels), body 600 (customer), body. */
 .rl { padding:var(--sec) var(--gut); background:var(--paper); }
 .rl-f { display:grid; gap:12px; margin-bottom:28px; }
@@ -1249,6 +1320,7 @@
 .rl-t tr.has:hover td { background:rgba(36,21,186,.03); }
 .rl-foot { margin-top:24px; display:flex; justify-content:space-between; align-items:center; gap:24px; font-size:var(--small); color:var(--ink2); }
 .rl-foot .note { margin-top:0; }
+
 /* Trusted by: numbers + static logo grid */
 .tb { padding:var(--sec) var(--gut); background:#fff; }
 .tb h2.stmt { max-width:1000px; color:var(--ink); }
@@ -1261,6 +1333,7 @@
 .lgrid > div { height:120px; display:grid; place-items:center; padding:22px 24px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); }
 .fm .lgrid img { width:auto; height:auto; max-width:100%; max-height:52px; object-fit:contain; filter:grayscale(1) brightness(1.08) contrast(2.6); mix-blend-mode:multiply; }
 .fm .lgrid img[alt="Fazer"], .fm .lgrid img[alt="Saarioinen"] { max-height:84px; transform:scale(1.35); }
+
 /* Visit panel = homepage service panel */
 .rv { padding:0 var(--gut) var(--sec); }
 .rv .svc-in { grid-template-columns:1fr 1.15fr; }
@@ -1268,6 +1341,7 @@
 .rv .eyebrow { color:var(--acc); }
 .rv .eyebrow::before { background:var(--acc); }
 .rv .svc-head .tbc { margin-top:24px; }
+
 /* Customer story: hero */
 .hero.story { height:880px; }
 .hero.story .hero-copy { bottom:196px; display:grid; grid-template-columns:minmax(0,1fr) auto; gap:48px; align-items:end; }
@@ -1280,6 +1354,7 @@
 .smeta > div + div { box-shadow:inset 1px 0 0 rgba(255,255,255,.16); }
 .smeta small { color:rgba(255,255,255,.7); }
 .smeta b { font-size:17px; font-weight:600; color:#fff; }
+
 /* CaseSummary: big numbers + summary panel. Text styles: cap, body (+ section h2 and numbers outside the panel). */
 .gl { padding:var(--sec) var(--gut); display:grid; grid-template-columns:440px minmax(0,1fr); gap:72px; align-items:start; }
 .gl h2 { margin-top:18px; }
@@ -1292,6 +1367,7 @@
 .sum dl > div + div { border-top:1px solid var(--line); }
 .sum dt { color:var(--mute); }
 .sum dd { margin:0; font-size:var(--body); color:var(--ink); display:grid; gap:10px; justify-items:start; }
+
 /* In / out */
 .io { padding:var(--sec) var(--gut); background:var(--paper); }
 .io-grid { display:grid; grid-template-columns:1fr 1fr; gap:16px; }
@@ -1302,12 +1378,15 @@
 .io-txt > div:first-child { padding-left:0; border-left:0; }
 .io-txt h3 { font-size:var(--h4); line-height:1.1; color:var(--dark); }
 .io-txt p { font-size:var(--body); color:var(--ink2); }
+
 /* Quote with product image */
 .c-img.prod .core { background:#fff; }
 .c-img.prod img { object-fit:contain; padding:36px; }
+
 /* More references */
 .more { padding:var(--sec) var(--gut); background:var(--paper); }
 .more .rs-grid { margin-top:0; }
+
 /* ===== mobile ===== */
 .fm.m .shead { grid-template-columns:1fr; gap:16px; margin-bottom:28px; }
 .fm.m .note { flex-direction:column; align-items:flex-start; gap:10px; }
@@ -1409,7 +1488,96 @@
 .fm.m .io-txt { margin-top:28px; grid-template-columns:1fr; }
 .fm.m .io-txt > div { padding:20px 0; border-left:0; border-top:1px solid var(--line); }
 .fm.m .io-txt > div:first-child { border-top:0; padding-top:0; }
-.fm.m .c-img.prod .core { min-height:260px; }</style>
+.fm.m .c-img.prod .core { min-height:260px; }
+
+
+
+/* ===== Finmatec homepage stylesheet: the base for every page (shared by all 4 homepage artboards, unified 16.11.2026) ===== */
+/* Tokens: colour, type, radius, surface, rhythm. Mobile overrides at the bottom. */
+.fm { --ink:#0D0E2B; --ink2:#3A3C5C; --mute:#5F617E; --line:#D9DBE8; --soft:#ECEEF7; --paper:#F5F6FB; --dark:#2415BA; --acc:#03FF6B; --deep:#0D0E2B;
+  --fd:'Exo 2',sans-serif; --fb:'Exo 2',sans-serif; --fl:'Exo 2',sans-serif; --ease:cubic-bezier(.32,.72,0,1);
+  --disp:84px; --h1:64px; --h2:56px; --h2s:44px; --h3:30px; --h4:24px; --lead:18px; --body:16px; --small:14px; --cap:12px;
+  --r-card:28px; --r-card-in:22px; --r-panel:36px; --r-panel-in:28px; --r-row:22px;
+  --tray:rgba(36,21,186,.06); --tray-ring:inset 0 0 0 1px rgba(36,21,186,.10); --halo:0 0 0 6px rgba(36,21,186,.06), 0 0 0 7px rgba(36,21,186,.08);
+  --sec:80px; --gut:72px;
+  width:1440px; background:#fff; color:var(--ink); font-family:var(--fb); font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased; overflow:hidden; }
+
+/* Base */
+
+/* Caps label: eyebrow, field label, card label, table key, quote source. One style. */
+
+/* Button: pill + nested arrow ball. Sizes: default 56, .s 48. Styles: .pri, .sec, .ghost; .qk = steel knob, Request a quote only. */
+
+/* Link row: a whole row is the link, arrow ball on the right. On dark and blue surfaces. */
+
+/* Chip: small pill link or option. .opt = selectable option in a form. */
+
+/* Text link */
+
+/* Surfaces. Card: tray 28 / core 22 (6 px gap). Panel: tray 36 / core 28 (8 px gap, concentric with a 56 px pill). Halo: single surface with a soft ring. */
+
+/* Fields: hairline */
+
+/* Utility bar */
+
+/* Hero and nav */
+
+/* Gains and numbers (open hairline grid) */
+
+/* Logo band */
+
+/* Material flow */
+
+/* 40 kg */
+
+/* Plate freezing */
+
+/* Why choose Finmatec */
+
+/* 80 %: existing factories, floor plan */
+
+/* Proof: quote and photo */
+
+/* Service and spare parts */
+
+/* Engineers: datasheet */
+
+/* Contact */
+
+/* Footer */
+
+/* ===== Mobile 390 ===== */
+
+/* ===== References page and customer story (ui/work/references/scripts/references_page.py, 17.11.2026). Base above = live homepage stylesheet. ===== */
+
+/* Hero: references */
+
+/* StoryCard: photo, meta, result-led title, facts. Whole card is the link (arrow ball). Text styles: cap, h3/h4, body. */
+
+/* ReferenceCard: logo panel, solution (and country), customer, text link. Text styles: cap, h4, link. */
+
+/* SolutionProof panel: media + content. Text styles in the content: cap (eyebrow, fact labels), h3 (statement), number (fact). */
+
+/* ReferenceIndex: groups by solution, editorial rows. Group head: h3, cap, text link. Row: h4, body, cap. */
+
+/* ReferenceList: filters + table. Text styles: cap (labels), body 600 (customer), body. */
+
+/* Trusted by: numbers + static logo grid */
+
+/* Visit panel = homepage service panel */
+
+/* Customer story: hero */
+
+/* CaseSummary: big numbers + summary panel. Text styles: cap, body (+ section h2 and numbers outside the panel). */
+
+/* In / out */
+
+/* Quote with product image */
+
+/* More references */
+
+/* ===== mobile ===== */
+</style>
 <style>
 html,body{margin:0;background:#fff}
 body{overflow-x:hidden}
@@ -1676,7 +1844,7 @@ document.querySelectorAll('[data-part="101"][data-ref]').forEach(function(el){va
   var MENU=[
     ['Food Processing',[['Meat Processing',''],['Poultry Processing',''],['Pet Food Processing','pet-food.html']]],
     ['Products',[['Plate Freezing Systems','plate-freezing.html'],['BinStacker',''],['Titan Series','titan.html'],['Finmatec Mixers','mixers.html'],['Screw Conveyors',''],['Belt Conveyors',''],['Silos, Bins & Hoppers','']]],
-    ['Service & Spare Parts',[['Service & Spare Parts','service.html'],['Spare Parts','spare-parts.html'],['Maintenance & Support','service.html'],['Upgrades & Retrofits','']]],
+    ['Service & Spare Parts',[['Spare Parts','spare-parts.html'],['Maintenance & Support','service.html'],['Upgrades & Retrofits','']]],
     ['References','references.html'],
     ['Resources',[['Engineering Resources',''],['Guides','']]],
     ['About',[['About Finmatec','about.html'],['How We Deliver','how-we-deliver.html'],['Safety & Hygiene','safety.html'],['References','references.html'],['News','news.html'],['Join our team','join.html'],['Contact us','contact.html']]]
