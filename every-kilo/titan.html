@@ -1900,6 +1900,18 @@ document.querySelectorAll('[data-part="101"][data-ref]').forEach(function(el){va
   var st=document.createElement('style'); st.textContent=css; document.head.appendChild(st);
   function key(t){return t.replace(/[▾\s]+$/,'').replace(/\s+/g,' ').trim().toLowerCase();}
   var byKey={}; MENU.forEach(function(m){byKey[m[0].toLowerCase()]=m;});
+  /* full-bleed photo hero fills the window, util bar and nav included, so its CTAs stay above the fold (Olli 17.11.) */
+  (function(){
+    var fm=document.querySelector('.fm'), hero=fm&&fm.querySelector('section.hero');
+    if(!hero) return;
+    var base=parseFloat(getComputedStyle(hero).height)||0; if(base<600) return;
+    function fold(){
+      var z=parseFloat(fm.style.zoom)||1, m=fm.classList.contains('m');
+      var h=window.innerHeight/z-(m?16:24), lo=m?560:620, hi=m?900:1100; /* the next section peeks in */
+      hero.style.height=Math.round(Math.max(lo,Math.min(hi,h)))+'px';
+    }
+    fold(); window.addEventListener('resize',function(){requestAnimationFrame(fold);}); window.addEventListener('load',fold);
+  })();
   var nav=document.querySelector('.fm .nav'); if(!nav || document.querySelector('.fm.ww')) return; /* WWTP is its own site with its own menu */
   var lis=[].slice.call(nav.querySelectorAll('ul > li'));
   lis.forEach(function(li){
