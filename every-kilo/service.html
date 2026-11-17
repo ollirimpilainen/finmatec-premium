@@ -1,0 +1,1348 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>Service & Spare Parts | Finmatec</title>
+<meta name="description" content="Finmatec Service & Spare Parts prototype, generated from the Claude Design canvas. Genero, 17.11.2026.">
+<link rel="preconnect" href="https://fonts.googleapis.com">
+<link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+<link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400..800&amp;display=swap">
+<style media="(min-width:761px)">
+/* ===== Finmatec homepage stylesheet: the base for every page (shared by all 4 homepage artboards, unified 16.11.2026) ===== */
+/* Tokens: colour, type, radius, surface, rhythm. Mobile overrides at the bottom. */
+.fm { --ink:#0D0E2B; --ink2:#3A3C5C; --mute:#5F617E; --line:#D9DBE8; --soft:#ECEEF7; --paper:#F5F6FB; --dark:#2415BA; --acc:#03FF6B; --deep:#0D0E2B;
+  --fd:'Exo 2',sans-serif; --fb:'Exo 2',sans-serif; --fl:'Exo 2',sans-serif; --ease:cubic-bezier(.32,.72,0,1);
+  --disp:84px; --h1:64px; --h2:56px; --h2s:44px; --h3:30px; --h4:24px; --lead:18px; --body:16px; --small:14px; --cap:12px;
+  --r-card:28px; --r-card-in:22px; --r-panel:36px; --r-panel-in:28px; --r-row:22px;
+  --tray:rgba(36,21,186,.06); --tray-ring:inset 0 0 0 1px rgba(36,21,186,.10); --halo:0 0 0 6px rgba(36,21,186,.06), 0 0 0 7px rgba(36,21,186,.08);
+  --sec:80px; --gut:72px;
+  width:1440px; background:#fff; color:var(--ink); font-family:var(--fb); font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased; overflow:hidden; }
+/* Base */
+.fm * { box-sizing:border-box; }
+.fm p { margin:0; }
+.fm h1, .fm h2, .fm h3 { margin:0; font-family:var(--fd); font-weight:700; letter-spacing:-0.005em; line-height:1; }
+.fm h2 { font-size:var(--h2); line-height:1.02; color:var(--dark); }
+.fm h2.s { font-size:var(--h2s); line-height:1.04; }
+.fm .hl { color:var(--ink); }
+.fm .lead { font-size:var(--lead); color:var(--ink2); }
+.fm a { color:inherit; text-decoration:none; }
+.fm img, .fm video { display:block; width:100%; height:100%; object-fit:cover; }
+.fm a:focus-visible, .fm button:focus-visible { outline:2px solid var(--dark); outline-offset:3px; }
+.fm svg.ic { display:block; flex:none; }
+.sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+/* Caps label: eyebrow, field label, card label, table key, quote source. One style. */
+.mono, .eyebrow, .fm .lab, .rw small, .fm .level div small, .st .n, .st.star .badge, .c-quote cite, .fm .sheet td:first-child { font-family:var(--fl); font-size:var(--cap); font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+.eyebrow { display:inline-flex; align-items:center; gap:10px; color:var(--ink2); }
+.eyebrow::before { content:""; width:18px; height:1px; background:var(--dark); }
+.pf .eyebrow, .svc .eyebrow { color:var(--acc); }
+.pf .eyebrow::before, .svc .eyebrow::before { background:var(--acc); }
+/* Button: pill + nested arrow ball. Sizes: default 56, .s 48. Styles: .pri, .sec, .ghost; .qk = steel knob, Request a quote only. */
+.btn { display:inline-flex; align-items:center; gap:14px; height:56px; padding:0 8px 0 26px; border-radius:999px; font-weight:600; font-size:16px; transition:transform .5s var(--ease); white-space:nowrap; }
+.btn i { width:40px; height:40px; border-radius:50%; display:grid; place-items:center; flex:none; font-style:normal; }
+.btn i svg { width:18px; height:18px; }
+.btn.s { height:48px; padding:0 6px 0 20px; gap:12px; font-size:15px; }
+.btn.s i { width:36px; height:36px; }
+.btn.s i svg { width:16px; height:16px; }
+.btn.pri { background:var(--dark); color:#fff; }
+.btn.pri i { background:rgba(255,255,255,.16); color:#fff; }
+.btn.sec { background:#fff; color:var(--ink); }
+.btn.sec i { background:var(--dark); color:#fff; }
+.btn.ghost { box-shadow:inset 0 0 0 1.5px currentColor; padding:0 22px 0 26px; gap:10px; }
+.btn.ghost i { width:auto; height:auto; background:none; }
+.btn.qk { box-shadow:0 10px 24px rgba(36,21,186,.28); }
+.btn.qk i { color:#0b0a26; filter:drop-shadow(0 1px 0 rgba(255,255,255,.9)); background:repeating-radial-gradient(circle at 50% 50%,rgba(255,255,255,0) 0 1px,rgba(27,29,43,.05) 1px 2px),conic-gradient(from 25deg,#f6f8fa,#a9b0bc 11%,#eef1f5 24%,#99a1ae 37%,#f3f5f8 50%,#adb4c0 63%,#ebeef2 75%,#a1a9b6 88%,#f6f8fa); box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 0 0 1px rgba(11,10,38,.18),0 2px 5px rgba(11,10,38,.3); }
+/* Link row: a whole row is the link, arrow ball on the right. On dark and blue surfaces. */
+.fm .lrow { display:flex; justify-content:space-between; align-items:center; gap:20px; height:88px; padding:0 22px 0 28px; border-radius:var(--r-row); background:rgba(255,255,255,.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,.16); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); color:#fff; transition:background .4s var(--ease); }
+.fm .lrow:hover { background:rgba(255,255,255,.14); }
+.fm .lrow b { display:block; font-family:var(--fd); font-size:22px; font-weight:700; letter-spacing:-0.005em; line-height:1.2; }
+.fm .lrow small { display:block; margin-top:3px; font-size:var(--small); opacity:.75; }
+.fm .lrow i { width:44px; height:44px; border-radius:50%; display:grid; place-items:center; flex:none; background:var(--acc); color:var(--deep); }
+.fm .lrow i svg { width:20px; height:20px; }
+/* Chip: small pill link or option. .opt = selectable option in a form. */
+.fm .chip { display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 16px; border-radius:999px; background:var(--soft); color:var(--dark); font-size:var(--small); font-weight:600; white-space:nowrap; }
+.fm .chip svg { width:14px; height:14px; }
+.st.star .chip { background:rgba(255,255,255,.14); color:#fff; }
+.fm .chip.opt { font:inherit; font-size:var(--small); font-weight:600; border:0; background:transparent; color:var(--ink); cursor:pointer; box-shadow:inset 0 0 0 1.5px var(--line); }
+.fm .chip.opt.on { background:var(--dark); color:#fff; box-shadow:none; }
+/* Text link */
+.fm .tlink { display:inline-flex; gap:8px; align-items:center; font-size:17px; font-weight:600; border-bottom:1.5px solid currentColor; padding-bottom:3px; color:var(--dark); white-space:nowrap; }
+.fm .tlink svg { width:16px; height:16px; }
+/* Surfaces. Card: tray 28 / core 22 (6 px gap). Panel: tray 36 / core 28 (8 px gap, concentric with a 56 px pill). Halo: single surface with a soft ring. */
+.st, .cell { border-radius:var(--r-card); padding:6px; background:var(--tray); box-shadow:var(--tray-ring); }
+.st .core, .cell > .core { border-radius:var(--r-card-in); overflow:hidden; }
+.sheet, .cb .form { border-radius:var(--r-panel); padding:8px; background:var(--tray); box-shadow:var(--tray-ring); display:flex; }
+.sheet .in, .cb .form .in { flex:1; border-radius:var(--r-panel-in); background:#fff; }
+.w2-ph, .w2-cert { border-radius:var(--r-card); box-shadow:var(--halo); }
+.fpz-pan { border-radius:var(--r-panel); box-shadow:var(--halo); background:#fff; padding:8px; }
+/* Fields: hairline */
+.fm label.f, .fm label.ta { display:flex; padding:0 2px; border-bottom:1.5px solid var(--line); color:var(--mute); font-size:15px; }
+.fm label.f { height:52px; align-items:center; }
+.fm label.ta { height:auto; min-height:96px; padding-top:14px; align-items:flex-start; }
+.fm label.f input, .fm label.ta textarea { all:unset; width:100%; font:inherit; font-size:15px; color:var(--ink); }
+.fm label.ta textarea { height:100%; min-height:72px; }
+.fm label.f input::placeholder, .fm label.ta textarea::placeholder { color:var(--mute); opacity:1; }
+.fm label.f:focus-within, .fm label.ta:focus-within { border-bottom-color:var(--dark); }
+/* Utility bar */
+.util { height:38px; background:var(--deep); color:#cfcfcf; font-size:13px; display:flex; align-items:center; justify-content:space-between; padding:0 var(--gut); }
+.util span { margin-right:28px; }
+.util b { color:#fff; font-weight:600; }
+.util .ext { display:inline-flex; align-items:center; gap:7px; color:#fff; }
+.util .ext svg { width:12px; height:12px; opacity:.8; }
+/* Hero and nav */
+.hero { position:relative; height:860px; background:var(--deep); color:#fff; }
+.hero .media { position:absolute; inset:0; }
+.hero .media::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,.05) 30%, rgba(10,10,10,.35) 58%, rgba(10,10,10,.92) 100%); }
+.nav { position:absolute; top:22px; left:56px; right:56px; height:68px; display:flex; align-items:center; gap:40px; padding:0 10px 0 26px; border-radius:999px; background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(255,255,255,.62)); color:var(--ink); box-shadow:inset 0 1px 0 rgba(255,255,255,.95), inset 0 0 0 1px rgba(255,255,255,.55), 0 14px 36px -14px rgba(0,0,0,.45); -webkit-backdrop-filter:blur(22px) saturate(170%); backdrop-filter:blur(22px) saturate(170%); z-index:2; }
+.fm img.logoimg { width:auto; height:30px; object-fit:contain; }
+.nav ul { list-style:none; display:flex; gap:30px; margin:0; padding:0; font-size:15px; font-weight:500; }
+.nav ul li a { display:inline-flex; align-items:center; gap:6px; }
+.nav ul li a svg { width:10px; height:10px; opacity:.6; }
+.nav .btn { margin-left:auto; }
+.fm .nav .mq { display:none; }
+.hero-copy { position:absolute; left:var(--gut); right:var(--gut); bottom:168px; z-index:1; }
+.hero h1 { font-size:var(--h1); line-height:.98; max-width:1180px; color:#fff; }
+.router { position:absolute; left:56px; right:56px; bottom:40px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; z-index:1; }
+/* Gains and numbers (open hairline grid) */
+.rw { padding:var(--sec) var(--gut); background:#fff; }
+.rw h2.stmt { max-width:1000px; color:var(--ink); }
+.rw .stmt em { font-style:normal; color:var(--dark); background:linear-gradient(var(--acc),var(--acc)) 0 92%/100% 9px no-repeat; }
+.rwk-grid { margin-top:64px; display:grid; grid-template-columns:repeat(3,1fr); }
+.rwk-grid > .rw-i { padding:34px 40px; border-right:1px solid var(--line); }
+.rwk-grid > .rw-i:nth-child(3n) { border-right:0; padding-right:0; }
+.rwk-grid > .rw-i:nth-child(3n+1) { padding-left:0; }
+.rwk-grid > .rw-i:nth-child(-n+3) { border-bottom:1px solid var(--line); padding-top:8px; }
+.rwk-grid > .rw-i:nth-child(n+4) { padding-bottom:8px; }
+.rw-i { display:flex; align-items:center; gap:20px; }
+.rw-ar { width:72px; height:72px; border-radius:50%; display:grid; place-items:center; background:var(--dark); color:#fff; flex:none; }
+.rw-i.dn .rw-ar { background:var(--acc); color:var(--deep); }
+.rw-ar svg { width:32px; height:32px; }
+.rw small { display:block; margin-bottom:8px; color:var(--ink2); }
+.rw-t b { display:block; font-family:var(--fd); font-weight:700; font-size:34px; line-height:1; color:var(--dark); white-space:nowrap; }
+.rw-num { font-family:var(--fd); font-weight:700; font-size:72px; line-height:.9; letter-spacing:-0.02em; color:var(--dark); flex:none; }
+.rw-num i { font-style:normal; color:var(--acc); }
+.rw-n .rw-t b { font-size:var(--h4); }
+/* Logo band */
+.logos { margin:64px calc(-1 * var(--gut)) 0; overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line); -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+.logos .ltrack { display:flex; width:max-content; will-change:transform; }
+.logos .ltrack div { flex:none; width:200px; height:104px; display:grid; place-items:center; padding:20px 26px; border-left:1px solid var(--line); }
+.fm .logos img { width:auto; height:auto; max-width:100%; max-height:52px; object-fit:contain; filter:grayscale(1) brightness(1.08) contrast(2.6); mix-blend-mode:multiply; }
+.fm .logos img[alt="Fazer"], .fm .logos img[alt="Saarioinen"] { max-height:84px; transform:scale(1.35); }
+/* Material flow */
+.flow { padding:var(--sec) 0; background:var(--paper); }
+.flow-head { display:grid; grid-template-columns:minmax(0,1fr) 360px; gap:48px; padding:0 var(--gut); align-items:center; }
+.railwrap { margin-top:52px; overflow:hidden; }
+.track { position:relative; display:flex; width:max-content; gap:20px; padding:0 var(--gut); animation:railpan 30s cubic-bezier(.65,0,.35,1) infinite alternate; }
+@keyframes railpan { 0%, 14% { transform:translateX(0); } 86%, 100% { transform:translateX(calc(1440px - 100%)); } }
+.track > .st { flex:none; width:520px; }
+.st { position:relative; }
+.st .core { height:100%; background:#fff; box-shadow:inset 0 1px 1px rgba(255,255,255,.8); }
+.st .ph { position:relative; aspect-ratio:4/3; overflow:hidden; background:var(--deep); }
+.st .ph img { width:100%; height:100%; object-fit:cover; transition:transform 1.2s var(--ease); }
+.st:hover .ph img { transform:scale(1.04); }
+.st .n { position:absolute; top:16px; left:16px; color:#fff; background:rgba(13,14,43,.55); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); padding:7px 11px; border-radius:999px; }
+.st .body { padding:26px 28px 30px; display:grid; gap:12px; align-content:start; }
+.st h3 { font-size:var(--h3); }
+.st p { font-size:var(--body); color:var(--ink2); max-width:44ch; }
+.st .prod { margin-top:6px; display:flex; flex-wrap:wrap; gap:8px; }
+.st.star { background:rgba(36,21,186,.16); }
+.st.star .core { background:var(--dark); color:#fff; box-shadow:none; }
+.st.star h3 { color:#fff; }
+.st.star p { color:rgba(255,255,255,.76); }
+.st.star .badge { position:absolute; top:16px; right:16px; padding:7px 11px; border-radius:999px; background:var(--acc); color:var(--deep); }
+.st.bin .ph { background:linear-gradient(180deg,#f7f9fc 0%,#e9eef5 100%); }
+.st.bin .ph img { object-position:34% 42%; transform:scale(1.55); transform-origin:34% 42%; }
+.st.bin:hover .ph img { transform:scale(1.62); }
+.flow-foot { margin:40px var(--gut) 0; padding-top:28px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; font-size:var(--lead); }
+/* 40 kg */
+.kg { display:grid; grid-template-columns:1.15fr 1fr; gap:56px; align-items:center; padding:var(--sec) var(--gut); }
+.kg-num { font-family:var(--fd); font-weight:700; font-size:330px; line-height:.8; letter-spacing:-0.005em; color:var(--dark); }
+.kg-num small { font-size:120px; letter-spacing:-0.02em; color:var(--acc); }
+.kg h2 { margin-top:22px; }
+.kg .lead { margin-top:22px; max-width:520px; }
+/* Plate freezing */
+.pf { background:var(--dark); color:#fff; padding:var(--sec) var(--gut); display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:72px; align-items:stretch; }
+.pf h2 { margin-top:20px; color:#fff; }
+.pf .lead { margin-top:24px; color:rgba(255,255,255,.75); }
+.seg { margin-top:32px; display:grid; grid-template-columns:repeat(3,1fr); padding:5px; border-radius:999px; background:rgba(255,255,255,.07); box-shadow:inset 0 0 0 1px rgba(255,255,255,.12); }
+.seg span { text-align:center; padding:14px 0; border-radius:999px; font-size:15px; font-weight:600; color:rgba(255,255,255,.65); }
+.seg span.on { background:var(--acc); color:var(--deep); }
+.level { position:relative; margin-top:34px; display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.level .belt { position:absolute; left:7px; right:0; top:5px; height:4px; border-radius:2px; background:rgba(255,255,255,.1); overflow:hidden; z-index:0; }
+.level .belt::after { content:""; position:absolute; inset:0 -48px 0 0; animation:belt 1.2s linear infinite; background:repeating-linear-gradient(90deg, var(--acc) 0 14px, transparent 14px 24px); }
+@keyframes belt { from { transform:translateX(-24px); } to { transform:translateX(0); } }
+.level > div:not(.belt) { position:relative; z-index:1; padding-top:30px; }
+.level > div:not(.belt)::before { content:""; position:absolute; left:0; top:0; width:14px; height:14px; border-radius:50%; background:var(--dark); box-shadow:inset 0 0 0 3px var(--acc); }
+.level div b { display:block; font-size:17px; margin-top:4px; }
+.fm .level div small { color:rgba(255,255,255,.9); }
+.pf .cap { margin-top:22px; font-size:15px; color:rgba(255,255,255,.6); }
+.pf .ctas { margin-top:36px; display:flex; gap:14px; align-items:center; }
+.pf .btn.ghost { color:#fff; }
+.bezel { padding:8px; border-radius:var(--r-panel); background:rgba(255,255,255,.06); box-shadow:inset 0 0 0 1px rgba(255,255,255,.12); display:flex; }
+.bezel .in { flex:1; min-height:520px; border-radius:var(--r-panel-in); overflow:hidden; position:relative; background:var(--deep) url(media/v5302.jpg) center/cover; }
+.bezel .in video { position:absolute; inset:0; opacity:0; animation:clips 18s infinite; }
+.bezel .in video:nth-of-type(2) { animation-delay:6s; }
+.bezel .in video:nth-of-type(3) { animation-delay:12s; }
+@keyframes clips { 0% { opacity:0; } 4% { opacity:1; } 33% { opacity:1; } 38% { opacity:0; } 100% { opacity:0; } }
+.bezel .tag { position:absolute; z-index:2; left:20px; bottom:20px; display:inline-flex; align-items:center; gap:8px; background:rgba(0,0,0,.5); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); color:#fff; border-radius:999px; padding:8px 14px; font-size:13px; }
+.bezel .tag svg { width:10px; height:10px; }
+/* Why choose Finmatec */
+.wv { padding:var(--sec) var(--gut); background:#fff; }
+.wv h3 { font-size:var(--h4); line-height:1.1; color:var(--dark); }
+.wv p { margin:10px 0 0; font-size:var(--body); line-height:1.55; color:var(--ink2); }
+.w2-wrap { margin-top:48px; display:grid; grid-template-columns:4fr 8fr; gap:28px 64px; }
+.w2-ph { min-height:400px; }
+.wv .wph { position:relative; overflow:hidden; color:#fff; }
+.wv .wph img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.wv .wph::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(13,14,43,0) 40%,rgba(13,14,43,.82) 100%); }
+.wv .wph .b { position:absolute; left:32px; right:32px; bottom:30px; z-index:1; }
+.wv .wph h3 { color:#fff; font-size:var(--h3); }
+.wv .wph p { color:rgba(255,255,255,.82); max-width:460px; }
+.w2-grid { display:grid; grid-template-columns:1fr 1fr; }
+.w2-c { padding:32px 36px; display:flex; flex-direction:column; justify-content:center; }
+.w2-c:nth-child(odd) { padding-left:0; border-right:1px solid var(--line); }
+.w2-c:nth-child(even) { padding-right:0; }
+.w2-c:nth-child(-n+2) { border-bottom:1px solid var(--line); }
+.w2-c h3 { white-space:nowrap; }
+.w2-c p { max-width:340px; }
+.w2-cert { margin-top:28px; padding:24px 36px; background:#fff; display:flex; justify-content:space-between; align-items:center; gap:32px; }
+.wv .wc b { display:block; font-family:var(--fd); font-weight:700; font-size:20px; color:var(--dark); }
+.wv .wc span { font-size:15px; color:var(--ink2); }
+/* 80 %: existing factories, floor plan */
+.exist { position:relative; background:#fff; padding:0; overflow:hidden; }
+.exist .left { position:relative; z-index:1; width:680px; padding:var(--sec) var(--gut); display:flex; flex-direction:column; justify-content:space-between; gap:48px; }
+.big80 { font-family:var(--fd); font-weight:700; font-size:240px; line-height:.8; letter-spacing:-0.005em; color:var(--dark); }
+.big80 sup { font-size:110px; vertical-align:top; position:relative; top:22px; color:var(--acc); }
+.exist h2 { margin-top:26px; max-width:560px; }
+.exist .lead { margin-top:22px; max-width:560px; }
+.ptitle { display:flex; justify-content:space-between; align-items:baseline; }
+.ptitle b { font-size:22px; letter-spacing:-0.02em; }
+.fpz-pan { margin-top:18px; }
+.fpz-drop { border-radius:var(--r-panel-in); border:1.5px dashed rgba(36,21,186,.32); background:rgba(36,21,186,.03); padding:26px 20px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:6px; }
+.fpz-ic { width:52px; height:52px; border-radius:50%; background:var(--dark); color:#fff; display:grid; place-items:center; margin-bottom:8px; }
+.fpz-drop b { font-family:var(--fd); font-weight:700; font-size:20px; color:var(--ink); }
+.fpz-drop span { font-size:var(--small); color:var(--ink2); }
+.fpz-drop .fpz-ic { color:#fff; }
+.fpz-drop u { color:var(--dark); font-weight:600; text-underline-offset:3px; }
+.fpz-row { display:flex; align-items:center; gap:20px; padding:8px 0 0 20px; }
+.fpz-row .f { flex:1; }
+.fpz-row .btn { flex:none; justify-content:space-between; }
+.exist .planfull { position:absolute; top:0; bottom:0; left:600px; right:56px; z-index:0; background:#fff; color:#141414; }
+.exist .planfull::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,#fff 0%,#fff 10%,rgba(255,255,255,0) 34%); pointer-events:none; }
+.exist .planfull svg.plan { position:absolute; inset:0; width:100% !important; height:100% !important; }
+.plan { font-family:var(--fd); }
+.plan text { fill:currentColor; font-size:11px; }
+.plan .eq { fill:rgba(20,20,20,.05); stroke:currentColor; stroke-width:1.2; }
+.plan .ln { fill:none; stroke:currentColor; stroke-width:1; }
+.plan .thin { stroke-width:.6; opacity:.55; }
+.plan .wall { fill:none; stroke:currentColor; stroke-width:2.2; }
+.plan .lbl { font-size:11px; opacity:.75; }
+.plan * { vector-effect:non-scaling-stroke; }
+.plan .flow { fill:none; stroke:#141414; stroke-width:2; stroke-dasharray:6 6; animation:planflow 1.4s linear infinite; }
+@keyframes planflow { to { stroke-dashoffset:-24; } }
+.plan .mroute { fill:none; stroke:var(--dark); stroke-width:1.4; stroke-dasharray:2 7; opacity:.6; animation:planflow 1.4s linear infinite; }
+.plan .mblk { fill:var(--dark); stroke:none; }
+/* Proof: quote and photo */
+.proof { padding:var(--sec) var(--gut); background:#fff; }
+.pbento { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:16px; }
+.cell > .core { position:relative; height:100%; }
+.c-quote { grid-column:span 7; }
+.c-quote .core { background:var(--dark); color:#fff; padding:48px; display:flex; flex-direction:column; justify-content:space-between; gap:40px; min-height:520px; }
+.c-quote .mark { font-family:var(--fd); font-weight:700; font-size:120px; line-height:.5; height:44px; color:var(--acc); }
+.c-quote blockquote { margin:0; font-family:var(--fd); font-weight:600; font-size:40px; line-height:1.12; letter-spacing:-0.02em; color:#fff; }
+.c-quote .qfoot { display:flex; flex-wrap:wrap; gap:20px 32px; align-items:center; justify-content:space-between; }
+.c-quote cite { font-style:normal; color:#C9C6F1; }
+.c-img { grid-column:span 5; }
+.c-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:55% 50%; }
+/* Service and spare parts */
+.svc { padding:0 var(--gut); }
+.svc-in { border-radius:var(--r-panel); background:var(--dark); color:#fff; padding:64px; display:grid; grid-template-columns:1fr 1.15fr; gap:72px; align-items:center; }
+.svc h2 { margin-top:18px; color:#fff; }
+.svc-head .lead { margin-top:18px; line-height:1.5; color:rgba(255,255,255,.76); max-width:420px; }
+.svc-links { display:grid; gap:12px; }
+/* Engineers: datasheet */
+.eng { padding:var(--sec) var(--gut); display:grid; grid-template-columns:1.1fr 1fr; gap:90px; align-items:center; }
+.eng h2 { margin-top:22px; }
+.eng .lead { margin-top:22px; max-width:520px; }
+.eng .btn { margin-top:34px; }
+.sheet .in { padding:34px 36px; box-shadow:0 1px 0 rgba(0,0,0,.04); }
+.sheet .top { display:flex; justify-content:space-between; align-items:baseline; padding-bottom:22px; border-bottom:1px solid var(--line); }
+.sheet .top b { font-family:var(--fd); font-size:26px; font-weight:700; letter-spacing:-0.005em; }
+.sheet table { width:100%; border-collapse:collapse; margin-top:6px; font-size:15px; }
+.sheet td { padding:13px 0; border-bottom:1px solid var(--soft); }
+.fm .sheet td:first-child { color:var(--mute); width:46%; padding-right:14px; }
+.sheet .dl { margin-top:22px; display:flex; gap:10px; }
+/* Contact */
+.cb { padding:var(--sec) var(--gut); display:grid; grid-template-columns:1fr 1.1fr; gap:72px; }
+.cb h2 { font-size:var(--disp); line-height:.92; }
+.cb .lead { margin-top:22px; max-width:480px; }
+.cb .ppl { margin-top:40px; display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:560px; }
+.cb .ppl > div { display:grid; gap:16px; }
+.cb .ppl .av { width:100%; height:300px; border-radius:var(--r-card-in); overflow:hidden; background:var(--soft); }
+.cb .ppl .av img { width:100%; height:100%; object-fit:cover; object-position:50% 20%; display:block; }
+.cb .ppl b { display:block; font-size:17px; }
+.cb .ppl span span { display:block; margin-top:2px; font-size:var(--small); color:var(--mute); }
+.cb .form .in { display:flex; flex-direction:column; padding:34px; }
+.fm .cb .form .lab { color:var(--ink2); }
+.cb .chips { margin-top:12px; display:flex; flex-wrap:wrap; gap:8px; }
+.cb .form .f2 { margin-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:6px 28px; }
+.cb > .form { align-self:start; }
+.cb .form .ta { margin-top:12px; }
+.cb .form .btn { align-self:flex-start; margin-top:20px; justify-content:space-between; }
+/* Footer */
+.fb2 { position:relative; padding:60px var(--gut) 56px; overflow:hidden; background:var(--soft); }
+.fb2 > *:not(.sym) { position:relative; z-index:1; }
+.fb2 .sym { position:absolute; z-index:0; right:-140px; top:-170px; height:1000px; width:auto; }
+.fb2 .sym path[fill="#e2e2de"] { fill:#2415BA; fill-opacity:.085; }
+.fb2 .sym path[fill="#d3d3ce"] { fill:#03FF6B; fill-opacity:.15; }
+.fb2 .grid { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:40px; }
+.fb2 p { font-size:15px; color:var(--ink2); max-width:320px; margin-top:0; }
+.fb2 h4 { margin:0 0 14px; font-size:var(--small); font-weight:600; }
+.fb2 ul { list-style:none; margin:0; padding:0; display:grid; gap:9px; font-size:15px; color:var(--ink2); }
+.fb2 .bottom { margin-top:56px; display:flex; justify-content:space-between; font-size:13px; color:var(--mute); }
+.fb2 .bottom span a { margin-left:24px; }
+.fb2 .word { position:relative; margin:40px 0 0; width:auto; height:auto; overflow:visible; }
+.fb2 .word svg { display:block; width:100%; height:auto; fill:var(--dark); }
+/* ===== Mobile 390 ===== */
+.fm.m { --disp:52px; --h1:32px; --h2:32px; --h2s:28px; --h3:24px; --h4:21px; --lead:16px; --body:15px; --sec:56px; --gut:20px; --r-panel:28px; --r-panel-in:22px; --r-row:18px; width:390px; font-size:16px; }
+.fm.m .btn:not(.mq) { width:100%; justify-content:space-between; }
+.fm.m .btn.ghost { justify-content:center; }
+.fm.m .chip { height:44px; }
+.fm.m .tlink { min-height:44px; font-size:16px; }
+.fm.m .lrow { height:72px; padding:0 16px 0 20px; }
+.fm.m .lrow b { font-size:18px; }
+.fm.m .lrow small { font-size:13px; }
+.fm.m .lrow i { width:40px; height:40px; }
+.fm.m .lrow i svg { width:18px; height:18px; }
+.fm.m .util { display:none; }
+.fm.m .hero { height:780px; }
+.fm.m .nav { top:14px; left:12px; right:12px; height:58px; padding:0 7px 0 18px; gap:12px; justify-content:space-between; }
+.fm.m .nav img.logoimg { height:24px; }
+.fm.m .nav .btn.mq { display:inline-flex; margin-left:auto; height:44px; padding:0 6px 0 16px; gap:10px; font-size:14px; }
+.fm.m .nav .btn.mq i { width:32px; height:32px; }
+.fm.m .burger { width:44px; height:44px; border-radius:50%; border:0; padding:0; background:var(--dark); display:grid; place-content:center; gap:4px; cursor:pointer; }
+.fm.m .burger span { display:block; width:18px; height:2px; border-radius:1px; background:#fff; }
+.fm.m .hero-copy { bottom:276px; }
+.fm.m .hero h1 { line-height:1.04; max-width:none; }
+.fm.m .router { left:12px; right:12px; bottom:16px; grid-template-columns:1fr; gap:8px; }
+.fm.m .rw h2.stmt { line-height:1.04; }
+.fm.m .rw .stmt em { background-size:100% 6px; }
+.fm.m .rwk-grid { margin-top:28px; grid-template-columns:1fr; }
+.fm.m .rwk-grid > .rw-i { padding:18px 0; border-right:0; border-bottom:1px solid var(--line); gap:16px; }
+.fm.m .rwk-grid > .rw-i:last-child { border-bottom:0; }
+.fm.m .rw-ar { width:52px; height:52px; }
+.fm.m .rw-ar svg { width:24px; height:24px; }
+.fm.m .rw-t b { font-size:24px; white-space:normal; }
+.fm.m .rw-num { font-size:52px; }
+.fm.m .rw-n .rw-t b { font-size:20px; }
+.fm.m .rw small { margin-bottom:6px; }
+.fm.m .logos { margin-top:36px; }
+.fm.m .logos .ltrack div { width:150px; height:80px; padding:16px 20px; }
+.fm.m .flow-head { grid-template-columns:1fr; gap:16px; }
+.fm.m .railwrap { margin-top:32px; }
+.fm.m .track { gap:12px; animation:railpanm 22s cubic-bezier(.65,0,.35,1) infinite alternate; }
+@keyframes railpanm { 0%, 12% { transform:translateX(0); } 88%, 100% { transform:translateX(calc(390px - 100%)); } }
+.fm.m .track > .st { width:300px; }
+.fm.m .st .body { padding:20px 20px 24px; gap:10px; }
+.fm.m .flow-foot { margin-top:32px; flex-direction:column; align-items:flex-start; gap:12px; }
+.fm.m .kg { grid-template-columns:1fr; gap:20px; }
+.fm.m .kg-num { font-size:150px; }
+.fm.m .kg-num small { font-size:56px; }
+.fm.m .pf { grid-template-columns:1fr; gap:32px; }
+.fm.m .seg { margin-top:24px; border-radius:22px; }
+.fm.m .seg span { font-size:13px; line-height:1.15; padding:0 6px; min-height:48px; display:grid; place-items:center; border-radius:18px; }
+.fm.m .level { margin-top:28px; }
+.fm.m .level div b { font-size:var(--small); }
+.fm.m .level div small { font-size:11px; }
+.fm.m .pf .ctas { flex-direction:column; align-items:stretch; gap:10px; }
+.fm.m .bezel .in { min-height:300px; }
+.fm.m .w2-wrap { margin-top:28px; grid-template-columns:1fr; gap:20px; }
+.fm.m .w2-ph { min-height:340px; }
+.fm.m .wv .wph .b { left:22px; right:22px; bottom:22px; }
+.fm.m .w2-grid { grid-template-columns:1fr; }
+.fm.m .w2-c { padding:20px 0; border-right:0 !important; border-bottom:1px solid var(--line); }
+.fm.m .w2-c:last-child { border-bottom:0; }
+.fm.m .w2-c h3 { white-space:normal; }
+.fm.m .w2-cert { margin-top:20px; padding:22px; flex-direction:column; align-items:flex-start; gap:14px; }
+.fm.m .exist { display:flex; flex-direction:column; }
+.fm.m .exist .left { width:auto; padding-bottom:28px; gap:36px; }
+.fm.m .big80 { font-size:120px; }
+.fm.m .big80 sup { font-size:54px; top:10px; }
+.fm.m .fpz-row { flex-direction:column; align-items:stretch; gap:14px; padding:8px 0 0; }
+.fm.m .fpz-row .f { margin:0 14px; }
+.fm.m .fpz-drop { padding:22px 14px; }
+.fm.m .exist .planfull { position:relative; inset:auto; left:auto; right:auto; order:1; height:auto; aspect-ratio:16/9; margin:0 var(--gut) var(--sec); }
+.fm.m .exist .planfull::after { display:none; }
+.fm.m .pbento { grid-template-columns:1fr; gap:12px; }
+.fm.m .pbento > .cell { grid-column:auto; }
+.fm.m .c-quote .core { padding:28px 24px; min-height:0; gap:28px; }
+.fm.m .c-quote .mark { font-size:90px; height:30px; }
+.fm.m .c-quote blockquote { font-size:24px; line-height:1.18; }
+.fm.m .c-img .core { min-height:300px; }
+.fm.m .svc-in { grid-template-columns:1fr; padding:32px 22px 22px; gap:28px; }
+.fm.m .eng { grid-template-columns:1fr; gap:32px; }
+.fm.m .eng > div:last-child { order:-1; }
+.fm.m .sheet .in { padding:22px; }
+.fm.m .sheet .top { flex-direction:column; align-items:flex-start; gap:6px; }
+.fm.m .sheet .top b { font-size:20px; }
+.fm.m .sheet table { table-layout:fixed; }
+.fm.m .sheet td:first-child { width:42%; letter-spacing:.04em; font-size:11px; line-height:1.35; word-break:break-word; }
+.fm.m .sheet .dl { flex-wrap:wrap; }
+.fm.m .cb { grid-template-columns:1fr; gap:32px; }
+.fm.m .cb .ppl { margin-top:28px; gap:12px; }
+.fm.m .cb .ppl > div { align-content:start; gap:12px; }
+.fm.m .cb .ppl .av { height:200px; }
+.fm.m .cb .ppl span span { font-size:13px; }
+.fm.m .cb .form .in { padding:22px; }
+.fm.m .cb .form .f2 { grid-template-columns:1fr; }
+.fm.m .cb .form .btn { align-self:stretch; }
+.fm.m .fb2 { padding:48px var(--gut) 40px; }
+.fm.m .fb2 .sym { right:-220px; top:-80px; height:700px; }
+.fm.m .fb2 .grid { grid-template-columns:1fr 1fr; gap:32px 24px; }
+.fm.m .fb2 .grid > div:first-child { grid-column:span 2; }
+.fm.m .fb2 ul li { min-height:44px; display:flex; align-items:center; }
+.fm.m .fb2 .bottom { margin-top:36px; flex-direction:column; gap:10px; }
+.fm.m .fb2 .bottom span a { margin:0 16px 0 0; display:inline-flex; align-items:center; min-height:44px; }
+.fm.m .fb2 .bottom > span:first-child { display:inline-flex; align-items:center; min-height:44px; }
+.fm.m .fb2 .word { margin-top:32px; width:350px; }
+/* From the Mixers page: product hero, breadcrumb, numbered steps, light link row */
+.phero { position:relative; background:var(--paper); padding:22px 56px 0; }
+.phero .nav { position:relative; top:0; left:0; right:0; }
+.ph-grid { display:grid; grid-template-columns:minmax(0,1fr) 600px; gap:64px; align-items:center; padding:56px 16px var(--sec); }
+.crumb { display:flex; flex-wrap:wrap; gap:10px; align-items:center; font-size:var(--small); color:var(--mute); }
+.crumb a { color:var(--ink2); border-bottom:1px solid var(--line); }
+.crumb [aria-current] { color:var(--ink); font-weight:600; }
+.phero .eyebrow { margin-top:36px; }
+.phero h1 { margin-top:20px; font-size:var(--h1); line-height:1; color:var(--ink); }
+.phero h1 em { font-style:normal; color:var(--dark); background:linear-gradient(var(--acc),var(--acc)) 0 92%/100% 9px no-repeat; }
+.phero .lead { margin-top:24px; max-width:560px; }
+.ph-ctas { margin-top:40px; display:flex; gap:14px; align-items:center; }
+.fm .dlrow { display:flex; justify-content:space-between; align-items:center; gap:20px; min-height:88px; padding:16px 22px 16px 28px; border-radius:var(--r-row); background:#fff; box-shadow:inset 0 0 0 1px var(--line); transition:box-shadow .4s var(--ease); }
+.fm .dlrow:hover { box-shadow:inset 0 0 0 1.5px var(--dark); }
+.dlrow b { display:block; font-family:var(--fd); font-size:20px; font-weight:700; line-height:1.2; }
+.dlrow .mono { display:block; margin-top:6px; color:var(--mute); }
+.dlrow i { width:44px; height:44px; border-radius:50%; display:grid; place-items:center; flex:none; background:var(--dark); color:#fff; }
+.dlrow i svg { width:20px; height:20px; }
+.steps { list-style:none; margin:32px 0 0; padding:0; display:grid; max-width:520px; }
+.steps li { display:grid; grid-template-columns:40px 1fr; gap:16px; align-items:center; padding:14px 0; border-bottom:1px solid var(--line); font-size:var(--body); color:var(--ink2); }
+.steps li:first-child { border-top:1px solid var(--line); }
+.steps li span { width:32px; height:32px; border-radius:50%; display:grid; place-items:center; background:var(--dark); color:#fff; font-family:var(--fd); font-weight:700; font-size:15px; }
+.fm.m .phero { padding:14px 12px 0; }
+.fm.m .ph-grid { grid-template-columns:1fr; gap:32px; padding:28px 8px var(--sec); }
+.fm.m .phero .eyebrow { margin-top:24px; }
+.fm.m .phero h1 { font-size:36px; line-height:1.04; }
+.fm.m .phero h1 em { background-size:100% 6px; }
+.fm.m .ph-ctas { margin-top:28px; flex-direction:column; align-items:stretch; gap:10px; }
+.fm.m .dlrow { min-height:76px; padding:14px 14px 14px 20px; }
+.fm.m .dlrow b { font-size:17px; }
+.fm.m .dlrow .mono { font-size:11px; letter-spacing:.08em; }
+.fm.m .dlrow i { width:40px; height:40px; }
+/* ===== Service & Spare Parts (17.11.2026): page additions on the homepage system. Tokens and components from shared CSS. ===== */
+.fm .svhero { height:760px; }
+.fm .svhero .hero-copy { bottom:176px; }
+.svhero .hero-copy .lead { margin-top:22px; max-width:640px; color:rgba(255,255,255,.82); }
+.svhero .hero-copy .eyebrow { color:var(--acc); margin-bottom:22px; }
+.svhero .hero-copy .eyebrow::before { background:var(--acc); }
+.svhero h1 em { font-style:normal; background:linear-gradient(var(--acc),var(--acc)) 0 92%/100% 9px no-repeat; }
+.svhero .media img { object-position:50% 40%; }
+.svhero .media::after { background:linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,.25) 28%, rgba(10,10,10,.55) 52%, rgba(10,10,10,.92) 100%); }
+/* Section head shared by these pages */
+.sx { padding:var(--sec) var(--gut); background:#fff; }
+.sx-head { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:72px; align-items:end; }
+.sx-head h2 { margin-top:22px; }
+.sx-head .lead { max-width:520px; }
+/* Machines we support: light link rows */
+.sup-grid { margin-top:48px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.sup-note { margin-top:28px; padding-top:24px; border-top:1px solid var(--line); font-size:var(--lead); color:var(--ink2); }
+.sup-note b { color:var(--ink); }
+/* Maintenance & support: photo + open hairline grid */
+.mnt { background:var(--paper); }
+.mnt .w2-wrap { margin-top:48px; }
+.mnt .w2-ph { position:relative; overflow:hidden; min-height:440px; }
+.mnt .w2-ph img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:40% 40%; }
+.mnt .w2-c h3 { white-space:normal; font-size:var(--h4); line-height:1.1; color:var(--dark); }
+.mnt .w2-c p { margin-top:10px; font-size:var(--body); color:var(--ink2); max-width:360px; }
+/* Upgrades band: homepage .svc */
+.svc.upg { padding-top:var(--sec); }
+/* Reach us */
+.reach { padding:var(--sec) var(--gut); display:grid; grid-template-columns:1fr 1.1fr; gap:72px; align-items:start; }
+.reach h2 { font-size:var(--disp); line-height:.92; }
+.reach .lead { margin-top:22px; max-width:480px; }
+.reach .rows { display:grid; gap:12px; }
+/* ===== Spare Parts ===== */
+.chan { margin-top:40px; display:flex; border-top:1px solid var(--line); }
+.chan > div { padding:22px 32px 0 0; margin-right:32px; border-right:1px solid var(--line); }
+.chan > div:last-child { border-right:0; margin-right:0; }
+.chan .mono { display:block; color:var(--ink2); }
+.chan a { display:inline-block; margin-top:10px; font-family:var(--fd); font-weight:700; font-size:var(--h4); line-height:1.1; color:var(--dark); white-space:nowrap; }
+/* Type plate illustration */
+.plt { border-radius:var(--r-panel); padding:8px; background:var(--tray); box-shadow:var(--tray-ring); display:flex; }
+.plt > .in { flex:1; border-radius:var(--r-panel-in); background:#fff; padding:44px 44px 36px; display:grid; gap:28px; }
+/* Type plate in brushed stainless (Olli 17.11.: the steel texture from the Every Kilo Steel board, modelled on real stainless sheet). Engraved text: dark ink with a 1 px light highlight below. */
+.plate { position:relative; border-radius:12px; padding:26px 30px 24px; background:#c9cfd7 url(media/blob/f066c12e60ef0b1bc7bfaf3d2c338425.jpg) center/cover no-repeat; box-shadow:inset 0 0 0 1px rgba(27,29,43,.22), inset 0 1px 0 rgba(255,255,255,.9), inset 0 -2px 4px rgba(27,29,43,.22), 0 18px 40px rgba(11,10,38,.16); }
+.plate .rv { position:absolute; width:12px; height:12px; border-radius:50%; background:linear-gradient(135deg,transparent 44%,rgba(27,29,43,.55) 45% 55%,transparent 56%),radial-gradient(circle at 35% 35%,#ffffff,#a3aab6 60%,#6b7280); box-shadow:inset 0 0 0 1px rgba(27,29,43,.2),0 1px 0 rgba(255,255,255,.8); }
+.plate .rv:nth-child(1) { top:10px; left:10px; } .plate .rv:nth-child(2) { top:10px; right:10px; } .plate .rv:nth-child(3) { bottom:10px; left:10px; } .plate .rv:nth-child(4) { bottom:10px; right:10px; }
+.plate .top { display:flex; justify-content:space-between; align-items:center; padding-bottom:16px; border-bottom:1px solid rgba(27,29,43,.24); box-shadow:0 1px 0 rgba(255,255,255,.6); }
+.fm .plate .top img.logoimg { height:24px; filter:drop-shadow(0 1px 0 rgba(255,255,255,.7)); }
+.plate .ce { font-family:var(--fd); font-weight:700; font-size:30px; letter-spacing:-0.04em; color:var(--ink); text-shadow:0 1px 0 rgba(255,255,255,.8), 0 -1px 0 rgba(27,29,43,.3); }
+.plate .mk { display:block; margin-top:12px; font-size:var(--small); color:var(--ink2); text-shadow:0 1px 0 rgba(255,255,255,.75); }
+.plate dl { margin:16px 0 0; display:grid; grid-template-columns:150px 1fr; }
+.plate dt, .plate dd { margin:0; padding:11px 0; border-bottom:1px solid rgba(27,29,43,.2); box-shadow:0 1px 0 rgba(255,255,255,.45); }
+.plate dt { color:var(--ink2); text-shadow:0 1px 0 rgba(255,255,255,.75); }
+.plate dd { position:relative; display:flex; align-items:center; gap:10px; }
+.plate dd .bar { flex:1; height:14px; border-radius:7px; background:rgba(27,29,43,.07); box-shadow:inset 0 1px 2px rgba(27,29,43,.35), 0 1px 0 rgba(255,255,255,.7); }
+.plate dd.k .bar { box-shadow:inset 0 1px 2px rgba(27,29,43,.35), 0 0 0 1.5px var(--dark), 0 1px 0 rgba(255,255,255,.7); }
+.plate dd .no { width:28px; height:28px; border-radius:50%; display:grid; place-items:center; flex:none; background:var(--acc); color:var(--deep); font-family:var(--fd); font-weight:700; font-size:var(--small); box-shadow:0 1px 2px rgba(11,10,38,.25); }
+.plt .cap { font-size:var(--body); color:var(--ink2); max-width:520px; }
+.plt .cap b { color:var(--ink); }
+/* Request: guide + form */
+.req { padding:var(--sec) var(--gut); display:grid; grid-template-columns:minmax(0,1fr) 760px; gap:72px; align-items:start; background:var(--paper); }
+.req h2 { margin-top:22px; }
+.req .lead { margin-top:22px; max-width:500px; }
+.req .steps li { color:var(--ink2); }
+.req .alt { margin-top:28px; display:grid; gap:12px; max-width:520px; }
+.req .alt p { font-size:var(--body); color:var(--ink2); }
+.req .alt p b { color:var(--ink); }
+.rform { border-radius:var(--r-panel); padding:8px; background:var(--tray); box-shadow:var(--tray-ring); display:flex; }
+.rform > .in { flex:1; border-radius:var(--r-panel-in); background:#fff; padding:36px 36px 34px; display:flex; flex-direction:column; }
+.rform fieldset { margin:0; padding:0 0 34px; border:0; }
+.rform fieldset:last-of-type { padding-bottom:26px; }
+.fm .rform legend.lab { float:left; width:100%; margin:0 0 14px; padding:0; color:var(--ink2); display:flex; align-items:center; gap:10px; }
+.rform legend + * { clear:both; }
+.rform legend .n { width:24px; height:24px; border-radius:50%; display:grid; place-items:center; background:var(--dark); color:#fff; letter-spacing:0; }
+.rform .chips { margin-top:14px; display:flex; flex-wrap:wrap; gap:8px; }
+.rform .f2 { margin-top:10px; display:grid; grid-template-columns:1fr 1fr; gap:4px 28px; }
+.rform .fpz-pan { margin-top:16px; padding:6px; }
+.rform .fpz-drop { padding:20px; flex-direction:row; text-align:left; gap:16px; justify-content:flex-start; }
+.rform .fpz-drop .fpz-ic { margin:0; }
+.rform .fpz-drop > span:last-child { display:grid; gap:2px; }
+.rform .ta { margin-top:10px; }
+.rform .callnow { margin-top:14px; font-size:15px; color:var(--ink2); }
+.rform .callnow a { color:var(--dark); font-weight:600; white-space:nowrap; border-bottom:1.5px solid currentColor; }
+.rform .chk { margin-top:16px; display:flex; align-items:center; gap:12px; min-height:44px; font-size:15px; color:var(--ink); cursor:pointer; }
+.rform .chk input { appearance:none; -webkit-appearance:none; margin:0; width:22px; height:22px; border-radius:6px; box-shadow:inset 0 0 0 1.5px var(--line); background:#fff; flex:none; }
+.rform .chk input:checked { background:var(--dark); box-shadow:none; }
+.rform .btn { align-self:flex-start; margin-top:8px; justify-content:space-between; }
+/* Know your part: open hairline grid */
+.know-grid { margin-top:48px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-top:1px solid var(--line); }
+.know-grid > div { padding:34px 40px 8px; border-right:1px solid var(--line); display:flex; flex-direction:column; gap:12px; align-items:flex-start; }
+.know-grid > div:first-child { padding-left:0; }
+.know-grid > div:last-child { border-right:0; padding-right:0; }
+.know-grid h3 { font-size:var(--h4); line-height:1.1; color:var(--dark); }
+.know-grid p { font-size:var(--body); color:var(--ink2); max-width:360px; }
+.know-grid .tlink { margin-top:auto; }
+/* New line: critical spare parts (askb card) */
+.crit { padding:0 var(--gut) var(--sec); background:#fff; }
+.crit .in { display:flex; align-items:center; gap:28px; padding:30px 30px 30px 36px; border-radius:var(--r-card); background:var(--paper); }
+.crit .tx { flex:1; }
+.crit .qq { font-family:var(--fd); font-size:var(--h3); font-weight:700; line-height:1.1; color:var(--ink); }
+.crit .tx p + p { margin-top:8px; font-size:var(--body); color:var(--ink2); max-width:640px; }
+/* Spare Parts: upgrades band follows the critical parts card directly */
+.crit + .svc.upg { padding-top:0; }
+/* Partner brands in Finland: one light row */
+.trd { padding:var(--sec) var(--gut) 0; }
+.fm.m .svhero { height:820px; }
+.fm.m .svhero .hero-copy { bottom:276px; }
+.fm.m .svhero .hero-copy .eyebrow { margin-bottom:16px; }
+.fm.m .svhero h1 em { background-size:100% 6px; }
+.fm.m .svhero .hero-copy .lead { margin-top:16px; }
+.fm.m .sx-head { grid-template-columns:1fr; gap:16px; }
+.fm.m .sup-grid { margin-top:28px; grid-template-columns:1fr; gap:8px; }
+.fm.m .sup-note { margin-top:20px; padding-top:18px; }
+.fm.m .mnt .w2-wrap { margin-top:28px; }
+.fm.m .mnt .w2-ph { min-height:300px; }
+.fm.m .svc.upg { padding-top:var(--sec); }
+.fm.m .crit + .svc.upg { padding-top:0; }
+.fm.m .reach { grid-template-columns:1fr; gap:28px; }
+.fm.m .chan { margin-top:28px; flex-direction:column; border-top:0; }
+.fm.m .chan > div { padding:16px 0; margin:0; border-right:0; border-top:1px solid var(--line); }
+.fm.m .chan a { font-size:21px; display:flex; align-items:center; min-height:44px; margin-top:4px; }
+.fm.m .plt > .in { padding:22px 18px 20px; gap:18px; }
+.fm.m .plate { padding:20px 18px 18px; }
+.fm.m .plate dl { grid-template-columns:104px 1fr; font-size:15px; }
+.fm.m .plate .ce { font-size:24px; }
+.fm.m .req { grid-template-columns:1fr; gap:32px; }
+.fm.m .rform > .in { padding:22px 18px; }
+.fm.m .rform .f2 { grid-template-columns:1fr; }
+.fm.m .rform .fpz-drop { padding:16px; }
+.fm.m .rform .btn { align-self:stretch; }
+.fm.m .know-grid { margin-top:28px; grid-template-columns:1fr; border-top:0; }
+.fm.m .know-grid > div { padding:22px 0; border-right:0; border-top:1px solid var(--line); }
+.fm.m .crit .in { flex-direction:column; align-items:flex-start; gap:18px; padding:24px 20px; }
+.fm.m .crit .qq { font-size:24px; }
+.fm.m .crit .btn { align-self:stretch; }
+/* Mobile: the product hero nav sits in the hero padding, not offset again by the floating-nav insets */
+.fm.m .phero .nav { top:0; left:0; right:0; }</style>
+<style media="(max-width:760px)">
+/* ===== Finmatec homepage stylesheet: the base for every page (shared by all 4 homepage artboards, unified 16.11.2026) ===== */
+/* Tokens: colour, type, radius, surface, rhythm. Mobile overrides at the bottom. */
+.fm { --ink:#0D0E2B; --ink2:#3A3C5C; --mute:#5F617E; --line:#D9DBE8; --soft:#ECEEF7; --paper:#F5F6FB; --dark:#2415BA; --acc:#03FF6B; --deep:#0D0E2B;
+  --fd:'Exo 2',sans-serif; --fb:'Exo 2',sans-serif; --fl:'Exo 2',sans-serif; --ease:cubic-bezier(.32,.72,0,1);
+  --disp:84px; --h1:64px; --h2:56px; --h2s:44px; --h3:30px; --h4:24px; --lead:18px; --body:16px; --small:14px; --cap:12px;
+  --r-card:28px; --r-card-in:22px; --r-panel:36px; --r-panel-in:28px; --r-row:22px;
+  --tray:rgba(36,21,186,.06); --tray-ring:inset 0 0 0 1px rgba(36,21,186,.10); --halo:0 0 0 6px rgba(36,21,186,.06), 0 0 0 7px rgba(36,21,186,.08);
+  --sec:80px; --gut:72px;
+  width:1440px; background:#fff; color:var(--ink); font-family:var(--fb); font-size:17px; line-height:1.55; -webkit-font-smoothing:antialiased; overflow:hidden; }
+/* Base */
+.fm * { box-sizing:border-box; }
+.fm p { margin:0; }
+.fm h1, .fm h2, .fm h3 { margin:0; font-family:var(--fd); font-weight:700; letter-spacing:-0.005em; line-height:1; }
+.fm h2 { font-size:var(--h2); line-height:1.02; color:var(--dark); }
+.fm h2.s { font-size:var(--h2s); line-height:1.04; }
+.fm .hl { color:var(--ink); }
+.fm .lead { font-size:var(--lead); color:var(--ink2); }
+.fm a { color:inherit; text-decoration:none; }
+.fm img, .fm video { display:block; width:100%; height:100%; object-fit:cover; }
+.fm a:focus-visible, .fm button:focus-visible { outline:2px solid var(--dark); outline-offset:3px; }
+.fm svg.ic { display:block; flex:none; }
+.sr { position:absolute; width:1px; height:1px; overflow:hidden; clip:rect(0 0 0 0); white-space:nowrap; }
+/* Caps label: eyebrow, field label, card label, table key, quote source. One style. */
+.mono, .eyebrow, .fm .lab, .rw small, .fm .level div small, .st .n, .st.star .badge, .c-quote cite, .fm .sheet td:first-child { font-family:var(--fl); font-size:var(--cap); font-weight:700; letter-spacing:.12em; text-transform:uppercase; }
+.eyebrow { display:inline-flex; align-items:center; gap:10px; color:var(--ink2); }
+.eyebrow::before { content:""; width:18px; height:1px; background:var(--dark); }
+.pf .eyebrow, .svc .eyebrow { color:var(--acc); }
+.pf .eyebrow::before, .svc .eyebrow::before { background:var(--acc); }
+/* Button: pill + nested arrow ball. Sizes: default 56, .s 48. Styles: .pri, .sec, .ghost; .qk = steel knob, Request a quote only. */
+.btn { display:inline-flex; align-items:center; gap:14px; height:56px; padding:0 8px 0 26px; border-radius:999px; font-weight:600; font-size:16px; transition:transform .5s var(--ease); white-space:nowrap; }
+.btn i { width:40px; height:40px; border-radius:50%; display:grid; place-items:center; flex:none; font-style:normal; }
+.btn i svg { width:18px; height:18px; }
+.btn.s { height:48px; padding:0 6px 0 20px; gap:12px; font-size:15px; }
+.btn.s i { width:36px; height:36px; }
+.btn.s i svg { width:16px; height:16px; }
+.btn.pri { background:var(--dark); color:#fff; }
+.btn.pri i { background:rgba(255,255,255,.16); color:#fff; }
+.btn.sec { background:#fff; color:var(--ink); }
+.btn.sec i { background:var(--dark); color:#fff; }
+.btn.ghost { box-shadow:inset 0 0 0 1.5px currentColor; padding:0 22px 0 26px; gap:10px; }
+.btn.ghost i { width:auto; height:auto; background:none; }
+.btn.qk { box-shadow:0 10px 24px rgba(36,21,186,.28); }
+.btn.qk i { color:#0b0a26; filter:drop-shadow(0 1px 0 rgba(255,255,255,.9)); background:repeating-radial-gradient(circle at 50% 50%,rgba(255,255,255,0) 0 1px,rgba(27,29,43,.05) 1px 2px),conic-gradient(from 25deg,#f6f8fa,#a9b0bc 11%,#eef1f5 24%,#99a1ae 37%,#f3f5f8 50%,#adb4c0 63%,#ebeef2 75%,#a1a9b6 88%,#f6f8fa); box-shadow:inset 0 0 0 1px rgba(255,255,255,.7),0 0 0 1px rgba(11,10,38,.18),0 2px 5px rgba(11,10,38,.3); }
+/* Link row: a whole row is the link, arrow ball on the right. On dark and blue surfaces. */
+.fm .lrow { display:flex; justify-content:space-between; align-items:center; gap:20px; height:88px; padding:0 22px 0 28px; border-radius:var(--r-row); background:rgba(255,255,255,.08); box-shadow:inset 0 0 0 1px rgba(255,255,255,.16); -webkit-backdrop-filter:blur(14px); backdrop-filter:blur(14px); color:#fff; transition:background .4s var(--ease); }
+.fm .lrow:hover { background:rgba(255,255,255,.14); }
+.fm .lrow b { display:block; font-family:var(--fd); font-size:22px; font-weight:700; letter-spacing:-0.005em; line-height:1.2; }
+.fm .lrow small { display:block; margin-top:3px; font-size:var(--small); opacity:.75; }
+.fm .lrow i { width:44px; height:44px; border-radius:50%; display:grid; place-items:center; flex:none; background:var(--acc); color:var(--deep); }
+.fm .lrow i svg { width:20px; height:20px; }
+/* Chip: small pill link or option. .opt = selectable option in a form. */
+.fm .chip { display:inline-flex; align-items:center; gap:8px; height:40px; padding:0 16px; border-radius:999px; background:var(--soft); color:var(--dark); font-size:var(--small); font-weight:600; white-space:nowrap; }
+.fm .chip svg { width:14px; height:14px; }
+.st.star .chip { background:rgba(255,255,255,.14); color:#fff; }
+.fm .chip.opt { font:inherit; font-size:var(--small); font-weight:600; border:0; background:transparent; color:var(--ink); cursor:pointer; box-shadow:inset 0 0 0 1.5px var(--line); }
+.fm .chip.opt.on { background:var(--dark); color:#fff; box-shadow:none; }
+/* Text link */
+.fm .tlink { display:inline-flex; gap:8px; align-items:center; font-size:17px; font-weight:600; border-bottom:1.5px solid currentColor; padding-bottom:3px; color:var(--dark); white-space:nowrap; }
+.fm .tlink svg { width:16px; height:16px; }
+/* Surfaces. Card: tray 28 / core 22 (6 px gap). Panel: tray 36 / core 28 (8 px gap, concentric with a 56 px pill). Halo: single surface with a soft ring. */
+.st, .cell { border-radius:var(--r-card); padding:6px; background:var(--tray); box-shadow:var(--tray-ring); }
+.st .core, .cell > .core { border-radius:var(--r-card-in); overflow:hidden; }
+.sheet, .cb .form { border-radius:var(--r-panel); padding:8px; background:var(--tray); box-shadow:var(--tray-ring); display:flex; }
+.sheet .in, .cb .form .in { flex:1; border-radius:var(--r-panel-in); background:#fff; }
+.w2-ph, .w2-cert { border-radius:var(--r-card); box-shadow:var(--halo); }
+.fpz-pan { border-radius:var(--r-panel); box-shadow:var(--halo); background:#fff; padding:8px; }
+/* Fields: hairline */
+.fm label.f, .fm label.ta { display:flex; padding:0 2px; border-bottom:1.5px solid var(--line); color:var(--mute); font-size:15px; }
+.fm label.f { height:52px; align-items:center; }
+.fm label.ta { height:auto; min-height:96px; padding-top:14px; align-items:flex-start; }
+.fm label.f input, .fm label.ta textarea { all:unset; width:100%; font:inherit; font-size:15px; color:var(--ink); }
+.fm label.ta textarea { height:100%; min-height:72px; }
+.fm label.f input::placeholder, .fm label.ta textarea::placeholder { color:var(--mute); opacity:1; }
+.fm label.f:focus-within, .fm label.ta:focus-within { border-bottom-color:var(--dark); }
+/* Utility bar */
+.util { height:38px; background:var(--deep); color:#cfcfcf; font-size:13px; display:flex; align-items:center; justify-content:space-between; padding:0 var(--gut); }
+.util span { margin-right:28px; }
+.util b { color:#fff; font-weight:600; }
+.util .ext { display:inline-flex; align-items:center; gap:7px; color:#fff; }
+.util .ext svg { width:12px; height:12px; opacity:.8; }
+/* Hero and nav */
+.hero { position:relative; height:860px; background:var(--deep); color:#fff; }
+.hero .media { position:absolute; inset:0; }
+.hero .media::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,.05) 30%, rgba(10,10,10,.35) 58%, rgba(10,10,10,.92) 100%); }
+.nav { position:absolute; top:22px; left:56px; right:56px; height:68px; display:flex; align-items:center; gap:40px; padding:0 10px 0 26px; border-radius:999px; background:linear-gradient(180deg,rgba(255,255,255,.78),rgba(255,255,255,.62)); color:var(--ink); box-shadow:inset 0 1px 0 rgba(255,255,255,.95), inset 0 0 0 1px rgba(255,255,255,.55), 0 14px 36px -14px rgba(0,0,0,.45); -webkit-backdrop-filter:blur(22px) saturate(170%); backdrop-filter:blur(22px) saturate(170%); z-index:2; }
+.fm img.logoimg { width:auto; height:30px; object-fit:contain; }
+.nav ul { list-style:none; display:flex; gap:30px; margin:0; padding:0; font-size:15px; font-weight:500; }
+.nav ul li a { display:inline-flex; align-items:center; gap:6px; }
+.nav ul li a svg { width:10px; height:10px; opacity:.6; }
+.nav .btn { margin-left:auto; }
+.fm .nav .mq { display:none; }
+.hero-copy { position:absolute; left:var(--gut); right:var(--gut); bottom:168px; z-index:1; }
+.hero h1 { font-size:var(--h1); line-height:.98; max-width:1180px; color:#fff; }
+.router { position:absolute; left:56px; right:56px; bottom:40px; display:grid; grid-template-columns:repeat(3,1fr); gap:12px; z-index:1; }
+/* Gains and numbers (open hairline grid) */
+.rw { padding:var(--sec) var(--gut); background:#fff; }
+.rw h2.stmt { max-width:1000px; color:var(--ink); }
+.rw .stmt em { font-style:normal; color:var(--dark); background:linear-gradient(var(--acc),var(--acc)) 0 92%/100% 9px no-repeat; }
+.rwk-grid { margin-top:64px; display:grid; grid-template-columns:repeat(3,1fr); }
+.rwk-grid > .rw-i { padding:34px 40px; border-right:1px solid var(--line); }
+.rwk-grid > .rw-i:nth-child(3n) { border-right:0; padding-right:0; }
+.rwk-grid > .rw-i:nth-child(3n+1) { padding-left:0; }
+.rwk-grid > .rw-i:nth-child(-n+3) { border-bottom:1px solid var(--line); padding-top:8px; }
+.rwk-grid > .rw-i:nth-child(n+4) { padding-bottom:8px; }
+.rw-i { display:flex; align-items:center; gap:20px; }
+.rw-ar { width:72px; height:72px; border-radius:50%; display:grid; place-items:center; background:var(--dark); color:#fff; flex:none; }
+.rw-i.dn .rw-ar { background:var(--acc); color:var(--deep); }
+.rw-ar svg { width:32px; height:32px; }
+.rw small { display:block; margin-bottom:8px; color:var(--ink2); }
+.rw-t b { display:block; font-family:var(--fd); font-weight:700; font-size:34px; line-height:1; color:var(--dark); white-space:nowrap; }
+.rw-num { font-family:var(--fd); font-weight:700; font-size:72px; line-height:.9; letter-spacing:-0.02em; color:var(--dark); flex:none; }
+.rw-num i { font-style:normal; color:var(--acc); }
+.rw-n .rw-t b { font-size:var(--h4); }
+/* Logo band */
+.logos { margin:64px calc(-1 * var(--gut)) 0; overflow:hidden; border-top:1px solid var(--line); border-bottom:1px solid var(--line); -webkit-mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); mask-image:linear-gradient(90deg,transparent,#000 8%,#000 92%,transparent); }
+.logos .ltrack { display:flex; width:max-content; will-change:transform; }
+.logos .ltrack div { flex:none; width:200px; height:104px; display:grid; place-items:center; padding:20px 26px; border-left:1px solid var(--line); }
+.fm .logos img { width:auto; height:auto; max-width:100%; max-height:52px; object-fit:contain; filter:grayscale(1) brightness(1.08) contrast(2.6); mix-blend-mode:multiply; }
+.fm .logos img[alt="Fazer"], .fm .logos img[alt="Saarioinen"] { max-height:84px; transform:scale(1.35); }
+/* Material flow */
+.flow { padding:var(--sec) 0; background:var(--paper); }
+.flow-head { display:grid; grid-template-columns:minmax(0,1fr) 360px; gap:48px; padding:0 var(--gut); align-items:center; }
+.railwrap { margin-top:52px; overflow:hidden; }
+.track { position:relative; display:flex; width:max-content; gap:20px; padding:0 var(--gut); animation:railpan 30s cubic-bezier(.65,0,.35,1) infinite alternate; }
+@keyframes railpan { 0%, 14% { transform:translateX(0); } 86%, 100% { transform:translateX(calc(1440px - 100%)); } }
+.track > .st { flex:none; width:520px; }
+.st { position:relative; }
+.st .core { height:100%; background:#fff; box-shadow:inset 0 1px 1px rgba(255,255,255,.8); }
+.st .ph { position:relative; aspect-ratio:4/3; overflow:hidden; background:var(--deep); }
+.st .ph img { width:100%; height:100%; object-fit:cover; transition:transform 1.2s var(--ease); }
+.st:hover .ph img { transform:scale(1.04); }
+.st .n { position:absolute; top:16px; left:16px; color:#fff; background:rgba(13,14,43,.55); -webkit-backdrop-filter:blur(6px); backdrop-filter:blur(6px); padding:7px 11px; border-radius:999px; }
+.st .body { padding:26px 28px 30px; display:grid; gap:12px; align-content:start; }
+.st h3 { font-size:var(--h3); }
+.st p { font-size:var(--body); color:var(--ink2); max-width:44ch; }
+.st .prod { margin-top:6px; display:flex; flex-wrap:wrap; gap:8px; }
+.st.star { background:rgba(36,21,186,.16); }
+.st.star .core { background:var(--dark); color:#fff; box-shadow:none; }
+.st.star h3 { color:#fff; }
+.st.star p { color:rgba(255,255,255,.76); }
+.st.star .badge { position:absolute; top:16px; right:16px; padding:7px 11px; border-radius:999px; background:var(--acc); color:var(--deep); }
+.st.bin .ph { background:linear-gradient(180deg,#f7f9fc 0%,#e9eef5 100%); }
+.st.bin .ph img { object-position:34% 42%; transform:scale(1.55); transform-origin:34% 42%; }
+.st.bin:hover .ph img { transform:scale(1.62); }
+.flow-foot { margin:40px var(--gut) 0; padding-top:28px; border-top:1px solid var(--line); display:flex; justify-content:space-between; align-items:center; font-size:var(--lead); }
+/* 40 kg */
+.kg { display:grid; grid-template-columns:1.15fr 1fr; gap:56px; align-items:center; padding:var(--sec) var(--gut); }
+.kg-num { font-family:var(--fd); font-weight:700; font-size:330px; line-height:.8; letter-spacing:-0.005em; color:var(--dark); }
+.kg-num small { font-size:120px; letter-spacing:-0.02em; color:var(--acc); }
+.kg h2 { margin-top:22px; }
+.kg .lead { margin-top:22px; max-width:520px; }
+/* Plate freezing */
+.pf { background:var(--dark); color:#fff; padding:var(--sec) var(--gut); display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:72px; align-items:stretch; }
+.pf h2 { margin-top:20px; color:#fff; }
+.pf .lead { margin-top:24px; color:rgba(255,255,255,.75); }
+.seg { margin-top:32px; display:grid; grid-template-columns:repeat(3,1fr); padding:5px; border-radius:999px; background:rgba(255,255,255,.07); box-shadow:inset 0 0 0 1px rgba(255,255,255,.12); }
+.seg span { text-align:center; padding:14px 0; border-radius:999px; font-size:15px; font-weight:600; color:rgba(255,255,255,.65); }
+.seg span.on { background:var(--acc); color:var(--deep); }
+.level { position:relative; margin-top:34px; display:grid; grid-template-columns:repeat(4,1fr); gap:0; }
+.level .belt { position:absolute; left:7px; right:0; top:5px; height:4px; border-radius:2px; background:rgba(255,255,255,.1); overflow:hidden; z-index:0; }
+.level .belt::after { content:""; position:absolute; inset:0 -48px 0 0; animation:belt 1.2s linear infinite; background:repeating-linear-gradient(90deg, var(--acc) 0 14px, transparent 14px 24px); }
+@keyframes belt { from { transform:translateX(-24px); } to { transform:translateX(0); } }
+.level > div:not(.belt) { position:relative; z-index:1; padding-top:30px; }
+.level > div:not(.belt)::before { content:""; position:absolute; left:0; top:0; width:14px; height:14px; border-radius:50%; background:var(--dark); box-shadow:inset 0 0 0 3px var(--acc); }
+.level div b { display:block; font-size:17px; margin-top:4px; }
+.fm .level div small { color:rgba(255,255,255,.9); }
+.pf .cap { margin-top:22px; font-size:15px; color:rgba(255,255,255,.6); }
+.pf .ctas { margin-top:36px; display:flex; gap:14px; align-items:center; }
+.pf .btn.ghost { color:#fff; }
+.bezel { padding:8px; border-radius:var(--r-panel); background:rgba(255,255,255,.06); box-shadow:inset 0 0 0 1px rgba(255,255,255,.12); display:flex; }
+.bezel .in { flex:1; min-height:520px; border-radius:var(--r-panel-in); overflow:hidden; position:relative; background:var(--deep) url(media/v5302.jpg) center/cover; }
+.bezel .in video { position:absolute; inset:0; opacity:0; animation:clips 18s infinite; }
+.bezel .in video:nth-of-type(2) { animation-delay:6s; }
+.bezel .in video:nth-of-type(3) { animation-delay:12s; }
+@keyframes clips { 0% { opacity:0; } 4% { opacity:1; } 33% { opacity:1; } 38% { opacity:0; } 100% { opacity:0; } }
+.bezel .tag { position:absolute; z-index:2; left:20px; bottom:20px; display:inline-flex; align-items:center; gap:8px; background:rgba(0,0,0,.5); -webkit-backdrop-filter:blur(8px); backdrop-filter:blur(8px); color:#fff; border-radius:999px; padding:8px 14px; font-size:13px; }
+.bezel .tag svg { width:10px; height:10px; }
+/* Why choose Finmatec */
+.wv { padding:var(--sec) var(--gut); background:#fff; }
+.wv h3 { font-size:var(--h4); line-height:1.1; color:var(--dark); }
+.wv p { margin:10px 0 0; font-size:var(--body); line-height:1.55; color:var(--ink2); }
+.w2-wrap { margin-top:48px; display:grid; grid-template-columns:4fr 8fr; gap:28px 64px; }
+.w2-ph { min-height:400px; }
+.wv .wph { position:relative; overflow:hidden; color:#fff; }
+.wv .wph img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; }
+.wv .wph::after { content:""; position:absolute; inset:0; background:linear-gradient(180deg,rgba(13,14,43,0) 40%,rgba(13,14,43,.82) 100%); }
+.wv .wph .b { position:absolute; left:32px; right:32px; bottom:30px; z-index:1; }
+.wv .wph h3 { color:#fff; font-size:var(--h3); }
+.wv .wph p { color:rgba(255,255,255,.82); max-width:460px; }
+.w2-grid { display:grid; grid-template-columns:1fr 1fr; }
+.w2-c { padding:32px 36px; display:flex; flex-direction:column; justify-content:center; }
+.w2-c:nth-child(odd) { padding-left:0; border-right:1px solid var(--line); }
+.w2-c:nth-child(even) { padding-right:0; }
+.w2-c:nth-child(-n+2) { border-bottom:1px solid var(--line); }
+.w2-c h3 { white-space:nowrap; }
+.w2-c p { max-width:340px; }
+.w2-cert { margin-top:28px; padding:24px 36px; background:#fff; display:flex; justify-content:space-between; align-items:center; gap:32px; }
+.wv .wc b { display:block; font-family:var(--fd); font-weight:700; font-size:20px; color:var(--dark); }
+.wv .wc span { font-size:15px; color:var(--ink2); }
+/* 80 %: existing factories, floor plan */
+.exist { position:relative; background:#fff; padding:0; overflow:hidden; }
+.exist .left { position:relative; z-index:1; width:680px; padding:var(--sec) var(--gut); display:flex; flex-direction:column; justify-content:space-between; gap:48px; }
+.big80 { font-family:var(--fd); font-weight:700; font-size:240px; line-height:.8; letter-spacing:-0.005em; color:var(--dark); }
+.big80 sup { font-size:110px; vertical-align:top; position:relative; top:22px; color:var(--acc); }
+.exist h2 { margin-top:26px; max-width:560px; }
+.exist .lead { margin-top:22px; max-width:560px; }
+.ptitle { display:flex; justify-content:space-between; align-items:baseline; }
+.ptitle b { font-size:22px; letter-spacing:-0.02em; }
+.fpz-pan { margin-top:18px; }
+.fpz-drop { border-radius:var(--r-panel-in); border:1.5px dashed rgba(36,21,186,.32); background:rgba(36,21,186,.03); padding:26px 20px 24px; display:flex; flex-direction:column; align-items:center; text-align:center; gap:6px; }
+.fpz-ic { width:52px; height:52px; border-radius:50%; background:var(--dark); color:#fff; display:grid; place-items:center; margin-bottom:8px; }
+.fpz-drop b { font-family:var(--fd); font-weight:700; font-size:20px; color:var(--ink); }
+.fpz-drop span { font-size:var(--small); color:var(--ink2); }
+.fpz-drop .fpz-ic { color:#fff; }
+.fpz-drop u { color:var(--dark); font-weight:600; text-underline-offset:3px; }
+.fpz-row { display:flex; align-items:center; gap:20px; padding:8px 0 0 20px; }
+.fpz-row .f { flex:1; }
+.fpz-row .btn { flex:none; justify-content:space-between; }
+.exist .planfull { position:absolute; top:0; bottom:0; left:600px; right:56px; z-index:0; background:#fff; color:#141414; }
+.exist .planfull::after { content:""; position:absolute; inset:0; background:linear-gradient(90deg,#fff 0%,#fff 10%,rgba(255,255,255,0) 34%); pointer-events:none; }
+.exist .planfull svg.plan { position:absolute; inset:0; width:100% !important; height:100% !important; }
+.plan { font-family:var(--fd); }
+.plan text { fill:currentColor; font-size:11px; }
+.plan .eq { fill:rgba(20,20,20,.05); stroke:currentColor; stroke-width:1.2; }
+.plan .ln { fill:none; stroke:currentColor; stroke-width:1; }
+.plan .thin { stroke-width:.6; opacity:.55; }
+.plan .wall { fill:none; stroke:currentColor; stroke-width:2.2; }
+.plan .lbl { font-size:11px; opacity:.75; }
+.plan * { vector-effect:non-scaling-stroke; }
+.plan .flow { fill:none; stroke:#141414; stroke-width:2; stroke-dasharray:6 6; animation:planflow 1.4s linear infinite; }
+@keyframes planflow { to { stroke-dashoffset:-24; } }
+.plan .mroute { fill:none; stroke:var(--dark); stroke-width:1.4; stroke-dasharray:2 7; opacity:.6; animation:planflow 1.4s linear infinite; }
+.plan .mblk { fill:var(--dark); stroke:none; }
+/* Proof: quote and photo */
+.proof { padding:var(--sec) var(--gut); background:#fff; }
+.pbento { display:grid; grid-template-columns:repeat(12,minmax(0,1fr)); gap:16px; }
+.cell > .core { position:relative; height:100%; }
+.c-quote { grid-column:span 7; }
+.c-quote .core { background:var(--dark); color:#fff; padding:48px; display:flex; flex-direction:column; justify-content:space-between; gap:40px; min-height:520px; }
+.c-quote .mark { font-family:var(--fd); font-weight:700; font-size:120px; line-height:.5; height:44px; color:var(--acc); }
+.c-quote blockquote { margin:0; font-family:var(--fd); font-weight:600; font-size:40px; line-height:1.12; letter-spacing:-0.02em; color:#fff; }
+.c-quote .qfoot { display:flex; flex-wrap:wrap; gap:20px 32px; align-items:center; justify-content:space-between; }
+.c-quote cite { font-style:normal; color:#C9C6F1; }
+.c-img { grid-column:span 5; }
+.c-img img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:55% 50%; }
+/* Service and spare parts */
+.svc { padding:0 var(--gut); }
+.svc-in { border-radius:var(--r-panel); background:var(--dark); color:#fff; padding:64px; display:grid; grid-template-columns:1fr 1.15fr; gap:72px; align-items:center; }
+.svc h2 { margin-top:18px; color:#fff; }
+.svc-head .lead { margin-top:18px; line-height:1.5; color:rgba(255,255,255,.76); max-width:420px; }
+.svc-links { display:grid; gap:12px; }
+/* Engineers: datasheet */
+.eng { padding:var(--sec) var(--gut); display:grid; grid-template-columns:1.1fr 1fr; gap:90px; align-items:center; }
+.eng h2 { margin-top:22px; }
+.eng .lead { margin-top:22px; max-width:520px; }
+.eng .btn { margin-top:34px; }
+.sheet .in { padding:34px 36px; box-shadow:0 1px 0 rgba(0,0,0,.04); }
+.sheet .top { display:flex; justify-content:space-between; align-items:baseline; padding-bottom:22px; border-bottom:1px solid var(--line); }
+.sheet .top b { font-family:var(--fd); font-size:26px; font-weight:700; letter-spacing:-0.005em; }
+.sheet table { width:100%; border-collapse:collapse; margin-top:6px; font-size:15px; }
+.sheet td { padding:13px 0; border-bottom:1px solid var(--soft); }
+.fm .sheet td:first-child { color:var(--mute); width:46%; padding-right:14px; }
+.sheet .dl { margin-top:22px; display:flex; gap:10px; }
+/* Contact */
+.cb { padding:var(--sec) var(--gut); display:grid; grid-template-columns:1fr 1.1fr; gap:72px; }
+.cb h2 { font-size:var(--disp); line-height:.92; }
+.cb .lead { margin-top:22px; max-width:480px; }
+.cb .ppl { margin-top:40px; display:grid; grid-template-columns:1fr 1fr; gap:16px; max-width:560px; }
+.cb .ppl > div { display:grid; gap:16px; }
+.cb .ppl .av { width:100%; height:300px; border-radius:var(--r-card-in); overflow:hidden; background:var(--soft); }
+.cb .ppl .av img { width:100%; height:100%; object-fit:cover; object-position:50% 20%; display:block; }
+.cb .ppl b { display:block; font-size:17px; }
+.cb .ppl span span { display:block; margin-top:2px; font-size:var(--small); color:var(--mute); }
+.cb .form .in { display:flex; flex-direction:column; padding:34px; }
+.fm .cb .form .lab { color:var(--ink2); }
+.cb .chips { margin-top:12px; display:flex; flex-wrap:wrap; gap:8px; }
+.cb .form .f2 { margin-top:22px; display:grid; grid-template-columns:1fr 1fr; gap:6px 28px; }
+.cb > .form { align-self:start; }
+.cb .form .ta { margin-top:12px; }
+.cb .form .btn { align-self:flex-start; margin-top:20px; justify-content:space-between; }
+/* Footer */
+.fb2 { position:relative; padding:60px var(--gut) 56px; overflow:hidden; background:var(--soft); }
+.fb2 > *:not(.sym) { position:relative; z-index:1; }
+.fb2 .sym { position:absolute; z-index:0; right:-140px; top:-170px; height:1000px; width:auto; }
+.fb2 .sym path[fill="#e2e2de"] { fill:#2415BA; fill-opacity:.085; }
+.fb2 .sym path[fill="#d3d3ce"] { fill:#03FF6B; fill-opacity:.15; }
+.fb2 .grid { display:grid; grid-template-columns:1.5fr 1fr 1fr 1fr; gap:40px; }
+.fb2 p { font-size:15px; color:var(--ink2); max-width:320px; margin-top:0; }
+.fb2 h4 { margin:0 0 14px; font-size:var(--small); font-weight:600; }
+.fb2 ul { list-style:none; margin:0; padding:0; display:grid; gap:9px; font-size:15px; color:var(--ink2); }
+.fb2 .bottom { margin-top:56px; display:flex; justify-content:space-between; font-size:13px; color:var(--mute); }
+.fb2 .bottom span a { margin-left:24px; }
+.fb2 .word { position:relative; margin:40px 0 0; width:auto; height:auto; overflow:visible; }
+.fb2 .word svg { display:block; width:100%; height:auto; fill:var(--dark); }
+/* ===== Mobile 390 ===== */
+.fm.m { --disp:52px; --h1:32px; --h2:32px; --h2s:28px; --h3:24px; --h4:21px; --lead:16px; --body:15px; --sec:56px; --gut:20px; --r-panel:28px; --r-panel-in:22px; --r-row:18px; width:390px; font-size:16px; }
+.fm.m .btn:not(.mq) { width:100%; justify-content:space-between; }
+.fm.m .btn.ghost { justify-content:center; }
+.fm.m .chip { height:44px; }
+.fm.m .tlink { min-height:44px; font-size:16px; }
+.fm.m .lrow { height:72px; padding:0 16px 0 20px; }
+.fm.m .lrow b { font-size:18px; }
+.fm.m .lrow small { font-size:13px; }
+.fm.m .lrow i { width:40px; height:40px; }
+.fm.m .lrow i svg { width:18px; height:18px; }
+.fm.m .util { display:none; }
+.fm.m .hero { height:780px; }
+.fm.m .nav { top:14px; left:12px; right:12px; height:58px; padding:0 7px 0 18px; gap:12px; justify-content:space-between; }
+.fm.m .nav img.logoimg { height:24px; }
+.fm.m .nav .btn.mq { display:inline-flex; margin-left:auto; height:44px; padding:0 6px 0 16px; gap:10px; font-size:14px; }
+.fm.m .nav .btn.mq i { width:32px; height:32px; }
+.fm.m .burger { width:44px; height:44px; border-radius:50%; border:0; padding:0; background:var(--dark); display:grid; place-content:center; gap:4px; cursor:pointer; }
+.fm.m .burger span { display:block; width:18px; height:2px; border-radius:1px; background:#fff; }
+.fm.m .hero-copy { bottom:276px; }
+.fm.m .hero h1 { line-height:1.04; max-width:none; }
+.fm.m .router { left:12px; right:12px; bottom:16px; grid-template-columns:1fr; gap:8px; }
+.fm.m .rw h2.stmt { line-height:1.04; }
+.fm.m .rw .stmt em { background-size:100% 6px; }
+.fm.m .rwk-grid { margin-top:28px; grid-template-columns:1fr; }
+.fm.m .rwk-grid > .rw-i { padding:18px 0; border-right:0; border-bottom:1px solid var(--line); gap:16px; }
+.fm.m .rwk-grid > .rw-i:last-child { border-bottom:0; }
+.fm.m .rw-ar { width:52px; height:52px; }
+.fm.m .rw-ar svg { width:24px; height:24px; }
+.fm.m .rw-t b { font-size:24px; white-space:normal; }
+.fm.m .rw-num { font-size:52px; }
+.fm.m .rw-n .rw-t b { font-size:20px; }
+.fm.m .rw small { margin-bottom:6px; }
+.fm.m .logos { margin-top:36px; }
+.fm.m .logos .ltrack div { width:150px; height:80px; padding:16px 20px; }
+.fm.m .flow-head { grid-template-columns:1fr; gap:16px; }
+.fm.m .railwrap { margin-top:32px; }
+.fm.m .track { gap:12px; animation:railpanm 22s cubic-bezier(.65,0,.35,1) infinite alternate; }
+@keyframes railpanm { 0%, 12% { transform:translateX(0); } 88%, 100% { transform:translateX(calc(390px - 100%)); } }
+.fm.m .track > .st { width:300px; }
+.fm.m .st .body { padding:20px 20px 24px; gap:10px; }
+.fm.m .flow-foot { margin-top:32px; flex-direction:column; align-items:flex-start; gap:12px; }
+.fm.m .kg { grid-template-columns:1fr; gap:20px; }
+.fm.m .kg-num { font-size:150px; }
+.fm.m .kg-num small { font-size:56px; }
+.fm.m .pf { grid-template-columns:1fr; gap:32px; }
+.fm.m .seg { margin-top:24px; border-radius:22px; }
+.fm.m .seg span { font-size:13px; line-height:1.15; padding:0 6px; min-height:48px; display:grid; place-items:center; border-radius:18px; }
+.fm.m .level { margin-top:28px; }
+.fm.m .level div b { font-size:var(--small); }
+.fm.m .level div small { font-size:11px; }
+.fm.m .pf .ctas { flex-direction:column; align-items:stretch; gap:10px; }
+.fm.m .bezel .in { min-height:300px; }
+.fm.m .w2-wrap { margin-top:28px; grid-template-columns:1fr; gap:20px; }
+.fm.m .w2-ph { min-height:340px; }
+.fm.m .wv .wph .b { left:22px; right:22px; bottom:22px; }
+.fm.m .w2-grid { grid-template-columns:1fr; }
+.fm.m .w2-c { padding:20px 0; border-right:0 !important; border-bottom:1px solid var(--line); }
+.fm.m .w2-c:last-child { border-bottom:0; }
+.fm.m .w2-c h3 { white-space:normal; }
+.fm.m .w2-cert { margin-top:20px; padding:22px; flex-direction:column; align-items:flex-start; gap:14px; }
+.fm.m .exist { display:flex; flex-direction:column; }
+.fm.m .exist .left { width:auto; padding-bottom:28px; gap:36px; }
+.fm.m .big80 { font-size:120px; }
+.fm.m .big80 sup { font-size:54px; top:10px; }
+.fm.m .fpz-row { flex-direction:column; align-items:stretch; gap:14px; padding:8px 0 0; }
+.fm.m .fpz-row .f { margin:0 14px; }
+.fm.m .fpz-drop { padding:22px 14px; }
+.fm.m .exist .planfull { position:relative; inset:auto; left:auto; right:auto; order:1; height:auto; aspect-ratio:16/9; margin:0 var(--gut) var(--sec); }
+.fm.m .exist .planfull::after { display:none; }
+.fm.m .pbento { grid-template-columns:1fr; gap:12px; }
+.fm.m .pbento > .cell { grid-column:auto; }
+.fm.m .c-quote .core { padding:28px 24px; min-height:0; gap:28px; }
+.fm.m .c-quote .mark { font-size:90px; height:30px; }
+.fm.m .c-quote blockquote { font-size:24px; line-height:1.18; }
+.fm.m .c-img .core { min-height:300px; }
+.fm.m .svc-in { grid-template-columns:1fr; padding:32px 22px 22px; gap:28px; }
+.fm.m .eng { grid-template-columns:1fr; gap:32px; }
+.fm.m .eng > div:last-child { order:-1; }
+.fm.m .sheet .in { padding:22px; }
+.fm.m .sheet .top { flex-direction:column; align-items:flex-start; gap:6px; }
+.fm.m .sheet .top b { font-size:20px; }
+.fm.m .sheet table { table-layout:fixed; }
+.fm.m .sheet td:first-child { width:42%; letter-spacing:.04em; font-size:11px; line-height:1.35; word-break:break-word; }
+.fm.m .sheet .dl { flex-wrap:wrap; }
+.fm.m .cb { grid-template-columns:1fr; gap:32px; }
+.fm.m .cb .ppl { margin-top:28px; gap:12px; }
+.fm.m .cb .ppl > div { align-content:start; gap:12px; }
+.fm.m .cb .ppl .av { height:200px; }
+.fm.m .cb .ppl span span { font-size:13px; }
+.fm.m .cb .form .in { padding:22px; }
+.fm.m .cb .form .f2 { grid-template-columns:1fr; }
+.fm.m .cb .form .btn { align-self:stretch; }
+.fm.m .fb2 { padding:48px var(--gut) 40px; }
+.fm.m .fb2 .sym { right:-220px; top:-80px; height:700px; }
+.fm.m .fb2 .grid { grid-template-columns:1fr 1fr; gap:32px 24px; }
+.fm.m .fb2 .grid > div:first-child { grid-column:span 2; }
+.fm.m .fb2 ul li { min-height:44px; display:flex; align-items:center; }
+.fm.m .fb2 .bottom { margin-top:36px; flex-direction:column; gap:10px; }
+.fm.m .fb2 .bottom span a { margin:0 16px 0 0; display:inline-flex; align-items:center; min-height:44px; }
+.fm.m .fb2 .bottom > span:first-child { display:inline-flex; align-items:center; min-height:44px; }
+.fm.m .fb2 .word { margin-top:32px; width:350px; }
+/* From the Mixers page: product hero, breadcrumb, numbered steps, light link row */
+.phero { position:relative; background:var(--paper); padding:22px 56px 0; }
+.phero .nav { position:relative; top:0; left:0; right:0; }
+.ph-grid { display:grid; grid-template-columns:minmax(0,1fr) 600px; gap:64px; align-items:center; padding:56px 16px var(--sec); }
+.crumb { display:flex; flex-wrap:wrap; gap:10px; align-items:center; font-size:var(--small); color:var(--mute); }
+.crumb a { color:var(--ink2); border-bottom:1px solid var(--line); }
+.crumb [aria-current] { color:var(--ink); font-weight:600; }
+.phero .eyebrow { margin-top:36px; }
+.phero h1 { margin-top:20px; font-size:var(--h1); line-height:1; color:var(--ink); }
+.phero h1 em { font-style:normal; color:var(--dark); background:linear-gradient(var(--acc),var(--acc)) 0 92%/100% 9px no-repeat; }
+.phero .lead { margin-top:24px; max-width:560px; }
+.ph-ctas { margin-top:40px; display:flex; gap:14px; align-items:center; }
+.fm .dlrow { display:flex; justify-content:space-between; align-items:center; gap:20px; min-height:88px; padding:16px 22px 16px 28px; border-radius:var(--r-row); background:#fff; box-shadow:inset 0 0 0 1px var(--line); transition:box-shadow .4s var(--ease); }
+.fm .dlrow:hover { box-shadow:inset 0 0 0 1.5px var(--dark); }
+.dlrow b { display:block; font-family:var(--fd); font-size:20px; font-weight:700; line-height:1.2; }
+.dlrow .mono { display:block; margin-top:6px; color:var(--mute); }
+.dlrow i { width:44px; height:44px; border-radius:50%; display:grid; place-items:center; flex:none; background:var(--dark); color:#fff; }
+.dlrow i svg { width:20px; height:20px; }
+.steps { list-style:none; margin:32px 0 0; padding:0; display:grid; max-width:520px; }
+.steps li { display:grid; grid-template-columns:40px 1fr; gap:16px; align-items:center; padding:14px 0; border-bottom:1px solid var(--line); font-size:var(--body); color:var(--ink2); }
+.steps li:first-child { border-top:1px solid var(--line); }
+.steps li span { width:32px; height:32px; border-radius:50%; display:grid; place-items:center; background:var(--dark); color:#fff; font-family:var(--fd); font-weight:700; font-size:15px; }
+.fm.m .phero { padding:14px 12px 0; }
+.fm.m .ph-grid { grid-template-columns:1fr; gap:32px; padding:28px 8px var(--sec); }
+.fm.m .phero .eyebrow { margin-top:24px; }
+.fm.m .phero h1 { font-size:36px; line-height:1.04; }
+.fm.m .phero h1 em { background-size:100% 6px; }
+.fm.m .ph-ctas { margin-top:28px; flex-direction:column; align-items:stretch; gap:10px; }
+.fm.m .dlrow { min-height:76px; padding:14px 14px 14px 20px; }
+.fm.m .dlrow b { font-size:17px; }
+.fm.m .dlrow .mono { font-size:11px; letter-spacing:.08em; }
+.fm.m .dlrow i { width:40px; height:40px; }
+/* ===== Service & Spare Parts (17.11.2026): page additions on the homepage system. Tokens and components from shared CSS. ===== */
+.fm .svhero { height:760px; }
+.fm .svhero .hero-copy { bottom:176px; }
+.svhero .hero-copy .lead { margin-top:22px; max-width:640px; color:rgba(255,255,255,.82); }
+.svhero .hero-copy .eyebrow { color:var(--acc); margin-bottom:22px; }
+.svhero .hero-copy .eyebrow::before { background:var(--acc); }
+.svhero h1 em { font-style:normal; background:linear-gradient(var(--acc),var(--acc)) 0 92%/100% 9px no-repeat; }
+.svhero .media img { object-position:50% 40%; }
+.svhero .media::after { background:linear-gradient(180deg, rgba(10,10,10,.55) 0%, rgba(10,10,10,.25) 28%, rgba(10,10,10,.55) 52%, rgba(10,10,10,.92) 100%); }
+/* Section head shared by these pages */
+.sx { padding:var(--sec) var(--gut); background:#fff; }
+.sx-head { display:grid; grid-template-columns:minmax(0,1fr) minmax(0,1fr); gap:72px; align-items:end; }
+.sx-head h2 { margin-top:22px; }
+.sx-head .lead { max-width:520px; }
+/* Machines we support: light link rows */
+.sup-grid { margin-top:48px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); gap:12px; }
+.sup-note { margin-top:28px; padding-top:24px; border-top:1px solid var(--line); font-size:var(--lead); color:var(--ink2); }
+.sup-note b { color:var(--ink); }
+/* Maintenance & support: photo + open hairline grid */
+.mnt { background:var(--paper); }
+.mnt .w2-wrap { margin-top:48px; }
+.mnt .w2-ph { position:relative; overflow:hidden; min-height:440px; }
+.mnt .w2-ph img { position:absolute; inset:0; width:100%; height:100%; object-fit:cover; object-position:40% 40%; }
+.mnt .w2-c h3 { white-space:normal; font-size:var(--h4); line-height:1.1; color:var(--dark); }
+.mnt .w2-c p { margin-top:10px; font-size:var(--body); color:var(--ink2); max-width:360px; }
+/* Upgrades band: homepage .svc */
+.svc.upg { padding-top:var(--sec); }
+/* Reach us */
+.reach { padding:var(--sec) var(--gut); display:grid; grid-template-columns:1fr 1.1fr; gap:72px; align-items:start; }
+.reach h2 { font-size:var(--disp); line-height:.92; }
+.reach .lead { margin-top:22px; max-width:480px; }
+.reach .rows { display:grid; gap:12px; }
+/* ===== Spare Parts ===== */
+.chan { margin-top:40px; display:flex; border-top:1px solid var(--line); }
+.chan > div { padding:22px 32px 0 0; margin-right:32px; border-right:1px solid var(--line); }
+.chan > div:last-child { border-right:0; margin-right:0; }
+.chan .mono { display:block; color:var(--ink2); }
+.chan a { display:inline-block; margin-top:10px; font-family:var(--fd); font-weight:700; font-size:var(--h4); line-height:1.1; color:var(--dark); white-space:nowrap; }
+/* Type plate illustration */
+.plt { border-radius:var(--r-panel); padding:8px; background:var(--tray); box-shadow:var(--tray-ring); display:flex; }
+.plt > .in { flex:1; border-radius:var(--r-panel-in); background:#fff; padding:44px 44px 36px; display:grid; gap:28px; }
+/* Type plate in brushed stainless (Olli 17.11.: the steel texture from the Every Kilo Steel board, modelled on real stainless sheet). Engraved text: dark ink with a 1 px light highlight below. */
+.plate { position:relative; border-radius:12px; padding:26px 30px 24px; background:#c9cfd7 url(media/blob/f066c12e60ef0b1bc7bfaf3d2c338425.jpg) center/cover no-repeat; box-shadow:inset 0 0 0 1px rgba(27,29,43,.22), inset 0 1px 0 rgba(255,255,255,.9), inset 0 -2px 4px rgba(27,29,43,.22), 0 18px 40px rgba(11,10,38,.16); }
+.plate .rv { position:absolute; width:12px; height:12px; border-radius:50%; background:linear-gradient(135deg,transparent 44%,rgba(27,29,43,.55) 45% 55%,transparent 56%),radial-gradient(circle at 35% 35%,#ffffff,#a3aab6 60%,#6b7280); box-shadow:inset 0 0 0 1px rgba(27,29,43,.2),0 1px 0 rgba(255,255,255,.8); }
+.plate .rv:nth-child(1) { top:10px; left:10px; } .plate .rv:nth-child(2) { top:10px; right:10px; } .plate .rv:nth-child(3) { bottom:10px; left:10px; } .plate .rv:nth-child(4) { bottom:10px; right:10px; }
+.plate .top { display:flex; justify-content:space-between; align-items:center; padding-bottom:16px; border-bottom:1px solid rgba(27,29,43,.24); box-shadow:0 1px 0 rgba(255,255,255,.6); }
+.fm .plate .top img.logoimg { height:24px; filter:drop-shadow(0 1px 0 rgba(255,255,255,.7)); }
+.plate .ce { font-family:var(--fd); font-weight:700; font-size:30px; letter-spacing:-0.04em; color:var(--ink); text-shadow:0 1px 0 rgba(255,255,255,.8), 0 -1px 0 rgba(27,29,43,.3); }
+.plate .mk { display:block; margin-top:12px; font-size:var(--small); color:var(--ink2); text-shadow:0 1px 0 rgba(255,255,255,.75); }
+.plate dl { margin:16px 0 0; display:grid; grid-template-columns:150px 1fr; }
+.plate dt, .plate dd { margin:0; padding:11px 0; border-bottom:1px solid rgba(27,29,43,.2); box-shadow:0 1px 0 rgba(255,255,255,.45); }
+.plate dt { color:var(--ink2); text-shadow:0 1px 0 rgba(255,255,255,.75); }
+.plate dd { position:relative; display:flex; align-items:center; gap:10px; }
+.plate dd .bar { flex:1; height:14px; border-radius:7px; background:rgba(27,29,43,.07); box-shadow:inset 0 1px 2px rgba(27,29,43,.35), 0 1px 0 rgba(255,255,255,.7); }
+.plate dd.k .bar { box-shadow:inset 0 1px 2px rgba(27,29,43,.35), 0 0 0 1.5px var(--dark), 0 1px 0 rgba(255,255,255,.7); }
+.plate dd .no { width:28px; height:28px; border-radius:50%; display:grid; place-items:center; flex:none; background:var(--acc); color:var(--deep); font-family:var(--fd); font-weight:700; font-size:var(--small); box-shadow:0 1px 2px rgba(11,10,38,.25); }
+.plt .cap { font-size:var(--body); color:var(--ink2); max-width:520px; }
+.plt .cap b { color:var(--ink); }
+/* Request: guide + form */
+.req { padding:var(--sec) var(--gut); display:grid; grid-template-columns:minmax(0,1fr) 760px; gap:72px; align-items:start; background:var(--paper); }
+.req h2 { margin-top:22px; }
+.req .lead { margin-top:22px; max-width:500px; }
+.req .steps li { color:var(--ink2); }
+.req .alt { margin-top:28px; display:grid; gap:12px; max-width:520px; }
+.req .alt p { font-size:var(--body); color:var(--ink2); }
+.req .alt p b { color:var(--ink); }
+.rform { border-radius:var(--r-panel); padding:8px; background:var(--tray); box-shadow:var(--tray-ring); display:flex; }
+.rform > .in { flex:1; border-radius:var(--r-panel-in); background:#fff; padding:36px 36px 34px; display:flex; flex-direction:column; }
+.rform fieldset { margin:0; padding:0 0 34px; border:0; }
+.rform fieldset:last-of-type { padding-bottom:26px; }
+.fm .rform legend.lab { float:left; width:100%; margin:0 0 14px; padding:0; color:var(--ink2); display:flex; align-items:center; gap:10px; }
+.rform legend + * { clear:both; }
+.rform legend .n { width:24px; height:24px; border-radius:50%; display:grid; place-items:center; background:var(--dark); color:#fff; letter-spacing:0; }
+.rform .chips { margin-top:14px; display:flex; flex-wrap:wrap; gap:8px; }
+.rform .f2 { margin-top:10px; display:grid; grid-template-columns:1fr 1fr; gap:4px 28px; }
+.rform .fpz-pan { margin-top:16px; padding:6px; }
+.rform .fpz-drop { padding:20px; flex-direction:row; text-align:left; gap:16px; justify-content:flex-start; }
+.rform .fpz-drop .fpz-ic { margin:0; }
+.rform .fpz-drop > span:last-child { display:grid; gap:2px; }
+.rform .ta { margin-top:10px; }
+.rform .callnow { margin-top:14px; font-size:15px; color:var(--ink2); }
+.rform .callnow a { color:var(--dark); font-weight:600; white-space:nowrap; border-bottom:1.5px solid currentColor; }
+.rform .chk { margin-top:16px; display:flex; align-items:center; gap:12px; min-height:44px; font-size:15px; color:var(--ink); cursor:pointer; }
+.rform .chk input { appearance:none; -webkit-appearance:none; margin:0; width:22px; height:22px; border-radius:6px; box-shadow:inset 0 0 0 1.5px var(--line); background:#fff; flex:none; }
+.rform .chk input:checked { background:var(--dark); box-shadow:none; }
+.rform .btn { align-self:flex-start; margin-top:8px; justify-content:space-between; }
+/* Know your part: open hairline grid */
+.know-grid { margin-top:48px; display:grid; grid-template-columns:repeat(3,minmax(0,1fr)); border-top:1px solid var(--line); }
+.know-grid > div { padding:34px 40px 8px; border-right:1px solid var(--line); display:flex; flex-direction:column; gap:12px; align-items:flex-start; }
+.know-grid > div:first-child { padding-left:0; }
+.know-grid > div:last-child { border-right:0; padding-right:0; }
+.know-grid h3 { font-size:var(--h4); line-height:1.1; color:var(--dark); }
+.know-grid p { font-size:var(--body); color:var(--ink2); max-width:360px; }
+.know-grid .tlink { margin-top:auto; }
+/* New line: critical spare parts (askb card) */
+.crit { padding:0 var(--gut) var(--sec); background:#fff; }
+.crit .in { display:flex; align-items:center; gap:28px; padding:30px 30px 30px 36px; border-radius:var(--r-card); background:var(--paper); }
+.crit .tx { flex:1; }
+.crit .qq { font-family:var(--fd); font-size:var(--h3); font-weight:700; line-height:1.1; color:var(--ink); }
+.crit .tx p + p { margin-top:8px; font-size:var(--body); color:var(--ink2); max-width:640px; }
+/* Spare Parts: upgrades band follows the critical parts card directly */
+.crit + .svc.upg { padding-top:0; }
+/* Partner brands in Finland: one light row */
+.trd { padding:var(--sec) var(--gut) 0; }
+.fm.m .svhero { height:820px; }
+.fm.m .svhero .hero-copy { bottom:276px; }
+.fm.m .svhero .hero-copy .eyebrow { margin-bottom:16px; }
+.fm.m .svhero h1 em { background-size:100% 6px; }
+.fm.m .svhero .hero-copy .lead { margin-top:16px; }
+.fm.m .sx-head { grid-template-columns:1fr; gap:16px; }
+.fm.m .sup-grid { margin-top:28px; grid-template-columns:1fr; gap:8px; }
+.fm.m .sup-note { margin-top:20px; padding-top:18px; }
+.fm.m .mnt .w2-wrap { margin-top:28px; }
+.fm.m .mnt .w2-ph { min-height:300px; }
+.fm.m .svc.upg { padding-top:var(--sec); }
+.fm.m .crit + .svc.upg { padding-top:0; }
+.fm.m .reach { grid-template-columns:1fr; gap:28px; }
+.fm.m .chan { margin-top:28px; flex-direction:column; border-top:0; }
+.fm.m .chan > div { padding:16px 0; margin:0; border-right:0; border-top:1px solid var(--line); }
+.fm.m .chan a { font-size:21px; display:flex; align-items:center; min-height:44px; margin-top:4px; }
+.fm.m .plt > .in { padding:22px 18px 20px; gap:18px; }
+.fm.m .plate { padding:20px 18px 18px; }
+.fm.m .plate dl { grid-template-columns:104px 1fr; font-size:15px; }
+.fm.m .plate .ce { font-size:24px; }
+.fm.m .req { grid-template-columns:1fr; gap:32px; }
+.fm.m .rform > .in { padding:22px 18px; }
+.fm.m .rform .f2 { grid-template-columns:1fr; }
+.fm.m .rform .fpz-drop { padding:16px; }
+.fm.m .rform .btn { align-self:stretch; }
+.fm.m .know-grid { margin-top:28px; grid-template-columns:1fr; border-top:0; }
+.fm.m .know-grid > div { padding:22px 0; border-right:0; border-top:1px solid var(--line); }
+.fm.m .crit .in { flex-direction:column; align-items:flex-start; gap:18px; padding:24px 20px; }
+.fm.m .crit .qq { font-size:24px; }
+.fm.m .crit .btn { align-self:stretch; }
+/* Mobile: the product hero nav sits in the hero padding, not offset again by the floating-nav insets */
+.fm.m .phero .nav { top:0; left:0; right:0; }</style>
+<style>
+html,body{margin:0;background:#fff}
+body{overflow-x:hidden}
+.fm{margin:0 auto;transform-origin:top left}
+.fm .burger{display:none}
+.fm.m .nav ul,.fm.m .nav .btn{display:none}
+.fm.m .burger{display:grid}
+.fm{overflow:clip}
+.fm.pin .track,.fm.nopin .track{animation:none}
+.fm.pin .track{will-change:transform}
+.fm.pin .railwrap{position:sticky}
+.fm.nopin .railwrap{overflow-x:auto;scroll-snap-type:x mandatory;scrollbar-width:none;-webkit-overflow-scrolling:touch}
+.fm.nopin .railwrap::-webkit-scrollbar{display:none}
+.fm.nopin .track > .st{scroll-snap-align:center}
+</style>
+</head>
+<body>
+<template id="td"><div class="fm">
+  <div class="util">
+    <div><span>Spare parts: <a href="mailto:varaosat@finmatec.fi"><b>varaosat@finmatec.fi</b></a></span><span><a href="#">Service hotline</a></span></div>
+    <div><a class="ext" href="#">Trading Partners in Finland <svg class="ic" width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 12 12 4M6 4h6v6"></path></svg></a></div>
+  </div>
+  <!-- 1 Hero: three situations as link rows (homepage router) -->
+  <section class="hero svhero">
+    <div class="media"><img loading="lazy" decoding="async" src="media/k4.jpg" alt="Finmatec conveyors and machines in a customer line"></div>
+    <nav class="nav"><a href="index.html" aria-label="Finmatec home"><img loading="lazy" decoding="async" class="logoimg" src="media/finmatec-logo.svg" alt="Finmatec"></a><ul><li><a href="#">Food Processing<svg class="ic" width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"></path></svg></a></li><li><a href="#">Products<svg class="ic" width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"></path></svg></a></li><li><a href="#">Service &amp; Spare Parts<svg class="ic" width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"></path></svg></a></li><li><a href="references.html">References</a></li><li><a href="#">Resources<svg class="ic" width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"></path></svg></a></li><li><a href="about.html">About<svg class="ic" width="10" height="10" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M4 6l4 4 4-4"></path></svg></a></li></ul><a class="btn pri qk s" href="#">Request a quote <i><svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a></nav>
+    <div class="hero-copy">
+      <h1>Keep your Finmatec line <em>running</em>.</h1>
+      <p class="lead">Spare parts, wear parts and support for the machines and lines we built, wherever in the world they run.</p>
+    </div>
+    <div class="router">
+      <a class="lrow" href="tel:+358400862694"><span><b>My line has stopped</b><small>Call +358&nbsp;40&nbsp;086&nbsp;2694</small></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.9 2.5H3.7a1.1 1.1 0 0 0-1.1 1.2c.5 5.1 4.6 9.2 9.7 9.7a1.1 1.1 0 0 0 1.2-1.1v-2.2l-2.7-1.1-1.5 1.5a8.2 8.2 0 0 1-3.6-3.6l1.5-1.5z"></path></svg></i></a>
+      <a class="lrow" href="spare-parts.html"><span><b>I need a spare part</b><small>Send the type plate and a photo</small></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a>
+      <a class="lrow" href="#maintenance"><span><b>I am planning ahead</b><small>Support, contracts and upgrades</small></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a>
+    </div>
+  </section>
+  <!-- 2 Machines we support: each row opens the spare parts request with the machine chosen -->
+  <section class="sx sup" id="machines">
+    <div class="sx-head"><div><span class="eyebrow">Machines we support</span><h2>Parts and service for the machines we built.</h2></div><p class="lead">Finmatec's own machines and lines, worldwide. Choose your machine, and the spare parts request opens with it selected.</p></div>
+    <div class="sup-grid"><a class="dlrow" href="spare-parts.html"><span><b>Plate Freezing Systems</b><span class="mono">Unloaders F12H, F10H, F8H</span></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><a class="dlrow" href="spare-parts.html"><span><b>BinStacker</b><span class="mono">Automated bin storage</span></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><a class="dlrow" href="spare-parts.html"><span><b>Titan Series</b><span class="mono">Mini Titan, breakers, shredders</span></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><a class="dlrow" href="spare-parts.html"><span><b>Finmatec Mixers</b><span class="mono">OMX, CMX, CMXP</span></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><a class="dlrow" href="spare-parts.html"><span><b>Conveyors, silos &amp; hoppers</b><span class="mono">Screw conveyors, silos, hopper bins</span></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><a class="dlrow" href="spare-parts.html"><span><b>Process lines</b><span class="mono">Meat, poultry, pet food</span></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a></div>
+    <p class="sup-note"><b>Standard components inside.</b> Our mixers are built from standard components, so spare parts are available worldwide.</p>
+  </section>
+  <!-- 3 Maintenance & support: section of the hub until Finmatec confirms its own page -->
+  <section class="sx mnt" id="maintenance">
+    <div class="sx-head"><div><span class="eyebrow">Maintenance &amp; support</span><h2>We stay after the handover.</h2></div><p class="lead">The team that designed and built your line installs it, trains your people and supports it afterwards.</p></div>
+    <div class="w2-wrap">
+      <div class="w2-ph"><img loading="lazy" decoding="async" src="media/k2.jpg" alt="Operator at the control panels of a Finmatec line"></div>
+      <div class="w2-grid">
+        <div class="w2-c"><h3>Installation and commissioning</h3><p>Our technicians install the system and make sure everything works before handover.</p></div>
+        <div class="w2-c"><h3>Training</h3><p>We train your team to operate the system efficiently and safely.</p></div>
+        <div class="w2-c"><h3>Technical support</h3><p>Worldwide technical support and aftermarket services for the machines and lines we delivered.</p></div>
+        <div class="w2-c"><h3>Service contracts</h3><p>BinStacker comes with a service contract for 2 or 5 years. Ask us what fits your line.</p></div>
+      </div>
+    </div>
+  </section>
+  <!-- Upgrades & retrofits: homepage service band -->
+  <section class="svc upg" id="upgrades">
+    <div class="svc-in">
+      <div class="svc-head"><span class="eyebrow">Upgrades &amp; retrofits</span><h2 class="s">Same part failing again, or a machine near the end of its life?</h2><p class="lead">We add automation to existing vertical plate freezers and replace old machines with the Titan Series.</p></div>
+      <div class="svc-links"><a class="lrow" href="#"><span><b>Upgrades &amp; retrofits</b><small>Automation for existing plate freezers</small></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><a class="lrow" href="#"><span><b>Titan Series</b><small>Replace an old breaker or grinder</small></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a></div>
+    </div>
+  </section>
+  <!-- 5 Reach us: three channels -->
+  <section class="reach" id="contact">
+    <div><h2>Reach us.</h2><p class="lead">Call us, email your order, or send a request with the type plate and a photo of the part.</p></div>
+    <div class="rows"><a class="dlrow" href="tel:+358400862694"><span><b>+358&nbsp;40&nbsp;086&nbsp;2694</b><span class="mono">Call Finmatec in Kokkola, Finland</span></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.9 2.5H3.7a1.1 1.1 0 0 0-1.1 1.2c.5 5.1 4.6 9.2 9.7 9.7a1.1 1.1 0 0 0 1.2-1.1v-2.2l-2.7-1.1-1.5 1.5a8.2 8.2 0 0 1-3.6-3.6l1.5-1.5z"></path></svg></i></a><a class="dlrow" href="mailto:varaosat@finmatec.fi"><span><b>varaosat@finmatec.fi</b><span class="mono">Spare part orders</span></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><a class="dlrow" href="spare-parts.html"><span><b>Spare parts request</b><span class="mono">Type plate, photo and quantity</span></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a></div>
+  </section>
+  <footer class="fb2"><svg class="sym" viewBox="0 0 442.72 507.99" aria-hidden="true"><path fill="#e2e2de" d="M293.68,146.30C291.07,145.59 287.69,142.95 282.47,138.10C277.25,133.26 268.14,123.79 262.35,117.23C256.56,110.66 251.17,103.81 247.73,98.72C244.29,93.62 243.28,90.56 241.71,86.65C240.14,82.73 239.14,79.34 238.30,75.21C237.46,71.07 236.93,66.48 236.64,61.83C236.36,57.19 236.35,51.81 236.60,47.33C236.86,42.85 237.34,38.88 238.18,34.96C239.02,31.04 240.18,27.58 241.67,23.83C243.15,20.08 245.29,15.76 247.10,12.46C248.91,9.16 250.87,5.77 252.54,4.02C254.22,2.28 254.43,0.69 257.15,2.00C259.88,3.31 263.68,6.95 268.90,11.91C274.13,16.87 283.03,25.94 288.49,31.74C293.96,37.54 298.58,42.62 301.71,46.71C304.84,50.80 305.53,52.50 307.25,56.27C308.96,60.04 310.71,64.65 312.00,69.33C313.29,74.02 314.50,79.49 314.99,84.40C315.49,89.30 315.35,94.22 314.99,98.77C314.62,103.32 313.81,107.68 312.81,111.71C311.81,115.74 310.53,119.29 309.00,122.96C307.47,126.63 305.45,130.48 303.63,133.72C301.81,136.95 299.74,140.27 298.08,142.36C296.42,144.46 296.28,147.01 293.68,146.30Z"/><path fill="#d3d3ce" d="M267.38,293.76C264.86,295.09 263.52,295.05 261.87,294.12C260.22,293.19 258.98,290.92 257.48,288.17C255.97,285.41 254.17,281.69 252.85,277.58C251.52,273.48 250.24,268.47 249.51,263.52C248.77,258.57 248.40,252.83 248.43,247.90C248.47,242.96 248.89,238.27 249.69,233.90C250.49,229.52 251.71,225.63 253.25,221.65C254.78,217.67 256.28,214.15 258.88,210.02C261.48,205.90 264.70,201.71 268.87,196.90C273.03,192.08 278.98,186.16 283.86,181.11C288.75,176.05 293.95,171.14 298.16,166.58C302.38,162.02 305.87,158.09 309.18,153.75C312.48,149.41 315.45,144.93 317.97,140.53C320.50,136.13 322.59,131.64 324.34,127.33C326.09,123.03 327.39,119.30 328.46,114.71C329.53,110.11 330.21,104.76 330.76,99.77C331.32,94.78 331.43,88.40 331.78,84.77C332.14,81.14 332.26,79.07 332.89,77.99C333.53,76.91 333.69,77.03 335.58,78.31C337.47,79.59 340.48,82.14 344.22,85.69C347.96,89.24 354.04,95.23 358.01,99.62C361.99,104.01 365.45,107.94 368.06,112.02C370.67,116.10 372.07,119.70 373.69,124.08C375.31,128.47 376.80,133.86 377.78,138.33C378.76,142.80 379.37,146.86 379.59,150.90C379.81,154.93 379.58,158.59 379.12,162.52C378.67,166.45 377.82,170.72 376.86,174.46C375.89,178.20 374.99,181.33 373.34,184.96C371.69,188.58 372.03,189.98 366.97,196.21C361.90,202.44 353.58,211.50 342.95,222.33C332.31,233.17 314.15,250.60 303.16,261.24C292.17,271.87 282.97,280.72 277.01,286.14C271.05,291.56 269.91,292.43 267.38,293.76Z"/><path fill="#e2e2de" d="M2.00,280.75C1.87,275.66 2.31,273.33 2.98,270.04C3.66,266.75 4.69,264.61 6.06,261.02C7.43,257.43 9.36,252.38 11.23,248.52C13.10,244.67 9.40,246.79 17.30,237.90C25.20,229.00 39.08,214.87 58.62,195.15C78.16,175.42 115.40,138.40 134.55,119.56C153.69,100.73 166.46,88.14 173.48,82.14C180.49,76.14 175.36,82.32 176.64,83.57C177.92,84.82 179.57,87.04 181.17,89.62C182.77,92.19 184.74,95.63 186.26,99.02C187.78,102.41 189.22,105.46 190.31,109.96C191.41,114.46 192.53,119.65 192.82,126.02C193.10,132.40 192.94,141.14 192.00,148.21C191.07,155.28 189.17,162.73 187.19,168.46C185.21,174.19 186.17,175.12 180.14,182.60C174.10,190.09 164.29,200.03 150.98,213.35C137.66,226.67 113.64,249.49 100.26,262.53C86.88,275.56 76.87,285.07 70.69,291.57C64.51,298.08 65.53,297.81 63.17,301.56C60.81,305.31 58.57,309.14 56.53,314.08C54.49,319.03 52.34,325.15 50.95,331.21C49.57,337.27 48.69,345.03 48.21,350.46C47.73,355.89 48.22,360.92 48.07,363.81C47.92,366.70 48.46,367.87 47.31,367.79C46.16,367.70 44.18,366.00 41.19,363.31C38.20,360.62 33.28,356.00 29.37,351.65C25.46,347.29 21.09,342.24 17.72,337.16C14.35,332.08 11.48,327.27 9.16,321.17C6.83,315.07 4.95,307.29 3.75,300.55C2.56,293.82 2.13,285.83 2.00,280.75Z"/><path fill="#e2e2de" d="M269.38,424.99C261.96,430.46 266.19,423.15 264.27,420.72C262.35,418.30 259.74,414.07 257.87,410.46C256.00,406.85 254.31,403.02 253.04,399.08C251.77,395.15 250.88,391.32 250.22,386.83C249.57,382.34 249.09,377.10 249.10,372.15C249.11,367.19 249.62,361.65 250.29,357.08C250.95,352.52 251.95,348.45 253.07,344.77C254.20,341.09 255.32,338.40 257.01,335.02C258.70,331.64 257.63,331.06 263.21,324.50C268.79,317.94 277.64,308.57 290.50,295.67C303.37,282.76 326.40,261.01 340.39,247.06C354.39,233.11 366.87,220.75 374.47,211.96C382.07,203.17 383.05,200.04 385.98,194.33C388.92,188.63 390.56,183.19 392.06,177.71C393.56,172.23 394.43,166.29 394.97,161.46C395.52,156.63 395.35,151.98 395.33,148.71C395.31,145.44 394.84,143.34 394.83,141.82C394.82,140.31 394.45,139.50 395.25,139.61C396.05,139.72 397.16,140.34 399.63,142.46C402.11,144.59 406.44,148.62 410.09,152.34C413.74,156.07 418.30,160.87 421.51,164.81C424.73,168.76 427.18,172.33 429.40,176.02C431.61,179.71 433.29,183.28 434.81,186.96C436.33,190.64 437.55,194.07 438.51,198.08C439.48,202.09 440.23,206.33 440.60,211.02C440.97,215.71 441.05,221.28 440.72,226.21C440.39,231.14 439.63,236.15 438.63,240.58C437.63,245.02 436.41,248.78 434.71,252.83C433.01,256.89 436.63,255.22 428.42,264.92C420.21,274.61 405.38,290.51 385.45,311.00C365.51,331.49 328.14,368.87 308.80,387.87C289.46,406.87 276.81,419.51 269.38,424.99Z"/><path fill="#d3d3ce" d="M109.47,429.89C108.73,430.63 108.52,430.55 106.57,429.06C104.62,427.57 101.81,425.19 97.76,420.94C93.71,416.70 86.81,409.47 82.25,403.60C77.70,397.73 73.22,391.21 70.43,385.73C67.64,380.25 66.66,375.60 65.52,370.71C64.39,365.82 63.76,361.19 63.61,356.40C63.46,351.60 63.72,347.02 64.60,341.96C65.48,336.90 66.97,331.17 68.90,326.02C70.83,320.87 70.39,318.47 76.17,311.05C81.94,303.63 91.39,293.80 103.54,281.49C115.69,269.19 137.21,248.47 149.07,237.20C160.93,225.94 169.57,217.96 174.70,213.91C179.82,209.86 178.31,212.47 179.83,212.91C181.35,213.36 182.53,214.92 183.81,216.58C185.10,218.25 186.37,220.43 187.54,222.90C188.71,225.37 189.84,227.78 190.82,231.40C191.81,235.01 192.97,239.24 193.45,244.58C193.93,249.93 194.23,257.13 193.70,263.46C193.17,269.79 191.78,277.08 190.27,282.58C188.75,288.08 186.88,292.25 184.62,296.46C182.35,300.67 180.30,303.45 176.68,307.83C173.06,312.21 168.11,317.28 162.89,322.75C157.68,328.22 150.50,335.15 145.39,340.66C140.27,346.17 135.68,351.34 132.21,355.81C128.74,360.28 126.85,363.26 124.57,367.46C122.28,371.66 120.30,376.09 118.50,381.02C116.70,385.95 114.88,391.80 113.75,397.02C112.62,402.24 112.17,407.73 111.72,412.33C111.27,416.94 111.40,421.73 111.03,424.66C110.65,427.59 110.21,429.16 109.47,429.89Z"/><path fill="#e2e2de" d="M186.94,505.99C184.43,504.95 181.10,502.09 175.70,496.97C170.29,491.85 160.74,482.33 154.50,475.27C148.26,468.22 142.14,460.91 138.25,454.65C134.36,448.39 132.87,443.22 131.15,437.71C129.42,432.20 128.42,426.49 127.89,421.58C127.36,416.68 127.53,412.64 127.95,408.27C128.37,403.91 129.34,399.58 130.43,395.40C131.52,391.21 132.90,386.99 134.51,383.15C136.12,379.30 138.24,375.46 140.10,372.31C141.95,369.16 144.03,366.09 145.65,364.22C147.28,362.36 147.30,360.20 149.84,361.12C152.38,362.03 155.83,365.00 160.88,369.71C165.93,374.41 174.74,383.44 180.14,389.33C185.53,395.23 190.03,400.44 193.24,405.08C196.45,409.73 197.54,412.63 199.39,417.21C201.25,421.79 203.21,427.08 204.38,432.58C205.54,438.08 206.24,444.30 206.38,450.21C206.51,456.11 206.00,462.59 205.20,468.02C204.40,473.45 203.10,478.31 201.58,482.77C200.07,487.23 197.90,491.36 196.11,494.77C194.31,498.18 192.34,501.35 190.81,503.22C189.29,505.09 189.46,507.03 186.94,505.99Z"/></svg><div class="grid"><div><img loading="lazy" decoding="async" class="logoimg" src="media/finmatec-logo.svg" alt="Finmatec" style="height:34px;margin-bottom:18px"><p>Automated raw material handling for the food industry since 1989.</p><p style="margin-top:14px">Oy Finmatec Ab<br>Mottisenkatu 3, 67100 Kokkola, Finland<br>+358&nbsp;40&nbsp;086&nbsp;2694 · info@finmatec.fi</p></div><div><h4>Solutions &amp; Products</h4><ul><li><a href="#">Meat Processing</a></li><li><a href="#">Poultry Processing</a></li><li><a href="pet-food.html">Pet Food Processing</a></li><li><a href="plate-freezing.html">Plate Freezing Systems</a></li><li><a href="#">BinStacker</a></li><li><a href="titan.html">Titan Series</a></li></ul></div>
+<div><h4>Service</h4><ul><li><a href="spare-parts.html">Spare Parts</a></li><li><a href="#">Maintenance &amp; Support</a></li><li><a href="#">Upgrades &amp; Retrofits</a></li><li><a href="#">Engineering Resources</a></li></ul></div>
+<div><h4>Finmatec</h4><ul><li><a href="about.html">About</a></li><li><a href="references.html">References</a></li><li><a href="join.html">Join our team</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Trading Partners in Finland</a></li><li><a href="wwtp.html">WWTP Solutions</a></li></ul></div></div>
+<div class="bottom"><span>© 2026 Oy Finmatec Ab · LinkedIn · YouTube</span><span><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></span></div>
+<div class="word"><svg viewBox="181 43 548 83" role="img" aria-label="Finmatec"><path fill-rule="evenodd" d="M705.38,124.38 L700.88,124.41 L699.12,124.08 L694.25,123.85 L688.88,122.66 L685.75,121.67 L681.62,119.71 L678.38,117.64 L675.79,115.50 L671.38,110.58 L668.12,104.76 L666.05,98.62 L665.10,94.00 L664.46,88.25 L664.45,81.75 L664.78,80.25 L665.16,75.62 L666.14,71.38 L667.28,68.00 L669.13,64.00 L671.18,60.50 L673.23,57.75 L677.65,53.25 L680.50,51.10 L683.88,49.15 L688.38,47.16 L691.62,46.16 L697.62,45.04 L701.00,44.80 L706.25,44.82 L711.50,45.28 L715.62,46.08 L722.50,48.22 L726.12,50.06 L726.58,50.50 L726.72,51.00 L723.68,60.12 L722.59,63.00 L722.00,63.69 L720.75,63.78 L717.02,62.12 L713.88,61.12 L708.50,60.07 L701.62,59.92 L699.25,60.13 L695.75,61.04 L693.25,62.07 L691.38,63.20 L690.00,64.26 L687.38,66.95 L685.07,70.50 L684.04,72.88 L683.13,75.75 L682.44,80.50 L682.17,84.12 L682.44,88.38 L683.14,93.12 L684.11,96.62 L686.17,100.62 L688.29,103.25 L691.00,105.62 L694.88,107.69 L698.00,108.66 L703.12,109.17 L707.12,109.17 L711.38,108.77 L716.38,107.74 L719.25,106.80 L722.62,105.30 L723.25,105.31 L723.71,105.75 L727.71,117.38 L727.80,118.12 L727.50,118.79 L726.29,119.62 L724.12,120.62 L717.88,122.64 L712.00,123.80 L706.88,124.10ZM198.62,122.81 L183.50,122.81 L182.25,122.00 L182.25,47.12 L184.00,46.51 L232.62,46.51 L233.42,48.25 L233.42,59.75 L232.88,60.78 L201.00,60.78 L199.61,61.51 L199.61,76.88 L229.14,76.88 L229.72,78.12 L229.72,89.62 L229.38,90.98 L228.25,91.40 L201.12,91.40 L199.61,91.88 L199.61,121.75ZM262.00,122.79 L247.00,122.79 L245.65,122.00 L245.65,48.62 L245.74,47.00 L246.38,46.47 L261.62,46.47 L262.73,47.38 L262.73,121.62ZM344.75,122.88 L332.88,122.88 L331.50,122.36 L312.68,92.38 L302.80,79.25 L298.00,73.98 L297.39,75.12 L297.39,122.12 L295.75,122.87 L282.00,122.87 L280.53,122.38 L280.53,48.25 L280.96,46.59 L292.88,46.59 L294.99,47.25 L301.62,54.35 L309.74,64.50 L328.38,90.37 L329.06,89.12 L329.06,47.11 L330.25,46.43 L344.75,46.43 L345.90,46.88 L345.90,121.62 L345.75,122.57ZM444.75,122.88 L432.00,122.88 L430.83,122.12 L428.81,79.88 L427.75,74.08 L426.95,74.50 L410.65,112.50 L409.25,113.06 L400.00,113.06 L398.12,112.19 L381.25,73.71 L380.06,80.75 L378.35,122.12 L376.88,122.73 L362.13,122.73 L362.13,109.88 L364.16,79.25 L366.17,57.50 L367.93,46.88 L369.12,46.41 L382.75,46.41 L384.38,47.26 L391.63,61.62 L404.75,90.90 L405.74,90.12 L416.24,65.62 L425.28,47.25 L427.12,46.64 L441.00,46.64 L441.65,48.50 L443.71,66.38 L446.96,108.75 L446.96,122.12 L446.62,122.76ZM530.88,122.76 L514.25,122.76 L508.76,107.38 L506.75,106.47 L479.00,106.47 L478.04,107.38 L472.50,122.60 L455.45,122.60 L460.14,108.25 L471.18,79.12 L480.23,57.75 L485.75,46.57 L500.75,46.57 L502.51,47.88 L513.70,73.12 L521.72,93.38 L531.71,120.88 L531.92,122.38ZM565.75,122.88 L551.12,122.88 L549.83,122.38 L549.83,62.00 L548.12,60.96 L527.25,60.96 L526.80,59.75 L526.80,48.12 L527.50,46.48 L588.62,46.48 L589.80,47.00 L589.80,59.75 L589.38,60.99 L568.00,60.99 L566.95,61.75 L566.95,121.62 L566.62,122.56ZM653.75,122.69 L601.09,122.69 L601.09,48.25 L601.50,46.51 L650.50,46.51 L652.28,47.00 L652.28,59.62 L651.75,60.82 L619.62,60.82 L618.31,61.38 L618.31,75.88 L648.12,75.88 L648.70,77.12 L648.70,88.62 L648.38,89.58 L647.25,90.00 L618.50,90.00 L618.06,91.12 L618.06,106.75 L618.44,108.00 L619.62,108.50 L654.25,108.50 L654.88,109.88 L654.88,121.75ZM503.23,92.78 L503.88,91.62 L502.81,88.38 L494.83,67.25 L493.25,64.78 L485.07,85.12 L482.88,92.20 L484.12,92.78Z"></path></svg></div></footer>
+</div></template>
+<template id="tm"><div class="fm m">
+  
+  <!-- 1 Hero: three situations as link rows (homepage router) -->
+  <section class="hero svhero">
+    <div class="media"><img loading="lazy" decoding="async" src="media/k4.jpg" alt="Finmatec conveyors and machines in a customer line"></div>
+    <nav class="nav"><a href="index.html" aria-label="Finmatec home"><img loading="lazy" decoding="async" class="logoimg" src="media/finmatec-logo.svg" alt="Finmatec"></a><a class="btn pri qk mq" href="#">Quote <i><svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2.2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><button class="burger" type="button" aria-label="Open menu"><span></span><span></span><span></span></button></nav>
+    <div class="hero-copy">
+      <h1>Keep your Finmatec line <em>running</em>.</h1>
+      <p class="lead">Spare parts, wear parts and support for the machines and lines we built, wherever in the world they run.</p>
+    </div>
+    <div class="router">
+      <a class="lrow" href="tel:+358400862694"><span><b>My line has stopped</b><small>Call +358&nbsp;40&nbsp;086&nbsp;2694</small></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.9 2.5H3.7a1.1 1.1 0 0 0-1.1 1.2c.5 5.1 4.6 9.2 9.7 9.7a1.1 1.1 0 0 0 1.2-1.1v-2.2l-2.7-1.1-1.5 1.5a8.2 8.2 0 0 1-3.6-3.6l1.5-1.5z"></path></svg></i></a>
+      <a class="lrow" href="spare-parts.html"><span><b>I need a spare part</b><small>Send the type plate and a photo</small></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a>
+      <a class="lrow" href="#maintenance"><span><b>I am planning ahead</b><small>Support, contracts and upgrades</small></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a>
+    </div>
+  </section>
+  <!-- 2 Machines we support: each row opens the spare parts request with the machine chosen -->
+  <section class="sx sup" id="machines">
+    <div class="sx-head"><div><span class="eyebrow">Machines we support</span><h2>Parts and service for the machines we built.</h2></div><p class="lead">Finmatec's own machines and lines, worldwide. Choose your machine, and the spare parts request opens with it selected.</p></div>
+    <div class="sup-grid"><a class="dlrow" href="spare-parts.html"><span><b>Plate Freezing Systems</b><span class="mono">Unloaders F12H, F10H, F8H</span></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><a class="dlrow" href="spare-parts.html"><span><b>BinStacker</b><span class="mono">Automated bin storage</span></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><a class="dlrow" href="spare-parts.html"><span><b>Titan Series</b><span class="mono">Mini Titan, breakers, shredders</span></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><a class="dlrow" href="spare-parts.html"><span><b>Finmatec Mixers</b><span class="mono">OMX, CMX, CMXP</span></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><a class="dlrow" href="spare-parts.html"><span><b>Conveyors, silos &amp; hoppers</b><span class="mono">Screw conveyors, silos, hopper bins</span></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><a class="dlrow" href="spare-parts.html"><span><b>Process lines</b><span class="mono">Meat, poultry, pet food</span></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a></div>
+    <p class="sup-note"><b>Standard components inside.</b> Our mixers are built from standard components, so spare parts are available worldwide.</p>
+  </section>
+  <!-- 3 Maintenance & support: section of the hub until Finmatec confirms its own page -->
+  <section class="sx mnt" id="maintenance">
+    <div class="sx-head"><div><span class="eyebrow">Maintenance &amp; support</span><h2>We stay after the handover.</h2></div><p class="lead">The team that designed and built your line installs it, trains your people and supports it afterwards.</p></div>
+    <div class="w2-wrap">
+      <div class="w2-ph"><img loading="lazy" decoding="async" src="media/k2.jpg" alt="Operator at the control panels of a Finmatec line"></div>
+      <div class="w2-grid">
+        <div class="w2-c"><h3>Installation and commissioning</h3><p>Our technicians install the system and make sure everything works before handover.</p></div>
+        <div class="w2-c"><h3>Training</h3><p>We train your team to operate the system efficiently and safely.</p></div>
+        <div class="w2-c"><h3>Technical support</h3><p>Worldwide technical support and aftermarket services for the machines and lines we delivered.</p></div>
+        <div class="w2-c"><h3>Service contracts</h3><p>BinStacker comes with a service contract for 2 or 5 years. Ask us what fits your line.</p></div>
+      </div>
+    </div>
+  </section>
+  <!-- Upgrades & retrofits: homepage service band -->
+  <section class="svc upg" id="upgrades">
+    <div class="svc-in">
+      <div class="svc-head"><span class="eyebrow">Upgrades &amp; retrofits</span><h2 class="s">Same part failing again, or a machine near the end of its life?</h2><p class="lead">We add automation to existing vertical plate freezers and replace old machines with the Titan Series.</p></div>
+      <div class="svc-links"><a class="lrow" href="#"><span><b>Upgrades &amp; retrofits</b><small>Automation for existing plate freezers</small></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><a class="lrow" href="#"><span><b>Titan Series</b><small>Replace an old breaker or grinder</small></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a></div>
+    </div>
+  </section>
+  <!-- 5 Reach us: three channels -->
+  <section class="reach" id="contact">
+    <div><h2>Reach us.</h2><p class="lead">Call us, email your order, or send a request with the type plate and a photo of the part.</p></div>
+    <div class="rows"><a class="dlrow" href="tel:+358400862694"><span><b>+358&nbsp;40&nbsp;086&nbsp;2694</b><span class="mono">Call Finmatec in Kokkola, Finland</span></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M5.9 2.5H3.7a1.1 1.1 0 0 0-1.1 1.2c.5 5.1 4.6 9.2 9.7 9.7a1.1 1.1 0 0 0 1.2-1.1v-2.2l-2.7-1.1-1.5 1.5a8.2 8.2 0 0 1-3.6-3.6l1.5-1.5z"></path></svg></i></a><a class="dlrow" href="mailto:varaosat@finmatec.fi"><span><b>varaosat@finmatec.fi</b><span class="mono">Spare part orders</span></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><a class="dlrow" href="spare-parts.html"><span><b>Spare parts request</b><span class="mono">Type plate, photo and quantity</span></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a></div>
+  </section>
+  <footer class="fb2"><svg class="sym" viewBox="0 0 442.72 507.99" aria-hidden="true"><path fill="#e2e2de" d="M293.68,146.30C291.07,145.59 287.69,142.95 282.47,138.10C277.25,133.26 268.14,123.79 262.35,117.23C256.56,110.66 251.17,103.81 247.73,98.72C244.29,93.62 243.28,90.56 241.71,86.65C240.14,82.73 239.14,79.34 238.30,75.21C237.46,71.07 236.93,66.48 236.64,61.83C236.36,57.19 236.35,51.81 236.60,47.33C236.86,42.85 237.34,38.88 238.18,34.96C239.02,31.04 240.18,27.58 241.67,23.83C243.15,20.08 245.29,15.76 247.10,12.46C248.91,9.16 250.87,5.77 252.54,4.02C254.22,2.28 254.43,0.69 257.15,2.00C259.88,3.31 263.68,6.95 268.90,11.91C274.13,16.87 283.03,25.94 288.49,31.74C293.96,37.54 298.58,42.62 301.71,46.71C304.84,50.80 305.53,52.50 307.25,56.27C308.96,60.04 310.71,64.65 312.00,69.33C313.29,74.02 314.50,79.49 314.99,84.40C315.49,89.30 315.35,94.22 314.99,98.77C314.62,103.32 313.81,107.68 312.81,111.71C311.81,115.74 310.53,119.29 309.00,122.96C307.47,126.63 305.45,130.48 303.63,133.72C301.81,136.95 299.74,140.27 298.08,142.36C296.42,144.46 296.28,147.01 293.68,146.30Z"/><path fill="#d3d3ce" d="M267.38,293.76C264.86,295.09 263.52,295.05 261.87,294.12C260.22,293.19 258.98,290.92 257.48,288.17C255.97,285.41 254.17,281.69 252.85,277.58C251.52,273.48 250.24,268.47 249.51,263.52C248.77,258.57 248.40,252.83 248.43,247.90C248.47,242.96 248.89,238.27 249.69,233.90C250.49,229.52 251.71,225.63 253.25,221.65C254.78,217.67 256.28,214.15 258.88,210.02C261.48,205.90 264.70,201.71 268.87,196.90C273.03,192.08 278.98,186.16 283.86,181.11C288.75,176.05 293.95,171.14 298.16,166.58C302.38,162.02 305.87,158.09 309.18,153.75C312.48,149.41 315.45,144.93 317.97,140.53C320.50,136.13 322.59,131.64 324.34,127.33C326.09,123.03 327.39,119.30 328.46,114.71C329.53,110.11 330.21,104.76 330.76,99.77C331.32,94.78 331.43,88.40 331.78,84.77C332.14,81.14 332.26,79.07 332.89,77.99C333.53,76.91 333.69,77.03 335.58,78.31C337.47,79.59 340.48,82.14 344.22,85.69C347.96,89.24 354.04,95.23 358.01,99.62C361.99,104.01 365.45,107.94 368.06,112.02C370.67,116.10 372.07,119.70 373.69,124.08C375.31,128.47 376.80,133.86 377.78,138.33C378.76,142.80 379.37,146.86 379.59,150.90C379.81,154.93 379.58,158.59 379.12,162.52C378.67,166.45 377.82,170.72 376.86,174.46C375.89,178.20 374.99,181.33 373.34,184.96C371.69,188.58 372.03,189.98 366.97,196.21C361.90,202.44 353.58,211.50 342.95,222.33C332.31,233.17 314.15,250.60 303.16,261.24C292.17,271.87 282.97,280.72 277.01,286.14C271.05,291.56 269.91,292.43 267.38,293.76Z"/><path fill="#e2e2de" d="M2.00,280.75C1.87,275.66 2.31,273.33 2.98,270.04C3.66,266.75 4.69,264.61 6.06,261.02C7.43,257.43 9.36,252.38 11.23,248.52C13.10,244.67 9.40,246.79 17.30,237.90C25.20,229.00 39.08,214.87 58.62,195.15C78.16,175.42 115.40,138.40 134.55,119.56C153.69,100.73 166.46,88.14 173.48,82.14C180.49,76.14 175.36,82.32 176.64,83.57C177.92,84.82 179.57,87.04 181.17,89.62C182.77,92.19 184.74,95.63 186.26,99.02C187.78,102.41 189.22,105.46 190.31,109.96C191.41,114.46 192.53,119.65 192.82,126.02C193.10,132.40 192.94,141.14 192.00,148.21C191.07,155.28 189.17,162.73 187.19,168.46C185.21,174.19 186.17,175.12 180.14,182.60C174.10,190.09 164.29,200.03 150.98,213.35C137.66,226.67 113.64,249.49 100.26,262.53C86.88,275.56 76.87,285.07 70.69,291.57C64.51,298.08 65.53,297.81 63.17,301.56C60.81,305.31 58.57,309.14 56.53,314.08C54.49,319.03 52.34,325.15 50.95,331.21C49.57,337.27 48.69,345.03 48.21,350.46C47.73,355.89 48.22,360.92 48.07,363.81C47.92,366.70 48.46,367.87 47.31,367.79C46.16,367.70 44.18,366.00 41.19,363.31C38.20,360.62 33.28,356.00 29.37,351.65C25.46,347.29 21.09,342.24 17.72,337.16C14.35,332.08 11.48,327.27 9.16,321.17C6.83,315.07 4.95,307.29 3.75,300.55C2.56,293.82 2.13,285.83 2.00,280.75Z"/><path fill="#e2e2de" d="M269.38,424.99C261.96,430.46 266.19,423.15 264.27,420.72C262.35,418.30 259.74,414.07 257.87,410.46C256.00,406.85 254.31,403.02 253.04,399.08C251.77,395.15 250.88,391.32 250.22,386.83C249.57,382.34 249.09,377.10 249.10,372.15C249.11,367.19 249.62,361.65 250.29,357.08C250.95,352.52 251.95,348.45 253.07,344.77C254.20,341.09 255.32,338.40 257.01,335.02C258.70,331.64 257.63,331.06 263.21,324.50C268.79,317.94 277.64,308.57 290.50,295.67C303.37,282.76 326.40,261.01 340.39,247.06C354.39,233.11 366.87,220.75 374.47,211.96C382.07,203.17 383.05,200.04 385.98,194.33C388.92,188.63 390.56,183.19 392.06,177.71C393.56,172.23 394.43,166.29 394.97,161.46C395.52,156.63 395.35,151.98 395.33,148.71C395.31,145.44 394.84,143.34 394.83,141.82C394.82,140.31 394.45,139.50 395.25,139.61C396.05,139.72 397.16,140.34 399.63,142.46C402.11,144.59 406.44,148.62 410.09,152.34C413.74,156.07 418.30,160.87 421.51,164.81C424.73,168.76 427.18,172.33 429.40,176.02C431.61,179.71 433.29,183.28 434.81,186.96C436.33,190.64 437.55,194.07 438.51,198.08C439.48,202.09 440.23,206.33 440.60,211.02C440.97,215.71 441.05,221.28 440.72,226.21C440.39,231.14 439.63,236.15 438.63,240.58C437.63,245.02 436.41,248.78 434.71,252.83C433.01,256.89 436.63,255.22 428.42,264.92C420.21,274.61 405.38,290.51 385.45,311.00C365.51,331.49 328.14,368.87 308.80,387.87C289.46,406.87 276.81,419.51 269.38,424.99Z"/><path fill="#d3d3ce" d="M109.47,429.89C108.73,430.63 108.52,430.55 106.57,429.06C104.62,427.57 101.81,425.19 97.76,420.94C93.71,416.70 86.81,409.47 82.25,403.60C77.70,397.73 73.22,391.21 70.43,385.73C67.64,380.25 66.66,375.60 65.52,370.71C64.39,365.82 63.76,361.19 63.61,356.40C63.46,351.60 63.72,347.02 64.60,341.96C65.48,336.90 66.97,331.17 68.90,326.02C70.83,320.87 70.39,318.47 76.17,311.05C81.94,303.63 91.39,293.80 103.54,281.49C115.69,269.19 137.21,248.47 149.07,237.20C160.93,225.94 169.57,217.96 174.70,213.91C179.82,209.86 178.31,212.47 179.83,212.91C181.35,213.36 182.53,214.92 183.81,216.58C185.10,218.25 186.37,220.43 187.54,222.90C188.71,225.37 189.84,227.78 190.82,231.40C191.81,235.01 192.97,239.24 193.45,244.58C193.93,249.93 194.23,257.13 193.70,263.46C193.17,269.79 191.78,277.08 190.27,282.58C188.75,288.08 186.88,292.25 184.62,296.46C182.35,300.67 180.30,303.45 176.68,307.83C173.06,312.21 168.11,317.28 162.89,322.75C157.68,328.22 150.50,335.15 145.39,340.66C140.27,346.17 135.68,351.34 132.21,355.81C128.74,360.28 126.85,363.26 124.57,367.46C122.28,371.66 120.30,376.09 118.50,381.02C116.70,385.95 114.88,391.80 113.75,397.02C112.62,402.24 112.17,407.73 111.72,412.33C111.27,416.94 111.40,421.73 111.03,424.66C110.65,427.59 110.21,429.16 109.47,429.89Z"/><path fill="#e2e2de" d="M186.94,505.99C184.43,504.95 181.10,502.09 175.70,496.97C170.29,491.85 160.74,482.33 154.50,475.27C148.26,468.22 142.14,460.91 138.25,454.65C134.36,448.39 132.87,443.22 131.15,437.71C129.42,432.20 128.42,426.49 127.89,421.58C127.36,416.68 127.53,412.64 127.95,408.27C128.37,403.91 129.34,399.58 130.43,395.40C131.52,391.21 132.90,386.99 134.51,383.15C136.12,379.30 138.24,375.46 140.10,372.31C141.95,369.16 144.03,366.09 145.65,364.22C147.28,362.36 147.30,360.20 149.84,361.12C152.38,362.03 155.83,365.00 160.88,369.71C165.93,374.41 174.74,383.44 180.14,389.33C185.53,395.23 190.03,400.44 193.24,405.08C196.45,409.73 197.54,412.63 199.39,417.21C201.25,421.79 203.21,427.08 204.38,432.58C205.54,438.08 206.24,444.30 206.38,450.21C206.51,456.11 206.00,462.59 205.20,468.02C204.40,473.45 203.10,478.31 201.58,482.77C200.07,487.23 197.90,491.36 196.11,494.77C194.31,498.18 192.34,501.35 190.81,503.22C189.29,505.09 189.46,507.03 186.94,505.99Z"/></svg><div class="grid"><div><img loading="lazy" decoding="async" class="logoimg" src="media/finmatec-logo.svg" alt="Finmatec" style="height:34px;margin-bottom:18px"><p>Automated raw material handling for the food industry since 1989.</p><p style="margin-top:14px">Oy Finmatec Ab<br>Mottisenkatu 3, 67100 Kokkola, Finland<br>+358&nbsp;40&nbsp;086&nbsp;2694 · info@finmatec.fi</p></div><div><h4>Solutions &amp; Products</h4><ul><li><a href="#">Meat Processing</a></li><li><a href="#">Poultry Processing</a></li><li><a href="pet-food.html">Pet Food Processing</a></li><li><a href="plate-freezing.html">Plate Freezing Systems</a></li><li><a href="#">BinStacker</a></li><li><a href="titan.html">Titan Series</a></li></ul></div>
+<div><h4>Service</h4><ul><li><a href="spare-parts.html">Spare Parts</a></li><li><a href="#">Maintenance &amp; Support</a></li><li><a href="#">Upgrades &amp; Retrofits</a></li><li><a href="#">Engineering Resources</a></li></ul></div>
+<div><h4>Finmatec</h4><ul><li><a href="about.html">About</a></li><li><a href="references.html">References</a></li><li><a href="join.html">Join our team</a></li><li><a href="contact.html">Contact</a></li><li><a href="#">Trading Partners in Finland</a></li><li><a href="wwtp.html">WWTP Solutions</a></li></ul></div></div>
+<div class="bottom"><span>© 2026 Oy Finmatec Ab · LinkedIn · YouTube</span><span><a href="#">Privacy Policy</a><a href="#">Terms of Service</a></span></div>
+<div class="word"><svg viewBox="181 43 548 83" role="img" aria-label="Finmatec"><path fill-rule="evenodd" d="M705.38,124.38 L700.88,124.41 L699.12,124.08 L694.25,123.85 L688.88,122.66 L685.75,121.67 L681.62,119.71 L678.38,117.64 L675.79,115.50 L671.38,110.58 L668.12,104.76 L666.05,98.62 L665.10,94.00 L664.46,88.25 L664.45,81.75 L664.78,80.25 L665.16,75.62 L666.14,71.38 L667.28,68.00 L669.13,64.00 L671.18,60.50 L673.23,57.75 L677.65,53.25 L680.50,51.10 L683.88,49.15 L688.38,47.16 L691.62,46.16 L697.62,45.04 L701.00,44.80 L706.25,44.82 L711.50,45.28 L715.62,46.08 L722.50,48.22 L726.12,50.06 L726.58,50.50 L726.72,51.00 L723.68,60.12 L722.59,63.00 L722.00,63.69 L720.75,63.78 L717.02,62.12 L713.88,61.12 L708.50,60.07 L701.62,59.92 L699.25,60.13 L695.75,61.04 L693.25,62.07 L691.38,63.20 L690.00,64.26 L687.38,66.95 L685.07,70.50 L684.04,72.88 L683.13,75.75 L682.44,80.50 L682.17,84.12 L682.44,88.38 L683.14,93.12 L684.11,96.62 L686.17,100.62 L688.29,103.25 L691.00,105.62 L694.88,107.69 L698.00,108.66 L703.12,109.17 L707.12,109.17 L711.38,108.77 L716.38,107.74 L719.25,106.80 L722.62,105.30 L723.25,105.31 L723.71,105.75 L727.71,117.38 L727.80,118.12 L727.50,118.79 L726.29,119.62 L724.12,120.62 L717.88,122.64 L712.00,123.80 L706.88,124.10ZM198.62,122.81 L183.50,122.81 L182.25,122.00 L182.25,47.12 L184.00,46.51 L232.62,46.51 L233.42,48.25 L233.42,59.75 L232.88,60.78 L201.00,60.78 L199.61,61.51 L199.61,76.88 L229.14,76.88 L229.72,78.12 L229.72,89.62 L229.38,90.98 L228.25,91.40 L201.12,91.40 L199.61,91.88 L199.61,121.75ZM262.00,122.79 L247.00,122.79 L245.65,122.00 L245.65,48.62 L245.74,47.00 L246.38,46.47 L261.62,46.47 L262.73,47.38 L262.73,121.62ZM344.75,122.88 L332.88,122.88 L331.50,122.36 L312.68,92.38 L302.80,79.25 L298.00,73.98 L297.39,75.12 L297.39,122.12 L295.75,122.87 L282.00,122.87 L280.53,122.38 L280.53,48.25 L280.96,46.59 L292.88,46.59 L294.99,47.25 L301.62,54.35 L309.74,64.50 L328.38,90.37 L329.06,89.12 L329.06,47.11 L330.25,46.43 L344.75,46.43 L345.90,46.88 L345.90,121.62 L345.75,122.57ZM444.75,122.88 L432.00,122.88 L430.83,122.12 L428.81,79.88 L427.75,74.08 L426.95,74.50 L410.65,112.50 L409.25,113.06 L400.00,113.06 L398.12,112.19 L381.25,73.71 L380.06,80.75 L378.35,122.12 L376.88,122.73 L362.13,122.73 L362.13,109.88 L364.16,79.25 L366.17,57.50 L367.93,46.88 L369.12,46.41 L382.75,46.41 L384.38,47.26 L391.63,61.62 L404.75,90.90 L405.74,90.12 L416.24,65.62 L425.28,47.25 L427.12,46.64 L441.00,46.64 L441.65,48.50 L443.71,66.38 L446.96,108.75 L446.96,122.12 L446.62,122.76ZM530.88,122.76 L514.25,122.76 L508.76,107.38 L506.75,106.47 L479.00,106.47 L478.04,107.38 L472.50,122.60 L455.45,122.60 L460.14,108.25 L471.18,79.12 L480.23,57.75 L485.75,46.57 L500.75,46.57 L502.51,47.88 L513.70,73.12 L521.72,93.38 L531.71,120.88 L531.92,122.38ZM565.75,122.88 L551.12,122.88 L549.83,122.38 L549.83,62.00 L548.12,60.96 L527.25,60.96 L526.80,59.75 L526.80,48.12 L527.50,46.48 L588.62,46.48 L589.80,47.00 L589.80,59.75 L589.38,60.99 L568.00,60.99 L566.95,61.75 L566.95,121.62 L566.62,122.56ZM653.75,122.69 L601.09,122.69 L601.09,48.25 L601.50,46.51 L650.50,46.51 L652.28,47.00 L652.28,59.62 L651.75,60.82 L619.62,60.82 L618.31,61.38 L618.31,75.88 L648.12,75.88 L648.70,77.12 L648.70,88.62 L648.38,89.58 L647.25,90.00 L618.50,90.00 L618.06,91.12 L618.06,106.75 L618.44,108.00 L619.62,108.50 L654.25,108.50 L654.88,109.88 L654.88,121.75ZM503.23,92.78 L503.88,91.62 L502.81,88.38 L494.83,67.25 L493.25,64.78 L485.07,85.12 L482.88,92.20 L484.12,92.78Z"></path></svg></div></footer>
+</div></template>
+<script>
+(function(){
+  var m=document.documentElement.clientWidth<=760, t=document.getElementById(m?'tm':'td');
+  document.body.insertBefore(t.content.cloneNode(true), t);
+  var was=m; window.addEventListener('resize',function(){ var n=document.documentElement.clientWidth<=760; if(n!==was) location.reload(); });
+})();
+window.DCLogic=function(){};
+(function(){
+  var fm=document.querySelector('.fm');
+  function fit(){
+    var w=document.documentElement.clientWidth, m=w<=760;
+    fm.classList.toggle('m',m);
+    /* fill the window: scale the 1440 layout below 1440, let it flow up to 1920, scale the 1920 layout above that */
+    var z, fw='';
+    if(m){ z=w/390; }
+    else if(w<=1440){ fw='1440px'; z=w/1440; }
+    else if(w<=1920){ fw=w+'px'; z=1; }
+    else { fw='1920px'; z=w/1920; }
+    fm.style.width=fw;
+    fm.style.zoom=z;
+  }
+  /* flow: pinned horizontal scroll on desktop, like the Every Kilo v1 chain */
+  var pw=fm.querySelector('.pinwrap'), rw=pw&&pw.querySelector('.railwrap'), tr=rw&&rw.querySelector('.track');
+  var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches, on=false, cur=0, dist=0, mt=0, rh=0;
+  function setup(){
+    if(!pw) return;
+    on=!fm.classList.contains('m') && !reduce;
+    fm.classList.toggle('pin',on); fm.classList.toggle('nopin',!on);
+    pw.style.height=''; rw.style.top=''; tr.style.transform=''; cur=0;
+    if(!on) return;
+    var z=parseFloat(fm.style.zoom)||1;
+    dist=Math.max(0,tr.scrollWidth-rw.clientWidth);
+    mt=parseFloat(getComputedStyle(rw).marginTop)||0; rh=rw.offsetHeight;
+    rw.style.top=Math.max(0,(window.innerHeight/z-rh)/2)+'px';
+    pw.style.height=(mt+rh+dist)+'px';
+  }
+  function target(){
+    var a=pw.getBoundingClientRect(), b=rw.getBoundingClientRect(), k=a.height/pw.offsetHeight||1;
+    var off=(b.top-a.top)/k-mt; return dist? Math.min(1,Math.max(0,off/dist))*dist : 0;
+  }
+  (function loop(){ if(on){ var t=target(); cur+= (t-cur)*0.14; if(Math.abs(t-cur)<.2) cur=t; tr.style.transform='translate3d('+(-cur)+'px,0,0)'; } requestAnimationFrame(loop); })();
+  window.addEventListener('resize',function(){fit();setup();}); fit(); setup();
+  window.addEventListener('load',setup);
+  /* films: hero only on desktop (mobile keeps the poster), others load when they come near */
+  function startVid(v){ if(!v.getAttribute('src')){ v.src=v.getAttribute('data-src'); } v.muted=true; var p=v.play(); if(p&&p.catch)p.catch(function(){}); }
+  var vids=[].slice.call(document.querySelectorAll('video[data-src]'));
+  var io=('IntersectionObserver' in window)? new IntersectionObserver(function(es){ es.forEach(function(e){ if(e.isIntersecting){ startVid(e.target); io.unobserve(e.target); } }); },{rootMargin:'400px 0px'}) : null;
+  vids.forEach(function(v){
+    if(v.hasAttribute('data-desktop') && fm.classList.contains('m')) return;
+    if(reduce && !v.hasAttribute('data-desktop')) { if(io) io.observe(v); else startVid(v); return; }
+    if(io) io.observe(v); else startVid(v);
+  });
+  var el=document.getElementById('ltrack');
+  if(el && !window.matchMedia('(prefers-reduced-motion: reduce)').matches){
+    (function step(){var half=el.scrollWidth/2;if(half>0)el.style.transform='translateX('+(-((Date.now()/1000*45)%half))+'px)';requestAnimationFrame(step);})();
+  }
+})();
+document.querySelectorAll('.bezel video:not([loop])').forEach(function (v) {
+  function again() { if (!v.getAttribute('src')) return; v.currentTime = 0; var p = v.play(); if (p && p.catch) p.catch(function () {}); }
+  v.addEventListener('animationstart', again); v.addEventListener('animationiteration', again);
+});
+(function(){if(document.querySelector(".fm").classList.contains("m"))return;
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+var v=new Component().renderVals()||{};
+document.querySelectorAll('[data-part="0"][data-ref]').forEach(function(el){var f=v[el.getAttribute("data-ref")];if(typeof f==="function")f(el);});
+})();
+(function(){if(!document.querySelector(".fm").classList.contains("m"))return;
+class Component extends DCLogic {
+  renderVals() {
+    return {};
+  }
+}
+var v=new Component().renderVals()||{};
+document.querySelectorAll('[data-part="100"][data-ref]').forEach(function(el){var f=v[el.getAttribute("data-ref")];if(typeof f==="function")f(el);});
+})();
+</script>
+</body>
+</html>
