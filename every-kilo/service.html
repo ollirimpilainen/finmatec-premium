@@ -1382,9 +1382,7 @@ document.querySelectorAll('[data-part="100"][data-ref]').forEach(function(el){va
     var dd=document.createElement('div'); dd.className='pnav-dd'; dd.innerHTML=m[1].map(item).join(''); li.appendChild(dd);
     var trig=li.querySelector('a')||li; if(trig.tagName==='A') trig.setAttribute('href','#');
     trig.setAttribute('aria-haspopup','true'); trig.setAttribute('aria-expanded','false');
-    trig.addEventListener('click',function(e){ if(e.target.closest('.pnav-dd')) return; e.preventDefault(); var hov=matchMedia('(hover:hover)').matches&&e.detail>0; var o=hov?true:!li.classList.contains('open'); lis.forEach(function(x){x.classList.remove('open');}); li.classList.toggle('open',o); trig.setAttribute('aria-expanded',o?'true':'false'); });
-    li.addEventListener('mouseenter',function(){ if(matchMedia('(hover:hover)').matches){ lis.forEach(function(x){x.classList.remove('open');}); li.classList.add('open'); }});
-    li.addEventListener('mouseleave',function(){ if(matchMedia('(hover:hover)').matches) li.classList.remove('open'); });
+    trig.addEventListener('click',function(e){ if(e.target.closest('.pnav-dd')) return; e.preventDefault(); var o=!li.classList.contains('open'); lis.forEach(function(x){x.classList.remove('open');}); li.classList.toggle('open',o); trig.setAttribute('aria-expanded',o?'true':'false'); });
   });
   document.addEventListener('click',function(e){ if(!e.target.closest('.pnav-li')) lis.forEach(function(x){x.classList.remove('open');}); });
   document.addEventListener('keydown',function(e){ if(e.key==='Escape'){ lis.forEach(function(x){x.classList.remove('open');}); mm.classList.remove('open'); }});
