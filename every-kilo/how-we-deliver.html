@@ -496,6 +496,8 @@
 .rm td .dot.o { background:transparent; box-shadow:inset 0 0 0 1.5px var(--mute); }
 .rm .foot { margin-top:18px; display:flex; gap:24px; align-items:center; font-size:var(--small); color:var(--ink2); }
 .rm .foot span { display:inline-flex; align-items:center; gap:8px; }
+/* After delivery panel: room above it after the paper section */
+.aft { padding-top:var(--sec); }
 /* Contact with floor plan drop */
 .cb .fpz-drop { margin-top:14px; }
 .fm.m .h80 { grid-template-columns:1fr; gap:20px; }
@@ -510,7 +512,73 @@
 .rm-list li b { flex-basis:100%; font-size:var(--body); font-weight:600; color:var(--ink); }
 .fm .rm-list .chip { height:32px; font-size:13px; }
 .fm .rm-list .chip.ty { background:transparent; box-shadow:inset 0 0 0 1.5px var(--line); color:var(--ink2); }
-.fm.m .rm .foot { flex-wrap:wrap; gap:10px 20px; }</style>
+.fm.m .rm .foot { flex-wrap:wrap; gap:10px 20px; }
+/* ===== C, refined (Olli 17.11., thread 4c54249d): one continuous rail. You bring → phase → handover → phase → handover → phase → You get.
+   Surfaces: phases = blue panel, ends and handovers = card 28/22 (tray + white core). Green only as signal (rail, stations).
+   Text styles in the component: caps, --h4, --body. ===== */
+.ipo { background:var(--paper); padding:var(--sec) var(--gut); }
+.ipo .hd { display:grid; grid-template-columns:minmax(0,1fr) 440px; gap:56px; align-items:end; }
+.ipo h2 { margin-top:22px; }
+.ipo .hd p { font-size:var(--lead); color:var(--ink2); }
+.rl { --g:40px; --c:calc((1296px - 4 * var(--g)) / 5); position:relative; margin-top:64px; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); grid-template-rows:auto 214px; column-gap:var(--g); }
+.rl .lab { font-family:var(--fl); font-size:var(--cap); font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink2); }
+/* ends: biggest weight, span both rows */
+.rl .end { grid-row:1 / 3; grid-column:1; }
+.rl .end.e2 { grid-column:5; }
+.rl .end .core { height:100%; background:#fff; padding:30px 28px 30px; display:flex; flex-direction:column; gap:18px; }
+.rl .end ul { list-style:none; margin:0; padding:0; display:grid; gap:16px; }
+.rl .end li { font-family:var(--fd); font-size:var(--h4); font-weight:700; line-height:1.15; color:var(--dark); padding-top:16px; border-top:1px solid var(--line); }
+.rl .end li:first-child { border-top:0; padding-top:0; }
+.rl .end .lab { display:flex; align-items:center; gap:10px; color:var(--dark); }
+.rl .end .lab::before { content:""; width:10px; height:10px; border-radius:50%; background:var(--acc); box-shadow:0 0 0 3px rgba(3,255,107,.2); }
+/* phases: blue panels standing on the rail */
+.rl .ph { grid-row:1; grid-column:var(--col); border-radius:var(--r-panel); background:var(--dark); color:#fff; padding:26px 24px 26px; display:flex; flex-direction:column; }
+.rl .ph .lab { color:var(--acc); }
+.rl .ph h3 { margin-top:10px; font-size:var(--h4); line-height:1.15; color:#fff; min-height:2.3em; }
+.rl .ph ol { list-style:none; margin:18px 0 0; padding:0; border-top:1px solid rgba(255,255,255,.18); }
+.rl .ph li { padding:9px 0; border-bottom:1px solid rgba(255,255,255,.12); font-size:var(--body); color:rgba(255,255,255,.86); }
+.rl .ph li:last-child { border-bottom:0; padding-bottom:0; }
+/* the rail row */
+.rl .rail { grid-column:1 / 6; grid-row:2; position:relative; }
+.rl .belt { position:absolute; left:var(--c); right:var(--c); top:34px; height:4px; border-radius:2px; background:repeating-linear-gradient(90deg, var(--acc) 0 14px, rgba(3,255,107,.25) 14px 24px); background-size:24px 4px; animation:beltx 1.2s linear infinite; }
+@keyframes beltx { from { background-position:0 0; } to { background-position:24px 0; } }
+.rl .belt::after { content:""; position:absolute; right:-2px; top:50%; width:12px; height:12px; border-right:3px solid var(--acc); border-top:3px solid var(--acc); transform:translateY(-50%) rotate(45deg); }
+.rl .stn { position:absolute; top:0; width:2px; height:34px; background:rgba(36,21,186,.35); transform:translateX(-1px); }
+.rl .stn::after { content:""; position:absolute; left:50%; bottom:-9px; width:18px; height:18px; border-radius:50%; background:var(--dark); box-shadow:inset 0 0 0 4px var(--acc); transform:translateX(-50%); }
+.rl .s1 { left:calc(var(--c) * 1.5 + var(--g)); }
+.rl .s2 { left:calc(var(--c) * 2.5 + var(--g) * 2); }
+.rl .s3 { left:calc(var(--c) * 3.5 + var(--g) * 3); }
+/* handovers: cards riding the rail between two phases */
+.rl .ho { position:absolute; top:62px; width:228px; }
+.rl .ho .core { background:#fff; padding:18px 20px 20px; display:grid; gap:8px; }
+.rl .ho ul { list-style:none; margin:0; padding:0; display:grid; gap:6px; }
+.rl .ho li { font-size:var(--body); line-height:1.35; color:var(--ink); }
+.rl .h1x { left:calc(var(--c) * 2 + var(--g) * 1.5 - 114px); }
+.rl .h2x { left:calc(var(--c) * 3 + var(--g) * 2.5 - 114px); }
+.rl .ho::before { content:""; position:absolute; left:50%; top:-26px; width:2px; height:26px; background:rgba(36,21,186,.35); }
+/* Mobile: the same rail, vertical */
+.fm.m .ipo .hd { grid-template-columns:1fr; gap:16px; }
+.rlv { margin-top:32px; display:flex; flex-direction:column; align-items:stretch; }
+.rlv .lab { font-family:var(--fl); font-size:var(--cap); font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink2); }
+.rlv .end .core { background:#fff; padding:22px 22px 24px; display:grid; gap:14px; }
+.rlv .end ul { list-style:none; margin:0; padding:0; display:grid; gap:12px; }
+.rlv .end li { font-family:var(--fd); font-size:var(--h4); font-weight:700; line-height:1.15; color:var(--dark); padding-top:12px; border-top:1px solid var(--line); }
+.rlv .end li:first-child { border-top:0; padding-top:0; }
+.rlv .end .lab { display:flex; align-items:center; gap:10px; color:var(--dark); }
+.rlv .end .lab::before { content:""; width:10px; height:10px; border-radius:50%; background:var(--acc); box-shadow:0 0 0 3px rgba(3,255,107,.2); }
+.rlv .ph { border-radius:var(--r-panel); background:var(--dark); color:#fff; padding:22px 22px 22px; }
+.rlv .ph .lab { color:var(--acc); }
+.rlv .ph h3 { margin-top:8px; font-size:var(--h4); line-height:1.15; color:#fff; }
+.rlv .ph ol { list-style:none; margin:14px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:6px 16px; }
+.rlv .ph li { font-size:var(--body); color:rgba(255,255,255,.86); }
+.rlv .ho { margin:0 22px; }
+.rlv .ho .core { background:#fff; padding:16px 18px 18px; display:grid; gap:8px; }
+.rlv .ho ul { list-style:none; margin:0; padding:0; display:grid; gap:6px; }
+.rlv .ho li { font-size:var(--body); line-height:1.35; color:var(--ink); }
+.rlv .lnk { position:relative; align-self:center; width:4px; height:40px; border-radius:2px; background:repeating-linear-gradient(180deg, var(--acc) 0 12px, rgba(3,255,107,.25) 12px 20px); background-size:4px 20px; animation:belty 1.2s linear infinite; }
+@keyframes belty { from { background-position:0 0; } to { background-position:0 20px; } }
+.rlv .lnk.last::after { content:""; position:absolute; left:50%; bottom:-4px; width:10px; height:10px; border-right:3px solid var(--acc); border-bottom:3px solid var(--acc); transform:translateX(-50%) rotate(45deg); }
+.ipo-foot { margin-top:48px; display:flex; justify-content:space-between; align-items:center; gap:32px; padding-top:28px; border-top:1px solid var(--line); font-size:var(--lead); color:var(--ink); }</style>
 <style media="(max-width:760px)">
 /* ===== Finmatec homepage stylesheet: the base for every page (shared by all 4 homepage artboards, unified 16.11.2026) ===== */
 /* Tokens: colour, type, radius, surface, rhythm. Mobile overrides at the bottom. */
@@ -999,6 +1067,8 @@
 .rm td .dot.o { background:transparent; box-shadow:inset 0 0 0 1.5px var(--mute); }
 .rm .foot { margin-top:18px; display:flex; gap:24px; align-items:center; font-size:var(--small); color:var(--ink2); }
 .rm .foot span { display:inline-flex; align-items:center; gap:8px; }
+/* After delivery panel: room above it after the paper section */
+.aft { padding-top:var(--sec); }
 /* Contact with floor plan drop */
 .cb .fpz-drop { margin-top:14px; }
 .fm.m .h80 { grid-template-columns:1fr; gap:20px; }
@@ -1013,7 +1083,73 @@
 .rm-list li b { flex-basis:100%; font-size:var(--body); font-weight:600; color:var(--ink); }
 .fm .rm-list .chip { height:32px; font-size:13px; }
 .fm .rm-list .chip.ty { background:transparent; box-shadow:inset 0 0 0 1.5px var(--line); color:var(--ink2); }
-.fm.m .rm .foot { flex-wrap:wrap; gap:10px 20px; }</style>
+.fm.m .rm .foot { flex-wrap:wrap; gap:10px 20px; }
+/* ===== C, refined (Olli 17.11., thread 4c54249d): one continuous rail. You bring → phase → handover → phase → handover → phase → You get.
+   Surfaces: phases = blue panel, ends and handovers = card 28/22 (tray + white core). Green only as signal (rail, stations).
+   Text styles in the component: caps, --h4, --body. ===== */
+.ipo { background:var(--paper); padding:var(--sec) var(--gut); }
+.ipo .hd { display:grid; grid-template-columns:minmax(0,1fr) 440px; gap:56px; align-items:end; }
+.ipo h2 { margin-top:22px; }
+.ipo .hd p { font-size:var(--lead); color:var(--ink2); }
+.rl { --g:40px; --c:calc((1296px - 4 * var(--g)) / 5); position:relative; margin-top:64px; display:grid; grid-template-columns:repeat(5,minmax(0,1fr)); grid-template-rows:auto 214px; column-gap:var(--g); }
+.rl .lab { font-family:var(--fl); font-size:var(--cap); font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink2); }
+/* ends: biggest weight, span both rows */
+.rl .end { grid-row:1 / 3; grid-column:1; }
+.rl .end.e2 { grid-column:5; }
+.rl .end .core { height:100%; background:#fff; padding:30px 28px 30px; display:flex; flex-direction:column; gap:18px; }
+.rl .end ul { list-style:none; margin:0; padding:0; display:grid; gap:16px; }
+.rl .end li { font-family:var(--fd); font-size:var(--h4); font-weight:700; line-height:1.15; color:var(--dark); padding-top:16px; border-top:1px solid var(--line); }
+.rl .end li:first-child { border-top:0; padding-top:0; }
+.rl .end .lab { display:flex; align-items:center; gap:10px; color:var(--dark); }
+.rl .end .lab::before { content:""; width:10px; height:10px; border-radius:50%; background:var(--acc); box-shadow:0 0 0 3px rgba(3,255,107,.2); }
+/* phases: blue panels standing on the rail */
+.rl .ph { grid-row:1; grid-column:var(--col); border-radius:var(--r-panel); background:var(--dark); color:#fff; padding:26px 24px 26px; display:flex; flex-direction:column; }
+.rl .ph .lab { color:var(--acc); }
+.rl .ph h3 { margin-top:10px; font-size:var(--h4); line-height:1.15; color:#fff; min-height:2.3em; }
+.rl .ph ol { list-style:none; margin:18px 0 0; padding:0; border-top:1px solid rgba(255,255,255,.18); }
+.rl .ph li { padding:9px 0; border-bottom:1px solid rgba(255,255,255,.12); font-size:var(--body); color:rgba(255,255,255,.86); }
+.rl .ph li:last-child { border-bottom:0; padding-bottom:0; }
+/* the rail row */
+.rl .rail { grid-column:1 / 6; grid-row:2; position:relative; }
+.rl .belt { position:absolute; left:var(--c); right:var(--c); top:34px; height:4px; border-radius:2px; background:repeating-linear-gradient(90deg, var(--acc) 0 14px, rgba(3,255,107,.25) 14px 24px); background-size:24px 4px; animation:beltx 1.2s linear infinite; }
+@keyframes beltx { from { background-position:0 0; } to { background-position:24px 0; } }
+.rl .belt::after { content:""; position:absolute; right:-2px; top:50%; width:12px; height:12px; border-right:3px solid var(--acc); border-top:3px solid var(--acc); transform:translateY(-50%) rotate(45deg); }
+.rl .stn { position:absolute; top:0; width:2px; height:34px; background:rgba(36,21,186,.35); transform:translateX(-1px); }
+.rl .stn::after { content:""; position:absolute; left:50%; bottom:-9px; width:18px; height:18px; border-radius:50%; background:var(--dark); box-shadow:inset 0 0 0 4px var(--acc); transform:translateX(-50%); }
+.rl .s1 { left:calc(var(--c) * 1.5 + var(--g)); }
+.rl .s2 { left:calc(var(--c) * 2.5 + var(--g) * 2); }
+.rl .s3 { left:calc(var(--c) * 3.5 + var(--g) * 3); }
+/* handovers: cards riding the rail between two phases */
+.rl .ho { position:absolute; top:62px; width:228px; }
+.rl .ho .core { background:#fff; padding:18px 20px 20px; display:grid; gap:8px; }
+.rl .ho ul { list-style:none; margin:0; padding:0; display:grid; gap:6px; }
+.rl .ho li { font-size:var(--body); line-height:1.35; color:var(--ink); }
+.rl .h1x { left:calc(var(--c) * 2 + var(--g) * 1.5 - 114px); }
+.rl .h2x { left:calc(var(--c) * 3 + var(--g) * 2.5 - 114px); }
+.rl .ho::before { content:""; position:absolute; left:50%; top:-26px; width:2px; height:26px; background:rgba(36,21,186,.35); }
+/* Mobile: the same rail, vertical */
+.fm.m .ipo .hd { grid-template-columns:1fr; gap:16px; }
+.rlv { margin-top:32px; display:flex; flex-direction:column; align-items:stretch; }
+.rlv .lab { font-family:var(--fl); font-size:var(--cap); font-weight:700; letter-spacing:.12em; text-transform:uppercase; color:var(--ink2); }
+.rlv .end .core { background:#fff; padding:22px 22px 24px; display:grid; gap:14px; }
+.rlv .end ul { list-style:none; margin:0; padding:0; display:grid; gap:12px; }
+.rlv .end li { font-family:var(--fd); font-size:var(--h4); font-weight:700; line-height:1.15; color:var(--dark); padding-top:12px; border-top:1px solid var(--line); }
+.rlv .end li:first-child { border-top:0; padding-top:0; }
+.rlv .end .lab { display:flex; align-items:center; gap:10px; color:var(--dark); }
+.rlv .end .lab::before { content:""; width:10px; height:10px; border-radius:50%; background:var(--acc); box-shadow:0 0 0 3px rgba(3,255,107,.2); }
+.rlv .ph { border-radius:var(--r-panel); background:var(--dark); color:#fff; padding:22px 22px 22px; }
+.rlv .ph .lab { color:var(--acc); }
+.rlv .ph h3 { margin-top:8px; font-size:var(--h4); line-height:1.15; color:#fff; }
+.rlv .ph ol { list-style:none; margin:14px 0 0; padding:0; display:flex; flex-wrap:wrap; gap:6px 16px; }
+.rlv .ph li { font-size:var(--body); color:rgba(255,255,255,.86); }
+.rlv .ho { margin:0 22px; }
+.rlv .ho .core { background:#fff; padding:16px 18px 18px; display:grid; gap:8px; }
+.rlv .ho ul { list-style:none; margin:0; padding:0; display:grid; gap:6px; }
+.rlv .ho li { font-size:var(--body); line-height:1.35; color:var(--ink); }
+.rlv .lnk { position:relative; align-self:center; width:4px; height:40px; border-radius:2px; background:repeating-linear-gradient(180deg, var(--acc) 0 12px, rgba(3,255,107,.25) 12px 20px); background-size:4px 20px; animation:belty 1.2s linear infinite; }
+@keyframes belty { from { background-position:0 0; } to { background-position:0 20px; } }
+.rlv .lnk.last::after { content:""; position:absolute; left:50%; bottom:-4px; width:10px; height:10px; border-right:3px solid var(--acc); border-bottom:3px solid var(--acc); transform:translateX(-50%) rotate(45deg); }
+.ipo-foot { margin-top:48px; display:flex; justify-content:space-between; align-items:center; gap:32px; padding-top:28px; border-top:1px solid var(--line); font-size:var(--lead); color:var(--ink); }</style>
 <style>
 html,body{margin:0;background:#fff}
 body{overflow-x:hidden}
@@ -1057,23 +1193,16 @@ body{overflow-x:hidden}
       <p class="lead">80 % of our projects are built into existing premises. We start from your 2D drawings and model the whole process in 3D, to fit your ceiling height, pillars and floor drains.</p>
       <p class="note">Building a new factory? Talk to us before it is built.</p></div>
   </section>
-  <!-- 3 Kolme vaihetta, 12 askelta: nykyinen How we work. Sirut: 3D (Johanna), riskikartoitus ja CE (v2), FAT (PDF 19, 33),
-       seisokki (avoin 47), huolto -->
-  <section class="sec paper" id="phases">
-    <div class="sec-head"><div><span class="eyebrow">Three phases, twelve steps</span><h2>How a project runs.</h2></div>
-      <p class="lead">The same team carries your project through all twelve steps. Safety and testing are planned in from the start.</p></div>
-    <div class="ph3"><div class="cell"><div class="core"><span class="lab">Phase 01</span><h3>Understanding your needs</h3><ol><li><b>Listening.</b> We start by listening to you and understanding your challenges.</li><li><b>Planning.</b> Together we develop a plan that fits your production goals.<br><span class="chip"><svg class="ic" width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"></path></svg>3D model of your process</span></li><li><b>Proposal.</b> You receive a tailored proposal with a clear scope.</li><li><b>Contract.</b> We agree on transparent terms and delivery.</li></ol></div></div><div class="cell"><div class="core"><span class="lab">Phase 02</span><h3>Developing the project</h3><ol><li><b>Designing.</b> Mechanical, electrical and automation design for your line.<br><span class="chip"><svg class="ic" width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"></path></svg>Risk assessment for CE marking</span></li><li><b>Engineering.</b> Our engineers turn the design into practical, cleanable solutions.</li><li><b>Manufacturing.</b> We build the equipment in Kokkola.</li><li><b>Testing.</b> We test every system before delivery.<br><span class="chip"><svg class="ic" width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"></path></svg>FAT before commissioning</span></li></ol></div></div><div class="cell"><div class="core"><span class="lab">Phase 03</span><h3>Delivering the solution</h3><ol><li><b>Delivery.</b> Safe and timely delivery to your site.</li><li><b>Installation.</b> Our technicians install the line.</li><li><b>Training.</b> We train your team to run the line efficiently and safely.</li><li><b>Support.</b> Service, spare parts and upgrades for the life of the line.<br><span class="chip"><svg class="ic" width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"></path></svg>Service &amp; Spare Parts</span></li></ol></div></div></div>
-  </section>
-  <!-- 5 Mitä tarjous kattaa: vastuumatriisi (tutkimus 07 P2.14). Täytetty vain lähteistä: Jackstone tekee pakastimet,
-       Finmatec automaation ja toimituksen (v2, Johanna). Avoimet pallot ovat oletuksia -->
-  <section class="sec" id="scope">
-    <div class="sec-head"><div><span class="eyebrow">What the quote covers</span><h2 class="s">Who does what.</h2></div>
-      <p class="lead">In a plate freezing line, the freezers come from our partner Jackstone. Everything around them is ours.</p></div>
-    <div class="rm"><div class="in"><table><thead><tr><th>Scope</th><th>Finmatec</th><th>Jackstone</th></tr></thead><tbody><tr><td>Process design and 3D layout</td><td><span class="dot" aria-label="yes"></span></td><td></td></tr><tr><td>Plate freezers</td><td></td><td><span class="dot" aria-label="yes"></span></td></tr><tr><td>Handling and automation around the freezers</td><td><span class="dot" aria-label="yes"></span></td><td></td></tr><tr><td>Manufacturing, FAT and installation</td><td><span class="dot" aria-label="yes"></span></td><td></td></tr><tr><td>Commissioning and training</td><td><span class="dot" aria-label="yes"></span></td><td></td></tr><tr><td>Service and spare parts</td><td><span class="dot" aria-label="yes"></span></td><td></td></tr></tbody></table>
-      </div></div>
+  <!-- Vaiheblokki: yksi rata (Olli hyväksyi 17.11.). Ostaja tuo ja saa isoimmalla painolla, luovutukset radalla vaiheiden välissä,
+       jokainen asia kerran. Lähteet: [N] 12 askelta, tarjous, sopimus, koulutus, tuki; [J] 2D ja 3D, from day one; [F] riskikartoitus ja CE; [P 19, 33] FAT -->
+  <section class="ipo" id="phases">
+    <div class="hd"><div><span class="eyebrow">How a project runs</span><h2>From your drawings to a line in production.</h2></div>
+      <p>One team carries your project through three phases. Each phase hands over something you can check before the next one starts.</p></div>
+    <div class="rl"><div class="cell end"><div class="core"><span class="lab">You bring</span><ul><li>2D drawings of your hall</li><li>Your raw material and volumes</li></ul></div></div><div class="ph" style="--col:2"><span class="lab">Phase 01</span><h3>Understanding your needs</h3><ol><li>Listening</li><li>Planning</li><li>Proposal</li><li>Contract</li></ol></div><div class="ph" style="--col:3"><span class="lab">Phase 02</span><h3>Developing the project</h3><ol><li>Designing</li><li>Engineering</li><li>Manufacturing</li><li>Testing</li></ol></div><div class="ph" style="--col:4"><span class="lab">Phase 03</span><h3>Delivering the solution</h3><ol><li>Delivery</li><li>Installation</li><li>Training</li><li>Support</li></ol></div><div class="cell end e2"><div class="core"><span class="lab">You get</span><ul><li>A turnkey line that produces from day one</li><li>A trained team</li><li>Support after handover</li></ul></div></div><div class="rail" aria-hidden="false"><div class="belt" aria-hidden="true"></div><span class="stn s1" aria-hidden="true"></span><span class="stn s2" aria-hidden="true"></span><span class="stn s3" aria-hidden="true"></span><div class="cell ho h1x"><div class="core"><span class="lab">Handover</span><ul><li>3D model of the process in your hall</li><li>Proposal and contract</li></ul></div></div><div class="cell ho h2x"><div class="core"><span class="lab">Handover</span><ul><li>Risk assessment and CE marking</li><li>Line tested in a FAT</li></ul></div></div></div></div>
+    
   </section>
   <!-- 6 Toimituksen jälkeen: Service & Spare Parts (etusivun svc) -->
-  <section class="svc"><div class="svc-in">
+  <section class="svc aft"><div class="svc-in">
     <div class="svc-head"><span class="eyebrow">After delivery</span><h2 class="s">We stay with the line.</h2><p class="lead">Training is part of every delivery. After that, the same team supports your line.</p></div>
     <div class="svc-links"><a class="lrow" href="#"><span><b>Spare Parts</b><small>Parts for your Finmatec line, worldwide</small></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><a class="lrow" href="#"><span><b>Maintenance &amp; Support</b><small>Keep the line running</small></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><a class="lrow" href="#"><span><b>Upgrades &amp; Retrofits</b><small>Extend or update an existing line</small></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a></div>
   </div></section>
@@ -1120,24 +1249,18 @@ body{overflow-x:hidden}
       <p class="lead">80 % of our projects are built into existing premises. We start from your 2D drawings and model the whole process in 3D, to fit your ceiling height, pillars and floor drains.</p>
       <p class="note">Building a new factory? Talk to us before it is built.</p></div>
   </section>
-  <!-- 3 Kolme vaihetta, 12 askelta: nykyinen How we work. Sirut: 3D (Johanna), riskikartoitus ja CE (v2), FAT (PDF 19, 33),
-       seisokki (avoin 47), huolto -->
-  <section class="sec paper" id="phases">
-    <div class="sec-head"><div><span class="eyebrow">Three phases, twelve steps</span><h2>How a project runs.</h2></div>
-      <p class="lead">The same team carries your project through all twelve steps. Safety and testing are planned in from the start.</p></div>
-    <div class="ph3"><div class="cell"><div class="core"><span class="lab">Phase 01</span><h3>Understanding your needs</h3><ol><li><b>Listening.</b> We start by listening to you and understanding your challenges.</li><li><b>Planning.</b> Together we develop a plan that fits your production goals.<br><span class="chip"><svg class="ic" width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"></path></svg>3D model of your process</span></li><li><b>Proposal.</b> You receive a tailored proposal with a clear scope.</li><li><b>Contract.</b> We agree on transparent terms and delivery.</li></ol></div></div><div class="cell"><div class="core"><span class="lab">Phase 02</span><h3>Developing the project</h3><ol><li><b>Designing.</b> Mechanical, electrical and automation design for your line.<br><span class="chip"><svg class="ic" width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"></path></svg>Risk assessment for CE marking</span></li><li><b>Engineering.</b> Our engineers turn the design into practical, cleanable solutions.</li><li><b>Manufacturing.</b> We build the equipment in Kokkola.</li><li><b>Testing.</b> We test every system before delivery.<br><span class="chip"><svg class="ic" width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"></path></svg>FAT before commissioning</span></li></ol></div></div><div class="cell"><div class="core"><span class="lab">Phase 03</span><h3>Delivering the solution</h3><ol><li><b>Delivery.</b> Safe and timely delivery to your site.</li><li><b>Installation.</b> Our technicians install the line.</li><li><b>Training.</b> We train your team to run the line efficiently and safely.</li><li><b>Support.</b> Service, spare parts and upgrades for the life of the line.<br><span class="chip"><svg class="ic" width="12" height="12" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="2" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3.5 8.5l3 3 6-7"></path></svg>Service &amp; Spare Parts</span></li></ol></div></div></div>
+  <!-- Vaiheblokki: yksi rata (Olli hyväksyi 17.11.). Ostaja tuo ja saa isoimmalla painolla, luovutukset radalla vaiheiden välissä,
+       jokainen asia kerran. Lähteet: [N] 12 askelta, tarjous, sopimus, koulutus, tuki; [J] 2D ja 3D, from day one; [F] riskikartoitus ja CE; [P 19, 33] FAT -->
+  <section class="ipo" id="phases">
+    <div class="hd"><div><span class="eyebrow">How a project runs</span><h2>From your drawings to a line in production.</h2></div>
+      <p>One team carries your project through three phases. Each phase hands over something you can check before the next one starts.</p></div>
+    <div class="rlv"><div class="cell end"><div class="core"><span class="lab">You bring</span><ul><li>2D drawings of your hall</li><li>Your raw material and volumes</li></ul></div></div><span class="lnk" aria-hidden="true"></span><div class="ph"><span class="lab">Phase 01</span><h3>Understanding your needs</h3><ol><li>Listening</li><li>Planning</li><li>Proposal</li><li>Contract</li></ol></div><span class="lnk" aria-hidden="true"></span><div class="cell ho"><div class="core"><span class="lab">Handover</span><ul><li>3D model of the process in your hall</li><li>Proposal and contract</li></ul></div></div><span class="lnk" aria-hidden="true"></span><div class="ph"><span class="lab">Phase 02</span><h3>Developing the project</h3><ol><li>Designing</li><li>Engineering</li><li>Manufacturing</li><li>Testing</li></ol></div><span class="lnk" aria-hidden="true"></span><div class="cell ho"><div class="core"><span class="lab">Handover</span><ul><li>Risk assessment and CE marking</li><li>Line tested in a FAT</li></ul></div></div><span class="lnk" aria-hidden="true"></span><div class="ph"><span class="lab">Phase 03</span><h3>Delivering the solution</h3><ol><li>Delivery</li><li>Installation</li><li>Training</li><li>Support</li></ol></div><span class="lnk last" aria-hidden="true"></span><div class="cell end"><div class="core"><span class="lab">You get</span><ul><li>A turnkey line that produces from day one</li><li>A trained team</li><li>Support after handover</li></ul></div></div></div>
+    
   </section>
 
 
-  <!-- 5 Mitä tarjous kattaa: vastuumatriisi listana mobiilissa -->
-  <section class="sec" id="scope">
-    <div class="sec-head"><div><span class="eyebrow">What the quote covers</span><h2 class="s">Who does what.</h2></div>
-      <p class="lead">In a plate freezing line, the freezers come from our partner Jackstone. Everything around them is ours.</p></div>
-    <div class="rm"><div class="in"><ul class="rm-list"><li><b>Process design and 3D layout</b><span class="chip">Finmatec</span></li><li><b>Plate freezers</b><span class="chip">Jackstone</span></li><li><b>Handling and automation around the freezers</b><span class="chip">Finmatec</span></li><li><b>Manufacturing, FAT and installation</b><span class="chip">Finmatec</span></li><li><b>Commissioning and training</b><span class="chip">Finmatec</span></li><li><b>Service and spare parts</b><span class="chip">Finmatec</span></li></ul>
-      </div></div>
-  </section>
   <!-- 6 Toimituksen jälkeen: Service & Spare Parts (etusivun svc) -->
-  <section class="svc"><div class="svc-in">
+  <section class="svc aft"><div class="svc-in">
     <div class="svc-head"><span class="eyebrow">After delivery</span><h2 class="s">We stay with the line.</h2><p class="lead">Training is part of every delivery. After that, the same team supports your line.</p></div>
     <div class="svc-links"><a class="lrow" href="#"><span><b>Spare Parts</b><small>Parts for your Finmatec line, worldwide</small></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><a class="lrow" href="#"><span><b>Maintenance &amp; Support</b><small>Keep the line running</small></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a><a class="lrow" href="#"><span><b>Upgrades &amp; Retrofits</b><small>Extend or update an existing line</small></span><i><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></i></a></div>
   </div></section>

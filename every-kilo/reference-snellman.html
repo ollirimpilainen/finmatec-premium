@@ -450,6 +450,11 @@
 /* ReferenceCard: logo panel, solution (and country), customer, text link. Text styles: cap, h4, link. */
 .rcs { padding:var(--sec) var(--gut); background:var(--paper); }
 .rc-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
+.rc-g { padding-top:40px; margin-top:40px; border-top:1px solid var(--line); }
+.rcs .shead + .rc-g { margin-top:0; }
+.rc-h { display:flex; align-items:baseline; gap:18px; margin-bottom:24px; }
+.rc-h h3 { font-size:var(--h3); line-height:1.1; color:var(--dark); }
+.rc-h .mono { color:var(--ink2); }
 .rc-grid.three { grid-template-columns:repeat(3,minmax(0,1fr)); }
 .rc { display:block; }
 .rc > .core { display:flex; flex-direction:column; height:100%; background:#fff; box-shadow:inset 0 1px 1px rgba(255,255,255,.8); }
@@ -464,7 +469,7 @@
 .rc h3 { font-size:var(--h4); line-height:1.15; color:var(--dark); }
 .rc .tlink { margin-top:auto; align-self:flex-start; font-size:var(--body); }
 .rc .bd h3 + .tlink { margin-top:auto; padding-top:0; }
-.rc .bd { min-height:178px; }
+.rc .bd { min-height:140px; }
 /* SolutionProof panel: media + content. Text styles in the content: cap (eyebrow, fact labels), h3 (statement), number (fact). */
 .sp { padding:var(--sec) var(--gut); background:#fff; display:grid; gap:24px; }
 .sp .shead { margin-bottom:24px; }
@@ -621,6 +626,9 @@
 .fm.m .sc .facts > div { display:grid; grid-template-columns:120px 1fr; gap:12px; align-items:baseline; }
 .fm.m .sc .facts small { margin:0; }
 .fm.m .rc-grid, .fm.m .rc-grid.three { grid-template-columns:minmax(0,1fr); gap:10px; }
+.fm.m .rc-g { padding-top:28px; margin-top:28px; }
+.fm.m .rc-h { flex-direction:column; gap:6px; margin-bottom:16px; }
+.fm.m .rc-h h3 { font-size:var(--h4); }
 .fm.m .rc > .core { flex-direction:row; }
 .fm.m .rc .lg { width:116px; height:auto; min-height:124px; flex:none; padding:14px; border-bottom:0; border-right:1px solid var(--soft); }
 .fm.m .rc .lg img { max-height:44px; }
@@ -1143,6 +1151,11 @@
 /* ReferenceCard: logo panel, solution (and country), customer, text link. Text styles: cap, h4, link. */
 .rcs { padding:var(--sec) var(--gut); background:var(--paper); }
 .rc-grid { display:grid; grid-template-columns:repeat(4,minmax(0,1fr)); gap:16px; }
+.rc-g { padding-top:40px; margin-top:40px; border-top:1px solid var(--line); }
+.rcs .shead + .rc-g { margin-top:0; }
+.rc-h { display:flex; align-items:baseline; gap:18px; margin-bottom:24px; }
+.rc-h h3 { font-size:var(--h3); line-height:1.1; color:var(--dark); }
+.rc-h .mono { color:var(--ink2); }
 .rc-grid.three { grid-template-columns:repeat(3,minmax(0,1fr)); }
 .rc { display:block; }
 .rc > .core { display:flex; flex-direction:column; height:100%; background:#fff; box-shadow:inset 0 1px 1px rgba(255,255,255,.8); }
@@ -1157,7 +1170,7 @@
 .rc h3 { font-size:var(--h4); line-height:1.15; color:var(--dark); }
 .rc .tlink { margin-top:auto; align-self:flex-start; font-size:var(--body); }
 .rc .bd h3 + .tlink { margin-top:auto; padding-top:0; }
-.rc .bd { min-height:178px; }
+.rc .bd { min-height:140px; }
 /* SolutionProof panel: media + content. Text styles in the content: cap (eyebrow, fact labels), h3 (statement), number (fact). */
 .sp { padding:var(--sec) var(--gut); background:#fff; display:grid; gap:24px; }
 .sp .shead { margin-bottom:24px; }
@@ -1314,6 +1327,9 @@
 .fm.m .sc .facts > div { display:grid; grid-template-columns:120px 1fr; gap:12px; align-items:baseline; }
 .fm.m .sc .facts small { margin:0; }
 .fm.m .rc-grid, .fm.m .rc-grid.three { grid-template-columns:minmax(0,1fr); gap:10px; }
+.fm.m .rc-g { padding-top:28px; margin-top:28px; }
+.fm.m .rc-h { flex-direction:column; gap:6px; margin-bottom:16px; }
+.fm.m .rc-h h3 { font-size:var(--h4); }
 .fm.m .rc > .core { flex-direction:row; }
 .fm.m .rc .lg { width:116px; height:auto; min-height:124px; flex:none; padding:14px; border-bottom:0; border-right:1px solid var(--soft); }
 .fm.m .rc .lg img { max-height:44px; }
