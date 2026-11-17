@@ -349,7 +349,7 @@
 .logos.fixed .ltrack { width:100%; }
 .logos.fixed .ltrack div { flex:1; width:auto; }
 .logos.fixed .ltrack div:first-child { border-left:0; }
-.l3d { position:relative; background:var(--paper); }
+.l3d { position:relative; background:#fff; }
 .l3d img { display:block; width:100%; height:auto; }
 .l3d .l3d-tag { position:absolute; top:24px; right:var(--gut); display:inline-flex; align-items:center; gap:10px; height:36px; padding:0 16px; border-radius:999px; background:var(--deep); color:#fff; font-size:13px; font-weight:600; }
 .l3d .l3d-tag i { width:8px; height:8px; border-radius:50%; background:var(--acc); }
@@ -362,8 +362,7 @@
 .case-facts > div + div { padding-left:28px; border-left:1px solid var(--line); }
 .case-facts small { color:var(--ink2); }
 .case-facts span { font-size:var(--body); color:var(--mute); }
-.trust { padding:0 var(--gut); }
-.trust .logos { margin-top:0; border-top:0; }
+.wv.pfv { background:var(--paper); }
 .pfcert { padding-top:0; }
 .pfcert .w2-cert { margin-top:0; }
 .eqs { grid-template-columns:1fr 1.1fr; align-items:start; }
@@ -556,23 +555,21 @@ body{overflow-x:hidden}
     </div>
   </section>
 
-  <!-- 1b Trust: customer logos straight under the hero, like the homepage (Olli 17.11.2026). Homepage component: logo band. -->
-  <section class="trust"><div class="logos fixed"><div class="ltrack"><div><img loading="lazy" decoding="async" src="media/logos/ee6f7b1a3c87811373a7a657e338bf87.jpg" alt="Snellman"></div><div><img loading="lazy" decoding="async" src="media/logos/cb1a542922041e53d1428090ab083545.jpg" alt="Hill's"></div><div><img loading="lazy" decoding="async" src="media/logos/c38c161d56a48c05337aaf605542433f.jpg" alt="Darling Ingredients"></div><div><img loading="lazy" decoding="async" src="media/logos/3c9964ff3a94c0fa3ca143f838d4f995.jpg" alt="Leo Group"></div></div></div></section>
-
-  <!-- 2 Villain: pet food is not a lower standard (homepage component: Why, W2) -->
-  <section class="wv w2">
-    <span class="eyebrow">The same standard as food</span>
-    <h2>Pet food is not a lower standard.</h2>
-    <p class="lead w2-lead">It is a common misconception. A modern pet food line needs exactly the same machinery and hygiene standard as a food line. Your raw material is demanding, your machines are powerful, and everything is washed every day.</p>
-    <div class="w2-wrap"><div class="wph w2-ph"><img loading="lazy" decoding="async" src="media/k11.jpg" alt="Clean stainless steel Finmatec screw conveyor in a pet food plant" style="object-position:40% 50%"><div class="b"><h3>Washed every day.</h3><p>Every machine is designed to be cleaned easily, without risk to the people who wash it.</p></div></div><div class="w2-grid"><div class="w2-c"><h3>Safe during washdown</h3><p>Every delivery is risk-assessed and CE&#8209;marked. Standstill monitors keep rotating parts still while they are washed and serviced.</p></div><div class="w2-c"><h3>Nothing on the floor</h3><p>Raw material stays in the process, not on the floor, so more of every kilo ends up in your product.</p></div><div class="w2-c"><h3>No metal in the grinder</h3><p>One metal object in a fine grinder can break blades and hole plates worth several thousand euros. Metal detection is built into the line.</p></div><div class="w2-c"><h3>Fewer boots on the floor</h3><p>Automated transfers remove heavy, dangerous lifts. Capacity goes up, quality evens out and your people are spared.</p></div></div></div>
-  </section>
-
-  <!-- 3 Guide: your raw materials, pet food numbers, pet food customers (homepage component: gains and numbers, K) -->
+  <!-- 1b Guide and trust straight under the hero (Olli 17.11.2026, as on the homepage): raw materials, numbers, customer logos (homepage component: gains and numbers, K, logo band) -->
   <section class="rw rwk">
     <span class="eyebrow">Raw materials we handle</span>
     <h2 class="stmt">We know what arrives at <em>your door</em>.</h2>
     <p class="lead rw-lead">High-quality pet food is often made from raw materials that are hard to handle, from MDM to vegetables such as spinach. We tailor the line to your recipes and raw materials.</p>
     <div class="rwk-grid"><div class="rw-i"><span class="rw-ph"><img loading="lazy" decoding="async" src="media/k13.jpg" alt="Minced raw material in a screw conveyor"></span><span class="rw-t"><small>Mechanically separated meat</small><b>MDM</b></span></div><div class="rw-i"><span class="rw-ph"><img loading="lazy" decoding="async" src="media/v-cut1.jpg" alt="Crushed raw material"></span><span class="rw-t"><small>Crushed and finely ground</small><b>Bones</b></span></div><div class="rw-i"><span class="rw-ph"><img loading="lazy" decoding="async" src="media/k16.jpg" alt="Pet food mass on a belt conveyor"></span><span class="rw-t"><small>Mixed, cooled or heated</small><b>Your recipe</b></span></div><div class="rw-i rw-n"><span class="rw-num">5&nbsp;500</span><span class="rw-t"><small>Up to, in one mixer</small><b>Litres</b></span></div><div class="rw-i rw-n"><span class="rw-num">30<i>+</i></span><span class="rw-t"><small>Years designing</small><b>Food industry mixers</b></span></div><div class="rw-i rw-n"><span class="rw-num">2&nbsp;500<i>+</i></span><span class="rw-t"><small>Since 1989</small><b>Deliveries</b></span></div></div>
+    <div class="logos fixed"><div class="ltrack"><div><img loading="lazy" decoding="async" src="media/logos/ee6f7b1a3c87811373a7a657e338bf87.jpg" alt="Snellman"></div><div><img loading="lazy" decoding="async" src="media/logos/cb1a542922041e53d1428090ab083545.jpg" alt="Hill's"></div><div><img loading="lazy" decoding="async" src="media/logos/c38c161d56a48c05337aaf605542433f.jpg" alt="Darling Ingredients"></div><div><img loading="lazy" decoding="async" src="media/logos/3c9964ff3a94c0fa3ca143f838d4f995.jpg" alt="Leo Group"></div></div></div>
+  </section>
+
+  <!-- 2 Villain: pet food is not a lower standard (homepage component: Why, W2) -->
+  <section class="wv w2 pfv">
+    <span class="eyebrow">The same standard as food</span>
+    <h2>Pet food is not a lower standard.</h2>
+    <p class="lead w2-lead">It is a common misconception. A modern pet food line needs exactly the same machinery and hygiene standard as a food line. Your raw material is demanding, your machines are powerful, and everything is washed every day.</p>
+    <div class="w2-wrap"><div class="wph w2-ph"><img loading="lazy" decoding="async" src="media/k11.jpg" alt="Clean stainless steel Finmatec screw conveyor in a pet food plant" style="object-position:40% 50%"><div class="b"><h3>Washed every day.</h3><p>Every machine is designed to be cleaned easily, without risk to the people who wash it.</p></div></div><div class="w2-grid"><div class="w2-c"><h3>Safe during washdown</h3><p>Every delivery is risk-assessed and CE&#8209;marked. Standstill monitors keep rotating parts still while they are washed and serviced.</p></div><div class="w2-c"><h3>Nothing on the floor</h3><p>Raw material stays in the process, not on the floor, so more of every kilo ends up in your product.</p></div><div class="w2-c"><h3>No metal in the grinder</h3><p>One metal object in a fine grinder can break blades and hole plates worth several thousand euros. Metal detection is built into the line.</p></div><div class="w2-c"><h3>Fewer boots on the floor</h3><p>Automated transfers remove heavy, dangerous lifts. Capacity goes up, quality evens out and your people are spared.</p></div></div></div>
   </section>
 
   <!-- 4 Plan: the line in 3D, pinned scrollytelling. First frame shown here; interactive artboards PetFoodLinja3D / PetFoodLinja3DMobile. -->
@@ -685,7 +682,7 @@ body{overflow-x:hidden}
 @media (prefers-reduced-motion:reduce){.iso-line[data-flow],.iso-dots circle[data-pulse]{animation:none}}
 
 .sc{--ink:#0D0E2B;--brand:#2415BA;--soft:#ECEEF7;--paper:#F5F6FB;--line:#D9DBE8;--acc:#03FF6B;--mute:#5B5E7A;--ease:cubic-bezier(.32,.72,0,1);
-  position:relative;font-family:"Exo 2",system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;background:var(--paper);overflow:hidden}
+  position:relative;font-family:"Exo 2",system-ui,sans-serif;color:var(--ink);-webkit-font-smoothing:antialiased;background:#fff;overflow:hidden}
 .sc *{box-sizing:border-box}
 .sc .scroll{position:absolute;inset:0;overflow-y:auto;overflow-x:hidden;scrollbar-width:none;overscroll-behavior:contain}
 .sc .scroll::-webkit-scrollbar{display:none}
@@ -693,7 +690,7 @@ body{overflow-x:hidden}
 .sc .stage{position:absolute;inset:0;overflow:hidden}
 .sc .stage>svg{position:absolute;left:-50%;top:-50%;width:200%;height:200%;overflow:hidden;transform-origin:25% 25%;will-change:transform}
 .sc .iso[data-theme="light"]{
-  --anatomy-card:#F5F6FB;--anatomy-paper:#F5F6FB;--anatomy-face:#ffffff;--anatomy-top:#ffffff;
+  --anatomy-card:#fff;--anatomy-paper:#fff;--anatomy-face:#ffffff;--anatomy-top:#ffffff;
   --anatomy-shade-0:#C6CADC;--anatomy-shade-1:#D5D8E6;--anatomy-shade-2:#E2E4EF;--anatomy-shade-3:#EDEFF6;
   --anatomy-lit-top:#ffffff;--anatomy-lit-shade:#E2E4EF;
   --anatomy-hi:#3B3E5E;--anatomy-mid:#8E92AE;--anatomy-lo:#B7BACE;--anatomy-faint:#D3D6E5;--anatomy-lit:#2415BA;

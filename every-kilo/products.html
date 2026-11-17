@@ -479,6 +479,9 @@
 .pc .im.b img { object-fit:cover; padding:0; object-position:34% 42%; transform:scale(1.35); transform-origin:34% 42%; }
 .pc:hover .im img { transform:scale(1.04); }
 .pc:hover .im.b img { transform:scale(1.42); }
+.pc.off .go { display:none; }
+.pc.off:hover .im img { transform:none; }
+.pc.off:hover .im.b img { transform:scale(1.35); }
 .pc .go { position:absolute; top:16px; right:16px; z-index:1; width:44px; height:44px; border-radius:50%; display:grid; place-items:center; background:var(--acc); color:var(--deep); }
 .pc .go svg { width:20px; height:20px; }
 .pc .bd { flex:1; display:flex; flex-direction:column; gap:12px; padding:26px 30px 28px; }
@@ -1014,6 +1017,9 @@
 .pc .im.b img { object-fit:cover; padding:0; object-position:34% 42%; transform:scale(1.35); transform-origin:34% 42%; }
 .pc:hover .im img { transform:scale(1.04); }
 .pc:hover .im.b img { transform:scale(1.42); }
+.pc.off .go { display:none; }
+.pc.off:hover .im img { transform:none; }
+.pc.off:hover .im.b img { transform:scale(1.35); }
 .pc .go { position:absolute; top:16px; right:16px; z-index:1; width:44px; height:44px; border-radius:50%; display:grid; place-items:center; background:var(--acc); color:var(--deep); }
 .pc .go svg { width:20px; height:20px; }
 .pc .bd { flex:1; display:flex; flex-direction:column; gap:12px; padding:26px 30px 28px; }
@@ -1219,7 +1225,7 @@ body{overflow-x:hidden}
       <div class="pl-lab"><span class="pl-n mono">05</span><h2 class="s">Store</h2><p>Buffer the raw material between steps, and store it in bins that build upward.</p></div>
       <div class="pl-cards two"><div class="cell pc off"><div class="core"><div class="im b"><img loading="lazy" decoding="async" src="media/binstacker.png" alt="BinStacker automatic bin storage"><span class="go" aria-hidden="true"><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span></div><div class="bd"><h3>BinStacker</h3><p>Automatic bin storage. Every bin is identified by RFID or barcode and weighed online.</p><dl><div><dt class="mono">Capacity</dt><dd>Up to 5&nbsp;000 bins</dd></div><div><dt class="mono">Tracking</dt><dd>RFID or barcode</dd></div></dl></div></div></div><div class="cell pc off"><div class="core"><div class="im r"><img loading="lazy" decoding="async" src="media/pr-silo.jpg" alt="Finmatec pump hopper bin"><span class="go" aria-hidden="true"><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span></div><div class="bd"><h3>Silos, Bins &amp; Hoppers</h3><p>Storage silos and pump hopper bins that buffer raw material between process steps.</p><dl><div><dt class="mono">Volume</dt><dd>200 to 10&nbsp;000 l</dd></div><div><dt class="mono">Material</dt><dd>Stainless, acid-proof or mild steel</dd></div></dl></div></div></div></div>
     </section>
-    <div class="pl-tr"><p>Tools, supplies and machines from the brands we represent in Finland are on our Finnish pages.</p><a class="tlink" href="SivuLaitevalitys.dc.html">Trading Partners in Finland <svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a></div>
+    <div class="pl-tr"><p>Tools, supplies and machines from the brands we represent in Finland are on our Finnish pages.</p><a class="tlink" href="#">Trading Partners in Finland <svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a></div>
   </div>
 
   <!-- 4 Ways in: homepage service panel (replace, spare parts, complete line) -->
@@ -1295,7 +1301,7 @@ body{overflow-x:hidden}
       <div class="pl-lab"><span class="pl-n mono">05</span><h2 class="s">Store</h2><p>Buffer the raw material between steps, and store it in bins that build upward.</p></div>
       <div class="pl-cards two"><div class="cell pc off"><div class="core"><div class="im b"><img loading="lazy" decoding="async" src="media/binstacker.png" alt="BinStacker automatic bin storage"><span class="go" aria-hidden="true"><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span></div><div class="bd"><h3>BinStacker</h3><p>Automatic bin storage. Every bin is identified by RFID or barcode and weighed online.</p><dl><div><dt class="mono">Capacity</dt><dd>Up to 5&nbsp;000 bins</dd></div><div><dt class="mono">Tracking</dt><dd>RFID or barcode</dd></div></dl></div></div></div><div class="cell pc off"><div class="core"><div class="im r"><img loading="lazy" decoding="async" src="media/pr-silo.jpg" alt="Finmatec pump hopper bin"><span class="go" aria-hidden="true"><svg class="ic" width="20" height="20" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></span></div><div class="bd"><h3>Silos, Bins &amp; Hoppers</h3><p>Storage silos and pump hopper bins that buffer raw material between process steps.</p><dl><div><dt class="mono">Volume</dt><dd>200 to 10&nbsp;000 l</dd></div><div><dt class="mono">Material</dt><dd>Stainless, acid-proof or mild steel</dd></div></dl></div></div></div></div>
     </section>
-    <div class="pl-tr"><p>Tools, supplies and machines from the brands we represent in Finland are on our Finnish pages.</p><a class="tlink" href="SivuLaitevalitys.dc.html">Trading Partners in Finland <svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a></div>
+    <div class="pl-tr"><p>Tools, supplies and machines from the brands we represent in Finland are on our Finnish pages.</p><a class="tlink" href="#">Trading Partners in Finland <svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a></div>
   </div>
 
 
