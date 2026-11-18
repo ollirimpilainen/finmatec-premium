@@ -2512,7 +2512,8 @@ document.querySelectorAll('[data-part="102"][data-ref]').forEach(function(el){va
   background: var(--fmc-ink); color: #fff; border-radius: 999px; padding: 9px 16px;
   font: 500 13px/1 Inter, sans-serif; box-shadow: 0 6px 26px rgba(13,17,23,.25); }
 .fmc-err { background: #8c1d1d; }
-body.fmc-on { cursor: crosshair; }
+/* kommentointitilassa kursori on puhekupla, jonka karki on klikkauspiste */
+body.fmc-on { cursor: url("data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' width='28' height='28'><path d='M7 3 H21 A4 4 0 0 1 25 7 V15 A4 4 0 0 1 21 19 H12 L4 26 L7 19 A4 4 0 0 1 3 15 V7 A4 4 0 0 1 7 3 Z' fill='%232a3bd0' stroke='%23ffffff' stroke-width='2' stroke-linejoin='round'/></svg>") 4 26, crosshair; }
 body.fmc-on .fmc-bar, body.fmc-on .fmc-pop, body.fmc-on .fmc-pin { cursor: default; }
 
 @media (max-width: 760px) {
@@ -2543,11 +2544,11 @@ window.FMC_CONFIG = {
   var CFG = window.FMC_CONFIG || {};
   var T = {
     on: 'Kommentoi', off: 'Kommentointi', hint: 'Klikkaa kohtaa, jota haluat kommentoida',
-    name: 'Nimesi', text: 'Kommentti', send: 'Laheta', cancel: 'Peruuta', reply: 'Vastaa',
+    name: 'Nimesi', text: 'Kommentti', send: 'Lähetä', cancel: 'Peruuta', reply: 'Vastaa',
     resolve: 'Merkitse ratkaistuksi', unresolve: 'Avaa uudelleen', resolved: 'Ratkaistu',
-    show: 'Nayta ratkaistut', hide: 'Piilota ratkaistut', thread: 'Kommentti',
-    none: 'Ei viela kommentteja', err: 'Tallennus ei onnistunut, kommentti jai selaimeen',
-    approx: 'Kohta on likimaarainen: kommentoitua kohtaa ei ole tassa nakymassa'
+    show: 'Näytä ratkaistut', hide: 'Piilota ratkaistut', thread: 'Kommentti',
+    none: 'Ei vielä kommentteja', err: 'Tallennus ei onnistunut, kommentti jäi selaimeen',
+    approx: 'Kohta on likimääräinen: kommentoitua kohtaa ei ole tässä näkymässä'
   };
   var PAGE = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/, '') || 'index';
   var KEY = 'fmc:' + (CFG.project || 'proto') + ':' + PAGE;
