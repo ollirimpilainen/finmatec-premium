@@ -119,12 +119,13 @@
 .rw { padding:var(--sec) var(--gut); background:#fff; }
 .rw h2.stmt { max-width:1000px; color:var(--ink); }
 .rw .stmt em { font-style:normal; color:var(--dark); background:linear-gradient(var(--acc),var(--acc)) 0 92%/100% 9px no-repeat; }
-.rwk-grid { margin-top:64px; display:grid; grid-template-columns:repeat(3,1fr); }
-.rwk-grid > .rw-i { padding:34px 40px; border-right:1px solid var(--line); }
-.rwk-grid > .rw-i:nth-child(3n) { border-right:0; padding-right:0; }
-.rwk-grid > .rw-i:nth-child(3n+1) { padding-left:0; }
-.rwk-grid > .rw-i:nth-child(-n+3) { border-bottom:1px solid var(--line); padding-top:8px; }
-.rwk-grid > .rw-i:nth-child(n+4) { padding-bottom:8px; }
+/* four gains on the first row, three numbers on the second (spillage added, workshop 18.11.) */
+.rwk-grid { margin-top:64px; display:grid; grid-template-columns:repeat(12,1fr); }
+.rwk-grid > .rw-i { grid-column:span 3; padding:8px 32px 34px; border-right:1px solid var(--line); border-bottom:1px solid var(--line); }
+.rwk-grid > .rw-n { grid-column:span 4; padding:34px 40px 8px; border-bottom:0; }
+.rwk-grid > .rw-i:nth-child(4), .rwk-grid > .rw-i:last-child { border-right:0; padding-right:0; }
+.rwk-grid > .rw-i:nth-child(1), .rwk-grid > .rw-i:nth-child(5) { padding-left:0; }
+.rwk-grid > .rw-i:not(.rw-n) .rw-t b { white-space:normal; }
 .rw-i { display:flex; align-items:center; gap:20px; }
 .rw-ar { width:72px; height:72px; border-radius:50%; display:grid; place-items:center; background:var(--dark); color:#fff; flex:none; }
 .rw-i.dn .rw-ar { background:var(--acc); color:var(--deep); }
@@ -232,7 +233,7 @@
 .exist .left { position:relative; z-index:1; width:680px; padding:var(--sec) var(--gut); display:flex; flex-direction:column; justify-content:space-between; gap:32px; }
 .big80 { font-family:var(--fd); font-weight:700; font-size:184px; line-height:.8; letter-spacing:-0.005em; color:var(--dark); }
 .big80 sup { font-size:84px; vertical-align:top; position:relative; top:16px; color:var(--acc); }
-.exist h2 { margin-top:20px; max-width:560px; }
+.exist h2 { max-width:560px; }
 .exist .lead { margin-top:18px; max-width:560px; }
 .ptitle { display:flex; justify-content:space-between; align-items:baseline; }
 .ptitle b { font-size:22px; letter-spacing:-0.02em; }
@@ -368,6 +369,11 @@
 .case-facts small { color:var(--ink2); }
 .case-facts span { font-size:var(--body); color:var(--mute); }
 .wv.pfv { background:var(--paper); }
+/* homepage gains grid is 12 columns with four gains (span 3); here three raw materials, so span 4 like the numbers */
+.fm:not(.m) .pfk .rwk-grid > .rw-i:not(.rw-n) { grid-column:span 4; }
+.fm:not(.m) .pfk .rwk-grid > .rw-i:nth-child(3) { border-right:0; padding-right:0; }
+.fm:not(.m) .pfk .rwk-grid > .rw-i:nth-child(4) { border-right:1px solid var(--line); padding-left:0; padding-right:40px; }
+.fm:not(.m) .pfk .rwk-grid > .rw-i:nth-child(5) { padding-left:40px; }
 .pfcert { padding-top:0; }
 .pfcert .w2-cert { margin-top:0; }
 .eqs { grid-template-columns:1fr 1.1fr; align-items:start; }
@@ -430,6 +436,7 @@ body{overflow-x:hidden}
 .fm.m .rw h2.stmt { line-height:1.04; }
 .fm.m .rw .stmt em { background-size:100% 6px; }
 .fm.m .rwk-grid { margin-top:28px; grid-template-columns:1fr; }
+.fm.m .rwk-grid > .rw-i { grid-column:auto; }
 .fm.m .rwk-grid > .rw-i { padding:18px 0; border-right:0; border-bottom:1px solid var(--line); gap:16px; }
 .fm.m .rwk-grid > .rw-i:last-child { border-bottom:0; }
 .fm.m .rw-ar { width:52px; height:52px; }
@@ -561,7 +568,7 @@ body{overflow-x:hidden}
   </section>
 
   <!-- 1b Guide and trust straight under the hero (Olli 17.11.2026, as on the homepage): raw materials, numbers, customer logos (homepage component: gains and numbers, K, logo band) -->
-  <section class="rw rwk">
+  <section class="rw rwk pfk">
     <span class="eyebrow">Raw materials we handle</span>
     <h2 class="stmt">We know what arrives at <em>your door</em>.</h2>
     <p class="lead rw-lead">High-quality pet food is often made from raw materials that are hard to handle, from MDM to vegetables such as spinach. We tailor the line to your recipes and raw materials.</p>
@@ -1158,7 +1165,7 @@ document.addEventListener("DOMContentLoaded", function () { var el = document.qu
   </section>
 
   <section class="wv pfcert">
-    <div class="wc w2-cert"><span class="wc-t"><b>CE-marked and risk-assessed</b><span>CE declaration and risk assessment for every delivery, for your supplier evaluation.</span></span><a class="tlink" href="safety.html">Safety &amp; Cleanability <svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a></div>
+    <div class="wc w2-cert"><span class="wc-t"><b>CE declaration and risk assessment</b><span>Documented with every delivery, for your supplier evaluation.</span></span><a class="tlink" href="safety.html">Safety &amp; Cleanability <svg class="ic" width="16" height="16" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round" stroke-linejoin="round" aria-hidden="true"><path d="M3 8h10M9 4l4 4-4 4"></path></svg></a></div>
   </section>
 
   <!-- 8 End: the smallest safe step (homepage components: existing or new factory, contact). Workshop A1 and B1, 18.11.2026: no 80 % figure, existing lines respected. -->
