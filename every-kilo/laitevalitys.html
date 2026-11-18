@@ -1687,13 +1687,15 @@ document.querySelectorAll('[data-part="100"][data-ref]').forEach(function(el){va
   var MENU=[
     /* [label, items, hub]: the hub (overview page) heads the panel as its own link, set apart from the items (Olli 17.11.) */
     ['Food Processing',[['Meat Processing',''],['Poultry Processing',''],['Pet Food Processing','pet-food.html']],null],
-    ['Products',[['Plate Freezing Systems','plate-freezing.html'],['BinStacker',''],['Titan Series','titan.html'],['Finmatec Mixers','mixers.html'],['Handling equipment','handling-equipment.html']],['All products','products.html']],
+    ['Products',[['Plate Freezing Systems',''],['BinStacker',''],['Titan Series',''],['Finmatec Mixers','mixers.html'],['Handling equipment','handling-equipment.html']],['All products','products.html']],
     ['Service & Spare Parts',[['Spare Parts','spare-parts.html'],['Service & support','service.html'],['Upgrades & retrofits','service.html#upgrades']],null],
     ['References','references.html'],
     ['Resources','resources.html'],
     ['About',[['How We Deliver','how-we-deliver.html'],['Safety & Cleanability','safety.html'],['News','news.html'],['Join our team','join.html']],['About Finmatec','about.html']]
   ];
   if(window.FM_HUBS) MENU.forEach(function(m){ if(window.FM_HUBS[m[0]]) m[2]=window.FM_HUBS[m[0]]; });
+  /* pages that are not in the proto yet are hidden from the menus, not shown greyed out (Olli 18.11.) */
+  MENU.forEach(function(m){ if(typeof m[1]!=='string') m[1]=m[1].filter(function(l){ return l[1]; }); });
   var here=(location.pathname.split('/').pop()||'index.html');
   function esc(s){return s.replace(/&/g,'&amp;');}
   function hub(h){ return h ? '<a class="hub" href="'+h[1]+'"'+(h[1]===here?' aria-current="page"':'')+'>'+esc(h[0])+' <span aria-hidden="true">&rarr;</span></a>' : ''; }
