@@ -1780,11 +1780,11 @@ document.querySelectorAll('[data-part="100"][data-ref]').forEach(function(el){va
   var MENU=[
     /* [label, items, hub]: the hub (overview page) heads the panel as its own link, set apart from the items (Olli 17.11.) */
     ['Food Processing',[['Meat Processing',''],['Poultry Processing',''],['Pet Food Processing','pet-food.html']],null],
-    ['Products',[['Plate Freezing Systems','plate-freezing.html'],['BinStacker',''],['Titan Series','titan.html'],['Finmatec Mixers','mixers.html'],['Screw Conveyors',''],['Belt Conveyors',''],['Silos, Bins & Hoppers','']],['All products','products.html']],
+    ['Products',[['Plate Freezing Systems','plate-freezing.html'],['BinStacker',''],['Titan Series','titan.html'],['Finmatec Mixers','mixers.html'],['Handling equipment','handling-equipment.html']],['All products','products.html']],
     ['Service & Spare Parts',[['Spare Parts','spare-parts.html'],['Service & support','service.html'],['Upgrades & retrofits','service.html#upgrades']],null],
     ['References','references.html'],
     ['Resources',[['Engineering Resources',''],['Guides','']],null],
-    ['About',[['How We Deliver','how-we-deliver.html'],['Safety & Hygiene','safety.html'],['News','news.html'],['Join our team','join.html']],['About Finmatec','about.html']]
+    ['About',[['How We Deliver','how-we-deliver.html'],['Safety & Cleanability','safety.html'],['News','news.html'],['Join our team','join.html']],['About Finmatec','about.html']]
   ];
   if(window.FM_HUBS) MENU.forEach(function(m){ if(window.FM_HUBS[m[0]]) m[2]=window.FM_HUBS[m[0]]; });
   var here=(location.pathname.split('/').pop()||'index.html');
@@ -1900,5 +1900,329 @@ document.querySelectorAll('[data-part="100"][data-ref]').forEach(function(el){va
   document.addEventListener('click',function(e){ var a=e.target.closest('a[href="#"]'); if(a && !a.hasAttribute('aria-haspopup')) e.preventDefault(); });
 })();
 </script>
+<!--fmc:start-->
+<style>
+/* Finmatec proto: kommenttikerros. Ei kosketa sivun omaan asetteluun. */
+.fmc, .fmc * { box-sizing: border-box; font-family: Inter, system-ui, -apple-system, "Segoe UI", sans-serif; }
+.fmc { --fmc-ink: #0d1117; --fmc-mut: #5b6472; --fmc-line: #e3e6ea; --fmc-acc: #2a3bd0; --fmc-bg: #fff; }
+.fmc-layer { position: absolute; inset: 0 auto auto 0; width: 0; height: 0; z-index: 2147483000; }
+.fmc-pin { position: absolute; width: 30px; height: 30px; margin: -30px 0 0 0; border: 0; padding: 0;
+  border-radius: 15px 15px 15px 2px; background: var(--fmc-acc); color: #fff; font: 600 13px/30px Inter, sans-serif;
+  text-align: center; cursor: pointer; box-shadow: 0 2px 10px rgba(13,17,23,.28); transition: transform .12s ease; }
+.fmc-pin:hover { transform: scale(1.12); }
+.fmc-pin.fmc-res { background: #8b93a1; }
+.fmc-pin.fmc-sel { outline: 3px solid rgba(42,59,208,.28); }
+.fmc-pin.fmc-draft { background: var(--fmc-ink); }
+
+.fmc-bar { position: fixed; right: 18px; bottom: 18px; z-index: 2147483100; display: flex; align-items: center; gap: 8px;
+  padding: 7px; border-radius: 999px; background: var(--fmc-bg); border: 1px solid var(--fmc-line);
+  box-shadow: 0 6px 26px rgba(13,17,23,.16); }
+.fmc-bar button { border: 0; background: none; cursor: pointer; border-radius: 999px; color: var(--fmc-ink);
+  font: 500 13px/1 Inter, sans-serif; padding: 9px 13px; }
+.fmc-bar button:hover { background: #f1f3f6; }
+.fmc-bar .fmc-mode { background: var(--fmc-ink); color: #fff; display: flex; align-items: center; gap: 7px; }
+.fmc-bar .fmc-mode:hover { background: #22262e; }
+.fmc-bar .fmc-mode.on { background: var(--fmc-acc); }
+.fmc-bar .fmc-count { color: var(--fmc-mut); font: 500 12px/1 Inter, sans-serif; padding-right: 6px; }
+.fmc-dot { width: 9px; height: 9px; border-radius: 5px 5px 5px 1px; background: currentColor; display: inline-block; }
+
+.fmc-pop { position: absolute; z-index: 2147483200; width: 304px; background: var(--fmc-bg); color: var(--fmc-ink);
+  border: 1px solid var(--fmc-line); border-radius: 14px; box-shadow: 0 10px 40px rgba(13,17,23,.22); overflow: hidden; }
+.fmc-pop header { display: flex; align-items: center; justify-content: space-between; gap: 8px;
+  padding: 10px 12px; border-bottom: 1px solid var(--fmc-line); }
+.fmc-pop header b { font: 600 12px/1 Inter, sans-serif; letter-spacing: .04em; text-transform: uppercase; color: var(--fmc-mut); }
+.fmc-pop header button { border: 0; background: none; cursor: pointer; color: var(--fmc-mut); font: 500 12px/1 Inter, sans-serif; padding: 4px 6px; border-radius: 6px; }
+.fmc-pop header button:hover { background: #f1f3f6; color: var(--fmc-ink); }
+.fmc-thread { max-height: 46vh; overflow: auto; padding: 4px 0; }
+.fmc-msg { padding: 10px 12px; }
+.fmc-msg + .fmc-msg { border-top: 1px solid #f0f2f5; }
+.fmc-msg .fmc-who { display: flex; gap: 8px; align-items: baseline; margin-bottom: 3px; }
+.fmc-msg .fmc-who b { font: 600 13px/1.3 Inter, sans-serif; }
+.fmc-msg .fmc-who span { font: 400 11px/1.3 Inter, sans-serif; color: var(--fmc-mut); }
+.fmc-msg p { margin: 0; font: 400 13px/1.5 Inter, sans-serif; white-space: pre-wrap; word-break: break-word; }
+.fmc-form { padding: 10px 12px; border-top: 1px solid var(--fmc-line); display: grid; gap: 8px; }
+.fmc-form input, .fmc-form textarea { width: 100%; border: 1px solid var(--fmc-line); border-radius: 9px; padding: 8px 10px;
+  font: 400 13px/1.45 Inter, sans-serif; color: var(--fmc-ink); background: #fff; resize: vertical; }
+.fmc-form textarea { min-height: 68px; }
+.fmc-form input:focus, .fmc-form textarea:focus { outline: 2px solid rgba(42,59,208,.35); border-color: var(--fmc-acc); }
+.fmc-act { display: flex; gap: 8px; align-items: center; }
+.fmc-act button { border: 0; cursor: pointer; border-radius: 9px; font: 500 13px/1 Inter, sans-serif; padding: 9px 13px; }
+.fmc-act .fmc-send { background: var(--fmc-acc); color: #fff; }
+.fmc-act .fmc-send[disabled] { background: #c9cdd6; cursor: default; }
+.fmc-act .fmc-ghost { background: none; color: var(--fmc-mut); }
+.fmc-act .fmc-ghost:hover { background: #f1f3f6; color: var(--fmc-ink); }
+.fmc-act .fmc-right { margin-left: auto; }
+
+.fmc-hint { position: fixed; left: 50%; top: 16px; transform: translateX(-50%); z-index: 2147483100;
+  background: var(--fmc-ink); color: #fff; border-radius: 999px; padding: 9px 16px;
+  font: 500 13px/1 Inter, sans-serif; box-shadow: 0 6px 26px rgba(13,17,23,.25); }
+.fmc-err { background: #8c1d1d; }
+body.fmc-on { cursor: crosshair; }
+body.fmc-on .fmc-bar, body.fmc-on .fmc-pop, body.fmc-on .fmc-pin { cursor: default; }
+
+@media (max-width: 760px) {
+  .fmc-bar { right: 10px; bottom: 10px; }
+  .fmc-bar .fmc-count { display: none; }
+  .fmc-pop { width: calc(100vw - 24px); }
+}
+@media print { .fmc-bar, .fmc-pop, .fmc-hint, .fmc-layer { display: none !important; } }
+</style>
+<script>
+/* Kommenttikerroksen ainoa konfiguraatio. Sailon vaihto = store ja url.
+   store: 'local'  = selaimen oma muisti, vain kehitykseen ja esittelyyn
+          'rest'   = url ottaa vastaan ja palauttaa kommentit (WordPress Kinstassa)
+   Ks. ui/work/scripts/wp-plugin/finmatec-proto-comments.php */
+window.FMC_CONFIG = {
+  store: 'rest',
+  url: 'https://finmatecproto.kinsta.cloud/wp-json/fmc/v1/comments',
+  project: 'finmatec-every-kilo',
+  poll: 20000
+};
+/* Finmatec proto: kommenttikerros (Figma-tyylinen pinnikommentointi ilman kirjautumista).
+   Sailo tulee tiedostosta comments_config.js. Kerros ei muuta sivun omaa asettelua:
+   pinnit piirretaan body-tason overlayhin dokumenttikoordinaatteihin. */
+(function () {
+  var CFG = window.FMC_CONFIG || {};
+  var T = {
+    on: 'Kommentoi', off: 'Kommentointi', hint: 'Klikkaa kohtaa, jota haluat kommentoida',
+    name: 'Nimesi', text: 'Kommentti', send: 'Laheta', cancel: 'Peruuta', reply: 'Vastaa',
+    resolve: 'Merkitse ratkaistuksi', unresolve: 'Avaa uudelleen', resolved: 'Ratkaistu',
+    show: 'Nayta ratkaistut', hide: 'Piilota ratkaistut', thread: 'Kommentti',
+    none: 'Ei viela kommentteja', err: 'Tallennus ei onnistunut, kommentti jai selaimeen'
+  };
+  var PAGE = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/, '') || 'index';
+  var KEY = 'fmc:' + (CFG.project || 'proto') + ':' + PAGE;
+  var NAMEKEY = 'fmc:name';
+  var fm = null, layer = null, pop = null, draft = null, mode = false, showRes = false;
+  var items = [], selected = null, timer = null;
+
+  /* ---------- sailo ---------- */
+  function lsRead() { try { return JSON.parse(localStorage.getItem(KEY) || '[]'); } catch (e) { return []; } }
+  function lsWrite(v) { try { localStorage.setItem(KEY, JSON.stringify(v)); } catch (e) {} }
+  function post(body) {
+    return fetch(CFG.url, { method: 'POST', headers: { 'Content-Type': 'text/plain;charset=utf-8' },
+      body: JSON.stringify(Object.assign({ project: CFG.project, page: PAGE }, body)) })
+      .then(function (r) { return r.json(); });
+  }
+  var store = {
+    list: function () {
+      if (CFG.store !== 'rest' || !CFG.url) return Promise.resolve(lsRead());
+      return fetch(CFG.url + (CFG.url.indexOf('?') < 0 ? '?' : '&') + 'project=' + encodeURIComponent(CFG.project) +
+        '&page=' + encodeURIComponent(PAGE)).then(function (r) { return r.json(); })
+        .then(function (d) { return (d && d.comments) || []; });
+    },
+    add: function (c) {
+      if (CFG.store !== 'rest' || !CFG.url) { var v = lsRead(); v.push(c); lsWrite(v); return Promise.resolve(c); }
+      return post({ action: 'add', comment: c }).then(function (d) { return (d && d.comment) || c; });
+    },
+    reply: function (id, r) {
+      if (CFG.store !== 'rest' || !CFG.url) {
+        var v = lsRead(); v.forEach(function (c) { if (c.id === id) (c.replies = c.replies || []).push(r); }); lsWrite(v);
+        return Promise.resolve(r);
+      }
+      return post({ action: 'reply', id: id, reply: r });
+    },
+    resolve: function (id, val) {
+      if (CFG.store !== 'rest' || !CFG.url) {
+        var v = lsRead(); v.forEach(function (c) { if (c.id === id) c.resolved = val; }); lsWrite(v);
+        return Promise.resolve(true);
+      }
+      return post({ action: 'resolve', id: id, resolved: val });
+    }
+  };
+
+  /* ---------- ankkurit ---------- */
+  function anchors() { return [fm].concat([].slice.call(fm.querySelectorAll('section, header, footer, .pinwrap'))); }
+  function anchorOf(el) {
+    var list = anchors();
+    while (el && el !== document.body) { var i = list.indexOf(el); if (i >= 0) return { el: el, key: keyOf(el, i) }; el = el.parentElement; }
+    return { el: fm, key: keyOf(fm, 0) };
+  }
+  function keyOf(el, i) { return i + '|' + (el.className || '').toString().split(' ').slice(0, 3).join('.'); }
+  function elFor(key) {
+    var list = anchors(), i = parseInt(key, 10), cls = key.split('|')[1] || '';
+    var same = list.filter(function (e, n) { return keyOf(e, n).split('|')[1] === cls; });
+    if (list[i] && keyOf(list[i], i).split('|')[1] === cls) return list[i];
+    return same[0] || list[i] || fm;
+  }
+  function docPos(c) {
+    var el = elFor(c.anchor); if (!el) return null;
+    var r = el.getBoundingClientRect();
+    if (!r.width && !r.height) return null;
+    return { x: r.left + window.pageXOffset + c.sx * r.width, y: r.top + window.pageYOffset + c.sy * r.height };
+  }
+
+  /* ---------- piirto ---------- */
+  function visible() { return items.filter(function (c) { return showRes || !c.resolved; }); }
+  function paint() {
+    layer.innerHTML = '';
+    visible().forEach(function (c) {
+      var p = docPos(c); if (!p) return;
+      var b = document.createElement('button');
+      b.className = 'fmc-pin' + (c.resolved ? ' fmc-res' : '') + (selected === c.id ? ' fmc-sel' : '');
+      b.style.left = p.x + 'px'; b.style.top = p.y + 'px';
+      b.textContent = String(items.indexOf(c) + 1);
+      b.title = (c.author || '') + ': ' + (c.text || '').slice(0, 80);
+      b.addEventListener('click', function (e) { e.stopPropagation(); openThread(c); });
+      layer.appendChild(b);
+    });
+    if (draft) {
+      var d = document.createElement('button');
+      d.className = 'fmc-pin fmc-draft'; d.textContent = '+';
+      d.style.left = draft.x + 'px'; d.style.top = draft.y + 'px';
+      layer.appendChild(d);
+    }
+    var n = items.filter(function (c) { return !c.resolved; }).length;
+    countEl.textContent = n ? n + ' auki' : '';
+    if (pop && pop.reposition) pop.reposition();
+  }
+
+  /* ---------- popover ---------- */
+  function closePop() { if (pop) { pop.remove(); pop = null; } selected = null; }
+  function makePop(x, y) {
+    closePop();
+    var el = document.createElement('div'); el.className = 'fmc fmc-pop';
+    document.body.appendChild(el);
+    el.reposition = function () {
+      var w = el.offsetWidth, vw = document.documentElement.clientWidth;
+      var left = Math.min(Math.max(10, x + 20), window.pageXOffset + vw - w - 10);
+      el.style.left = left + 'px'; el.style.top = (y + 10) + 'px';
+    };
+    el.addEventListener('click', function (e) { e.stopPropagation(); });
+    pop = el; return el;
+  }
+  function who() { try { return localStorage.getItem(NAMEKEY) || ''; } catch (e) { return ''; } }
+  function setWho(v) { try { localStorage.setItem(NAMEKEY, v); } catch (e) {} }
+  function stamp(t) { var d = new Date(t); return ('0' + d.getDate()).slice(-2) + '.' + ('0' + (d.getMonth() + 1)).slice(-2) + '. ' + ('0' + d.getHours()).slice(-2) + ':' + ('0' + d.getMinutes()).slice(-2); }
+  function msg(m) {
+    var w = document.createElement('div'); w.className = 'fmc-msg';
+    var h = document.createElement('div'); h.className = 'fmc-who';
+    var b = document.createElement('b'); b.textContent = m.author || '?';
+    var s = document.createElement('span'); s.textContent = stamp(m.created);
+    var p = document.createElement('p'); p.textContent = m.text;
+    h.appendChild(b); h.appendChild(s); w.appendChild(h); w.appendChild(p); return w;
+  }
+  function form(label, onSend, onCancel) {
+    var f = document.createElement('div'); f.className = 'fmc-form';
+    var name = document.createElement('input'); name.placeholder = T.name; name.value = who();
+    var ta = document.createElement('textarea'); ta.placeholder = label;
+    var act = document.createElement('div'); act.className = 'fmc-act';
+    var send = document.createElement('button'); send.className = 'fmc-send'; send.textContent = T.send; send.disabled = true;
+    var cancel = document.createElement('button'); cancel.className = 'fmc-ghost'; cancel.textContent = T.cancel;
+    function check() { send.disabled = !(ta.value.trim() && name.value.trim()); }
+    ta.addEventListener('input', check); name.addEventListener('input', check);
+    ta.addEventListener('keydown', function (e) { if ((e.metaKey || e.ctrlKey) && e.key === 'Enter' && !send.disabled) send.click(); });
+    send.addEventListener('click', function () { setWho(name.value.trim()); onSend(name.value.trim(), ta.value.trim()); });
+    cancel.addEventListener('click', onCancel);
+    if (!who()) f.appendChild(name);
+    f.appendChild(ta); act.appendChild(send); act.appendChild(cancel); f.appendChild(act);
+    setTimeout(function () { try { ta.focus({ preventScroll: true }); } catch (e) { ta.focus(); } }, 0);
+    return f;
+  }
+  function head(title, extra) {
+    var h = document.createElement('header');
+    var b = document.createElement('b'); b.textContent = title; h.appendChild(b);
+    if (extra) h.appendChild(extra);
+    var x = document.createElement('button'); x.textContent = 'Sulje'; x.addEventListener('click', closePop); h.appendChild(x);
+    return h;
+  }
+  function openDraft(p) {
+    draft = p; paint();
+    var el = makePop(p.x, p.y);
+    el.appendChild(head(T.thread));
+    el.appendChild(form(T.text, function (author, text) {
+      var c = { id: 'c' + Date.now() + Math.random().toString(36).slice(2, 6), page: PAGE, anchor: p.anchor,
+        sx: p.sx, sy: p.sy, mode: fm.classList.contains('m') ? 'mobile' : 'desktop',
+        author: author, text: text, created: Date.now(), resolved: false, replies: [] };
+      items.push(c); draft = null; closePop(); paint();
+      store.add(c).catch(function () { flash(T.err, true); });
+      setMode(false);
+    }, function () { draft = null; closePop(); paint(); }));
+    el.reposition();
+  }
+  function openThread(c) {
+    selected = c.id; draft = null;
+    var p = docPos(c); if (!p) return;
+    var el = makePop(p.x, p.y);
+    var res = document.createElement('button');
+    res.textContent = c.resolved ? T.unresolve : T.resolve;
+    res.addEventListener('click', function () {
+      c.resolved = !c.resolved; store.resolve(c.id, c.resolved).catch(function () { flash(T.err, true); });
+      closePop(); paint();
+    });
+    el.appendChild(head(c.resolved ? T.resolved : T.thread, res));
+    var th = document.createElement('div'); th.className = 'fmc-thread';
+    th.appendChild(msg(c)); (c.replies || []).forEach(function (r) { th.appendChild(msg(r)); });
+    el.appendChild(th);
+    el.appendChild(form(T.reply, function (author, text) {
+      var r = { id: 'r' + Date.now(), author: author, text: text, created: Date.now() };
+      (c.replies = c.replies || []).push(r); store.reply(c.id, r).catch(function () { flash(T.err, true); });
+      openThread(c);
+    }, closePop));
+    el.reposition();
+    th.scrollTop = th.scrollHeight;
+    paint();
+  }
+
+  /* ---------- tila ---------- */
+  var hint = null;
+  function flash(text, bad) {
+    if (hint) hint.remove();
+    hint = document.createElement('div'); hint.className = 'fmc fmc-hint' + (bad ? ' fmc-err' : '');
+    hint.textContent = text; document.body.appendChild(hint);
+    if (bad) setTimeout(function () { if (hint) { hint.remove(); hint = null; } }, 4000);
+  }
+  function setMode(on) {
+    mode = on; document.body.classList.toggle('fmc-on', on);
+    modeBtn.classList.toggle('on', on);
+    if (on) flash(T.hint); else if (hint) { hint.remove(); hint = null; }
+  }
+
+  /* ---------- palkki ---------- */
+  var bar = document.createElement('div'); bar.className = 'fmc fmc-bar';
+  var countEl = document.createElement('span'); countEl.className = 'fmc-count';
+  var modeBtn = document.createElement('button'); modeBtn.className = 'fmc-mode';
+  modeBtn.innerHTML = '<i class="fmc-dot"></i>'; modeBtn.appendChild(document.createTextNode(T.on));
+  var resBtn = document.createElement('button'); resBtn.textContent = T.show;
+  modeBtn.addEventListener('click', function (e) { e.stopPropagation(); closePop(); draft = null; paint(); setMode(!mode); });
+  resBtn.addEventListener('click', function (e) { e.stopPropagation(); showRes = !showRes; resBtn.textContent = showRes ? T.hide : T.show; paint(); });
+
+  /* ---------- kaynnistys ---------- */
+  function start() {
+    fm = document.querySelector('.fm'); if (!fm) return;
+    layer = document.createElement('div'); layer.className = 'fmc fmc-layer';
+    document.body.appendChild(layer);
+    bar.appendChild(countEl); bar.appendChild(resBtn); bar.appendChild(modeBtn);
+    document.body.appendChild(bar);
+
+    document.addEventListener('click', function (e) {
+      if (bar.contains(e.target) || (pop && pop.contains(e.target)) || layer.contains(e.target)) return;
+      if (!mode) { if (pop) closePop(); paint(); return; }
+      e.preventDefault(); e.stopPropagation();
+      var a = anchorOf(document.elementFromPoint(e.clientX, e.clientY));
+      var r = a.el.getBoundingClientRect(); if (!r.width || !r.height) return;
+      openDraft({ anchor: a.key, sx: (e.clientX - r.left) / r.width, sy: (e.clientY - r.top) / r.height,
+        x: e.pageX, y: e.pageY });
+    }, true);
+    document.addEventListener('keydown', function (e) {
+      if (e.key === 'Escape') { if (pop) { closePop(); draft = null; paint(); } else if (mode) setMode(false); }
+      if (e.key === 'c' && !mode && !/^(INPUT|TEXTAREA)$/.test((e.target.tagName || ''))) setMode(true);
+    });
+    window.addEventListener('resize', paint);
+    window.addEventListener('load', paint);
+    if (window.ResizeObserver) new ResizeObserver(paint).observe(fm);
+
+    store.list().then(function (v) { items = v || []; paint(); }).catch(function () { paint(); });
+    if (CFG.store === 'rest' && CFG.url && CFG.poll) {
+      timer = setInterval(function () {
+        if (pop) return;
+        store.list().then(function (v) { items = v || []; paint(); }).catch(function () {});
+      }, CFG.poll);
+    }
+  }
+  if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
+})();
+</script>
+<!--fmc:end-->
 </body>
 </html>
