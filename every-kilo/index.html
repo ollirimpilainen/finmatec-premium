@@ -932,6 +932,9 @@ body.fmc-on .fmc-bar, body.fmc-on .fmc-pop, body.fmc-on .fmc-pin { cursor: defau
   .fmc-pop { width: calc(100vw - 24px); }
 }
 @media print { .fmc-bar, .fmc-pop, .fmc-hint, .fmc-layer { display: none !important; } }
+
+/* pinni, jonka kommentoimaa kohtaa ei ole tassa nakymassa: sijainti on likimaarainen */
+.fmc-pin.fmc-approx { background: var(--fmc-ink); box-shadow: 0 0 0 2px #fff, 0 2px 10px rgba(13,17,23,.28); opacity: .72; }
 </style>
 <script>
 /* Kommenttikerroksen ainoa konfiguraatio. Sailon vaihto = store ja url.
@@ -954,7 +957,8 @@ window.FMC_CONFIG = {
     name: 'Nimesi', text: 'Kommentti', send: 'Laheta', cancel: 'Peruuta', reply: 'Vastaa',
     resolve: 'Merkitse ratkaistuksi', unresolve: 'Avaa uudelleen', resolved: 'Ratkaistu',
     show: 'Nayta ratkaistut', hide: 'Piilota ratkaistut', thread: 'Kommentti',
-    none: 'Ei viela kommentteja', err: 'Tallennus ei onnistunut, kommentti jai selaimeen'
+    none: 'Ei viela kommentteja', err: 'Tallennus ei onnistunut, kommentti jai selaimeen',
+    approx: 'Kohta on likimaarainen: kommentoitua kohtaa ei ole tassa nakymassa'
   };
   var PAGE = (location.pathname.split('/').pop() || 'index.html').replace(/\.html$/, '') || 'index';
   var KEY = 'fmc:' + (CFG.project || 'proto') + ':' + PAGE;
@@ -1011,11 +1015,67 @@ window.FMC_CONFIG = {
     if (list[i] && keyOf(list[i], i).split('|')[1] === cls) return list[i];
     return same[0] || list[i] || fm;
   }
+
+  /* Pinni kiinnittyy sisaltoelementtiin (otsikko, kappale, kortti, kuva), ei osion
+     suhteelliseen kohtaan: osio rivittyy eri tavoin eri leveyksilla ja mobiilissa on oma DOM.
+     Elementti tunnistetaan osiosta, tagista ja tekstin alusta, kuvat laakista. */
+  var CONTENT = 'h1,h2,h3,h4,h5,h6,p,li,a,button,img,video,figure,blockquote,td,th,label,b,strong,em,small,span,div';
+  function textKey(el) {
+    if (!el) return '';
+    var t = el.tagName.toLowerCase();
+    if (t === 'img' || t === 'video' || t === 'source') {
+      var src = el.getAttribute('src') || el.getAttribute('data-src') || el.getAttribute('poster') || '';
+      return 'src:' + src.split('/').pop();
+    }
+    return (el.textContent || '').replace(/\s+/g, ' ').trim().toLowerCase().slice(0, 60);
+  }
+  function contentEl(el, stop) {
+    while (el && el !== stop && el !== document.body) {
+      if (el.matches && el.matches(CONTENT)) {
+        var k = textKey(el), r = el.getBoundingClientRect();
+        /* kelpaa vain jos silla on oma tunniste ja jarkeva koko */
+        if (k && r.width > 4 && r.height > 4 && r.height < window.innerHeight * 2) return el;
+      }
+      el = el.parentElement;
+    }
+    return null;
+  }
+  function describe(el, sec) {
+    var k = textKey(el), t = el.tagName.toLowerCase();
+    var scope = sec || fm;
+    var list = [].slice.call(scope.querySelectorAll(t)).filter(function (e) {
+      if (textKey(e) !== k) return false;
+      var r = e.getBoundingClientRect(); return r.width > 0 || r.height > 0;
+    });
+    return { t: t, k: k, i: Math.max(0, list.indexOf(el)) };
+  }
+  function findDescribed(c) {
+    var d = c.el; if (!d || !d.t || !d.k) return null;
+    function hits(scope) {
+      return [].slice.call(scope.querySelectorAll(d.t)).filter(function (e) {
+        if (textKey(e) !== d.k) return false;
+        var r = e.getBoundingClientRect(); return r.width > 0 || r.height > 0;
+      });
+    }
+    var sec = elFor(c.anchor), list = sec ? hits(sec) : [];
+    if (!list.length) list = hits(fm);
+    return list[d.i] || list[0] || null;
+  }
   function docPos(c) {
-    var el = elFor(c.anchor); if (!el) return null;
-    var r = el.getBoundingClientRect();
-    if (!r.width && !r.height) return null;
-    return { x: r.left + window.pageXOffset + c.sx * r.width, y: r.top + window.pageYOffset + c.sy * r.height };
+    var el = findDescribed(c);
+    if (el) {
+      var r = el.getBoundingClientRect();
+      if (r.width || r.height) {
+        return { x: r.left + window.pageXOffset + (c.ex == null ? 0.5 : c.ex) * r.width,
+          y: r.top + window.pageYOffset + (c.ey == null ? 0.5 : c.ey) * r.height, exact: true };
+      }
+    }
+    /* vanhat kommentit ja elementit joita tassa nakymassa ei ole: osion suhteellinen kohta */
+    var sc = elFor(c.anchor); if (!sc) return null;
+    var sr = sc.getBoundingClientRect();
+    if (!sr.width && !sr.height) return null;
+    return { x: sr.left + window.pageXOffset + (c.sx || 0) * sr.width,
+      y: sr.top + window.pageYOffset + (c.sy || 0) * sr.height, exact: false };
   }
 
   /* ---------- piirto ---------- */
@@ -1025,10 +1085,12 @@ window.FMC_CONFIG = {
     visible().forEach(function (c) {
       var p = docPos(c); if (!p) return;
       var b = document.createElement('button');
-      b.className = 'fmc-pin' + (c.resolved ? ' fmc-res' : '') + (selected === c.id ? ' fmc-sel' : '');
+      b.className = 'fmc-pin' + (c.resolved ? ' fmc-res' : '') + (selected === c.id ? ' fmc-sel' : '')
+        + (p.exact ? '' : ' fmc-approx');
       b.style.left = p.x + 'px'; b.style.top = p.y + 'px';
       b.textContent = String(items.indexOf(c) + 1);
-      b.title = (c.author || '') + ': ' + (c.text || '').slice(0, 80);
+      b.title = (c.author || '') + ': ' + (c.text || '').slice(0, 80)
+        + (p.exact ? '' : '\n(' + T.approx + ')');
       b.addEventListener('click', function (e) { e.stopPropagation(); openThread(c); });
       layer.appendChild(b);
     });
@@ -1098,7 +1160,7 @@ window.FMC_CONFIG = {
     el.appendChild(head(T.thread));
     el.appendChild(form(T.text, function (author, text) {
       var c = { id: 'c' + Date.now() + Math.random().toString(36).slice(2, 6), page: PAGE, anchor: p.anchor,
-        sx: p.sx, sy: p.sy, mode: fm.classList.contains('m') ? 'mobile' : 'desktop',
+        sx: p.sx, sy: p.sy, el: p.el, ex: p.ex, ey: p.ey, mode: fm.classList.contains('m') ? 'mobile' : 'desktop',
         author: author, text: text, created: Date.now(), resolved: false, replies: [] };
       items.push(c); draft = null; closePop(); paint();
       store.add(c).catch(function () { flash(T.err, true); });
@@ -1165,10 +1227,16 @@ window.FMC_CONFIG = {
       if (bar.contains(e.target) || (pop && pop.contains(e.target)) || layer.contains(e.target)) return;
       if (!mode) { if (pop) closePop(); paint(); return; }
       e.preventDefault(); e.stopPropagation();
-      var a = anchorOf(document.elementFromPoint(e.clientX, e.clientY));
+      var hit = document.elementFromPoint(e.clientX, e.clientY);
+      var a = anchorOf(hit);
       var r = a.el.getBoundingClientRect(); if (!r.width || !r.height) return;
+      var ce = contentEl(hit, a.el), d = null, ex = null, ey = null;
+      if (ce) {
+        var cr = ce.getBoundingClientRect();
+        d = describe(ce, a.el); ex = (e.clientX - cr.left) / cr.width; ey = (e.clientY - cr.top) / cr.height;
+      }
       openDraft({ anchor: a.key, sx: (e.clientX - r.left) / r.width, sy: (e.clientY - r.top) / r.height,
-        x: e.pageX, y: e.pageY });
+        el: d, ex: ex, ey: ey, x: e.pageX, y: e.pageY });
     }, true);
     document.addEventListener('keydown', function (e) {
       if (e.key === 'Escape') { if (pop) { closePop(); draft = null; paint(); } else if (mode) setMode(false); }
