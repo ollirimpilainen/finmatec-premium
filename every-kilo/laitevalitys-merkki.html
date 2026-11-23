@@ -434,7 +434,9 @@
    Pohja yllä on etusivun elävä tyylitiedosto. Erillinen suomenkielinen osio: oma header ja footer,
    samat tokenit, napit ja komponentit kuin pääsivustolla. */
 .fm .lutil b { color:#fff; }
-.fm .lnav { gap:28px; position:relative; z-index:3; padding:20px var(--gut); display:flex; align-items:center; background:#fff; border-bottom:1px solid var(--line); }
+/* Oma kevyt header: etusivun .nav on absoluuttinen pilleri (left/right 56), joten nollataan sijoittelu,
+   muuten palkki valuu 56 px (1440) tai 12 px (390) näkymän yli. Proto-tarkistus 23.11. */
+.fm .lnav { position:relative; inset:auto; top:auto; left:auto; right:auto; height:auto; gap:28px; z-index:3; padding:20px var(--gut); display:flex; align-items:center; background:#fff; border:0; border-bottom:1px solid var(--line); border-radius:0; box-shadow:none; -webkit-backdrop-filter:none; backdrop-filter:none; }
 .fm .lnav .wb { display:inline-flex; align-items:center; gap:12px; }
 .fm .lnav .wb img { height:26px; width:auto; }
 .fm .lnav .wb em { font-style:normal; font-family:var(--fd); font-size:15px; font-weight:700; letter-spacing:-0.005em; padding-left:12px; border-left:1px solid var(--line); }
@@ -586,7 +588,8 @@
 .fm.m .crow .buy .btn { flex:1; }
 
 /* Merkkisivu ja tuotesivu (17.11.2026) */
-.fm .crumb { display:flex; gap:10px; align-items:center; color:var(--mute); margin-bottom:18px; }
+.fm .crumb { display:flex; flex-wrap:wrap; gap:6px 10px; align-items:center; color:var(--mute); margin-bottom:18px; min-width:0; }
+.fm .crumb b { overflow-wrap:anywhere; }
 .fm .crumb b { color:var(--ink); }
 .fm .bhero { padding:44px var(--gut) 0; }
 .fm .bhero-in { display:grid; grid-template-columns:minmax(0,1fr) 420px; gap:64px; align-items:center; background:var(--paper); border:1px solid var(--line); border-radius:var(--r-panel); padding:44px 48px; }
@@ -660,7 +663,8 @@
 .fm .cmini--solo::before { display:none; }
 
 /* Mobiili 390 */
-.fm.m .lnav { padding:16px 20px; gap:12px; }
+.fm.m .lnav { position:relative; inset:auto; top:auto; left:auto; right:auto; padding:14px 20px; gap:12px; height:auto; }
+.fm.m .lnav .wb em { white-space:nowrap; }
 .fm.m .lnav ul { display:none; }
 .fm.m .lnav .wb em { font-size:13px; padding-left:10px; }
 .fm.m .lhero { padding:34px 20px 40px; }
@@ -1109,7 +1113,9 @@
    Pohja yllä on etusivun elävä tyylitiedosto. Erillinen suomenkielinen osio: oma header ja footer,
    samat tokenit, napit ja komponentit kuin pääsivustolla. */
 .fm .lutil b { color:#fff; }
-.fm .lnav { gap:28px; position:relative; z-index:3; padding:20px var(--gut); display:flex; align-items:center; background:#fff; border-bottom:1px solid var(--line); }
+/* Oma kevyt header: etusivun .nav on absoluuttinen pilleri (left/right 56), joten nollataan sijoittelu,
+   muuten palkki valuu 56 px (1440) tai 12 px (390) näkymän yli. Proto-tarkistus 23.11. */
+.fm .lnav { position:relative; inset:auto; top:auto; left:auto; right:auto; height:auto; gap:28px; z-index:3; padding:20px var(--gut); display:flex; align-items:center; background:#fff; border:0; border-bottom:1px solid var(--line); border-radius:0; box-shadow:none; -webkit-backdrop-filter:none; backdrop-filter:none; }
 .fm .lnav .wb { display:inline-flex; align-items:center; gap:12px; }
 .fm .lnav .wb img { height:26px; width:auto; }
 .fm .lnav .wb em { font-style:normal; font-family:var(--fd); font-size:15px; font-weight:700; letter-spacing:-0.005em; padding-left:12px; border-left:1px solid var(--line); }
@@ -1261,7 +1267,8 @@
 .fm.m .crow .buy .btn { flex:1; }
 
 /* Merkkisivu ja tuotesivu (17.11.2026) */
-.fm .crumb { display:flex; gap:10px; align-items:center; color:var(--mute); margin-bottom:18px; }
+.fm .crumb { display:flex; flex-wrap:wrap; gap:6px 10px; align-items:center; color:var(--mute); margin-bottom:18px; min-width:0; }
+.fm .crumb b { overflow-wrap:anywhere; }
 .fm .crumb b { color:var(--ink); }
 .fm .bhero { padding:44px var(--gut) 0; }
 .fm .bhero-in { display:grid; grid-template-columns:minmax(0,1fr) 420px; gap:64px; align-items:center; background:var(--paper); border:1px solid var(--line); border-radius:var(--r-panel); padding:44px 48px; }
@@ -1335,7 +1342,8 @@
 .fm .cmini--solo::before { display:none; }
 
 /* Mobiili 390 */
-.fm.m .lnav { padding:16px 20px; gap:12px; }
+.fm.m .lnav { position:relative; inset:auto; top:auto; left:auto; right:auto; padding:14px 20px; gap:12px; height:auto; }
+.fm.m .lnav .wb em { white-space:nowrap; }
 .fm.m .lnav ul { display:none; }
 .fm.m .lnav .wb em { font-size:13px; padding-left:10px; }
 .fm.m .lhero { padding:34px 20px 40px; }
