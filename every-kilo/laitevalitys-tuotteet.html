@@ -7,6 +7,7 @@
 <link rel="preconnect" href="https://fonts.googleapis.com"><link rel="preconnect" href="https://fonts.gstatic.com" crossorigin><link rel="stylesheet" href="https://fonts.googleapis.com/css2?family=Exo+2:wght@400..800&amp;display=swap">
 <style>
 
+
 /* ===== Finmatec homepage stylesheet: the base for every page (shared by all 4 homepage artboards, unified 16.11.2026) ===== */
 /* Tokens: colour, type, radius, surface, rhythm. Mobile overrides at the bottom. */
 .fm { --ink:#0D0E2B; --ink2:#3A3C5C; --mute:#5F617E; --line:#D9DBE8; --soft:#ECEEF7; --paper:#F5F6FB; --dark:#2415BA; --acc:#03FF6B; --deep:#0D0E2B;
@@ -431,7 +432,9 @@
    Pohja yllä on etusivun elävä tyylitiedosto. Erillinen suomenkielinen osio: oma header ja footer,
    samat tokenit, napit ja komponentit kuin pääsivustolla. */
 .fm .lutil b { color:#fff; }
-.fm .lnav { gap:28px; position:relative; z-index:3; padding:20px var(--gut); display:flex; align-items:center; background:#fff; border-bottom:1px solid var(--line); }
+/* Oma kevyt header: etusivun .nav on absoluuttinen pilleri (left/right 56), joten nollataan sijoittelu,
+   muuten palkki valuu 56 px (1440) tai 12 px (390) näkymän yli. Proto-tarkistus 23.11. */
+.fm .lnav { position:relative; inset:auto; top:auto; left:auto; right:auto; height:auto; gap:28px; z-index:3; padding:20px var(--gut); display:flex; align-items:center; background:#fff; border:0; border-bottom:1px solid var(--line); border-radius:0; box-shadow:none; -webkit-backdrop-filter:none; backdrop-filter:none; }
 .fm .lnav .wb { display:inline-flex; align-items:center; gap:12px; }
 .fm .lnav .wb img { height:26px; width:auto; }
 .fm .lnav .wb em { font-style:normal; font-family:var(--fd); font-size:15px; font-weight:700; letter-spacing:-0.005em; padding-left:12px; border-left:1px solid var(--line); }
@@ -583,7 +586,8 @@
 .fm.m .crow .buy .btn { flex:1; }
 
 /* Merkkisivu ja tuotesivu (17.11.2026) */
-.fm .crumb { display:flex; gap:10px; align-items:center; color:var(--mute); margin-bottom:18px; }
+.fm .crumb { display:flex; flex-wrap:wrap; gap:6px 10px; align-items:center; color:var(--mute); margin-bottom:18px; min-width:0; }
+.fm .crumb b { overflow-wrap:anywhere; }
 .fm .crumb b { color:var(--ink); }
 .fm .bhero { padding:44px var(--gut) 0; }
 .fm .bhero-in { display:grid; grid-template-columns:minmax(0,1fr) 420px; gap:64px; align-items:center; background:var(--paper); border:1px solid var(--line); border-radius:var(--r-panel); padding:44px 48px; }
@@ -657,7 +661,8 @@
 .fm .cmini--solo::before { display:none; }
 
 /* Mobiili 390 */
-.fm.m .lnav { padding:16px 20px; gap:12px; }
+.fm.m .lnav { position:relative; inset:auto; top:auto; left:auto; right:auto; padding:14px 20px; gap:12px; height:auto; }
+.fm.m .lnav .wb em { white-space:nowrap; }
 .fm.m .lnav ul { display:none; }
 .fm.m .lnav .wb em { font-size:13px; padding-left:10px; }
 .fm.m .lhero { padding:34px 20px 40px; }
@@ -711,15 +716,184 @@
 .fm .dropcols { margin-top:6px; padding-top:8px; border-top:1px solid var(--line); display:grid; grid-template-columns:repeat(2,minmax(0,1fr)); gap:1px 10px; }
 .fm .dropcols a { padding:9px 14px; border-radius:10px; font-size:14px; color:var(--ink2); text-decoration:none; }
 .fm .dropcols a:hover { background:var(--paper); color:var(--ink); }
+
+@media (max-width: 860px) {
+/* ===== Mobile 390 ===== */
+.fm { --disp:52px; --h1:32px; --h2:32px; --h2s:28px; --h3:24px; --h4:21px; --lead:16px; --body:15px; --sec:56px; --gut:20px; --r-panel:28px; --r-panel-in:22px; --r-row:18px; width:390px; font-size:16px; }
+.fm .btn:not(.mq) { width:100%; justify-content:space-between; }
+.fm .btn.ghost { justify-content:center; }
+.fm .chip { height:44px; }
+.fm .tlink { min-height:44px; font-size:16px; }
+.fm .lrow { height:72px; padding:0 16px 0 20px; }
+.fm .lrow b { font-size:18px; }
+.fm .lrow small { font-size:13px; }
+.fm .lrow i { width:40px; height:40px; }
+.fm .lrow i svg { width:18px; height:18px; }
+.fm .util { display:none; }
+.fm .hero { height:780px; }
+.fm .nav { top:14px; left:12px; right:12px; height:58px; padding:0 7px 0 18px; gap:12px; justify-content:space-between; }
+.fm .nav img.logoimg { height:24px; }
+.fm .nav .btn.mq { display:inline-flex; margin-left:auto; height:44px; padding:0 6px 0 16px; gap:10px; font-size:14px; }
+.fm .nav .btn.mq i { width:32px; height:32px; }
+.fm .burger { width:44px; height:44px; border-radius:50%; border:0; padding:0; background:var(--dark); display:grid; place-content:center; gap:4px; cursor:pointer; }
+.fm .burger span { display:block; width:18px; height:2px; border-radius:1px; background:#fff; }
+.fm .hero-copy { bottom:276px; }
+.fm .hero h1 { line-height:1.04; max-width:none; }
+.fm .router { left:12px; right:12px; bottom:16px; grid-template-columns:1fr; gap:8px; }
+.fm .rw h2.stmt { line-height:1.04; }
+.fm .rw .stmt em { background-size:100% 6px; }
+.fm .rwk-grid { margin-top:28px; grid-template-columns:1fr; }
+.fm .rwk-grid > .rw-i { padding:18px 0; border-right:0; border-bottom:1px solid var(--line); gap:16px; }
+.fm .rwk-grid > .rw-i:last-child { border-bottom:0; }
+.fm .rw-ar { width:52px; height:52px; }
+.fm .rw-ar svg { width:24px; height:24px; }
+.fm .rw-t b { font-size:24px; white-space:normal; }
+.fm .rw-num { font-size:52px; }
+.fm .rw-n .rw-t b { font-size:20px; }
+.fm .rw small { margin-bottom:6px; }
+.fm .logos { margin-top:36px; }
+.fm .logos .ltrack div { width:150px; height:80px; padding:16px 20px; }
+.fm .flow-head { grid-template-columns:1fr; gap:16px; }
+.fm .railwrap { margin-top:32px; }
+.fm .track { gap:12px; animation:railpanm 22s cubic-bezier(.65,0,.35,1) infinite alternate; }
+.fm .track > .st { width:300px; }
+.fm .st .body { padding:20px 20px 24px; gap:10px; }
+.fm .flow-foot { margin-top:32px; flex-direction:column; align-items:flex-start; gap:12px; }
+.fm .kg { grid-template-columns:1fr; gap:20px; }
+.fm .kg-num { font-size:150px; }
+.fm .kg-num small { font-size:56px; }
+.fm .pf { grid-template-columns:1fr; gap:32px; }
+.fm .seg { margin-top:24px; border-radius:22px; }
+.fm .seg span { font-size:13px; line-height:1.15; padding:0 6px; min-height:48px; display:grid; place-items:center; border-radius:18px; }
+.fm .level { margin-top:28px; }
+.fm .level div b { font-size:var(--small); }
+.fm .level div small { font-size:11px; }
+.fm .pf .ctas { flex-direction:column; align-items:stretch; gap:10px; }
+.fm .bezel .in { min-height:300px; }
+.fm .w2-wrap { margin-top:28px; grid-template-columns:1fr; gap:20px; }
+.fm .w2-ph { min-height:340px; }
+.fm .wv .wph .b { left:22px; right:22px; bottom:22px; }
+.fm .w2-grid { grid-template-columns:1fr; }
+.fm .w2-c { padding:20px 0; border-right:0 !important; border-bottom:1px solid var(--line); }
+.fm .w2-c:last-child { border-bottom:0; }
+.fm .w2-c h3 { white-space:normal; }
+.fm .w2-cert { margin-top:20px; padding:22px; flex-direction:column; align-items:flex-start; gap:14px; }
+.fm .exist { display:flex; flex-direction:column; }
+.fm .exist .left { width:auto; padding-bottom:28px; gap:36px; }
+.fm .big80 { font-size:120px; }
+.fm .big80 sup { font-size:54px; top:10px; }
+.fm .fpz-row { flex-direction:column; align-items:stretch; gap:14px; padding:8px 0 0; }
+.fm .fpz-row .f { margin:0 14px; }
+.fm .fpz-drop { padding:22px 14px; }
+.fm .exist .planfull { position:relative; inset:auto; left:auto; right:auto; order:1; height:auto; aspect-ratio:16/9; margin:0 var(--gut) var(--sec); }
+.fm .exist .planfull::after { display:none; }
+.fm .pbento { grid-template-columns:1fr; gap:12px; }
+.fm .pbento > .cell { grid-column:auto; }
+.fm .c-quote .core { padding:28px 24px; min-height:0; gap:28px; }
+.fm .c-quote .mark { font-size:90px; height:30px; }
+.fm .c-quote blockquote { font-size:24px; line-height:1.18; }
+.fm .c-img .core { min-height:300px; }
+.fm .svc-in { grid-template-columns:1fr; padding:32px 22px 22px; gap:28px; }
+.fm .eng { grid-template-columns:1fr; gap:32px; }
+.fm .eng > div:last-child { order:-1; }
+.fm .sheet .in { padding:22px; }
+.fm .sheet .top { flex-direction:column; align-items:flex-start; gap:6px; }
+.fm .sheet .top b { font-size:20px; }
+.fm .sheet table { table-layout:fixed; }
+.fm .sheet td:first-child { width:42%; letter-spacing:.04em; font-size:11px; line-height:1.35; word-break:break-word; }
+.fm .sheet .dl { flex-wrap:wrap; }
+.fm .cb { grid-template-columns:1fr; gap:32px; }
+.fm .cb .ppl { margin-top:28px; gap:12px; }
+.fm .cb .ppl > div { align-content:start; gap:12px; }
+.fm .cb .ppl .av { height:200px; }
+.fm .cb .ppl span span { font-size:13px; }
+.fm .cb .form .in { padding:22px; }
+.fm .cb .form .f2 { grid-template-columns:1fr; }
+.fm .cb .form .btn { align-self:stretch; }
+.fm .fb2 { padding:48px var(--gut) 40px; }
+.fm .fb2 .sym { right:-220px; top:-80px; height:700px; }
+.fm .fb2 .grid { grid-template-columns:1fr 1fr; gap:32px 24px; }
+.fm .fb2 .grid > div:first-child { grid-column:span 2; }
+.fm .fb2 ul li { min-height:44px; display:flex; align-items:center; }
+.fm .fb2 .bottom { margin-top:36px; flex-direction:column; gap:10px; }
+.fm .fb2 .bottom span a { margin:0 16px 0 0; display:inline-flex; align-items:center; min-height:44px; }
+.fm .fb2 .bottom > span:first-child { display:inline-flex; align-items:center; min-height:44px; }
+.fm .fb2 .word { margin-top:32px; width:350px; }
+.fm .cwrap { padding:28px 20px 56px; }
+.fm .ctop { grid-template-columns:1fr; gap:14px; margin-bottom:22px; }
+.fm .cmini { position:static; width:auto; margin:0 0 26px; padding:20px 22px; box-shadow:none; }
+.fm .cmini::before { display:none; }
+.fm .cwrap { padding-top:22px; }
+.fm .ctop h1 { font-size:32px; }
+.fm .cmain { grid-template-columns:1fr; gap:20px; }
+.fm .crail > div { padding:18px 20px; }
+.fm .cbrands { max-height:none; }
+.fm .crow .buy .btn { flex:1; }
+.fm .bhero, .fm .pwrap { padding:28px 20px 0; }
+.fm .bhero-in { grid-template-columns:1fr; gap:28px; padding:26px 22px; border-radius:var(--r-card); }
+.fm .bhero h1 { font-size:30px; }
+.fm .bmark { min-height:120px; padding:22px; }
+.fm .bmark img { max-height:60px; }
+.fm .pgrid { grid-template-columns:1fr; gap:24px; }
+.fm .pshot { padding:24px; }
+.fm .pshot img { max-height:260px; }
+.fm .pbuy { padding:24px 22px; }
+.fm .pfacts div { grid-template-columns:120px minmax(0,1fr); gap:10px; }
+.fm .ccat { grid-template-columns:1fr; }
+.fm .bband { grid-template-columns:repeat(3,minmax(0,1fr)); margin:0 -20px; }
+.fm .bband a { height:76px; padding:12px 14px; border-left:1px solid var(--line); }
+.fm .bband a:nth-child(8n+1) { border-left:1px solid var(--line); }
+.fm .bband a:nth-child(3n+1) { border-left:0; }
+.fm .bband a:nth-child(n+4) { border-top:1px solid var(--line); }
+/* Mobiili 390 */
+.fm .lnav { position:relative; inset:auto; top:auto; left:auto; right:auto; padding:14px 20px; gap:12px; height:auto; }
+.fm .lnav .wb em { white-space:nowrap; }
+.fm .lnav ul { display:none; }
+.fm .lnav .wb em { font-size:13px; padding-left:10px; }
+.fm .lhero { padding:34px 20px 40px; }
+.fm .lhero-in { grid-template-columns:1fr; gap:32px; }
+.fm .lhero h1 { font-size:34px; }
+.fm .lhero p.lead { font-size:16px; }
+.fm .lwall { padding:14px; border-radius:var(--r-card); }
+.fm .lwall-grid { grid-template-columns:repeat(3,minmax(0,1fr)); }
+.fm .lwall-grid a { min-height:62px; padding:10px; }
+.fm .lwall .more { flex-direction:column; align-items:flex-start; gap:6px; }
+.fm .lsec { padding:56px 20px; }
+.fm .lhead { grid-template-columns:1fr; gap:16px; margin-bottom:28px; }
+.fm .lsearch { max-width:none; padding:12px 18px; }
+.fm .lgrid, .fm .lcat, .fm .lwhy { grid-template-columns:1fr; }
+.fm .lcard { grid-template-columns:72px minmax(0,1fr); gap:14px; padding:16px 18px; }
+.fm .lcat .ph img { height:170px; }
+.fm .lnum-grid { grid-template-columns:1fr; margin-bottom:32px; }
+.fm .lnum-grid > .rw-i, .fm .lnum-grid > .rw-i + .rw-i { padding:18px 0; border-right:0; border-top:1px solid var(--line); }
+.fm .lnum-grid > .rw-i:first-child { border-top:0; padding-top:0; }
+.fm .logos.lv { margin:0 -20px; }
+.fm .fb2.lv .grid { grid-template-columns:1fr; }
+  .fm .cmain { grid-template-columns:1fr; }
+  .fm .crail-toggle { display:flex; align-items:center; justify-content:space-between; width:100%; background:#fff; border:1px solid var(--line); border-radius:999px; padding:14px 22px; font:inherit; font-family:var(--fd); font-weight:700; font-size:15px; color:var(--ink); cursor:pointer; margin-bottom:16px; }
+  .fm .crail-toggle span { font-size:20px; line-height:1; color:var(--dark); }
+  .fm .crail { display:none; }
+  .fm .crail.is-open { display:block; margin-bottom:20px; }
+  .fm .cmini { position:static; width:auto; box-shadow:none; margin-bottom:22px; }
+  .fm .cmini::before { display:none; }
+  .fm .ctop { grid-template-columns:1fr; }
+  .fm .dropmenu, .fm .dropmenu--wide { min-width:0; width:calc(100vw - 40px); left:0; }
+  .fm .dropcols { grid-template-columns:1fr; }
+  .fm .lnav ul { display:none; }
+  .fm .lnav .tel b { display:none; }
+}
+
+body { margin:0; background:#fff; }
+.fm { max-width:1440px; margin:0 auto; }
+@media (max-width: 860px) { .fm { max-width:none; overflow-x:hidden; } }
 </style>
-<style>body{margin:0;background:#fff}.fm{max-width:1440px;margin:0 auto}</style>
 </head>
 <body>
 <div class="fm" id="app"></div>
 <script>
 const TUOTTEET = [{"id": "t0", "tuote": "Leikkuuveitsi", "merkki": "Giesser", "ryhma": "tyokalut", "laji": "Veitset ja tarvikkeet", "meta": "teräpituus 90-250 mm", "kuva": "", "logo": "media/logot/giesser.svg"}, {"id": "t1", "tuote": "Paloitteluveitsi", "merkki": "Giesser", "ryhma": "tyokalut", "laji": "Veitset ja tarvikkeet", "meta": "teräpituus 90-250 mm", "kuva": "", "logo": "media/logot/giesser.svg"}, {"id": "t2", "tuote": "Pistoveitsi", "merkki": "Giesser", "ryhma": "tyokalut", "laji": "Veitset ja tarvikkeet", "meta": "teräpituus 90-250 mm", "kuva": "", "logo": "media/logot/giesser.svg"}, {"id": "t3", "tuote": "Siipikarjaveitsi", "merkki": "Giesser", "ryhma": "tyokalut", "laji": "Veitset ja tarvikkeet", "meta": "teräpituus 90-250 mm", "kuva": "", "logo": "media/logot/giesser.svg"}, {"id": "t4", "tuote": "Leikkuuveitsi", "merkki": "Morakniv", "ryhma": "tyokalut", "laji": "Veitset ja tarvikkeet", "meta": "aiemmin Frosts Mora", "kuva": "", "logo": "media/logot/morakniv.svg"}, {"id": "t5", "tuote": "Pistoveitsi", "merkki": "Morakniv", "ryhma": "tyokalut", "laji": "Veitset ja tarvikkeet", "meta": "aiemmin Frosts Mora", "kuva": "", "logo": "media/logot/morakniv.svg"}, {"id": "t6", "tuote": "Teroituskone", "merkki": "KNECHT", "ryhma": "tyokalut", "laji": "Teroitus ja hiontalaitteet", "meta": "Teroitus ja hiontalaitteet", "kuva": "media/knecht.jpg", "logo": "media/logot/knecht.svg"}, {"id": "t7", "tuote": "Teroituskone EVO4", "merkki": "ZAHND", "ryhma": "tyokalut", "laji": "Teroitus ja hiontalaitteet", "meta": "EVO4", "kuva": "", "logo": ""}, {"id": "t8", "tuote": "Teroituskone FP02", "merkki": "ZAHND", "ryhma": "tyokalut", "laji": "Teroitus ja hiontalaitteet", "meta": "FP02, kaksipuolinen hionta", "kuva": "", "logo": ""}, {"id": "t9", "tuote": "Teroituskone Z200", "merkki": "ZAHND", "ryhma": "tyokalut", "laji": "Teroitus ja hiontalaitteet", "meta": "Z200, kulmaopas", "kuva": "", "logo": ""}, {"id": "t10", "tuote": "Teroitus- ja hiontalaite", "merkki": "MADO", "ryhma": "tyokalut", "laji": "Teroitus ja hiontalaitteet", "meta": "Teroitus ja hiontalaitteet", "kuva": "", "logo": "media/logot/mado.svg"}, {"id": "t11", "tuote": "Teroitus- ja hiontalaite", "merkki": "Wiegand", "ryhma": "tyokalut", "laji": "Teroitus ja hiontalaitteet", "meta": "Teroitus ja hiontalaitteet", "kuva": "", "logo": "media/logot/wiegand.svg"}, {"id": "t12", "tuote": "Teroitus- ja hiontalaite", "merkki": "Bobet matériel", "ryhma": "tyokalut", "laji": "Teroitus ja hiontalaitteet", "meta": "Teroitus ja hiontalaitteet", "kuva": "", "logo": "media/logot/bobet-materiel.svg"}, {"id": "t13", "tuote": "Teroitus- ja hiontalaite", "merkki": "tmp", "ryhma": "tyokalut", "laji": "Teroitus ja hiontalaitteet", "meta": "Teroitus ja hiontalaitteet", "kuva": "", "logo": "media/logot/tmp.svg"}, {"id": "t14", "tuote": "Teroitus- ja hiontalaite", "merkki": "Sharpymax", "ryhma": "tyokalut", "laji": "Teroitus ja hiontalaitteet", "meta": "Teroitus ja hiontalaitteet", "kuva": "", "logo": "media/logot/sharpymax.svg"}, {"id": "t15", "tuote": "Nylkyveitsi EFA Z 13", "merkki": "EFA", "ryhma": "tyokalut", "laji": "Sahat ja trimmauskoneet", "meta": "Z 13", "kuva": "", "logo": "media/logot/efa.svg"}, {"id": "t16", "tuote": "Nylkyveitsi EFA Z 14", "merkki": "EFA", "ryhma": "tyokalut", "laji": "Sahat ja trimmauskoneet", "meta": "Z 14", "kuva": "", "logo": "media/logot/efa.svg"}, {"id": "t17", "tuote": "Teurastussaha EFA 620", "merkki": "EFA", "ryhma": "tyokalut", "laji": "Sahat ja trimmauskoneet", "meta": "620", "kuva": "", "logo": "media/logot/efa.svg"}, {"id": "t18", "tuote": "Teurastussaha EFA 2000", "merkki": "EFA", "ryhma": "tyokalut", "laji": "Sahat ja trimmauskoneet", "meta": "2000", "kuva": "", "logo": "media/logot/efa.svg"}, {"id": "t19", "tuote": "Leikkuutyökalu EFA System Knoll", "merkki": "EFA", "ryhma": "tyokalut", "laji": "Sahat ja trimmauskoneet", "meta": "System Knoll", "kuva": "", "logo": "media/logot/efa.svg"}, {"id": "t20", "tuote": "Trimmausveitsi EFA 66", "merkki": "EFA", "ryhma": "tyokalut", "laji": "Sahat ja trimmauskoneet", "meta": "66", "kuva": "", "logo": "media/logot/efa.svg"}, {"id": "t21", "tuote": "Trimmausveitsi EFA 57", "merkki": "EFA", "ryhma": "tyokalut", "laji": "Sahat ja trimmauskoneet", "meta": "57", "kuva": "", "logo": "media/logot/efa.svg"}, {"id": "t22", "tuote": "Leikkuulaite EFA SB 322 E", "merkki": "EFA", "ryhma": "tyokalut", "laji": "Sahat ja trimmauskoneet", "meta": "SB 322 E", "kuva": "", "logo": "media/logot/efa.svg"}, {"id": "t23", "tuote": "Leikkuulaite EFA 44", "merkki": "EFA", "ryhma": "tyokalut", "laji": "Sahat ja trimmauskoneet", "meta": "44", "kuva": "", "logo": "media/logot/efa.svg"}, {"id": "t24", "tuote": "Teräsverkkokäsine Wilco", "merkki": "Manulatex", "ryhma": "tyokalut", "laji": "Henkilösuojavarusteet", "meta": "PPE-luokka III, jousisuljin", "kuva": "", "logo": "media/logot/manulatex.svg"}, {"id": "t25", "tuote": "Tainnutuslaite", "merkki": "Termet", "ryhma": "tyokalut", "laji": "Teurastus- ja leikkuutyökalut", "meta": "Teurastus- ja leikkuutyökalut", "kuva": "", "logo": "media/logot/termet.svg"}, {"id": "t26", "tuote": "Veitsien sterilointilaite", "merkki": "Termet", "ryhma": "tyokalut", "laji": "Hygienialaitteet", "meta": "Hygienialaitteet", "kuva": "", "logo": "media/logot/termet.svg"}, {"id": "t27", "tuote": "Kulutustarvikkeet", "merkki": "Termet", "ryhma": "tyokalut", "laji": "Teurastus- ja leikkuutyökalut", "meta": "Teurastus- ja leikkuutyökalut", "kuva": "", "logo": "media/logot/termet.svg"}, {"id": "t28", "tuote": "Lämpökirjoitinpää", "merkki": "Brauer", "ryhma": "tyokalut", "laji": "Kirjoitinpäät", "meta": "merkintälaitteisiin", "kuva": "", "logo": "media/logot/brauer.svg"}, {"id": "t29", "tuote": "Kynimäsormet", "merkki": "Duram", "ryhma": "tyokalut", "laji": "Teurastus- ja leikkuutyökalut", "meta": "siipikarja", "kuva": "", "logo": ""}, {"id": "t30", "tuote": "Ruodonpoistolaite", "merkki": "EXOS", "ryhma": "tyokalut", "laji": "Ruodonpoistolaitteet", "meta": "kala", "kuva": "", "logo": "media/logot/exos.svg"}, {"id": "t31", "tuote": "Veitsien ja työkalujen sterilointilaite", "merkki": "Höcker", "ryhma": "tyokalut", "laji": "Hygienialaitteet", "meta": "Hygienialaitteet", "kuva": "", "logo": "media/logot/hoecker.svg"}, {"id": "t32", "tuote": "Koukku, kahlekoukku ja levitin", "merkki": "Höcker", "ryhma": "tyokalut", "laji": "Koukut, kahlekoukut", "meta": "ruhojen käsittely", "kuva": "", "logo": "media/logot/hoecker.svg"}, {"id": "t33", "tuote": "Koukut, sakkelit ja ripustimet", "merkki": "WAMMA", "ryhma": "tyokalut", "laji": "Koukut, kahlekoukut", "meta": "ruhojen käsittely", "kuva": "", "logo": "media/logot/wamma.svg"}, {"id": "t34", "tuote": "Saapaspesukone", "merkki": "Brökelmann", "ryhma": "laitteet", "laji": "Hygienialaitteet", "meta": "Hygienialaitteet", "kuva": "", "logo": "media/logot/brokelmann.svg"}, {"id": "t35", "tuote": "Käsienpesu- ja desinfiointiallas", "merkki": "Brökelmann", "ryhma": "laitteet", "laji": "Hygienialaitteet", "meta": "Hygienialaitteet", "kuva": "", "logo": "media/logot/brokelmann.svg"}, {"id": "t36", "tuote": "Eurobin-astia ja säiliö", "merkki": "Brökelmann", "ryhma": "laitteet", "laji": "Mollat, altaat, vaunut, punnituslaitteet", "meta": "RST", "kuva": "", "logo": "media/logot/brokelmann.svg"}, {"id": "t37", "tuote": "Kippauslaite ja nostin", "merkki": "Brökelmann", "ryhma": "laitteet", "laji": "Kippauslaitteet ja nostimet", "meta": "astioiden tyhjennys", "kuva": "media/kippauslaite.png", "logo": "media/logot/brokelmann.svg"}, {"id": "t38", "tuote": "Savustusvaunu", "merkki": "Brökelmann", "ryhma": "laitteet", "laji": "Mollat, altaat, vaunut, punnituslaitteet", "meta": "Mollat, altaat, vaunut, punnituslaitteet", "kuva": "", "logo": "media/logot/brokelmann.svg"}, {"id": "t39", "tuote": "Hygieniasulku", "merkki": "Höcker", "ryhma": "laitteet", "laji": "Hygienialaitteet", "meta": "kulunvalvonta", "kuva": "", "logo": "media/logot/hoecker.svg"}, {"id": "t40", "tuote": "Saapaspesukone", "merkki": "Höcker", "ryhma": "laitteet", "laji": "Hygienialaitteet", "meta": "Hygienialaitteet", "kuva": "", "logo": "media/logot/hoecker.svg"}, {"id": "t41", "tuote": "Astioiden pesulaite", "merkki": "WAMMA", "ryhma": "laitteet", "laji": "Hygienialaitteet", "meta": "Hygienialaitteet", "kuva": "", "logo": "media/logot/wamma.svg"}, {"id": "t42", "tuote": "Pneumasiirtolaite", "merkki": "WAMMA", "ryhma": "laitteet", "laji": "Nahonta- ja prosessikoneet", "meta": "sivutuotteet", "kuva": "", "logo": "media/logot/wamma.svg"}, {"id": "t43", "tuote": "Nylkemiskone ST600K", "merkki": "STEEN", "ryhma": "laitteet", "laji": "Nahonta- ja prosessikoneet", "meta": "ST600K", "kuva": "", "logo": "media/logot/steen.svg"}, {"id": "t44", "tuote": "Nylkemiskone ST700K", "merkki": "STEEN", "ryhma": "laitteet", "laji": "Nahonta- ja prosessikoneet", "meta": "ST700K", "kuva": "", "logo": "media/logot/steen.svg"}, {"id": "t45", "tuote": "Pöytänylkemiskone ST111K", "merkki": "STEEN", "ryhma": "laitteet", "laji": "Nahonta- ja prosessikoneet", "meta": "ST111K", "kuva": "", "logo": "media/logot/steen.svg"}, {"id": "t46", "tuote": "Kylkiluunleikkuri ST350", "merkki": "STEEN", "ryhma": "laitteet", "laji": "Nahonta- ja prosessikoneet", "meta": "ST350", "kuva": "", "logo": "media/logot/steen.svg"}, {"id": "t47", "tuote": "Nahontakone", "merkki": "NOCK", "ryhma": "laitteet", "laji": "Nahkomiskoneet, jäähilekoneet, suikalekoneet", "meta": "Nahkomiskoneet, jäähilekoneet, suikalekoneet", "kuva": "media/nock.jpg", "logo": "media/logot/nock.svg"}, {"id": "t48", "tuote": "Kalvokuorintakone", "merkki": "NOCK", "ryhma": "laitteet", "laji": "Nahkomiskoneet, jäähilekoneet, suikalekoneet", "meta": "Nahkomiskoneet, jäähilekoneet, suikalekoneet", "kuva": "", "logo": "media/logot/nock.svg"}, {"id": "t49", "tuote": "Jäähiutalekone", "merkki": "NOCK", "ryhma": "laitteet", "laji": "Nahkomiskoneet, jäähilekoneet, suikalekoneet", "meta": "Nahkomiskoneet, jäähilekoneet, suikalekoneet", "kuva": "", "logo": "media/logot/nock.svg"}, {"id": "t50", "tuote": "Mollasekoitin", "merkki": "SYSPAL", "ryhma": "laitteet", "laji": "Nahonta- ja prosessikoneet", "meta": "DIN9797", "kuva": "", "logo": "media/logot/syspal.svg"}, {"id": "t51", "tuote": "Lihamylly", "merkki": "Omet Foodtech", "ryhma": "laitteet", "laji": "Nahonta- ja prosessikoneet", "meta": "Nahonta- ja prosessikoneet", "kuva": "", "logo": "media/logot/omet-foodtech.svg"}, {"id": "t52", "tuote": "Sekoitin", "merkki": "Omet Foodtech", "ryhma": "laitteet", "laji": "Nahonta- ja prosessikoneet", "meta": "Nahonta- ja prosessikoneet", "kuva": "", "logo": "media/logot/omet-foodtech.svg"}];
 const SIVU = 16;
-const S = { haku:'', ryhmat:[], lajit:[], merkit:[], maarat:{}, kori:[], koriAuki:false, valikko:null, raja:SIVU };
+const S = { rajausAuki:false, haku:'', ryhmat:[], lajit:[], merkit:[], maarat:{}, kori:[], koriAuki:false, valikko:null, raja:SIVU };
 const RYHMAT = [['tyokalut','Ty\u00f6kalut ja tarvikkeet'],['laitteet','Laitteet']];
 const esc = s => String(s).replace(/&/g,'&amp;').replace(/</g,'&lt;');
 const maara = id => S.maarat[id] === undefined ? 1 : S.maarat[id];
@@ -783,7 +957,7 @@ function piirra() {
    + '<p>Ker\u00e4\u00e4 tarvitsemasi nimikkeet ja l\u00e4het\u00e4 yksi pyynt\u00f6. Saat tiedon saatavuudesta ja toimituksesta samalla kertaa.</p>'
    + '<div class="csearch"><svg width="18" height="18" viewBox="0 0 16 16" fill="none" stroke="currentColor" stroke-width="1.8" stroke-linecap="round"><circle cx="7" cy="7" r="4.5"></circle><path d="M10.5 10.5 14 14"></path></svg>'
    + '<input id="q" type="search" value="'+esc(S.haku)+'" placeholder="Hae merkill\u00e4 tai tuotteella"></div></div></div>'
-   + '<div class="cmain"><div class="crail"><div><h3>Kategoriat</h3><div class="ctree">'+puu+'</div></div><div><h3>Merkki</h3><div class="cfl">'+mlista+'</div></div></div>'
+   + '<div class="cmain"><button type="button" class="crail-toggle" data-act="rajaa">Rajaa'+(rajauksia?' ('+rajauksia+')':'')+'<span>'+(S.rajausAuki?'\u2212':'+')+'</span></button><div class="crail'+(S.rajausAuki?' is-open':'')+'"><div><h3>Kategoriat</h3><div class="ctree">'+puu+'</div></div><div><h3>Merkki</h3><div class="cfl">'+mlista+'</div></div></div>'
    + '<div><div class="cres mono"><span>'+osuvat.length+' tuotetta</span><button type="button" class="cclear" data-act="tyhjenna">'+(rajauksia?'Tyhjenn\u00e4 rajaukset ('+rajauksia+')':'J\u00e4rjestys: merkki')+'</button></div>'
    + '<div class="clist">'+nayta.map(rivi).join('')+'</div>'
    + (osuvat.length === 0 ? '<div class="cempty"><p>Ei osumia n\u00e4ill\u00e4 rajauksilla.</p><button type="button" class="btn sec" data-act="tyhjenna">Tyhjenn\u00e4 rajaukset</button></div>' : '')
@@ -808,6 +982,7 @@ document.addEventListener('click', e => {
   else if (a === 'pick') { S.ryhmat = v ? [v] : []; S.lajit = []; S.valikko = null; S.raja = SIVU; piirra(); }
   else if (a === 'tyhjenna') { S.haku=''; S.ryhmat=[]; S.lajit=[]; S.merkit=[]; S.raja=SIVU; S.focus=false; piirra(); }
   else if (a === 'lisaa') { S.raja += SIVU; piirra(); }
+  else if (a === 'rajaa') { S.rajausAuki = !S.rajausAuki; piirra(); }
 });
 document.addEventListener('input', e => { if (e.target.id === 'q') { S.haku = e.target.value; S.raja = SIVU; S.focus = true; piirra(); } });
 piirra();
@@ -1204,6 +1379,5 @@ window.FMC_CONFIG = {
   if (document.readyState === 'loading') document.addEventListener('DOMContentLoaded', start); else start();
 })();
 </script>
-<!--fmc:end-->
 </body>
 </html>
