@@ -119,8 +119,11 @@ function load(p, btn) {
     + `${fi(p.instansseja)} sijoitusta`;
 }
 
-// kosketuslaitteella kevein malli: vahemman dataa ja kolmioita
-const kevyt = matchMedia('(pointer: coarse)').matches || innerWidth < 720;
+// kosketuslaitteella kevein malli: vahemman dataa ja kolmioita.
+// innerWidth voi olla 0 ennen kuin asettelu on valmis, joten sitae ei
+// saa tulkita kapeaksi ruuduksi.
+const leveys = innerWidth || document.documentElement.clientWidth || 1280;
+const kevyt = matchMedia('(pointer: coarse)').matches || leveys < 720;
 const haluttu = kevyt ? 'karkea' : 'keski';
 const oletus = presets.findIndex(p => p.preset === haluttu);
 presets.forEach((p, i) => {
