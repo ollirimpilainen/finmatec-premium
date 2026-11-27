@@ -1,2 +1,13 @@
 .DS_Store
 __pycache__/
+
+# Asiakasaineisto ja tyotiedostot: nama eivat kuulu julkiseen repoon
+.claude/
+aineisto/
+palvelumuotoilu/
+tietokanta/
+toimitus/
+wireframes/
+ui/
+3d/
+CLAUDE.md

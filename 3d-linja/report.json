@@ -1,0 +1,83 @@
+[
+ {
+  "bytes": 2751332,
+  "meshes": 362,
+  "nodes": 1656,
+  "tris": 240807,
+  "preset": "karkea",
+  "ld": 40.0,
+  "ad": 45.0,
+  "min_mm": 300.0,
+  "uniikkeja": 362,
+  "instansseja": 1656,
+  "piirtokolmiot": 438216,
+  "ohitettu": 4547,
+  "poistettu": [
+   [
+    "00104022",
+    42.9
+   ]
+  ],
+  "materiaalit": {
+   "koneistettu": 395,
+   "ruostumaton": 10,
+   "rakenneteras": 1125,
+   "sinkitty": 126
+  },
+  "sek": 21
+ },
+ {
+  "bytes": 3413900,
+  "meshes": 523,
+  "nodes": 2133,
+  "tris": 292021,
+  "preset": "keski",
+  "ld": 20.0,
+  "ad": 30.0,
+  "min_mm": 150.0,
+  "uniikkeja": 523,
+  "instansseja": 2133,
+  "piirtokolmiot": 672594,
+  "ohitettu": 4070,
+  "poistettu": [
+   [
+    "00104022",
+    42.9
+   ]
+  ],
+  "materiaalit": {
+   "koneistettu": 820,
+   "ruostumaton": 10,
+   "rakenneteras": 1125,
+   "sinkitty": 178
+  },
+  "sek": 25
+ },
+ {
+  "bytes": 4318672,
+  "meshes": 709,
+  "nodes": 2811,
+  "tris": 362367,
+  "preset": "tarkka",
+  "ld": 10.0,
+  "ad": 20.0,
+  "min_mm": 60.0,
+  "uniikkeja": 709,
+  "instansseja": 2811,
+  "piirtokolmiot": 888913,
+  "ohitettu": 3392,
+  "poistettu": [
+   [
+    "00104022",
+    42.9
+   ]
+  ],
+  "materiaalit": {
+   "koneistettu": 1255,
+   "ruostumaton": 10,
+   "rakenneteras": 1125,
+   "sinkitty": 421
+  },
+  "sek": 34
+ }
+]
